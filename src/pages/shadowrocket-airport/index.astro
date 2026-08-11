@@ -1,0 +1,122 @@
+---
+/** P3 客户端专题：Shadowrocket / iPhone 机场推荐。教程页为 /apps/shadowrocket-guide/。 */
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BrandPickList from '@/components/BrandPickList.astro';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const reasons: Record<string, string> = {
+  'guangsu-yun':
+    '自研客户端 + 订阅导入双通道，iPhone 上可以先用自研端快速跑通，再迁到小火箭做精细分流。',
+  'yuzhou-yun': '14.9 元档且提供自研客户端，适合不想折腾外区 Apple ID 的用户先用官方端起步。',
+  u1s1: '20 元 120GB，流媒体向配置，配合小火箭的分流规则看剧体验完整。',
+  'lingmao-net': '月付单价最低，适合 iPhone 用户按月验证后再决定是否长期使用。',
+  'feimao-yun': '7 元小包做备用订阅，小火箭里多存一条订阅，主力异常时一键切换。',
+  kuaili: '能力面完整，多设备家庭共用时一份订阅覆盖 iPhone、iPad 与桌面端。',
+};
+
+const faq = [
+  {
+    q: 'Shadowrocket 机场推荐怎么选？和安卓有区别吗？',
+    a: '选机场的标准没有区别，区别在客户端获取方式：Shadowrocket 需要非中国大陆区 Apple ID 购买。所以 iPhone 用户可以优先考虑提供自研客户端的机场——先用官方端跑通，等有需要再迁到小火箭。',
+  },
+  {
+    q: '小火箭导入订阅时提示无效怎么办？',
+    a: '最常见的原因是链接复制不完整（iOS 长按复制容易截断），回用户中心用复制按钮重来即可。若节点列表仍为空，向客服索取 Shadowrocket 专用订阅链接，不要用来路不明的在线转换工具。',
+  },
+  {
+    q: 'iPhone 用机场一定要买 Shadowrocket 吗？',
+    a: '不一定。多数在库机场提供自研 iOS 客户端，可以免去购买小火箭与外区账号的麻烦。小火箭的优势在于分流规则的精细控制，属于进阶需求，新手不必一开始就上。',
+  },
+  {
+    q: '挂着小火箭特别费电怎么办？',
+    a: '三个设置能明显改善：全局路由用「配置」而非「代理」，关闭不必要的按需连接，节点选延迟低的近距离大区。此外线路质量差会导致重传增多，同样耗电——这时该换的是机场不是设置。',
+  },
+  {
+    q: '一个订阅能同时给 iPhone 和电脑用吗？',
+    a: '可以，但要看套餐的在线设备数限制。多设备用户选套餐时要把设备数当硬指标，不能只看流量额度。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: 'Shadowrocket 机场推荐', href: '/shadowrocket-airport/' },
+];
+---
+
+<Base
+  title="Shadowrocket 机场推荐：iPhone 可用的机场与订阅"
+  description="Shadowrocket（小火箭）机场推荐：适合 iPhone 与 iOS 的在库机场名单、价格与优惠码，说明外区 Apple ID 的门槛、自研客户端能否替代小火箭，以及订阅导入失败怎么处理。"
+  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[48rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">Shadowrocket 机场推荐</h1>
+    <div class="verdict">
+      <p class="verdict-label m-0">先说结论</p>
+      <p class="m-0 text-[1.02rem]">
+        iPhone 用户的门槛不在机场，在客户端：Shadowrocket 需要<strong>非大陆区 Apple ID</strong> 购买。
+        所以一条实用建议是——<strong>优先选提供自研 iOS 客户端的机场</strong>，先跑通再说；
+        等你确实需要精细分流时，再迁到小火箭，订阅是通用的，不用重新买。
+      </p>
+    </div>
+    <p class="m-0 mt-4 text-[0.98rem] text-muted">
+      客户端配置步骤见 <a href="/apps/shadowrocket-guide/">Shadowrocket 新手教程</a>；
+      这一页负责选订阅。
+    </p>
+  </header>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="path-heading">
+    <h2 id="path-heading" class="m-0 text-[1.5rem]">iPhone 用户的两条路</h2>
+    <div class="mt-6 grid gap-8 md:grid-cols-2">
+      <div class="border-t-[3px] border-accent pt-4">
+        <h3 class="m-0 font-display text-[1.12rem]">路线 A：先用机场自研客户端</h3>
+        <p class="m-0 mt-2 text-[0.94rem] text-muted">
+          省去外区账号与 2.99 美元的支出，装上登录即可用。适合第一次接触机场、只想快点能上网的人。
+          代价是分流规则由机场预设，自定义空间小。
+        </p>
+      </div>
+      <div class="border-t-[3px] border-accent pt-4">
+        <h3 class="m-0 font-display text-[1.12rem]">路线 B：买 Shadowrocket</h3>
+        <p class="m-0 mt-2 text-[0.94rem] text-muted">
+          需要外区 Apple ID 并自行付费购买。换来的是精细的分流控制——比如把 AI 域名固定走单一节点，
+          这在<a href="/best/ai/">AI 场景</a>里是刚需。请自行注册外区账号，不要租用共享 Apple ID。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="list-heading">
+    <h2 id="list-heading" class="m-0 text-[1.5rem]">适合 iPhone 用户的在库机场</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      优先列出提供自研客户端的品牌——对 iOS 用户来说，这一项能省掉整条外区账号链路。
+    </p>
+    <div class="mt-6">
+      <BrandPickList
+        slugs={['lingmao-net', 'yuzhou-yun', 'guangsu-yun', 'u1s1', 'kuaili', 'feimao-yun']}
+        reasons={reasons}
+        limit={6}
+      />
+    </div>
+  </section>
+
+  <section class="rule-top mt-14 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">iPhone 机场常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="meta-text m-0 mt-4">
+      继续：<a href="/apps/shadowrocket-guide/">小火箭教程</a> ·
+      <a href="/clash-airport/">电脑端看这里</a> ·
+      <a href="/brand-library/">全部品牌对照</a>
+    </p>
+  </section>
+</Base>

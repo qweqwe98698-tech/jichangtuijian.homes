@@ -1,0 +1,82 @@
+{
+  "name": "WgetCloud",
+  "tier": "premium",
+  "positioning": "以专线接入为主要卖点的高端定位机场，长期面向对稳定性要求高的用户群。",
+  "background": "WgetCloud 在中文用户社区中长期被归入高端档位，宣传重点是专线线路与负载能力。本站对其公司主体、运营团队与基础设施细节尚未独立核验，以下档案以可核对的公开资料为主，核验完成前请以官方渠道信息为准。",
+  "protocols": [
+    "Shadowsocks（待核验）",
+    "Trojan（待核验）"
+  ],
+  "lineTypes": [
+    "IEPL 专线（品牌公开说明，未经独立核验）",
+    "BGP 中转（待核验）"
+  ],
+  "strengths": [
+    "定位明确：预算充足、要稳定的用户是其目标群体",
+    "社区长期讨论度高，公开口碑样本量大，可交叉验证",
+    "宣传口径以线路质量为中心，而非低价促销"
+  ],
+  "limitations": [
+    "价格显著高于中低端方案，轻度使用者性价比存疑",
+    "本站不做独立测速，实际质量没有统一测试数据佐证",
+    "高端定位不等于零风险，仍需按风险清单核查"
+  ],
+  "suitableFor": [
+    "晚高峰刚需（远程办公/在线会议）",
+    "AI 工具重度用户",
+    "愿意为稳定付溢价的多设备用户"
+  ],
+  "notSuitableFor": [
+    "月预算 15 元以下的轻度用户",
+    "只想临时用几天的用户",
+    "追求最低价的学生党"
+  ],
+  "riskLevel": "low",
+  "dataStatus": "unverified",
+  "lastVerified": null,
+  "pricingNote": "套餐与价格信息待核验，暂不列出具体数字。该品牌存在仿冒站点风险，请务必通过可信渠道核对官网地址后再付款。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "高端",
+      "status": "sourced",
+      "note": "依据公开定价区间与宣传定位归类"
+    },
+    {
+      "label": "主打线路",
+      "value": "IEPL 专线（宣传口径）",
+      "status": "pending",
+      "note": "未经独立核验"
+    },
+    {
+      "label": "节点数量",
+      "value": "暂无公开数据",
+      "status": "pending"
+    },
+    {
+      "label": "月付起步价",
+      "value": "暂无公开数据",
+      "status": "pending"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具可用性",
+      "value": "暂无统一测试数据",
+      "status": "pending"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": null,
+  "reviewSlug": "reviews/wgetcloud"
+}

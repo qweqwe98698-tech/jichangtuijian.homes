@@ -1,0 +1,73 @@
+---
+import '@/styles/global.css';
+import { SITE, SITE_VERIFICATION } from '@/lib/site';
+import { organizationSchema, webSiteSchema, jsonLd } from '@/lib/schema';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** 追加的 JSON-LD 节点（Breadcrumb/Article/FAQ 等），由页面按需传入 */
+  schemaItems?: Record<string, unknown>[];
+  noindex?: boolean;
+  /** 首页专用：不加站名后缀 */
+  bareTitle?: boolean;
+}
+const { title, description, schemaItems = [], noindex = false, bareTitle = false } = Astro.props;
+
+const fullTitle = bareTitle ? title : `${title}${SITE.titleSuffix}`;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const ogImage = `${SITE.url}/og-default.png`;
+const isHome = Astro.url.pathname === '/';
+const graph = [...(isHome ? [organizationSchema(), webSiteSchema()] : []), ...schemaItems];
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="color-scheme" content="light dark" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={fullTitle} />
+    <meta property="og:locale" content="zh_CN" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={fullTitle} />
+
+    {
+      SITE_VERIFICATION.google && (
+        <meta name="google-site-verification" content={SITE_VERIFICATION.google} />
+      )
+    }
+    {SITE_VERIFICATION.bing && <meta name="msvalidate.01" content={SITE_VERIFICATION.bing} />}
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {graph.length > 0 && <script is:inline type="application/ld+json" set:html={jsonLd(graph)} />}
+  </head>
+  <body>
+    <a href="#main" class="skip-link">跳到正文</a>
+    <Header />
+    <main id="main" class="mx-auto max-w-[1120px] px-4">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

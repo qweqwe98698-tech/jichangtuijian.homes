@@ -1,0 +1,37 @@
+---
+/** 相关路径：按内链地图渲染 related 列表（id 形如 "guides/how-to-choose"） */
+import { getCollection } from 'astro:content';
+import { sectionMap } from '@/lib/site';
+
+interface Props {
+  related: string[];
+}
+const { related } = Astro.props;
+
+const all = await getCollection('articles', ({ data }) => !data.draft);
+const items = related.map((id) => all.find((a) => a.id === id)).filter((a) => a !== undefined);
+---
+
+{
+  items.length > 0 && (
+    <section class="rule-top mt-14 pt-8" aria-labelledby="related-heading">
+      <h2 id="related-heading" class="m-0 mb-4 text-[1.5rem]">
+        继续这条路径
+      </h2>
+      <ol class="path-index">
+        {items.map((a) => {
+          const section = a.id.split('/')[0]!;
+          return (
+            <li>
+              <p class="meta-text m-0">{sectionMap[section]?.name}</p>
+              <a href={`/${a.id}/`} class="font-display text-[1.05rem]">
+                {a.data.title}
+              </a>
+              <p class="m-0 mt-1 text-[0.9rem] text-muted">{a.data.description}</p>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  )
+}

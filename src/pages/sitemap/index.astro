@@ -1,0 +1,141 @@
+---
+/**
+ * HTML 站点地图。两个作用：给搜索引擎一个能一次发现全部内容的入口，
+ * 同时把任何一篇文章的点击层级压到首页两跳以内。
+ */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { SITE, SECTIONS, sectionMap } from '@/lib/site';
+import { breadcrumbSchema, webPageSchema, type Crumb } from '@/lib/schema';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft)).sort((a, b) =>
+  a.id.localeCompare(b.id),
+);
+const brands = (await getCollection('brands')).sort((a, b) =>
+  a.data.name.localeCompare(b.data.name),
+);
+
+const commercial = [
+  { href: '/airport-ranking/', label: '2026 机场排行榜' },
+  { href: '/brand-library/', label: '机场品牌库' },
+  { href: '/cheap-airport/', label: '便宜机场推荐' },
+  { href: '/chatgpt-airport/', label: 'ChatGPT 机场推荐' },
+  { href: '/streaming-airport/', label: '流媒体解锁机场' },
+  { href: '/iepl-airport/', label: 'IEPL 专线机场' },
+  { href: '/clash-airport/', label: 'Clash 机场推荐' },
+  { href: '/shadowrocket-airport/', label: 'Shadowrocket 机场推荐' },
+  { href: '/v2rayn-airport/', label: 'v2rayN 机场推荐' },
+  { href: '/pay-as-you-go-airport/', label: '按量计费与不限时机场' },
+  { href: '/free-trial-airport/', label: '免费试用机场' },
+  { href: '/airport-coupon/', label: '机场优惠码汇总' },
+  { href: '/free/', label: '免费资源与风险' },
+];
+
+const trust = [
+  { href: '/about/', label: '关于本站' },
+  { href: '/methodology/', label: '资料核验方法' },
+  { href: '/editorial-policy/', label: '编辑政策' },
+  { href: '/data-sources/', label: '数据来源' },
+  { href: '/update-policy/', label: '更新政策' },
+  { href: '/authors/editorial/', label: '编辑部' },
+  { href: '/contact/', label: '联系方式' },
+  { href: '/disclaimer/', label: '免责声明' },
+  { href: '/privacy/', label: '隐私政策' },
+];
+
+const total = articles.length + brands.length + commercial.length + trust.length + SECTIONS.length;
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '网站地图', href: '/sitemap/' },
+];
+---
+
+<Base
+  title="网站地图：全部页面索引"
+  description={`${SITE.name}的完整页面索引：${articles.length} 篇文章、${brands.length} 份品牌档案、${commercial.length} 个选购专题与全部栏目、信任页面，一页可达。`}
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '网站地图',
+      description: '全站页面索引',
+      path: '/sitemap/',
+    }),
+  ]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[46rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">网站地图</h1>
+    <p class="m-0 mt-3 text-[1.05rem] text-muted">
+      本站共 {total} 个可索引页面，全部列在这一页。给搜索引擎一个完整入口， 也让你能一眼看清这个站到底写了些什么。机器可读的版本见
+      <a href="/sitemap-index.xml">sitemap-index.xml</a>，更新订阅见 <a href="/rss.xml">RSS</a>。
+    </p>
+  </header>
+
+  <section class="rule-top mt-12 pt-8" aria-labelledby="sm-commercial">
+    <h2 id="sm-commercial" class="m-0 text-[1.35rem]">选购与对照</h2>
+    <ul class="mt-4 grid list-none gap-x-10 gap-y-1 p-0 text-[0.95rem] md:grid-cols-2">
+      {
+        commercial.map((l) => (
+          <li>
+            <a href={l.href}>{l.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="rule-top mt-12 pt-8" aria-labelledby="sm-brands">
+    <h2 id="sm-brands" class="m-0 text-[1.35rem]">品牌档案（{brands.length}）</h2>
+    <ul class="mt-4 grid list-none gap-x-10 gap-y-1 p-0 text-[0.95rem] md:grid-cols-3">
+      {
+        brands.map((b) => (
+          <li>
+            <a href={`/brands/${b.id}/`}>{b.data.name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  {
+    SECTIONS.map((s) => {
+      const items = articles.filter((a) => a.id.startsWith(`${s.key}/`));
+      if (!items.length) return null;
+      return (
+        <section class="rule-top mt-12 pt-8" aria-labelledby={`sm-${s.key}`}>
+          <h2 id={`sm-${s.key}`} class="m-0 text-[1.35rem]">
+            <a href={`/${s.key}/`} class="text-ink hover:text-accent">
+              {sectionMap[s.key]?.name}
+            </a>
+            <span class="meta-text ml-2">（{items.length}）</span>
+          </h2>
+          <p class="meta-text m-0 mt-1">{s.tagline}</p>
+          <ul class="mt-4 list-none space-y-1 p-0 text-[0.95rem]">
+            {items.map((a) => (
+              <li>
+                <a href={`/${a.id}/`}>{a.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })
+  }
+
+  <section class="rule-top mt-12 pt-8 pb-6" aria-labelledby="sm-trust">
+    <h2 id="sm-trust" class="m-0 text-[1.35rem]">本站如何工作</h2>
+    <ul class="mt-4 grid list-none gap-x-10 gap-y-1 p-0 text-[0.95rem] md:grid-cols-2">
+      {
+        trust.map((l) => (
+          <li>
+            <a href={l.href}>{l.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

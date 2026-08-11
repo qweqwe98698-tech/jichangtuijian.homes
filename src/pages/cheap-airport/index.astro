@@ -1,0 +1,189 @@
+---
+/** P2 专题：便宜机场推荐（名单页）。标准页为 /best/budget/，此页承接名单与价格对照，分工写明避免内耗。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BrandPickList from '@/components/BrandPickList.astro';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const brands = (await getCollection('brands'))
+  .filter((b) => b.data.pricePerGb !== null)
+  .sort((a, b) => (a.data.pricePerGb ?? 99) - (b.data.pricePerGb ?? 99));
+
+const cheapest = brands.slice(0, 6);
+
+const reasons: Record<string, string> = {
+  'feimao-yun':
+    '7 元 50GB 是全库最低门槛，小包结构精准匹配「一天几十分钟」的轻度用量；代价是 2023 年开业、历史短，且最低价为年付摊算。',
+  'xingdao-meng':
+    '8 元 60GB 同为年付摊算价，胜在套餐颗粒度细、有不限时选项，适合用量极低但希望长期留着备用的人。',
+  'lingmao-net':
+    '月付 19 元 150GB，每 GB 约 0.127 元——全库月付单价最低，不用拿年付换折扣，风控上比前两家更友好。',
+  'yifan-yun':
+    '20 元 150GB，单价与灵猫接近，同时多了 AI 与流媒体解锁宣称，适合预算紧但场景多的用户。',
+  'weitu-yun':
+    '14.9 元 100GB，卖点是三网优化与负载均衡而非解锁；适合入口线路差、以浏览办公为主的用户。',
+  'yuzhou-yun': '14.9 元 100GB 且宣称流媒体全解锁，是低价档里少见的看剧向选择；未宣称 AI 能力。',
+};
+
+const faq = [
+  {
+    q: '便宜机场一般多少钱一个月？',
+    a: '本站在库品牌的起步价区间为 7–25 元/月，其中 15 元以下属于入门档。需要注意两点：一是最低价往往是年付摊算价，实际要一次性支付整年；二是低价套餐通常是小流量包，单价低不等于总花费低。',
+  },
+  {
+    q: '每月 10 元的机场靠谱吗？',
+    a: '能用，但你要清楚省下的钱来自哪里：通常是公网中转线路、更高的超售比例和更短的预期寿命。它适合白天使用、用量小、可随时更换的场景；不适合晚高峰刚需与账号安全敏感的用途。',
+  },
+  {
+    q: '便宜机场是不是更容易跑路？',
+    a: '低价档的平均寿命确实更短，因为低价冲量的商业模式本身更脆弱。但真正放大损失的不是价格而是周期——低价 + 年付是风险的双重叠加。把最大损失锁定在一个月，低价档就是可控的选择。',
+  },
+  {
+    q: '便宜机场晚高峰会不会很慢？',
+    a: '大概率会降速，这是公网线路在国际出口拥塞时的物理结果，不是「今天状态不好」。关键看降多少：从 100M 降到 30M 依然可用，降到 2M 就是不可用。这正是要你自己在晚高峰连续用一周再判断的原因。',
+  },
+  {
+    q: '便宜机场应该买月付还是年付？',
+    a: '月付。年付折扣换算下来通常只省两三个月的钱，你却要承担十二个月的跑路敞口。如果一家机场只卖年付、不给月付通道，本站的建议是直接排除。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '便宜机场推荐', href: '/cheap-airport/' },
+];
+---
+
+<Base
+  title="便宜机场推荐：入门档价格对照与低价避坑名单"
+  description="便宜机场推荐名单：在库机场按每 GB 单价排序，7 元起的入门档到 20 元档全对照，标注哪些是年付摊算价、哪些是小流量包，并给出低价方案的三条风控底线。"
+  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[48rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">便宜机场推荐</h1>
+    <div class="verdict">
+      <p class="verdict-label m-0">先说结论</p>
+      <p class="m-0 text-[1.02rem]">
+        便宜可以买，但你得知道<strong>便宜在哪里付账</strong>。这一页给的是价格名单与单价对照；
+        真正保护你的是三条底线：<strong>只月付、不囤余额、常备备用</strong>。
+        另外注意一个容易被忽略的细节——本库里最低的两个价格（7 元、8 元）都是<strong
+          >年付摊算价</strong
+        >， 它们看起来最便宜，风险结构却最不利。
+      </p>
+    </div>
+    <p class="m-0 mt-4 text-[0.98rem] text-muted">
+      这一页负责「有哪些、多少钱」；判断标准与低价方案的四种代价，见
+      <a href="/best/budget/">便宜机场怎么选：低价方案的代价清单</a>。
+    </p>
+  </header>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="table-heading">
+    <h2 id="table-heading" class="m-0 text-[1.5rem]">全库价格对照：按每 GB 单价排序</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      单价 = 起步套餐价格 ÷
+      流量额度，可自行复算。它不含线路质量与流量倍率——倍率会让实际可用流量低于标称值。
+    </p>
+    <div class="table-scroll mt-6">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">机场</th>
+            <th scope="col">起步套餐</th>
+            <th scope="col">每 GB</th>
+            <th scope="col">计费周期</th>
+            <th scope="col">优惠码</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            brands.map((b) => (
+              <tr>
+                <th scope="row" class="whitespace-nowrap">
+                  <a href={`/brands/${b.id}/`}>{b.data.name}</a>
+                </th>
+                <td class="whitespace-nowrap">{b.data.priceFrom}</td>
+                <td class="whitespace-nowrap">{b.data.pricePerGb?.toFixed(3)} 元</td>
+                <td class="whitespace-nowrap">
+                  {b.data.billingCycle === 'yearly'
+                    ? '年付摊算'
+                    : b.data.billingCycle === 'monthly'
+                      ? '月付'
+                      : '—'}
+                </td>
+                <td class="whitespace-nowrap font-display text-amber">
+                  {b.data.couponCode ?? '—'}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="meta-text mt-3">
+      价格为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，以官网结算页为准。
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="pick-heading">
+    <h2 id="pick-heading" class="m-0 text-[1.5rem]">入门档名单与各自的代价</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      便宜没有免费午餐，所以每一条都写清它省在哪、代价是什么。
+    </p>
+    <div class="mt-6">
+      <BrandPickList slugs={cheapest.map((b) => b.id)} reasons={reasons} limit={6} />
+    </div>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="line-heading">
+    <h2 id="line-heading" class="m-0 text-[1.5rem]">三条不可妥协的底线</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-3">
+      {
+        [
+          {
+            t: '只卖年付的直接排除',
+            d: '低价 + 长周期是风险的双重叠加。连 10 块钱试错通道都不给的服务，对自己的质量心里有数。',
+          },
+          {
+            t: '账户里不留余额',
+            d: '充值余额是最容易被忽视的敞口。按需付费，钱包里不留钱，跑路时你只损失当月。',
+          },
+          {
+            t: '主备结构优于单点',
+            d: '15 元档主力 + 最低价备用，总价约 20 元，可用性远高于单买一家 20 元的方案。',
+          },
+        ].map((x) => (
+          <div class="border-t-[3px] border-risk pt-4">
+            <h3 class="m-0 font-display text-[1.08rem]">{x.t}</h3>
+            <p class="m-0 mt-2 text-[0.93rem] text-muted">{x.d}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="m-0 mt-6 text-[0.95rem] text-muted">
+      风险信号的完整清单见<a href="/risk/exit-scam-signals/">机场跑路前的 8 个信号</a>；
+      想省钱又不想踩坑，这两页要一起读。
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">便宜机场常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="meta-text m-0 mt-4">
+      继续：<a href="/best/budget/">低价方案的代价清单</a> ·
+      <a href="/airport-ranking/">性价比排行榜</a> ·
+      <a href="/brand-library/">全部品牌对照</a>
+    </p>
+  </section>
+</Base>

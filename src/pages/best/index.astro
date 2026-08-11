@@ -1,0 +1,88 @@
+---
+/** 场景推荐 Hub：按场景组织，未完成的场景明示「研究中」，不放死链。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+
+const posts = await getCollection(
+  'articles',
+  ({ id, data }) => id.startsWith('best/') && !data.draft,
+);
+const bySlug = (slug: string) => posts.find((p) => p.id === `best/${slug}`);
+
+const scenarios = [
+  { slug: 'ai', name: 'AI 工具场景', ask: '要跑 ChatGPT / Claude / Gemini' },
+  { slug: 'budget', name: '预算优先场景', ask: '想便宜，但不想踩坑' },
+  { slug: 'stable', name: '稳定优先场景', ask: '晚高峰不能卡' },
+  { slug: 'streaming', name: '流媒体场景', ask: 'Netflix / Disney+ 解锁（研究中）' },
+  { slug: 'premium', name: '高端场景', ask: '预算充足，只要最好（研究中）' },
+  { slug: 'iplc', name: '专线场景', ask: 'IPLC / IEPL 值不值（研究中）' },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '场景推荐', href: '/best/' },
+];
+---
+
+<Base
+  title="场景推荐：按真实使用需求选机场"
+  description="AI 工具、流媒体、预算优先、稳定优先——不同场景对机场的要求完全不同。按你的真实场景进入对应的选择指南与候选方案。"
+  schemaItems={[breadcrumbSchema(crumbs)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[46rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">场景推荐</h1>
+    <p class="m-0 mt-3 text-[1.05rem] text-muted">
+      「哪个机场最好」是个没有答案的问题；「哪个机场适合我的场景」才有。
+      先认领你的场景，再看该场景下真正重要的指标。
+    </p>
+  </header>
+
+  <section class="mt-10" aria-label="场景列表">
+    <div class="grid gap-x-10 md:grid-cols-2">
+      {
+        scenarios.map((s) => {
+          const post = bySlug(s.slug);
+          return (
+            <div class="border-t border-line py-5">
+              <p class="meta-text m-0">{s.ask}</p>
+              {post ? (
+                <>
+                  <h2 class="m-0 mt-1 text-[1.2rem]">
+                    <a href={`/${post.id}/`} class="text-ink hover:text-accent">
+                      {s.name}
+                    </a>
+                  </h2>
+                  <p class="m-0 mt-1 text-[0.92rem] text-muted">{post.data.description}</p>
+                  <p class="m-0 mt-2">
+                    <a href={`/${post.id}/`} class="text-[0.93rem]">
+                      进入指南 →
+                    </a>
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h2 class="m-0 mt-1 text-[1.2rem] text-muted">{s.name}</h2>
+                  <p class="m-0 mt-1 text-[0.92rem] text-muted">
+                    该场景的核验研究尚未完成。为了不给出未经验证的推荐，先参考
+                    <a href="/guides/how-to-choose/">通用选择标准</a>。
+                  </p>
+                </>
+              )}
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <section class="rule-top mt-12 max-w-[46rem] pt-8 pb-6" aria-label="说明">
+    <p class="m-0 text-[0.9rem] text-muted">
+      场景指南只收录通过<a href="/methodology/">资料核验方法</a>核验或明确标注数据缺口的候选。
+      拿到候选后，用<a href="/vs/">对比</a>做二选一，再进<a href="/reviews/">评测</a>看细节。
+    </p>
+  </section>
+</Base>

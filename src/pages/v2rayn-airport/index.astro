@@ -1,0 +1,145 @@
+---
+/** P3 客户端专题：v2rayN / Windows 机场推荐。与 /clash-airport/ 分工：本页面向 v2rayN 与 Windows 用户。 */
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BrandPickList from '@/components/BrandPickList.astro';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const reasons: Record<string, string> = {
+  'guangnian-ti':
+    'VLESS 协议是 v2rayN 的原生主场，18 元 110GB 的量价比在支持 VLESS 的品牌里较友好。',
+  'guangsu-yun':
+    'VLESS + IEPL，且同时提供自研客户端——用 v2rayN 做主力、自研端做移动端备份的组合很顺。',
+  'weitu-yun': 'VLESS 协议加三网优化入口，对 Windows 用户常见的「入口线路差导致全局慢」有针对性。',
+  'yifan-yun': 'VLESS + 150GB，Windows 上开 TUN 模式跑全局时流量消耗更快，额度宽裕会省心不少。',
+  u1s1: 'VLESS 协议，20 元 120GB，流媒体向配置，适合桌面端看剧为主的用户。',
+  'quanqiu-yun': 'VLESS 协议且 AI 与流媒体口径齐备，适合在电脑上同时跑 AI 工具与视频的用户。',
+};
+
+const faq = [
+  {
+    q: 'v2rayN 机场推荐怎么选？',
+    a: '优先确认三件事：机场是否提供 v2rayN 可用的订阅（通用 base64 订阅或 VLESS/VMess 分享链接）、协议是否在 v2rayN 支持范围内、以及是否允许第三方客户端导入。三项确认后，选机场的标准与普通场景一致。',
+  },
+  {
+    q: 'Windows 应该用 v2rayN 还是 Clash Verge？',
+    a: '看你的需求侧重。v2rayN 对 V2Ray/Xray 系协议的参数控制更直接，适合想手动调协议与传输层的人；Clash Verge 的规则分流与订阅管理更友好，适合想省事的人。两者用同一份机场订阅通常都能跑，不必为客户端换机场。',
+  },
+  {
+    q: 'v2rayN 支持 Hysteria2 和 TUIC 吗？',
+    a: '较新版本的 v2rayN 通过 Xray 内核与外部内核支持这些协议，但可用性取决于你的版本与配置方式。如果机场主推 Hysteria2 而你的客户端版本较旧，先升级客户端再判断是不是机场的问题。',
+  },
+  {
+    q: 'v2rayN 导入订阅后没有节点怎么办？',
+    a: '通常是订阅格式不匹配。回用户中心找「通用订阅 / V2Ray 订阅」入口，或向客服索取对应链接。不要使用来路不明的在线订阅转换工具——那等于把你的订阅链接交给第三方。',
+  },
+  {
+    q: '开了 TUN 模式反而断网怎么办？',
+    a: 'TUN 模式需要虚拟网卡与管理员权限，失败多与网卡安装、权限或与其他网络工具冲突有关。先退回系统代理模式确认机场本身可用，再单独排查 TUN——把两个问题分开，能省掉大量无效尝试。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: 'v2rayN 机场推荐', href: '/v2rayn-airport/' },
+];
+---
+
+<Base
+  title="v2rayN 机场推荐：Windows 电脑可用的机场与订阅"
+  description="v2rayN 机场推荐：适合 Windows 与 v2rayN 用户的在库机场名单、价格与优惠码，说明订阅格式怎么要、协议支持怎么看，以及 TUN 模式断网时该怎么把问题分开排查。"
+  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[48rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">v2rayN 机场推荐</h1>
+    <div class="verdict">
+      <p class="verdict-label m-0">先说结论</p>
+      <p class="m-0 text-[1.02rem]">
+        v2rayN 是 Windows 上对协议参数控制最直接的客户端，所以选机场时多关注一件事：
+        <strong>它主推的协议是不是 VLESS / VMess 这类 V2Ray 系</strong>。 本页名单优先列出明确宣称
+        VLESS 协议的在库机场。其余标准与普通选机场一致—— 客户端只是工具，订阅质量才决定体验。
+      </p>
+    </div>
+    <p class="m-0 mt-4 text-[0.98rem] text-muted">
+      协议名词看不懂，先读<a href="/learn/protocols-explained/">协议知识</a>；
+      更偏好规则分流的用户可以看 <a href="/clash-airport/">Clash 机场推荐</a>。
+    </p>
+  </header>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="cmp-heading">
+    <h2 id="cmp-heading" class="m-0 text-[1.5rem]">v2rayN 与 Clash 系怎么分工</h2>
+    <div class="table-scroll mt-6 max-w-[48rem]">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">维度</th>
+            <th scope="col">v2rayN</th>
+            <th scope="col">Clash Verge 等 mihomo 系</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>协议控制</td>
+            <td>直接暴露传输层与协议参数，可手动调</td>
+            <td>以订阅下发配置为主，手动调需改配置文件</td>
+          </tr>
+          <tr>
+            <td>规则分流</td>
+            <td>可用，但配置门槛较高</td>
+            <td>规则模式开箱即用，国内直连不绕路</td>
+          </tr>
+          <tr>
+            <td>订阅格式</td>
+            <td>通用 base64 订阅 / 分享链接</td>
+            <td>Clash / mihomo 专用订阅</td>
+          </tr>
+          <tr>
+            <td>适合谁</td>
+            <td>愿意折腾、要精细控制的用户</td>
+            <td>想省事、要稳定分流的用户</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="m-0 mt-4 max-w-[46rem] text-[0.95rem] text-muted">
+      结论：<strong>不需要为客户端换机场</strong>。多数在库品牌同时提供两种订阅格式，
+      拿不到就向客服索取——这也是一次观察客服响应速度的机会。
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="list-heading">
+    <h2 id="list-heading" class="m-0 text-[1.5rem]">明确宣称 VLESS 协议的在库机场</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      协议信息来自品牌资料（渠道口径）。注意：部分品牌的测速面板显示为 Shadowsocks 系， 与 VLESS
+      宣传口径可能不一致，实际下发以你的订阅为准——这一点在各品牌评测中都已如实标注。
+    </p>
+    <div class="mt-6">
+      <BrandPickList
+        slugs={['guangnian-ti', 'guangsu-yun', 'weitu-yun', 'yifan-yun', 'u1s1', 'quanqiu-yun']}
+        reasons={reasons}
+        limit={6}
+      />
+    </div>
+  </section>
+
+  <section class="rule-top mt-14 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">v2rayN 机场常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="meta-text m-0 mt-4">
+      继续：<a href="/clash-airport/">Clash 机场推荐</a> ·
+      <a href="/learn/protocols-explained/">协议知识</a> ·
+      <a href="/brand-library/">全部品牌对照</a>
+    </p>
+  </section>
+</Base>

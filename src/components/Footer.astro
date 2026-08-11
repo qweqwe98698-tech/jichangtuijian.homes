@@ -1,0 +1,94 @@
+---
+import { SITE } from '@/lib/site';
+const year = new Date().getFullYear();
+
+const columns = [
+  {
+    title: '选机场',
+    links: [
+      { href: '/airport-ranking/', label: '2026 机场排行榜' },
+      { href: '/brand-library/', label: '机场品牌库' },
+      { href: '/cheap-airport/', label: '便宜机场推荐' },
+      { href: '/iepl-airport/', label: 'IEPL 专线机场' },
+      { href: '/pay-as-you-go-airport/', label: '按量计费机场' },
+      { href: '/free-trial-airport/', label: '免费试用机场' },
+      { href: '/airport-coupon/', label: '机场优惠码' },
+      { href: '/brands/', label: '品牌档案索引' },
+    ],
+  },
+  {
+    title: '按场景与客户端',
+    links: [
+      { href: '/chatgpt-airport/', label: 'ChatGPT 机场推荐' },
+      { href: '/streaming-airport/', label: '流媒体解锁机场' },
+      { href: '/clash-airport/', label: 'Clash 机场推荐' },
+      { href: '/shadowrocket-airport/', label: 'Shadowrocket 机场' },
+      { href: '/v2rayn-airport/', label: 'v2rayN 机场推荐' },
+      { href: '/best/', label: '全部场景推荐' },
+      { href: '/vs/', label: '机场对比' },
+    ],
+  },
+  {
+    title: '学与修',
+    links: [
+      { href: '/guides/', label: '开始选择' },
+      { href: '/reviews/', label: '机场评测' },
+      { href: '/learn/', label: '知识库' },
+      { href: '/apps/', label: '客户端教程' },
+      { href: '/fix/', label: '故障排查' },
+      { href: '/free/', label: '免费资源与风险' },
+      { href: '/risk/', label: '风险观察' },
+    ],
+  },
+  {
+    title: '本站如何工作',
+    links: [
+      { href: '/methodology/', label: '资料核验方法' },
+      { href: '/editorial-policy/', label: '编辑政策' },
+      { href: '/data-sources/', label: '数据来源' },
+      { href: '/update-policy/', label: '更新政策' },
+      { href: '/authors/editorial/', label: '编辑部' },
+      { href: '/about/', label: '关于本站' },
+      { href: '/contact/', label: '联系方式' },
+      { href: '/disclaimer/', label: '免责声明' },
+      { href: '/privacy/', label: '隐私政策' },
+      { href: '/sitemap/', label: '网站地图' },
+      { href: '/rss.xml', label: 'RSS 订阅' },
+    ],
+  },
+];
+---
+
+<footer class="mt-24 border-t border-line bg-surface">
+  <div class="mx-auto max-w-[1120px] px-4 py-12">
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+      {
+        columns.map((col) => (
+          <div>
+            <h2 class="m-0 mb-3 font-display text-[0.95rem]">{col.title}</h2>
+            <ul class="m-0 list-none p-0 text-[0.9rem] leading-loose">
+              {col.links.map((l) => (
+                <li>
+                  <a href={l.href} class="text-muted hover:text-accent">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="rule-top mt-10 pt-6">
+      <p class="meta-text m-0 max-w-[46rem]">
+        {SITE.name}（{
+          SITE.domain
+        }）是独立的中文机场信息与决策研究站点。部分品牌入口可能含有推广合作，
+        推广关系不改变评测结论与风险提示；没有统一测试数据的项目一律如实标注。内容不构成任何购买建议之外的承诺，
+        详见<a href="/disclaimer/">免责声明</a>。
+      </p>
+      <p class="meta-text m-0 mt-3">© {year} {SITE.name} · 先讲标准，再谈推荐</p>
+    </div>
+  </div>
+</footer>

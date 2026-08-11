@@ -1,0 +1,242 @@
+{
+  "name": "灵猫网络",
+  "aliases": [
+    "灵猫机场",
+    "CivetNet"
+  ],
+  "tier": "mid",
+  "positioning": "月付即拿到低单价的中端选择：150GB 起步且无需年付锁定，是本批里月付性价比最突出的一家。",
+  "background": "灵猫网络的特点是起步套餐直接给到月付 19 元 150GB，每 GB 单价约 0.127 元，在不锁定长周期的前提下拿到较低单价。品牌口径为企业级内网专线、套餐种类多并支持不限时套餐。运营年限未在资料中给出，本站按待核验处理。",
+  "priceFrom": "19 元 / 月 · 150GB（月付）",
+  "pricePerGb": 0.127,
+  "billingCycle": "monthly",
+  "couponCode": "lmao888",
+  "couponNote": "新人注册 9 折码。",
+  "launchYear": null,
+  "highlights": [
+    "企业级内网专线",
+    "套餐种类多",
+    "支持不限时套餐",
+    "解锁丰富（品牌口径）"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "解锁丰富",
+    "ai": null,
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": "/images/brands/lingmao-net-speedtest.jpg",
+    "unlock": "/images/brands/lingmao-net-unlock.png",
+    "topology": "/images/brands/lingmao-net-topology.png"
+  },
+  "scenarios": [
+    "budget",
+    "streaming",
+    "newbie"
+  ],
+  "protocols": [
+    "Shadowsocks 系（测速面板显示）"
+  ],
+  "lineTypes": [
+    "企业级内网专线（品牌口径）"
+  ],
+  "strengths": [
+    "月付即 0.127 元/GB，是本批 16 家里月付单价最低的一档，不需要用年付换折扣",
+    "月付友好意味着你可以严格执行「先月付验证再续」的风控策略",
+    "套餐种类多，用量变化时可以在同一品牌内换档而不用迁移"
+  ],
+  "limitations": [
+    "资料中未提供运营年限，历史记录无法交叉验证",
+    "未明确宣称 AI 解锁能力，AI 用户需自行试用",
+    "未提供自研客户端，需要自己配置主流客户端"
+  ],
+  "suitableFor": [
+    "坚持月付、拒绝长周期锁定的用户",
+    "流量需求中等偏上的日常用户",
+    "看重每 GB 单价的性价比型用户"
+  ],
+  "notSuitableFor": [
+    "需要品牌长历史背书的保守用户",
+    "AI 工具重度依赖者（需先验证）",
+    "想要开箱即用自研客户端的新手"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 19 元 / 月 · 150GB（月付），优惠码 lmao888。价格与优惠为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "主流档",
+      "status": "sourced",
+      "note": "按本批 16 家起步价横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "19 元 / 月 · 150GB（月付）",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.127 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "lmao888",
+      "status": "sourced",
+      "note": "新人注册 9 折码。"
+    },
+    {
+      "label": "运营年限",
+      "value": "暂无公开数据",
+      "status": "pending"
+    },
+    {
+      "label": "主打线路",
+      "value": "企业级内网专线（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "Shadowsocks 系（测速面板显示）",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "解锁丰富（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "未作宣称",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    },
+    {
+      "label": "节点数量",
+      "value": "55 个（面板导出计数）",
+      "status": "measured",
+      "note": "工具 MAI-TEST-BOT · 32 线程 · 后端 珠海联通 5Gbps(4.6.4) · 面板时间戳已移除，测试时间未知"
+    },
+    {
+      "label": "节点地区覆盖",
+      "value": "香港 20 · 美国 10 · 日本 10 · 新加坡 10 · 台湾 5",
+      "status": "measured",
+      "note": "按面板导出的节点命名归类"
+    },
+    {
+      "label": "香港节点延迟",
+      "value": "13–203 ms",
+      "status": "measured",
+      "note": "20 个节点的区间 · 工具 MAI-TEST-BOT · 32 线程 · 后端 珠海联通 5Gbps(4.6.4) · 面板时间戳已移除，测试时间未知"
+    },
+    {
+      "label": "香港节点平均速度",
+      "value": "33.22 MB/s",
+      "status": "measured",
+      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除，测试时间未知"
+    },
+    {
+      "label": "面板显示协议",
+      "value": "Shadowsocks",
+      "status": "measured",
+      "note": "测速面板中节点的类型列；可能与官网宣传的协议口径不同，以实际订阅为准"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://vip01.civetnet.com/#/?code=8MIAyxak",
+  "reviewSlug": "reviews/lingmao-net",
+  "panel": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 411,
+    "pingCount": 5,
+    "protocolShown": "Shadowsocks",
+    "totalNodes": 55,
+    "testedAt": null,
+    "inPeakWindow": null,
+    "testedBefore": null,
+    "regions": [
+      {
+        "name": "香港",
+        "nodes": 20,
+        "latencyMinMs": 13,
+        "latencyMaxMs": 203,
+        "avgSpeedMinMB": null,
+        "avgSpeedMaxMB": 33.22,
+        "maxSpeedMaxMB": 37.32
+      },
+      {
+        "name": "美国",
+        "nodes": 10,
+        "latencyMinMs": 161,
+        "latencyMaxMs": 674,
+        "avgSpeedMinMB": 16.4,
+        "avgSpeedMaxMB": 25.68,
+        "maxSpeedMaxMB": 36.8
+      },
+      {
+        "name": "日本",
+        "nodes": 10,
+        "latencyMinMs": 66,
+        "latencyMaxMs": 265,
+        "avgSpeedMinMB": 19.31,
+        "avgSpeedMaxMB": 24.26,
+        "maxSpeedMaxMB": 25.76
+      },
+      {
+        "name": "新加坡",
+        "nodes": 10,
+        "latencyMinMs": 50,
+        "latencyMaxMs": 164,
+        "avgSpeedMinMB": 1.74,
+        "avgSpeedMaxMB": 71.36,
+        "maxSpeedMaxMB": 87.95
+      },
+      {
+        "name": "台湾",
+        "nodes": 5,
+        "latencyMinMs": 128,
+        "latencyMaxMs": 181,
+        "avgSpeedMinMB": 11.04,
+        "avgSpeedMaxMB": 62.72,
+        "maxSpeedMaxMB": 84.15
+      }
+    ],
+    "anomalies": [
+      "序号1 香港01 平均速度与最大速度均为 0B（延迟 14ms / HTTP 32ms 正常）",
+      "序号12 香港12 延迟 203ms、序号15 香港15 延迟 141ms、序号11 香港11 与序号13 香港13 均为 80ms，其余香港节点为 13-18ms",
+      "序号14 香港14 延迟 16ms 但 HTTP延迟 389ms",
+      "序号22 美国02 延迟 333ms、序号25 美国05 延迟 674ms，其余美国节点为 161-165ms",
+      "序号31 日本01 延迟 265ms、HTTP 576ms；序号33 日本03 HTTP延迟 2146ms 为全表最高",
+      "序号41 新加坡01 平均速度仅 1.74MB、最大速度 9.50MB；序号42 新加坡02 平均速度 9.32MB、HTTP延迟 1107ms；序号49 新加坡09 延迟 164ms（同区其余为 50-68ms）",
+      "序号51 台湾01 平均速度 11.04MB，但最大速度达 66.27MB",
+      "香港节点整体平均速度约 17-33MB，明显低于同表新加坡（65-71MB）与台湾（最高 62MB）"
+    ]
+  },
+  "panelDisputed": null,
+  "editorialPick": {
+    "rank": 3,
+    "reason": "月付就能拿到全库最低的每 GB 单价（19 元 150GB，约 0.127 元），不需要用年付换折扣。这一点在风控上价值很高：你可以逐月验证再决定是否继续，随时止损。",
+    "caveat": "资料未提供运营年限，历史记录无法交叉验证；未宣称 AI 解锁能力，也未提供自研客户端，需自行配置。"
+  }
+}

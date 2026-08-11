@@ -1,0 +1,80 @@
+{
+  "name": "Nexitally（奶昔）",
+  "tier": "premium",
+  "positioning": "运营时间较长的高端定位机场，社区俗称「奶昔」，以线路质量与老牌口碑为主要标签。",
+  "background": "Nexitally 属于中文社区讨论中最常被提到的老牌高端机场之一。本站未对其性能表现做独立测试，以下档案以可核对的公开资料为主，核验完成前请以官方渠道信息为准。",
+  "protocols": [
+    "Shadowsocks（待核验）",
+    "自有客户端生态（待核验）"
+  ],
+  "lineTypes": [
+    "专线接入（品牌公开说明，未经独立核验）"
+  ],
+  "strengths": [
+    "运营历史较长，长期口碑样本充足",
+    "高端定位下用户预期一致：为质量付费而非拼低价",
+    "社区可查的历史讨论多，利于交叉验证"
+  ],
+  "limitations": [
+    "价格门槛高，对轻度用户不友好",
+    "本站不做独立测速，当前质量没有统一测试数据佐证",
+    "老牌不等于永续，仍需按风险清单定期核查"
+  ],
+  "suitableFor": [
+    "长期稳定使用者",
+    "对老牌记录有偏好的用户",
+    "预算充足的多场景用户"
+  ],
+  "notSuitableFor": [
+    "预算敏感用户",
+    "短期临时需求",
+    "只看最低价的用户"
+  ],
+  "riskLevel": "low",
+  "dataStatus": "unverified",
+  "lastVerified": null,
+  "pricingNote": "套餐与价格信息待核验，暂不列出具体数字。请通过可信渠道核对官网地址，谨防仿冒站点。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "高端",
+      "status": "sourced",
+      "note": "依据公开定价区间与宣传定位归类"
+    },
+    {
+      "label": "运营时长",
+      "value": "较长（具体年份待核验）",
+      "status": "pending"
+    },
+    {
+      "label": "节点数量",
+      "value": "暂无公开数据",
+      "status": "pending"
+    },
+    {
+      "label": "月付起步价",
+      "value": "暂无公开数据",
+      "status": "pending"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具可用性",
+      "value": "暂无统一测试数据",
+      "status": "pending"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": null,
+  "reviewSlug": null
+}

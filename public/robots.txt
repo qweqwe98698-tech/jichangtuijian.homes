@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /search/
+
+Sitemap: https://jichangtuijian.homes/sitemap-index.xml

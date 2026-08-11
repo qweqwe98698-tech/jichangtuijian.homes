@@ -1,0 +1,246 @@
+{
+  "name": "唯兔云",
+  "aliases": [
+    "唯兔机场",
+    "V2Yun"
+  ],
+  "tier": "budget",
+  "positioning": "以三网优化和智能负载均衡为技术卖点的中低价选择，节点覆盖 60+，强调国内入口的接入质量。",
+  "background": "唯兔云在渠道资料中标注 2020 年运营至今，卖点集中在 VLESS 协议、60+ 节点覆盖、三网优化与智能负载均衡——这组卖点指向的是「国内入口接入质量」，而不是解锁能力。资料中未宣称流媒体或 AI 全解锁，本站如实记录。",
+  "priceFrom": "14.9 元 / 月 · 100GB",
+  "pricePerGb": 0.149,
+  "billingCycle": "monthly",
+  "couponCode": "rabbit",
+  "couponNote": "新用户 9 折码。",
+  "launchYear": "2020",
+  "highlights": [
+    "2020 年运营",
+    "VLESS 协议",
+    "节点覆盖 60+",
+    "三网优化",
+    "智能负载均衡"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": null,
+    "ai": null,
+    "selfClient": false,
+    "subscriptionImport": false
+  },
+  "images": {
+    "speedtest": "/images/brands/weitu-yun-speedtest.jpg",
+    "unlock": "/images/brands/weitu-yun-unlock.png",
+    "topology": "/images/brands/weitu-yun-topology.png"
+  },
+  "scenarios": [
+    "budget",
+    "newbie"
+  ],
+  "protocols": [
+    "VLESS",
+    "Shadowsocks 系（测速面板显示）"
+  ],
+  "lineTypes": [
+    "三网优化入口（品牌口径）",
+    "智能负载均衡"
+  ],
+  "strengths": [
+    "三网优化针对移动/联通/电信分别调优，对入口线路敏感的用户价值明确",
+    "智能负载均衡有助于摊平单节点拥塞，是少数把调度能力写进卖点的品牌",
+    "2020 年起运营，历史长度在本批中偏上"
+  ],
+  "limitations": [
+    "资料中未宣称流媒体与 AI 解锁能力，这两个场景需要自行试用确认",
+    "未提供自研客户端，需要自己配置",
+    "负载均衡型调度可能带来出口 IP 变动，AI 工具场景需留意（见 AI 场景指南）"
+  ],
+  "suitableFor": [
+    "对国内入口线路质量敏感的用户",
+    "移动/联通网络下体验不佳、想试三网优化的用户",
+    "以日常浏览与办公为主的用户"
+  ],
+  "notSuitableFor": [
+    "以 Netflix 解锁为核心目的的用户",
+    "需要固定出口 IP 的 AI 重度用户",
+    "想要开箱即用客户端的新手"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 14.9 元 / 月 · 100GB，优惠码 rabbit。价格与优惠为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "入门档",
+      "status": "sourced",
+      "note": "按本批 16 家起步价横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "14.9 元 / 月 · 100GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.149 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "rabbit",
+      "status": "sourced",
+      "note": "新用户 9 折码。"
+    },
+    {
+      "label": "运营年限",
+      "value": "2020",
+      "status": "sourced"
+    },
+    {
+      "label": "主打线路",
+      "value": "三网优化入口（品牌口径） / 智能负载均衡",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "VLESS / Shadowsocks 系（测速面板显示）",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "未作宣称",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "未作宣称",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    },
+    {
+      "label": "节点数量",
+      "value": "53 个（面板导出计数）",
+      "status": "measured",
+      "note": "工具 MAI-TEST-BOT · 32 线程 · 后端 珠海联通 5Gbps(4.6.4) · 面板时间戳已移除；由账户信息推断测试早于 2028-11-17"
+    },
+    {
+      "label": "节点地区覆盖",
+      "value": "马来西亚 2 · 香港 20 · 台湾 5 · 日本 9 · 新加坡 8 · 美国 9",
+      "status": "measured",
+      "note": "按面板导出的节点命名归类"
+    },
+    {
+      "label": "香港节点延迟",
+      "value": "19–30 ms",
+      "status": "measured",
+      "note": "20 个节点的区间 · 工具 MAI-TEST-BOT · 32 线程 · 后端 珠海联通 5Gbps(4.6.4) · 面板时间戳已移除；由账户信息推断测试早于 2028-11-17"
+    },
+    {
+      "label": "香港节点平均速度",
+      "value": "40.75–65.38 MB/s",
+      "status": "measured",
+      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除；由账户信息推断测试早于 2028-11-17"
+    },
+    {
+      "label": "面板显示协议",
+      "value": "Shadowsocks",
+      "status": "measured",
+      "note": "测速面板中节点的类型列；可能与官网宣传的协议口径不同，以实际订阅为准"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://guangs.v2yunvipaff.com/#/?code=xIutqOBA",
+  "reviewSlug": "reviews/weitu-yun",
+  "panel": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 391,
+    "pingCount": 5,
+    "protocolShown": "Shadowsocks",
+    "totalNodes": 53,
+    "testedAt": null,
+    "inPeakWindow": null,
+    "testedBefore": "2028-11-17",
+    "regions": [
+      {
+        "name": "马来西亚",
+        "nodes": 2,
+        "latencyMinMs": 174,
+        "latencyMaxMs": 177,
+        "avgSpeedMinMB": null,
+        "avgSpeedMaxMB": 0,
+        "maxSpeedMaxMB": 0
+      },
+      {
+        "name": "香港",
+        "nodes": 20,
+        "latencyMinMs": 19,
+        "latencyMaxMs": 30,
+        "avgSpeedMinMB": 40.75,
+        "avgSpeedMaxMB": 65.38,
+        "maxSpeedMaxMB": 73.79
+      },
+      {
+        "name": "台湾",
+        "nodes": 5,
+        "latencyMinMs": 110,
+        "latencyMaxMs": 215,
+        "avgSpeedMinMB": 39.9,
+        "avgSpeedMaxMB": 52.61,
+        "maxSpeedMaxMB": 62.46
+      },
+      {
+        "name": "日本",
+        "nodes": 9,
+        "latencyMinMs": 75,
+        "latencyMaxMs": 169,
+        "avgSpeedMinMB": 45.48,
+        "avgSpeedMaxMB": 61.8,
+        "maxSpeedMaxMB": 74.48
+      },
+      {
+        "name": "新加坡",
+        "nodes": 8,
+        "latencyMinMs": 60,
+        "latencyMaxMs": 282,
+        "avgSpeedMinMB": null,
+        "avgSpeedMaxMB": 63.34,
+        "maxSpeedMaxMB": 67.44
+      },
+      {
+        "name": "美国",
+        "nodes": 9,
+        "latencyMinMs": 168,
+        "latencyMaxMs": 336,
+        "avgSpeedMinMB": 31.61,
+        "avgSpeedMaxMB": 60.82,
+        "maxSpeedMaxMB": 92.83
+      }
+    ],
+    "anomalies": [
+      "ss-马来西亚 01 / ss-马来西亚 02（序号3、4）平均速度与最大速度均为 0B，仅有延迟数据",
+      "ss-SG-新加坡BGP-IEPL07（序号45）平均速度与最大速度均为 0B",
+      "新加坡 ss-SG-新加坡BGP-IEPL03（序号41）延迟 282ms，明显高于同地区其他节点（60-70ms）",
+      "美国 ss-US-美国BGP-IEPL10（序号55）延迟 336ms，明显高于同地区其他节点（168-172ms）",
+      "美国节点编号缺少 IEPL07（依次为 01-06、08、09、10）",
+      "序号1、2 为「剩余流量」「套餐到期」账户信息行，未计入节点数"
+    ]
+  },
+  "panelDisputed": null
+}

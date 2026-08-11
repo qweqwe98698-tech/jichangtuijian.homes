@@ -1,0 +1,255 @@
+{
+  "name": "宇宙云",
+  "aliases": [
+    "宇宙云机场",
+    "YuzouCloud"
+  ],
+  "tier": "budget",
+  "positioning": "偏流媒体方向的 IEPL 小包：14.9 元起、VLESS 协议加自研客户端，主打看剧场景而非 AI。",
+  "background": "宇宙云的卖点组合是 VLESS 协议 + IEPL 专线 + 性价比小包 + 流媒体全解锁 + 自研客户端。与同价位的唯兔云相比，它把宣传重心放在解锁而不是入口优化；资料中未宣称 AI 全解锁。运营年限未给出。",
+  "priceFrom": "14.9 元 / 月 · 100GB",
+  "pricePerGb": 0.149,
+  "billingCycle": "monthly",
+  "couponCode": "YUZHOU553",
+  "couponNote": "通用优惠码，适用套餐以结算页为准。",
+  "launchYear": null,
+  "highlights": [
+    "VLESS 协议",
+    "IEPL 专线",
+    "性价比小包",
+    "流媒体全解锁（品牌口径）",
+    "自研客户端"
+  ],
+  "clients": [
+    "自研客户端",
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "全解锁",
+    "ai": null,
+    "selfClient": true,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/yuzhou-yun-unlock.png",
+    "topology": "/images/brands/yuzhou-yun-topology.png"
+  },
+  "scenarios": [
+    "budget",
+    "streaming"
+  ],
+  "protocols": [
+    "VLESS",
+    "Shadowsocks 系（测速面板显示）"
+  ],
+  "lineTypes": [
+    "IEPL 专线（品牌口径）"
+  ],
+  "strengths": [
+    "14.9 元档同时宣称 IEPL 与流媒体全解锁，卖点组合在低价档中较少见",
+    "自研客户端降低新手配置门槛",
+    "小包结构适合「看剧为主、用量可控」的用户"
+  ],
+  "limitations": [
+    "未宣称 AI 全解锁，AI 场景需要自行验证",
+    "运营年限未知，历史无法交叉验证",
+    "低价档的 IEPL 宣称尤其需要你在晚高峰自行验证"
+  ],
+  "suitableFor": [
+    "以 Netflix、YouTube 等流媒体为主要用途的用户",
+    "预算 15 元档但想要专线体验的用户",
+    "希望客户端开箱即用的新手"
+  ],
+  "notSuitableFor": [
+    "AI 工具重度用户（未宣称支持）",
+    "需要大流量下载的用户",
+    "要求品牌历史可查的保守用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 14.9 元 / 月 · 100GB，优惠码 YUZHOU553。价格与优惠为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "入门档",
+      "status": "sourced",
+      "note": "按本批 16 家起步价横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "14.9 元 / 月 · 100GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.149 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "YUZHOU553",
+      "status": "sourced",
+      "note": "通用优惠码，适用套餐以结算页为准。"
+    },
+    {
+      "label": "运营年限",
+      "value": "暂无公开数据",
+      "status": "pending"
+    },
+    {
+      "label": "主打线路",
+      "value": "IEPL 专线（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "VLESS / Shadowsocks 系（测速面板显示）",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "未作宣称",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    },
+    {
+      "label": "节点数量",
+      "value": "58 个（面板导出计数）",
+      "status": "measured",
+      "note": "工具 MiaoKo 自定义测试（喵速 4.6.4 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-08-05 22:13:21 CST（落在晚高峰窗口 20:30–22:30 内）"
+    },
+    {
+      "label": "节点地区覆盖",
+      "value": "香港 20 · 日本 10 · 新加坡 10 · 美国 10 · 台湾 5 · 马来西亚 2 · 俄罗斯 1",
+      "status": "measured",
+      "note": "按面板导出的节点命名归类"
+    },
+    {
+      "label": "香港节点延迟",
+      "value": "43–148 ms",
+      "status": "measured",
+      "note": "20 个节点的区间 · 工具 MiaoKo 自定义测试（喵速 4.6.4 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-08-05 22:13:21 CST（落在晚高峰窗口 20:30–22:30 内）"
+    },
+    {
+      "label": "香港节点平均速度",
+      "value": "80.35–128.64 MB/s",
+      "status": "measured",
+      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，测试于 2026-08-05 22:13:21 CST（落在晚高峰窗口 20:30–22:30 内）"
+    },
+    {
+      "label": "面板显示协议",
+      "value": "Shadowsocks",
+      "status": "measured",
+      "note": "测速面板中节点的类型列；可能与官网宣传的协议口径不同，以实际订阅为准"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://guangs.yuzoucloud.cc/#/register?code=yrThwMP1",
+  "reviewSlug": "reviews/yuzhou-yun",
+  "panel": {
+    "tool": "MiaoKo 自定义测试（喵速 4.6.4 / 主端 4.3.3）",
+    "threads": 32,
+    "backend": "珠海联通 9Gbps",
+    "durationSec": null,
+    "pingCount": null,
+    "protocolShown": "Shadowsocks",
+    "totalNodes": 58,
+    "testedAt": "2026-08-05 22:13:21 CST",
+    "inPeakWindow": true,
+    "testedBefore": "2027-01-31",
+    "regions": [
+      {
+        "name": "香港",
+        "nodes": 20,
+        "latencyMinMs": 43,
+        "latencyMaxMs": 148,
+        "avgSpeedMinMB": 80.35,
+        "avgSpeedMaxMB": 128.64,
+        "maxSpeedMaxMB": 141.05
+      },
+      {
+        "name": "日本",
+        "nodes": 10,
+        "latencyMinMs": 89,
+        "latencyMaxMs": 327,
+        "avgSpeedMinMB": 92.62,
+        "avgSpeedMaxMB": 133.18,
+        "maxSpeedMaxMB": 146.61
+      },
+      {
+        "name": "新加坡",
+        "nodes": 10,
+        "latencyMinMs": 81,
+        "latencyMaxMs": 445,
+        "avgSpeedMinMB": 52.92,
+        "avgSpeedMaxMB": 115.99,
+        "maxSpeedMaxMB": 133.21
+      },
+      {
+        "name": "美国",
+        "nodes": 10,
+        "latencyMinMs": 193,
+        "latencyMaxMs": 364,
+        "avgSpeedMinMB": 28.52,
+        "avgSpeedMaxMB": 78.6,
+        "maxSpeedMaxMB": 117.94
+      },
+      {
+        "name": "台湾",
+        "nodes": 5,
+        "latencyMinMs": 92,
+        "latencyMaxMs": 181,
+        "avgSpeedMinMB": 26.5,
+        "avgSpeedMaxMB": 62.91,
+        "maxSpeedMaxMB": 97.93
+      },
+      {
+        "name": "马来西亚",
+        "nodes": 2,
+        "latencyMinMs": 233,
+        "latencyMaxMs": 388,
+        "avgSpeedMinMB": 3.2,
+        "avgSpeedMaxMB": 9.16,
+        "maxSpeedMaxMB": 14.14
+      },
+      {
+        "name": "俄罗斯",
+        "nodes": 1,
+        "latencyMinMs": 271,
+        "latencyMaxMs": 271,
+        "avgSpeedMinMB": 7.82,
+        "avgSpeedMaxMB": 7.82,
+        "maxSpeedMaxMB": 14.03
+      }
+    ],
+    "anomalies": [
+      "表格前 3 行是账户信息（剩余流量 942.02GB、距离下次重置 1 天、套餐到期 2027-01-31），测速工具把它们也跑了速度，本站未将其计入 58 个节点",
+      "日本-02 的平均速度 133.18MB 高于其最高速度 131.16MB，面板自身数据矛盾，本站照实记录未做修正",
+      "马来西亚 2 个节点（3.20 / 9.16 MB/s）与俄罗斯 1 个节点（7.82 MB/s）速度远低于主力地区，属边缘节点",
+      "新加坡-01 的 TLS RTT 达 445ms、美国-04 达 364ms、日本-01 达 327ms，均明显高于同区其他节点",
+      "面板类型列显示 Shadowsocks，与该品牌宣传的 VLESS 协议口径不一致，实际下发以订阅为准",
+      "本次为 32 线程并发测试、后端带宽 9Gbps，速度数值属多线程聚合结果，不代表单连接速度，也不代表家庭宽带下的体感"
+    ]
+  },
+  "panelDisputed": null
+}

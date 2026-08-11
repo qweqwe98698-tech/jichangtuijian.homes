@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import { sectionMap } from '@/lib/site';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
+  return articles.map((article) => {
+    const [section, ...rest] = article.id.split('/');
+    if (!section || !(section in sectionMap) || rest.length === 0) {
+      throw new Error(`文章目录不合法（应为 <section>/<slug>.md）：${article.id}`);
+    }
+    return { params: { section, slug: rest.join('/') }, props: { article } };
+  });
+}
+
+const { article } = Astro.props;
+const { Content, headings } = await render(article);
+---
+
+<ArticleLayout article={article} headings={headings}>
+  <Content />
+</ArticleLayout>

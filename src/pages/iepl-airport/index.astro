@@ -1,0 +1,136 @@
+---
+/** P5 技术专题：IEPL / 专线机场推荐（名单页）。知识页为 /learn/iplc-vs-iepl/，此页承接商业名单。 */
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BrandPickList from '@/components/BrandPickList.astro';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const reasons: Record<string, string> = {
+  'yifan-yun': '20 元 150GB 且宣称 IEPL，单价 0.133 元/GB——在宣称专线的品牌里价格最友好。',
+  'feimao-yun': '7 元起的 IEPL 小包，是「想试专线但不想多花钱」的最低成本入口；代价是开业时间短。',
+  'yuzhou-yun': '14.9 元档的 IEPL + 流媒体组合，适合以看剧为主、又希望晚高峰别掉链子的用户。',
+  'guangsu-yun': '17 元 110GB，IEPL 加双解锁与自研客户端，能力覆盖最全的一档。',
+  'guangnian-ti': '18 元 110GB，同档中起步流量略多，专线口径与能力宣称齐全。',
+  'jilian-yun': '按能力定价而非走量，单价偏高但双解锁齐备，适合把稳定看得比单价重的用户。',
+  kuaili: '进阶档的全能配置，IEPL 加双全解锁，适合多人多设备共用。',
+  'sogo-yun': '进阶档双全解锁，25 元 150GB；单价不占优，买的是对线路质量的预期。',
+};
+
+const faq = [
+  {
+    q: 'IEPL 机场和普通机场差在哪里？',
+    a: 'IEPL 是不经过公网国际出口的跨境专线。公网线路在晚间集中拥塞时会集体降速，专线因为不走这条路，理论上晚高峰波动很小。你付的溢价买的不是速度上限，而是表现的可预期性。',
+  },
+  {
+    q: '机场说自己是 IEPL，怎么验证真假？',
+    a: '三个办法：一看晚高峰表现（真专线在 20:30–22:30 的曲线是平的），二用 traceroute 看路由路径是否在两三跳内出境且避开明显拥塞节点，三看价格——专线带宽成本决定了极低价套餐不可能是真专线。',
+  },
+  {
+    q: 'IEPL 和 IPLC 哪个更好？',
+    a: '对最终用户而言差异可以忽略，两者都不过公网出口。理论上 IPLC 隔离度更高，但实际体验取决于机场买了多大带宽、塞了多少用户，而不是线路名字。别在这两个词上纠结，把注意力放到实测上。',
+  },
+  {
+    q: '普通用户有必要买专线机场吗？',
+    a: '看时段。如果你的使用集中在白天或深夜，公网线路与专线的差距很小，这笔溢价换不来体感差异；如果你晚上要开视频会议、跑 AI 长任务或看 4K，专线买的确定性就值钱。',
+  },
+  {
+    q: '为什么本页所有专线标注都写着「品牌口径」？',
+    a: '因为线路类型是机场自述的，本站尚未对在库品牌完成 traceroute 与多日晚高峰观测。按数据来源政策，未经复测的宣称一律标注来源等级，不写成事实——这也是你可以用来检验任何一份榜单的标准。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '专线机场推荐', href: '/iepl-airport/' },
+];
+---
+
+<Base
+  title="IEPL 专线机场推荐：宣称专线的机场名单与验证方法"
+  description="IEPL / IPLC 专线机场推荐名单：在库机场中宣称使用企业级内网专线的品牌、价格与每 GB 单价对照，并给出三种验证专线真伪的方法，避免为宣传话术付溢价。"
+  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[48rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">IEPL 专线机场推荐</h1>
+    <div class="verdict">
+      <p class="verdict-label m-0">先说结论</p>
+      <p class="m-0 text-[1.02rem]">
+        专线值不值，取决于你晚上用不用。IEPL 买的是<strong>晚高峰的确定性</strong>，不是速度上限；
+        白天使用为主的人为它付费属于错配。更重要的一点：<strong
+          >「IEPL」三个字是最容易被滥用的宣传词</strong
+        >—— 本页所有专线标注都是品牌口径，下面给了三种你自己就能做的验证方法。
+      </p>
+    </div>
+    <p class="m-0 mt-4 text-[0.98rem] text-muted">
+      不清楚专线、中转、直连的差别，先读<a href="/learn/iplc-vs-iepl/">IPLC 和 IEPL 是什么</a>；
+      那篇讲原理，这一页给名单与验证方法。
+    </p>
+  </header>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="list-heading">
+    <h2 id="list-heading" class="m-0 text-[1.5rem]">宣称使用专线的在库机场</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      按每 GB 单价排序。同为「IEPL」口径，价格差别不小——这本身就是一个值得警惕的信号：
+      真专线的带宽成本是刚性的，价格显著低于同类时，更该做验证。
+    </p>
+    <div class="mt-6">
+      <BrandPickList scenario="iepl" reasons={reasons} limit={8} />
+    </div>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="verify-heading">
+    <h2 id="verify-heading" class="m-0 text-[1.5rem]">三种验证专线真伪的方法</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-3">
+      {
+        [
+          {
+            n: '方法一',
+            t: '晚高峰曲线法',
+            d: '连续七天在 20:30–22:30 测速并记录中位数。真专线的曲线接近水平；公网线路会出现明显的晚间下陷。这是最可靠也最省事的判据。',
+          },
+          {
+            n: '方法二',
+            t: '路由路径法',
+            d: '对节点做 traceroute。专线通常在两三跳内出境，且不经过公认拥塞的公网出口节点；跳数多、出境前绕行明显的，基本可以排除专线。',
+          },
+          {
+            n: '方法三',
+            t: '价格常识法',
+            d: '专线带宽是按月租的刚性成本。当一个套餐的价格低到无法覆盖专线成本时，「IEPL」多半只是节点命名。',
+          },
+        ].map((x) => (
+          <div class="border-t-[3px] border-accent pt-4">
+            <p class="meta-text m-0">{x.n}</p>
+            <h3 class="m-0 mt-1 font-display text-[1.08rem]">{x.t}</h3>
+            <p class="m-0 mt-2 text-[0.93rem] text-muted">{x.d}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="m-0 mt-6 max-w-[46rem] text-[0.95rem] text-muted">
+      三种方法里最实用的是第一种，完整操作步骤见
+      <a href="/guides/stability-signals/">稳定机场怎么判断：7 个可逐项核验的指标</a>。
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">专线机场常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="meta-text m-0 mt-4">
+      继续：<a href="/learn/iplc-vs-iepl/">专线原理</a> ·
+      <a href="/airport-ranking/">排行榜</a> ·
+      <a href="/brand-library/">全部品牌对照</a>
+    </p>
+  </section>
+</Base>

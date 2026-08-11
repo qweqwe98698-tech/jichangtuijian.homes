@@ -1,0 +1,65 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="免费机场与免费节点：能用吗，代价是什么"
+  description="免费机场和免费节点不是不存在，而是代价换了个位置：速度、隐私、稳定性总有一样在付账。这里讲清免费方案的真实成本与更稳妥的替代。"
+  crumbName="免费资源与风险"
+>
+  <div class="verdict">
+    <p class="verdict-label m-0">快速结论</p>
+    <p class="m-0">
+      免费方案适合「临时、低敏感、随时可弃」的用途；任何需要稳定或涉及账号安全的场景，免费都是最贵的选择。
+    </p>
+  </div>
+
+  <h2>免费的三种形态</h2>
+  <p>中文语境里的「免费」通常是这三种，风险各不相同：</p>
+  <ul>
+    <li>
+      <strong>公开分享的免费节点</strong
+      >：来源不明的订阅链接。你的所有流量经过陌生人的服务器——技术上对方可以看到并篡改未加密内容。这是隐私风险最高的一种。
+    </li>
+    <li>
+      <strong>机场的免费试用/免费套餐</strong
+      >：作为获客手段的限速、限量方案。风险低于公开节点，但速度与稳定性通常被刻意限制。
+    </li>
+    <li><strong>「白嫖」聚合站</strong>：批量抓取的节点池，可用率极低，且常混入钓鱼与仿冒入口。</li>
+  </ul>
+
+  <h2>免费方案的真实成本</h2>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>维度</th><th>免费节点</th><th>免费试用套餐</th><th>付费低价档</th></tr>
+      </thead>
+      <tbody>
+        <tr
+          ><td>隐私风险</td><td>高：运营者身份不明</td><td>中：与付费同源</td><td>中：取决于品牌</td
+          ></tr
+        >
+        <tr><td>可用率</td><td>极不稳定</td><td>受限但可预期</td><td>可预期</td></tr>
+        <tr><td>速度</td><td>无保障</td><td>通常限速</td><td>看线路档位</td></tr>
+        <tr><td>账号安全场景</td><td>不建议</td><td>谨慎</td><td>可用</td></tr>
+        <tr><td>适合用途</td><td>一次性、低敏感</td><td>试水判断</td><td>日常使用</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>如果一定要用免费方案</h2>
+  <ul>
+    <li>只用于不登录任何账号的浏览，别在免费节点下处理邮箱、网银、社交账号。</li>
+    <li>优先选择「知名品牌的免费试用」而不是来路不明的节点分享。</li>
+    <li>把免费试用当成<strong>核验工具</strong>：测它的晚高峰表现，作为要不要付费的依据。</li>
+  </ul>
+
+  <h2>更稳妥的路径</h2>
+  <p>
+    如果你每月能接受一杯奶茶的预算，选择空间会完全不同。从
+    <a href="/best/budget/">便宜机场怎么选</a>开始，配合
+    <a href="/guides/stability-signals/">稳定性核验清单</a>过滤候选； 完全没头绪就先读<a
+      href="/guides/how-to-choose/">选择标准</a
+    >。
+  </p>
+</PageLayout>

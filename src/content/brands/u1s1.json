@@ -1,0 +1,301 @@
+{
+  "name": "U1S1",
+  "aliases": [
+    "U1S1 机场",
+    "有一说一机场"
+  ],
+  "tier": "mid",
+  "positioning": "20 元档的流媒体向选择：VLESS + IEPL 专线 + 流媒体全解锁 + 自研客户端，AI 能力未作宣称。",
+  "background": "U1S1 的卖点集中在 VLESS 协议、IEPL 专线与流媒体全解锁，并提供自研客户端。与同为 20 元档的全球云、一翻云相比，它没有宣称 AI 全解锁，定位更偏向看剧用户。运营年限未在资料中给出。",
+  "priceFrom": "20 元 / 月 · 120GB",
+  "pricePerGb": 0.167,
+  "billingCycle": "monthly",
+  "couponCode": "akaka",
+  "couponNote": "通用优惠码，适用套餐以结算页为准。",
+  "launchYear": null,
+  "highlights": [
+    "VLESS 协议",
+    "IEPL 专线",
+    "流媒体全解锁（品牌口径）",
+    "自研客户端"
+  ],
+  "clients": [
+    "自研客户端",
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "全解锁",
+    "ai": null,
+    "selfClient": true,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": "/images/brands/u1s1-speedtest.jpg",
+    "unlock": "/images/brands/u1s1-unlock.png",
+    "topology": "/images/brands/u1s1-topology.png"
+  },
+  "scenarios": [
+    "streaming",
+    "iepl"
+  ],
+  "protocols": [
+    "VLESS",
+    "Shadowsocks 系（测速面板显示）"
+  ],
+  "lineTypes": [
+    "IEPL 专线（品牌口径）"
+  ],
+  "strengths": [
+    "卖点聚焦流媒体，不做大而全的承诺，宣传口径相对克制",
+    "IEPL 专线 + 120GB 的组合适合晚间看剧的稳定需求",
+    "自研客户端与订阅导入并行，多设备切换方便"
+  ],
+  "limitations": [
+    "未宣称 AI 解锁，AI 用户需另择或自行验证",
+    "20 元档单价 0.167 元/GB，不是本批最优",
+    "运营年限未知，性能类信息无统一测试数据"
+  ],
+  "suitableFor": [
+    "以流媒体观看为核心场景的用户",
+    "看重晚高峰稳定的家庭用户",
+    "不需要 AI 工具的普通用户"
+  ],
+  "notSuitableFor": [
+    "AI 编程与长对话重度用户",
+    "追求最低单价的预算型用户",
+    "需要长历史记录的保守用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 20 元 / 月 · 120GB，优惠码 akaka。价格与优惠为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "主流档",
+      "status": "sourced",
+      "note": "按本批 16 家起步价横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "20 元 / 月 · 120GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.167 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "akaka",
+      "status": "sourced",
+      "note": "通用优惠码，适用套餐以结算页为准。"
+    },
+    {
+      "label": "运营年限",
+      "value": "暂无公开数据",
+      "status": "pending"
+    },
+    {
+      "label": "主打线路",
+      "value": "IEPL 专线（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "VLESS / Shadowsocks 系（测速面板显示）",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "未作宣称",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    },
+    {
+      "label": "节点数量",
+      "value": "62 个（面板导出计数）",
+      "status": "measured",
+      "note": "工具 MAI-TEST-BOT · 32 线程 · 后端 珠海联通 5Gbps(4.6.4) · 面板时间戳已移除；由账户信息推断测试早于 2027-02-13"
+    },
+    {
+      "label": "节点地区覆盖",
+      "value": "香港 19 · 台湾 5 · 新加坡 10 · 日本 10 · 马来西亚 2 · 泰国 1 · 美国 10 · 土耳其 1 · 法国 1 · 英国 1 · 德国 1 · 越南 1",
+      "status": "measured",
+      "note": "按面板导出的节点命名归类"
+    },
+    {
+      "label": "香港节点延迟",
+      "value": "15–92 ms",
+      "status": "measured",
+      "note": "19 个节点的区间 · 工具 MAI-TEST-BOT · 32 线程 · 后端 珠海联通 5Gbps(4.6.4) · 面板时间戳已移除；由账户信息推断测试早于 2027-02-13"
+    },
+    {
+      "label": "香港节点平均速度",
+      "value": "96.14–106.84 MB/s",
+      "status": "measured",
+      "note": "19 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除；由账户信息推断测试早于 2027-02-13"
+    },
+    {
+      "label": "面板显示协议",
+      "value": "Shadowsocks",
+      "status": "measured",
+      "note": "测速面板中节点的类型列；可能与官网宣传的协议口径不同，以实际订阅为准"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://guangs.vipaff.cc/#/?code=xhX5X22f",
+  "reviewSlug": "reviews/u1s1",
+  "panel": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 468,
+    "pingCount": 5,
+    "protocolShown": "Shadowsocks",
+    "totalNodes": 62,
+    "testedAt": null,
+    "inPeakWindow": null,
+    "testedBefore": "2027-02-13",
+    "regions": [
+      {
+        "name": "香港",
+        "nodes": 19,
+        "latencyMinMs": 15,
+        "latencyMaxMs": 92,
+        "avgSpeedMinMB": 96.14,
+        "avgSpeedMaxMB": 106.84,
+        "maxSpeedMaxMB": 107.97
+      },
+      {
+        "name": "台湾",
+        "nodes": 5,
+        "latencyMinMs": 62,
+        "latencyMaxMs": 235,
+        "avgSpeedMinMB": 17.35,
+        "avgSpeedMaxMB": 100.48,
+        "maxSpeedMaxMB": 114.85
+      },
+      {
+        "name": "新加坡",
+        "nodes": 10,
+        "latencyMinMs": 50,
+        "latencyMaxMs": 70,
+        "avgSpeedMinMB": 99,
+        "avgSpeedMaxMB": 107.52,
+        "maxSpeedMaxMB": 113.87
+      },
+      {
+        "name": "日本",
+        "nodes": 10,
+        "latencyMinMs": 152,
+        "latencyMaxMs": 955,
+        "avgSpeedMinMB": 12.88,
+        "avgSpeedMaxMB": 110.16,
+        "maxSpeedMaxMB": 126.09
+      },
+      {
+        "name": "马来西亚",
+        "nodes": 2,
+        "latencyMinMs": 211,
+        "latencyMaxMs": 293,
+        "avgSpeedMinMB": 7.28,
+        "avgSpeedMaxMB": 12.35,
+        "maxSpeedMaxMB": 23.49
+      },
+      {
+        "name": "泰国",
+        "nodes": 1,
+        "latencyMinMs": 358,
+        "latencyMaxMs": 358,
+        "avgSpeedMinMB": 5.37,
+        "avgSpeedMaxMB": 5.37,
+        "maxSpeedMaxMB": 10.52
+      },
+      {
+        "name": "美国",
+        "nodes": 10,
+        "latencyMinMs": 161,
+        "latencyMaxMs": 166,
+        "avgSpeedMinMB": 4.96,
+        "avgSpeedMaxMB": 67.63,
+        "maxSpeedMaxMB": 119.41
+      },
+      {
+        "name": "土耳其",
+        "nodes": 1,
+        "latencyMinMs": 247,
+        "latencyMaxMs": 247,
+        "avgSpeedMinMB": 5.89,
+        "avgSpeedMaxMB": 5.89,
+        "maxSpeedMaxMB": 35.35
+      },
+      {
+        "name": "法国",
+        "nodes": 1,
+        "latencyMinMs": 211,
+        "latencyMaxMs": 211,
+        "avgSpeedMinMB": 16.98,
+        "avgSpeedMaxMB": 16.98,
+        "maxSpeedMaxMB": 22.45
+      },
+      {
+        "name": "英国",
+        "nodes": 1,
+        "latencyMinMs": 192,
+        "latencyMaxMs": 192,
+        "avgSpeedMinMB": 26.44,
+        "avgSpeedMaxMB": 26.44,
+        "maxSpeedMaxMB": 38.21
+      },
+      {
+        "name": "德国",
+        "nodes": 1,
+        "latencyMinMs": 216,
+        "latencyMaxMs": 216,
+        "avgSpeedMinMB": 0.06,
+        "avgSpeedMaxMB": 0.06,
+        "maxSpeedMaxMB": 0.08
+      },
+      {
+        "name": "越南",
+        "nodes": 1,
+        "latencyMinMs": 135,
+        "latencyMaxMs": 135,
+        "avgSpeedMinMB": 11.67,
+        "avgSpeedMaxMB": 11.67,
+        "maxSpeedMaxMB": 13.47
+      }
+    ],
+    "anomalies": [
+      "账户信息行共 3 行（序号 1-3：剩余流量 9851.8 GB / 距离下次重置剩余 3 天 / 套餐到期 2027-02-13），未计入节点数；其中序号 1 行平均速度与最大速度均显示 0B",
+      "香港节点编号从「香港专线02」开始到「香港专线20」，图中未出现「香港专线01」",
+      "香港专线16 延迟RTT 92ms，明显高于其他香港节点（15-20ms）",
+      "日本08 延迟RTT 955ms，明显异常",
+      "台湾01 HTTP延迟 3561ms；台湾03 HTTP延迟 809ms；泰国01 HTTP延迟 1450ms",
+      "日本10 平均速度 12.88MB / 最大速度 13.93MB，远低于同区其他节点",
+      "美国 10 个节点中有 6 个平均速度低于 11MB（美国02/03/04/05/07/10）",
+      "德国01 速度以 KB 计：平均 61.34KB、最大 86.94KB，JSON 中已按 1KB=1/1024MB 折算为 0.06 / 0.08"
+    ]
+  },
+  "panelDisputed": null
+}

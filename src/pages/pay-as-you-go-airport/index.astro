@@ -1,0 +1,148 @@
+---
+/** P2 专题：按量计费 / 不限时机场。资料中明确提供不限时套餐的品牌才进名单。 */
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BrandPickList from '@/components/BrandPickList.astro';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const reasons: Record<string, string> = {
+  'xingdao-meng':
+    '渠道资料中明确列出不限时套餐，且套餐颗粒度细。对「一年只用几次」的低频用户，这是本库里最对口的结构。',
+  'lingmao-net':
+    '同样标注支持不限时套餐，且月付单价是全库最低，按量与按月两条路都留着，用量变化时不必换品牌。',
+};
+
+const faq = [
+  {
+    q: '按量计费机场是什么意思？适合哪些人？',
+    a: '按量计费指按流量包购买、不绑定月份，用完为止。它适合三类人：用量很低且不规律的人、需要长期留一个备用订阅的人、以及出差或短期出国临时使用的人。日常高频使用者按月付通常更划算。',
+  },
+  {
+    q: '不限时机场真的永久有效吗？',
+    a: '「不限时」指流量包本身不设过期时间，但它的有效性完全依赖品牌继续运营。机场跑路时，不限时套餐里的剩余流量和年付套餐里的剩余月份一样归零——所以它不是低风险选项，只是把风险从「时间」换成了「品牌存续」。',
+  },
+  {
+    q: '按量计费和月付机场哪个好？',
+    a: '算一笔账就清楚：把流量包价格换算成每 GB 单价，与月付套餐的每 GB 单价比较。按量计费的单价通常更高，你多付的是「不用担心月底清零」的灵活性。用量稳定的人为这份灵活性付费不划算。',
+  },
+  {
+    q: '不限时流量包会不会被降速或限速？',
+    a: '取决于品牌的具体规则，渠道资料中通常不会写明。购买前应当在用户中心或向客服确认三件事：是否限速、是否限设备数、是否限制特定节点（如流媒体或专线节点常有额外限制）。',
+  },
+  {
+    q: '一次性流量包和永久套餐靠谱吗？',
+    a: '结构本身是合理的商业模式，问题出在定价反常时。当一个「永久套餐」的价格低到无法覆盖长期带宽成本，它就不是产品而是收割信号——判断标准见跑路信号清单。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '按量计费机场', href: '/pay-as-you-go-airport/' },
+];
+---
+
+<Base
+  title="按量计费与不限时机场：适合谁，风险在哪"
+  description="按量计费机场与不限时流量包适合哪些人？本页说明按量与月付的换算方法、不限时套餐的真实风险结构，并列出在库品牌中明确提供不限时套餐的机场。"
+  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[48rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">按量计费与不限时机场</h1>
+    <div class="verdict">
+      <p class="verdict-label m-0">先说结论</p>
+      <p class="m-0 text-[1.02rem]">
+        按量计费买的是<strong>灵活性</strong>，代价通常是更高的每 GB 单价； 不限时套餐买的是<strong
+          >「不会月底清零」</strong
+        >，代价是把风险从时间换成了品牌存续——
+        机场跑路时，剩余流量和剩余月份一样归零。所以它适合低频与备用场景，
+        <strong>不适合当成规避跑路风险的手段</strong>。
+      </p>
+    </div>
+  </header>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="fit-heading">
+    <h2 id="fit-heading" class="m-0 text-[1.5rem]">三种人适合按量，三种人不适合</h2>
+    <div class="mt-6 grid gap-8 md:grid-cols-2">
+      <div class="border-t-[3px] border-accent pt-4">
+        <h3 class="m-0 font-display text-[1.12rem]">适合</h3>
+        <ul class="mt-3 list-disc pl-5 text-[0.94rem] text-muted">
+          <li>一年只用几次、用量极不规律的人</li>
+          <li>需要常备一个备用订阅、平时不跑流量的人</li>
+          <li>短期出差或临时需求，不想为整月付费的人</li>
+        </ul>
+      </div>
+      <div class="border-t-[3px] border-amber pt-4">
+        <h3 class="m-0 font-display text-[1.12rem]">不适合</h3>
+        <ul class="mt-3 list-disc pl-5 text-[0.94rem] text-muted">
+          <li>每天都用的日常用户（月付单价更低）</li>
+          <li>把不限时当成「防跑路」手段的人（逻辑不成立）</li>
+          <li>需要晚高峰稳定的重度用户（这类需求该看线路而非计费方式）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="calc-heading">
+    <h2 id="calc-heading" class="m-0 text-[1.5rem]">怎么算才知道划不划算</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      别比总价，比每 GB 单价，再比风险敞口。三步就能得出结论：
+    </p>
+    <ol class="path-index mt-6 max-w-[46rem]">
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">把流量包换算成每 GB 单价</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          包价 ÷ 流量额度。拿它和<a href="/cheap-airport/">月付价格对照表</a>里的单价直接比。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">估算你的真实月用量</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          如果月用量稳定在 50GB 以上，几乎可以确定月付更划算；低于 20GB 且不规律，按量才有优势。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">把一次性支出当作风险敞口看</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          一个大流量包的支出可能相当于半年月付。问自己一句：这家机场明天消失，这笔钱我能接受吗？
+          判断依据见<a href="/risk/exit-scam-signals/">跑路信号清单</a>。
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="list-heading">
+    <h2 id="list-heading" class="m-0 text-[1.5rem]">在库品牌中明确提供不限时套餐的机场</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      入选条件：渠道资料中<strong>明确写明支持不限时套餐</strong>。其余品牌不代表没有此类套餐，
+      只代表资料中未作说明——本站不替品牌方补充没写的内容，需要请直接问客服。
+    </p>
+    <div class="mt-6">
+      <BrandPickList slugs={['xingdao-meng', 'lingmao-net']} reasons={reasons} limit={2} />
+    </div>
+    <p class="meta-text mt-4">
+      具体的不限时套餐价格与规则未包含在渠道资料中，本页因此不列具体数字。
+      购买前请在官网确认限速、限设备与节点范围三项。
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">按量计费常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="meta-text m-0 mt-4">
+      继续：<a href="/cheap-airport/">月付价格对照</a> ·
+      <a href="/best/budget/">低价方案的代价清单</a> ·
+      <a href="/brand-library/">全部品牌对照</a>
+    </p>
+  </section>
+</Base>

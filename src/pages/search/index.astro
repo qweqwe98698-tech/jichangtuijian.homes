@@ -1,0 +1,65 @@
+---
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '搜索', href: '/search/' },
+];
+---
+
+<Base
+  title="站内搜索"
+  description="搜索机场决策室的全部指南、评测、对比与排查内容。搜索在浏览器本地完成，不上传搜索词。"
+  schemaItems={[breadcrumbSchema(crumbs)]}
+  noindex
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <div class="mx-auto mt-8 max-w-[46rem] pb-10">
+    <h1 class="m-0 text-[1.8rem]">站内搜索</h1>
+    <p class="m-0 mt-2 text-[0.95rem] text-muted">
+      搜索由 Pagefind 在你的浏览器本地完成，搜索词不会离开你的设备。
+      试试「晚高峰」「IPLC」「超时」。
+    </p>
+    <div id="search" class="mt-6"></div>
+
+    <noscript>
+      <p class="mt-6 border border-line bg-surface p-4 text-[0.95rem]">
+        搜索需要 JavaScript。你也可以直接浏览栏目：
+        <a href="/guides/">开始选择</a>、<a href="/reviews/">评测</a>、
+        <a href="/learn/">知识库</a>、<a href="/fix/">故障排查</a>。
+      </p>
+    </noscript>
+  </div>
+
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.PagefindUI) {
+        new window.PagefindUI({
+          element: '#search',
+          showSubResults: true,
+          translations: {
+            placeholder: '搜索全站内容…',
+            zero_results: '没有找到「[SEARCH_TERM]」的结果',
+          },
+        });
+      }
+    });
+  </script>
+
+  <style is:global>
+    #search {
+      --pagefind-ui-primary: var(--color-accent);
+      --pagefind-ui-text: var(--color-ink);
+      --pagefind-ui-background: var(--color-surface);
+      --pagefind-ui-border: var(--color-line);
+      --pagefind-ui-border-width: 1px;
+      --pagefind-ui-border-radius: 2px;
+      --pagefind-ui-font: inherit;
+    }
+  </style>
+</Base>

@@ -1,0 +1,157 @@
+---
+/**
+ * 文章骨架（SITE-DNA articlePattern）：
+ * 面包屑 → 标题/元信息 → 快速结论 → 正文(主栏) + 侧栏(TOC/数据状态) → FAQ → 相关路径 → 阶段化 CTA
+ */
+import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
+import Base from './Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import TOC from '@/components/TOC.astro';
+import FAQ from '@/components/FAQ.astro';
+import RelatedLinks from '@/components/RelatedLinks.astro';
+import BrandCTA from '@/components/BrandCTA.astro';
+import BrandCharts from '@/components/BrandCharts.astro';
+import BrandPanelData from '@/components/BrandPanelData.astro';
+import EditorialPicks from '@/components/EditorialPicks.astro';
+import VerifyStamp from '@/components/VerifyStamp.astro';
+import { sectionMap } from '@/lib/site';
+import { breadcrumbSchema, articleSchema, faqSchema, howToSchema, type Crumb } from '@/lib/schema';
+import { getEntry } from 'astro:content';
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+  headings: MarkdownHeading[];
+}
+const { article, headings } = Astro.props;
+const d = article.data;
+const section = article.id.split('/')[0]!;
+const sectionDef = sectionMap[section]!;
+const path = `/${article.id}/`;
+
+const author = await getEntry('authors', d.author);
+const authorName = author?.data.name ?? '机场决策室编辑部';
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: sectionDef.name, href: `/${section}/` },
+  { name: d.title, href: path },
+];
+
+const schemaItems = [
+  breadcrumbSchema(crumbs),
+  articleSchema({
+    title: d.title,
+    description: d.description,
+    path,
+    pubDate: d.pubDate,
+    updatedDate: d.updatedDate,
+    authorName,
+  }),
+  ...(d.faq.length > 0 ? [faqSchema(d.faq)] : []),
+  ...(d.howToSteps.length > 0 && d.contentType === 'tutorial'
+    ? [howToSchema({ name: d.title, description: d.description, steps: d.howToSteps })]
+    : []),
+];
+
+const fmt = (date: Date) => date.toISOString().slice(0, 10);
+---
+
+<Base title={d.title} description={d.description} schemaItems={schemaItems}>
+  <div class="pt-6">
+    <Breadcrumbs crumbs={crumbs} />
+  </div>
+
+  <div class="mt-8 grid gap-10 lg:grid-cols-12">
+    <article class="lg:col-span-8" data-pagefind-body>
+      <header>
+        <h1 class="m-0 max-w-[32ch] text-[1.7rem] leading-snug sm:text-[2rem]">{d.title}</h1>
+        <p class="meta-text m-0 mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+          <span>{authorName}</span>
+          <span>发布 {fmt(d.pubDate)}</span>
+          {d.updatedDate && <span>更新 {fmt(d.updatedDate)}</span>}
+          {
+            d.lastVerified ? (
+              <VerifyStamp status="sourced" date={fmt(d.lastVerified)} />
+            ) : (
+              (d.contentType === 'review' || d.contentType === 'risk') && (
+                <VerifyStamp status="pending" />
+              )
+            )
+          }
+        </p>
+      </header>
+
+      {
+        d.verdict && (
+          <div class="verdict">
+            <p class="verdict-label m-0">快速结论</p>
+            <p class="m-0 text-[1.02rem]">{d.verdict}</p>
+          </div>
+        )
+      }
+
+      {/* 移动端目录 */}
+      <div class="mt-6 lg:hidden">
+        <TOC headings={headings} />
+      </div>
+
+      <div class="prose-jc mt-8">
+        <slot />
+      </div>
+
+      {
+        d.dataSource && (
+          <p class="meta-text rule-top mt-10 pt-4">
+            资料与数据说明：{d.dataSource}
+            <a href="/data-sources/" class="ml-2">
+              查看数据来源政策
+            </a>
+          </p>
+        )
+      }
+
+      {
+        d.brandCta && (
+          <>
+            <BrandPanelData brand={(await getEntry('brands', d.brandCta))!.data} />
+            <BrandCharts brand={(await getEntry('brands', d.brandCta))!.data} />
+          </>
+        )
+      }
+      <FAQ faq={d.faq} />
+      {d.brandCta && <BrandCTA brandSlug={d.brandCta} />}
+      <RelatedLinks related={d.related} />
+    </article>
+
+    <aside class="hidden lg:col-span-4 lg:block">
+      <div class="sticky top-6 flex flex-col gap-5">
+        <TOC headings={headings} />
+        <div class="border border-line p-4">
+          <p class="meta-text m-0 tracking-widest">本文档案</p>
+          <dl class="data-rows mt-3 text-[0.85rem]">
+            <div class="data-row"><dt>栏目</dt><dd>{sectionDef.name}</dd></div>
+            <div class="data-row"><dt>内容类型</dt><dd>{d.contentType}</dd></div>
+            <div class="data-row">
+              <dt>数据核验</dt>
+              <dd>
+                {
+                  d.lastVerified ? (
+                    <VerifyStamp status="sourced" date={fmt(d.lastVerified)} />
+                  ) : (
+                    <VerifyStamp status="pending" />
+                  )
+                }
+              </dd>
+            </div>
+          </dl>
+          <p class="meta-text m-0 mt-3">
+            按<a href="/methodology/">资料核验方法</a>与<a href="/editorial-policy/">编辑政策</a>撰写
+          </p>
+        </div>
+
+        <EditorialPicks variant="compact" />
+      </div>
+    </aside>
+  </div>
+</Base>

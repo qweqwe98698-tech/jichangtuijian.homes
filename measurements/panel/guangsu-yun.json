@@ -1,0 +1,69 @@
+{
+  "brand": "guangsu-yun",
+  "source": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 381,
+    "pingCount": 5,
+    "trafficUsedGB": 19.4
+  },
+  "accountRows": {
+    "remainingTrafficGB": null,
+    "planExpiry": null
+  },
+  "protocolShown": "Shadowsocks",
+  "totalNodes": 54,
+  "regions": [
+    {
+      "name": "香港",
+      "nodes": 19,
+      "latencyMinMs": 14,
+      "latencyMaxMs": 201,
+      "avgSpeedMinMB": 0,
+      "avgSpeedMaxMB": 75.07,
+      "maxSpeedMaxMB": 78.81
+    },
+    {
+      "name": "台湾",
+      "nodes": 5,
+      "latencyMinMs": 82,
+      "latencyMaxMs": 120,
+      "avgSpeedMinMB": 8.4,
+      "avgSpeedMaxMB": 61.07,
+      "maxSpeedMaxMB": 70.55
+    },
+    {
+      "name": "新加坡",
+      "nodes": 10,
+      "latencyMinMs": 51,
+      "latencyMaxMs": 138,
+      "avgSpeedMinMB": 55.35,
+      "avgSpeedMaxMB": 73.13,
+      "maxSpeedMaxMB": 86.41
+    },
+    {
+      "name": "日本",
+      "nodes": 10,
+      "latencyMinMs": 69,
+      "latencyMaxMs": 74,
+      "avgSpeedMinMB": 60.15,
+      "avgSpeedMaxMB": 67.56,
+      "maxSpeedMaxMB": 79.63
+    },
+    {
+      "name": "美国",
+      "nodes": 10,
+      "latencyMinMs": 161,
+      "latencyMaxMs": 163,
+      "avgSpeedMinMB": 54.2,
+      "avgSpeedMaxMB": 71.58,
+      "maxSpeedMaxMB": 127.04
+    }
+  ],
+  "anomalies": [
+    "序号1 HK|香港|02 平均速度与最大速度均为 0B（延迟 16ms / HTTP 36ms 正常）",
+    "序号19 HK|香港|20 延迟 201ms、HTTP 408ms，明显高于其余香港节点（14-33ms）",
+    "序号23 TW|台湾|04 平均速度仅 8.40MB，最大速度 50.41MB，为台湾节点中最低"
+  ]
+}

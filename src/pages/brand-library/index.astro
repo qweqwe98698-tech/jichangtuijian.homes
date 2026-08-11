@@ -1,0 +1,294 @@
+---
+/**
+ * 机场品牌库（展示与筛选单页）：16 家在库机场的价格、线路、解锁口径、优惠码与入口矩阵。
+ * 筛选与排序为渐进增强：无 JS 时全量表格照常可读、可索引。
+ */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import VerifyStamp from '@/components/VerifyStamp.astro';
+import EditorialPicks from '@/components/EditorialPicks.astro';
+import { SITE } from '@/lib/site';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const brands = (await getCollection('brands'))
+  .filter((b) => b.data.priceFrom !== null)
+  .sort((a, b) => (a.data.pricePerGb ?? 99) - (b.data.pricePerGb ?? 99));
+
+const tierLabel = { premium: '进阶档', mid: '主流档', budget: '入门档' } as const;
+const cycleLabel = { monthly: '月付', quarterly: '季付', yearly: '年付', unknown: '—' } as const;
+
+const scenarioLabel: Record<string, string> = {
+  ai: 'AI 工具',
+  streaming: '流媒体',
+  budget: '预算优先',
+  iepl: '专线 IEPL',
+  newbie: '新手友好',
+  longterm: '长期使用',
+};
+
+const filters = [
+  { key: 'all', label: `全部 ${brands.length} 家` },
+  { key: 'budget', label: '预算优先' },
+  { key: 'ai', label: 'AI 工具' },
+  { key: 'streaming', label: '流媒体' },
+  { key: 'iepl', label: '专线 IEPL' },
+  { key: 'newbie', label: '新手友好' },
+];
+
+const faq = [
+  {
+    q: '这个品牌库里的机场是怎么筛选进来的？',
+    a: '在库品牌来自本站的合作与观察名单，收录不等于推荐。每家的价格、优惠码、线路与解锁能力均按渠道资料如实记录并标注来源等级；本站不做统一环境下的独立测速，性能类项目一律标注「暂无统一测试数据」，不会用宣传口径冒充测试结论。',
+  },
+  {
+    q: '表格里的「每 GB 单价」是怎么算的？',
+    a: '用起步套餐价格除以该套餐的流量额度，仅用于同一时点的横向比较。它不反映线路质量、晚高峰表现与解锁能力，也不考虑流量倍率——倍率会让实际可用流量低于标称值。',
+  },
+  {
+    q: '为什么价格最低的不一定排在推荐位？',
+    a: '因为单价只是决策的一个维度。年付摊算价看着低但资金占用与跑路敞口更大；小包便宜但流量可能不够；进阶档单价不占优，买的是对线路质量的预期。本站的做法是把维度摊开让你自己排序，而不是给一个万能第一名。',
+  },
+  {
+    q: '优惠码为什么有时用不了？',
+    a: '优惠码通常有适用套餐、周期与新老用户的限制，品牌方也会随时调整。本页记录的是核对当日的渠道口径，结算页显示的价格才是最终价格。',
+  },
+  {
+    q: '通过这里的链接购买，价格会更贵吗？',
+    a: '不会。入口链接为推广合作链接，不改变你的支付价格；推广关系也不改变本站的数据记录与风险提示，这一点写在编辑政策里并接受读者监督。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '机场品牌库', href: '/brand-library/' },
+];
+
+const itemList = {
+  '@type': 'ItemList',
+  name: '机场品牌库',
+  numberOfItems: brands.length,
+  itemListElement: brands.map((b, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: b.data.name,
+    url: `${SITE.url}/brands/${b.id}/`,
+  })),
+};
+---
+
+<Base
+  title="机场品牌库：16 家机场价格、线路与优惠码对照"
+  description="机场品牌库汇总 16 家在库机场：起步套餐价格、每 GB 单价、线路类型、协议、AI 与流媒体解锁口径、优惠码与官网入口，可按预算、AI、流媒体、专线场景筛选。"
+  schemaItems={[breadcrumbSchema(crumbs), itemList, faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[52rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">机场品牌库</h1>
+    <p class="m-0 mt-3 text-[1.05rem] text-muted">
+      在库 {brands.length} 家机场的完整对照：起步价、每 GB 单价、线路类型、协议、解锁口径、优惠码与入口。
+      按每 GB 单价升序排列——但请先读一句提醒：<strong class="text-ink">单价最低 ≠ 最适合你</strong
+      >， 年付摊算价、流量倍率与晚高峰表现都会改变实际性价比。
+    </p>
+    <p class="meta-text m-0 mt-4 border-l-[3px] border-amber pl-3">
+      数据性质：价格、优惠码、线路与解锁能力均为<strong class="text-ink"
+        >渠道与品牌方资料口径</strong
+      >（核对于 2026-08-11）， 本站不做统一环境下的独立测速。收录不等于推荐，入口含推广合作，详见<a
+        href="/disclaimer/">免责声明</a
+      >。
+    </p>
+  </header>
+
+  <EditorialPicks />
+
+  {/* 筛选（渐进增强，无 JS 时全部显示） */}
+  <div class="mt-8 flex flex-wrap items-center gap-2" data-filter-bar hidden>
+    <span class="meta-text mr-1">按场景筛选：</span>
+    {
+      filters.map((f) => (
+        <button
+          type="button"
+          class="btn-outline text-[0.85rem]"
+          data-filter={f.key}
+          aria-pressed={f.key === 'all' ? 'true' : 'false'}
+        >
+          {f.label}
+        </button>
+      ))
+    }
+  </div>
+
+  {/* 对照矩阵 */}
+  <div class="table-scroll mt-6">
+    <table data-brand-table>
+      <thead>
+        <tr>
+          <th scope="col">机场</th>
+          <th scope="col">档位</th>
+          <th scope="col">起步套餐</th>
+          <th scope="col">每 GB</th>
+          <th scope="col">周期</th>
+          <th scope="col">线路（品牌口径）</th>
+          <th scope="col">AI</th>
+          <th scope="col">流媒体</th>
+          <th scope="col">优惠码</th>
+          <th scope="col">档案</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          brands.map((b) => (
+            <tr data-scenarios={b.data.scenarios.join(' ')}>
+              <th scope="row" class="whitespace-nowrap">
+                <a href={`/brands/${b.id}/`}>{b.data.name}</a>
+              </th>
+              <td>{tierLabel[b.data.tier]}</td>
+              <td class="whitespace-nowrap">{b.data.priceFrom}</td>
+              <td class="whitespace-nowrap">
+                {b.data.pricePerGb ? `${b.data.pricePerGb.toFixed(3)} 元` : '—'}
+              </td>
+              <td>{cycleLabel[b.data.billingCycle]}</td>
+              <td>{b.data.lineTypes.join(' / ').replace(/（品牌口径）/g, '')}</td>
+              <td>{b.data.claims.ai ?? '未宣称'}</td>
+              <td>{b.data.claims.streaming ?? '未宣称'}</td>
+              <td class="whitespace-nowrap font-display text-amber">{b.data.couponCode ?? '—'}</td>
+              <td class="whitespace-nowrap">
+                <a href={`/brands/${b.id}/`}>详情 →</a>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <p class="meta-text mt-3">
+    表格可横向滚动。「未宣称」表示品牌资料中没有对该能力作出声明，不等于不可用，需自行试用确认。
+  </p>
+
+  {/* 品牌明细 */}
+  <section class="rule-top mt-16 pt-10" aria-labelledby="detail-heading">
+    <h2 id="detail-heading" class="m-0 text-[1.5rem]">在库品牌明细</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      每家的定位、卖点与适合人群摘要。点进档案页可以看到测速面板导出图、解锁对照图、线路结构示意与完整数据行。
+    </p>
+
+    <div class="mt-8 grid gap-x-10 lg:grid-cols-2" data-brand-cards>
+      {
+        brands.map((b, i) => (
+          <article class="border-t border-line py-6" data-scenarios={b.data.scenarios.join(' ')}>
+            <p class="meta-text m-0 flex flex-wrap items-center gap-3">
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <span>{tierLabel[b.data.tier]}</span>
+              <VerifyStamp status="sourced" date={b.data.lastVerified ?? undefined} />
+            </p>
+            <h3 class="m-0 mt-1 text-[1.25rem]">
+              <a href={`/brands/${b.id}/`} class="text-ink hover:text-accent">
+                {b.data.name}
+              </a>
+            </h3>
+            <p class="m-0 mt-1.5 text-[0.93rem] text-muted">{b.data.positioning}</p>
+
+            <dl class="data-rows mt-4 text-[0.88rem]">
+              <div class="data-row">
+                <dt>起步套餐</dt>
+                <dd>
+                  {b.data.priceFrom}
+                  {b.data.couponCode && (
+                    <span class="meta-text ml-2">优惠码 {b.data.couponCode}</span>
+                  )}
+                </dd>
+              </div>
+              <div class="data-row">
+                <dt>适合场景</dt>
+                <dd>{b.data.scenarios.map((s) => scenarioLabel[s] ?? s).join(' · ')}</dd>
+              </div>
+              <div class="data-row">
+                <dt>适合谁</dt>
+                <dd>{b.data.suitableFor[0]}</dd>
+              </div>
+              <div class="data-row">
+                <dt>不适合谁</dt>
+                <dd>{b.data.notSuitableFor[0]}</dd>
+              </div>
+            </dl>
+
+            <p class="m-0 mt-3 flex flex-wrap gap-4 text-[0.9rem]">
+              <a href={`/brands/${b.id}/`}>档案与图表 →</a>
+              {b.data.reviewSlug && <a href={`/${b.data.reviewSlug}/`}>深度评测 →</a>}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* 怎么用这个库 */}
+  <section class="rule-top mt-16 pt-10" aria-labelledby="howto-heading">
+    <h2 id="howto-heading" class="m-0 text-[1.5rem]">怎么用这个品牌库做决定</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-3">
+      <div class="border-t-[3px] border-accent pt-4">
+        <h3 class="m-0 font-display text-[1.1rem]">第一步 · 先划掉不适合的</h3>
+        <p class="m-0 mt-2 text-[0.94rem] text-muted">
+          用「不适合谁」这一行反向筛选比正向挑选更快。AI 用户直接排除未宣称 AI 能力的品牌，
+          看剧用户排除未宣称流媒体的品牌，标准见<a href="/guides/how-to-choose/">选择指南</a>。
+        </p>
+      </div>
+      <div class="border-t-[3px] border-accent pt-4">
+        <h3 class="m-0 font-display text-[1.1rem]">第二步 · 比同档不比全场</h3>
+        <p class="m-0 mt-2 text-[0.94rem] text-muted">
+          25 元档和 7 元档没有可比性。先确定预算档，再在同档里比每 GB 单价与能力覆盖； 横向排名见<a
+            href="/airport-ranking/">机场排行榜</a
+          >。
+        </p>
+      </div>
+      <div class="border-t-[3px] border-accent pt-4">
+        <h3 class="m-0 font-display text-[1.1rem]">第三步 · 用最短周期验证</h3>
+        <p class="m-0 mt-2 text-[0.94rem] text-muted">
+          选定后先买最短周期，按<a href="/guides/stability-signals/">稳定性清单</a
+          >做多日晚高峰观测， 通过再续。任何品牌的首单都不建议年付。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* FAQ */}
+  <section class="rule-top mt-16 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">关于品牌库的常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var bar = document.querySelector('[data-filter-bar]');
+      if (!bar) return;
+      bar.hidden = false;
+      var rows = document.querySelectorAll('[data-brand-table] tbody tr[data-scenarios]');
+      var cards = document.querySelectorAll('[data-brand-cards] article[data-scenarios]');
+      bar.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-filter]');
+        if (!btn) return;
+        var key = btn.getAttribute('data-filter');
+        bar.querySelectorAll('[data-filter]').forEach(function (b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+        function apply(el) {
+          var tags = (el.getAttribute('data-scenarios') || '').split(' ');
+          el.style.display = key === 'all' || tags.indexOf(key) !== -1 ? '' : 'none';
+        }
+        rows.forEach(apply);
+        cards.forEach(apply);
+      });
+    })();
+  </script>
+</Base>

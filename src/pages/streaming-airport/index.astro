@@ -1,0 +1,163 @@
+---
+/** P4 场景专题：流媒体解锁机场推荐（名单页）。 */
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BrandPickList from '@/components/BrandPickList.astro';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const reasons: Record<string, string> = {
+  'lingmao-net':
+    '月付 19 元 150GB，看剧最需要的是流量与稳定，这一档在两者上都不吃紧，且不用年付锁定。',
+  'yuzhou-yun':
+    '14.9 元档同时宣称 IEPL 与流媒体全解锁，是低价区里少见的看剧向组合；未宣称 AI 能力。',
+  u1s1: '20 元 120GB，宣传口径聚焦流媒体不作 AI 承诺，属于「不乱承诺」型，适合纯看剧用户。',
+  'kexin-yun': '25 元 150GB，同样只宣称流媒体不宣称 AI，进阶档里的纯看剧选项。',
+  'guangsu-yun': '双全解锁 + IEPL 专线，适合看剧之外还要跑 AI 的综合家庭用户。',
+  kuaili: '能力面最完整的一档，流媒体与 AI 都有明确宣称，多设备家庭共用的省心选择。',
+};
+
+const faq = [
+  {
+    q: '流媒体解锁机场怎么选？',
+    a: '按优先级看三项：一是目标区域的解锁类型（原生 IP 解锁比 DNS 解锁稳定得多），二是晚高峰带宽是否撑得住 4K，三是解锁失效后的补救速度。节点总数和「全球 XX 地区」这类宣传对看剧几乎没有意义。',
+  },
+  {
+    q: '为什么同一个节点昨天能看 Netflix，今天就不行了？',
+    a: '流媒体平台会持续识别并封禁被大量共享的 IP 段，机场则不断更换出口 IP，双方是动态博弈。所以解锁能力是一个需要持续维护的能力，而不是一次性达成的状态——这也是为什么本站不把任何解锁宣称写成永久事实。',
+  },
+  {
+    q: 'Netflix 只能看自制剧是怎么回事？',
+    a: '这说明你的出口 IP 被判定为代理，Netflix 因此只提供自有版权内容（自制剧），而不提供需要地区授权的片库。解决方向是换用原生 IP 类节点，而不是换清晰度或重装 App。',
+  },
+  {
+    q: '4K 需要多快的速度？',
+    a: '常见 4K 串流的稳定需求大致在 25Mbps 上下，换算约 3MB/s。这个数字本身不高，难点在于晚高峰能否持续保持——短时峰值再高也没用，看剧要的是不掉速。',
+  },
+  {
+    q: '「流媒体全解锁」和「流媒体解锁」有区别吗？',
+    a: '在本站的记录里有：「全解锁」是品牌方对多平台多区域作出的承诺，「解锁」通常指部分平台或部分区域。两者本站都未复测，但口径差异会如实记入品牌档案，选择时值得留意。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '流媒体机场推荐', href: '/streaming-airport/' },
+];
+---
+
+<Base
+  title="流媒体解锁机场推荐：Netflix 与 Disney+ 可用名单"
+  description="流媒体解锁机场推荐：在库机场中宣称支持 Netflix、Disney+、YouTube 解锁的品牌名单与价格对照，说明原生 IP 与 DNS 解锁的差别，以及解锁失效时该怎么判断。"
+  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[48rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">流媒体解锁机场推荐</h1>
+    <div class="verdict">
+      <p class="verdict-label m-0">先说结论</p>
+      <p class="m-0 text-[1.02rem]">
+        看剧场景对机场的要求和 AI 场景几乎相反：AI 怕 IP 被判定为滥用来源，流媒体只看 IP 归属区域。
+        所以选片库解锁能力强的机场，关键词是<strong>原生 IP</strong> 与<strong>晚高峰不掉速</strong
+        >，
+        而不是节点数量。下面是在库品牌中宣称支持流媒体解锁的全部机场——「宣称」二字请留意，本站未做独立测试。
+      </p>
+    </div>
+  </header>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="type-heading">
+    <h2 id="type-heading" class="m-0 text-[1.5rem]">先分清两种「解锁」</h2>
+    <div class="table-scroll mt-6 max-w-[46rem]">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">类型</th>
+            <th scope="col">原理</th>
+            <th scope="col">稳定性</th>
+            <th scope="col">代价</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>原生 IP 解锁</td>
+            <td>出口 IP 本身归属目标地区</td>
+            <td>较高，失效频率低</td>
+            <td>成本高，通常倍率也更高</td>
+          </tr>
+          <tr>
+            <td>DNS / 分流解锁</td>
+            <td>把流媒体域名解析到解锁服务器</td>
+            <td>较低，平台风控收紧时易失效</td>
+            <td>成本低，但可能只解锁部分平台</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="m-0 mt-4 max-w-[46rem] text-[0.95rem] text-muted">
+      多数机场不会主动说明自己用的是哪一种。判断办法很简单：<strong>看它撑多久</strong>。
+      能连续几周稳定解锁的多半是原生 IP，三天两头失效的通常是 DNS 方案。 线路层面的原理见 <a
+        href="/learn/iplc-vs-iepl/">专线与中转的区别</a
+      >。
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="list-heading">
+    <h2 id="list-heading" class="m-0 text-[1.5rem]">宣称支持流媒体解锁的在库机场</h2>
+    <div class="mt-6">
+      <BrandPickList scenario="streaming" reasons={reasons} limit={8} />
+    </div>
+    <p class="meta-text mt-4">
+      每家的解锁能力对照图见各自档案页；图中数据为品牌宣传口径，本站未做独立测试。
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="verify-heading">
+    <h2 id="verify-heading" class="m-0 text-[1.5rem]">试用期内怎么验证解锁</h2>
+    <ol class="path-index mt-6 max-w-[46rem]">
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">分平台测，不要只测一个</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          Netflix、Disney+、YouTube 的判定策略不同，一个通过不代表全部通过。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">分设备测</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          网页能看、App 不能看是常见现象，通常与 App 内置的 DNS 或分流规则有关，不一定是机场的问题。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">隔周复测一次</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          解锁是动态能力。第一天能用不算数，两周后还能用才值得续费。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">在晚高峰测，不在白天测</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          能解锁但缓冲不停，等于不能看。带宽验证方法见
+          <a href="/guides/stability-signals/">稳定性核验清单</a>。
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="rule-top mt-14 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">流媒体机场常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="meta-text m-0 mt-4">
+      继续：<a href="/brand-library/">全部品牌对照</a> ·
+      <a href="/chatgpt-airport/">AI 场景名单</a> ·
+      <a href="/guides/how-to-choose/">通用选择标准</a>
+    </p>
+  </section>
+</Base>

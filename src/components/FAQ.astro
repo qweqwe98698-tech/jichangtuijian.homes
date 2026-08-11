@@ -1,0 +1,25 @@
+---
+/** 文章 FAQ 区块。Schema 由 ArticleLayout 统一注入（仅当 faq 非空）。 */
+interface Props {
+  faq: { q: string; a: string }[];
+}
+const { faq } = Astro.props;
+---
+
+{
+  faq.length > 0 && (
+    <section class="rule-top mt-14 pt-8" aria-labelledby="faq-heading">
+      <h2 id="faq-heading" class="m-0 mb-5 text-[1.5rem]">
+        常见问题
+      </h2>
+      <dl class="m-0">
+        {faq.map((f) => (
+          <div class="mb-5">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.97rem] text-muted">{f.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  )
+}

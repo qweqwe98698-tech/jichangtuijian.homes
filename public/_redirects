@@ -1,0 +1,12 @@
+# Cloudflare Pages 重定向规则
+# 目的：全站只有一个规范地址——https://jichangtuijian.homes/<path>/
+# HTTPS 由 Cloudflare 自动处理（在控制台开启 Always Use HTTPS），这里只处理域名与路径规范化。
+
+# www 收敛到裸域，避免同一内容存在两个可索引地址
+https://www.jichangtuijian.homes/*  https://jichangtuijian.homes/:splat  301
+
+# Cloudflare Pages 预览域名不应被索引或产生外链权重
+https://:project.pages.dev/*  https://jichangtuijian.homes/:splat  301
+
+# 机器可读的 sitemap 入口有两个常见写法，统一到 Astro 实际产出的那个
+/sitemap.xml  /sitemap-index.xml  301

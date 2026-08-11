@@ -1,0 +1,238 @@
+{
+  "name": "快狸",
+  "aliases": [
+    "快狸云",
+    "快狸机场"
+  ],
+  "tier": "premium",
+  "positioning": "25 元档的全能型：VLESS + IEPL 专线，流媒体与 AI 双全解锁，自研客户端，能力面最完整的一档配置。",
+  "background": "快狸的卖点覆盖了本批的全部维度：协议、专线、双全解锁、自研客户端、订阅导入。它与 SOGO 云在纸面上几乎一致，选择时的实际差异只能通过试用比较。运营年限未在资料中给出。",
+  "priceFrom": "25 元 / 月 · 150GB",
+  "pricePerGb": 0.167,
+  "billingCycle": "monthly",
+  "couponCode": "kkk2222",
+  "couponNote": "通用优惠码，适用套餐以结算页为准。",
+  "launchYear": null,
+  "highlights": [
+    "VLESS 协议",
+    "IEPL 专线",
+    "流媒体全解锁（品牌口径）",
+    "AI 全解锁（品牌口径）",
+    "自研客户端"
+  ],
+  "clients": [
+    "自研客户端",
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "全解锁",
+    "ai": "全解锁",
+    "selfClient": true,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/kuaili-unlock.png",
+    "topology": "/images/brands/kuaili-topology.png"
+  },
+  "scenarios": [
+    "ai",
+    "streaming",
+    "iepl"
+  ],
+  "protocols": [
+    "VLESS",
+    "Shadowsocks 系（测速面板显示）"
+  ],
+  "lineTypes": [
+    "IEPL 专线（品牌口径）"
+  ],
+  "strengths": [
+    "能力面完整，AI 与流媒体两条线都有明确宣称",
+    "150GB 起步覆盖绝大多数家庭与个人用量",
+    "自研客户端与订阅导入双通道，跨设备迁移成本低"
+  ],
+  "limitations": [
+    "与同价位 SOGO 云卖点几乎重合，纸面上难以区分",
+    "每 GB 单价无优势，25 元档的价值取决于未验证的线路质量",
+    "运营年限未知"
+  ],
+  "suitableFor": [
+    "想要一次买对、覆盖全部场景的用户",
+    "多设备多人共用的家庭用户",
+    "愿意为能力完整性付溢价的用户"
+  ],
+  "notSuitableFor": [
+    "单价敏感的预算型用户",
+    "只用单一场景的轻度用户",
+    "要求有测试数据支撑定价的用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 25 元 / 月 · 150GB，优惠码 kkk2222。价格与优惠为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "进阶档",
+      "status": "sourced",
+      "note": "按本批 16 家起步价横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "25 元 / 月 · 150GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.167 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "kkk2222",
+      "status": "sourced",
+      "note": "通用优惠码，适用套餐以结算页为准。"
+    },
+    {
+      "label": "运营年限",
+      "value": "暂无公开数据",
+      "status": "pending"
+    },
+    {
+      "label": "主打线路",
+      "value": "IEPL 专线（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "VLESS / Shadowsocks 系（测速面板显示）",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    },
+    {
+      "label": "节点数量",
+      "value": "50 个（面板导出计数）",
+      "status": "measured",
+      "note": "工具 MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-08-05 20:35:24 CST（落在晚高峰窗口 20:30–22:30 内）"
+    },
+    {
+      "label": "节点地区覆盖",
+      "value": "香港 15 · 台湾 5 · 新加坡 10 · 日本 10 · 美国 10",
+      "status": "measured",
+      "note": "按面板导出的节点命名归类"
+    },
+    {
+      "label": "香港节点延迟",
+      "value": "91–121 ms",
+      "status": "measured",
+      "note": "15 个节点的区间 · 工具 MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-08-05 20:35:24 CST（落在晚高峰窗口 20:30–22:30 内）"
+    },
+    {
+      "label": "香港节点平均速度",
+      "value": "470.34–550 MB/s",
+      "status": "measured",
+      "note": "15 个节点的区间 · 非针对晚高峰的专门测试，测试于 2026-08-05 20:35:24 CST（落在晚高峰窗口 20:30–22:30 内）"
+    },
+    {
+      "label": "面板显示协议",
+      "value": "VLESS",
+      "status": "measured",
+      "note": "测速面板中节点的类型列；可能与官网宣传的协议口径不同，以实际订阅为准"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://guangs.kuailicloud.cc/#/register?code=AiqyM8oG",
+  "reviewSlug": "reviews/kuaili",
+  "panel": {
+    "tool": "MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3）",
+    "threads": 32,
+    "backend": "珠海联通 9Gbps",
+    "durationSec": null,
+    "pingCount": null,
+    "protocolShown": "VLESS",
+    "totalNodes": 50,
+    "testedAt": "2026-08-05 20:35:24 CST",
+    "inPeakWindow": true,
+    "testedBefore": null,
+    "regions": [
+      {
+        "name": "香港",
+        "nodes": 15,
+        "latencyMinMs": 91,
+        "latencyMaxMs": 121,
+        "avgSpeedMinMB": 470.34,
+        "avgSpeedMaxMB": 550,
+        "maxSpeedMaxMB": 634.84
+      },
+      {
+        "name": "台湾",
+        "nodes": 5,
+        "latencyMinMs": 151,
+        "latencyMaxMs": 179,
+        "avgSpeedMinMB": 29.17,
+        "avgSpeedMaxMB": 77.48,
+        "maxSpeedMaxMB": 107.64
+      },
+      {
+        "name": "新加坡",
+        "nodes": 10,
+        "latencyMinMs": 86,
+        "latencyMaxMs": 184,
+        "avgSpeedMinMB": 331.41,
+        "avgSpeedMaxMB": 523.07,
+        "maxSpeedMaxMB": 569.38
+      },
+      {
+        "name": "日本",
+        "nodes": 10,
+        "latencyMinMs": 137,
+        "latencyMaxMs": 144,
+        "avgSpeedMinMB": 22.38,
+        "avgSpeedMaxMB": 169.86,
+        "maxSpeedMaxMB": 381.34
+      },
+      {
+        "name": "美国",
+        "nodes": 10,
+        "latencyMinMs": 241,
+        "latencyMaxMs": 247,
+        "avgSpeedMinMB": 8.33,
+        "avgSpeedMaxMB": 12.36,
+        "maxSpeedMaxMB": 20.27
+      }
+    ],
+    "anomalies": [
+      "香港01 平均速度与最高速度均为 0.00B（未测通），其 TLS RTT 91ms 正常；该节点已排除出香港区的速度区间",
+      "新加坡07 速度为 KB 级（平均 9.60KB / 最高 96.00KB），实质未测通，已排除出新加坡区的速度区间",
+      "美国 10 个节点的平均速度集中在 8.33–12.36 MB/s，显著低于香港（470–550）、新加坡（331–523）与日本（22–170），该地区表现明显偏弱",
+      "日本 06/07/08/09 的 HTTPS 延迟在 1703–2091ms 之间，远高于同区其他节点（706–939ms）",
+      "台湾 5 个节点的 HTTPS 延迟均在 765–1405ms，且平均速度仅 29–77 MB/s，为亚洲各区中最弱",
+      "本次为 32 线程并发测试、后端带宽 9Gbps，速度数值属多线程聚合结果，不代表单连接速度，也不代表家庭宽带下的体感"
+    ]
+  },
+  "panelDisputed": null
+}

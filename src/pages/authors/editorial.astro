@@ -1,0 +1,38 @@
+---
+import { getEntry, getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+
+const author = await getEntry('authors', 'editorial');
+if (!author) throw new Error('缺少 editorial 作者数据');
+const articles = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 10);
+---
+
+<PageLayout
+  title="机场决策室编辑部"
+  description="机场决策室编辑部页面：为什么采用集体署名、内容如何产出与核验、以及编辑部近期的全部文章。"
+  crumbName="编辑部"
+>
+  <p class="text-[1.05rem]">{author.data.bio}</p>
+
+  <h2>为什么不用个人博主署名</h2>
+  <p>
+    这个行业里「测评博主人设」太容易伪造：一张网速截图、几句体验感想，任何人都能包装成专家。
+    我们选择反方向——把可信度放在<a href="/methodology/">公开方法</a>、
+    <a href="/data-sources/">数据分级</a>和<a href="/editorial-policy/">可监督的编辑政策</a>上，
+    而不是放在一个你无法验证的人身上。
+  </p>
+
+  <h2>编辑部近期文章</h2>
+  <ul>
+    {
+      articles.map((a) => (
+        <li>
+          <a href={`/${a.id}/`}>{a.data.title}</a>
+          <span class="meta-text ml-2">{a.data.pubDate.toISOString().slice(0, 10)}</span>
+        </li>
+      ))
+    }
+  </ul>
+</PageLayout>

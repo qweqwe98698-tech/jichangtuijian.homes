@@ -1,0 +1,169 @@
+---
+/** P4 场景专题：ChatGPT / AI 机场推荐（名单页）。标准页为 /best/ai/，此页承接品牌名单，两者分工写明避免内耗。 */
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BrandPickList from '@/components/BrandPickList.astro';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const reasons: Record<string, string> = {
+  sujie:
+    '本批唯一把 AI 解锁作为单一主卖点的品牌，未分散宣传流媒体，目标用户画像最贴近 AI 重度使用者。',
+  'yifan-yun':
+    '20 元 150GB 是 AI 场景里最不需要担心流量的一档——AI 文本对话几乎用不完，多出的额度可覆盖顺带的网页与下载。',
+  'guangsu-yun':
+    '双全解锁口径 + IEPL 专线，适合 AI 与流媒体都要的综合用户，不必为两个场景买两份订阅。',
+  'guangnian-ti':
+    '18 元 110GB，在宣称 AI 全解锁的品牌里价格门槛较低，适合预算有限但 AI 使用频率高的用户。',
+  'quanqiu-yun': '与同价位只宣称流媒体的品牌相比多一项 AI 能力，属于 20 元档的均衡选择。',
+  'jilian-yun': '按能力而非流量定价的一家，AI 与流媒体双解锁齐备，适合把可用性看得比单价重的用户。',
+  'ermao-yun': '20 元 130GB 的折中档，AI 全解锁口径齐备，适合用量介于 120–150GB 的用户。',
+  kuaili: '能力面最完整的一档，AI 与流媒体都有明确宣称，适合不想再换服务商的用户。',
+};
+
+const faq = [
+  {
+    q: 'ChatGPT 机场推荐应该看什么？',
+    a: '看三件事，顺序不能颠倒：一是出口 IP 质量（数据中心 IP 被风控概率远高于原生/家宽 IP），二是落地区域是否在 OpenAI 服务地区内，三是会话期间出口 IP 是否稳定。带宽和节点数量在 AI 文本场景里几乎不影响体验，不必为它们付费。',
+  },
+  {
+    q: '为什么能打开 ChatGPT 官网，却一直转圈或提示异常活动？',
+    a: '能打开页面说明连通正常，转圈与验证多数是 IP 风控：出口 IP 被判定为高风险或被大量共享。换用机场标注为原生 / 解锁 / AI 优化的节点通常立刻改善；频繁跨区切换节点反而会加重验证频率。',
+  },
+  {
+    q: '「AI 全解锁」这个宣传口径可信吗？',
+    a: '它是一个方向性承诺，不是可验证的指标。AI 服务的风控随时调整，同一节点今天可用明天可能触发验证。本站的做法是记录品牌口径并标注未复测，同时告诉你怎么自测：完成登录、跑一次长对话、观察 48 小时内是否重复要求验证。',
+  },
+  {
+    q: 'Claude Code、Codex 这类长任务断流，和机场有关系吗？',
+    a: '有。长连接对线路的丢包与出口 IP 稳定性比普通聊天敏感得多。负载均衡型节点在请求间切换出口，会直接导致长任务中断。选固定节点、优先专线线路，并把 AI 域名固定走同一出口，是最有效的三条对策。',
+  },
+  {
+    q: 'AI 用机场需要买多贵的套餐？',
+    a: '不需要贵，需要对。AI 文本场景的流量消耗极低，30GB 都可能用不完；真正该花钱的地方是线路与 IP 质量。用 100GB 以上的大包跑纯 AI，多数是为用不到的流量付费。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: 'ChatGPT 机场推荐', href: '/chatgpt-airport/' },
+];
+---
+
+<Base
+  title="ChatGPT 机场推荐：AI 工具可用的机场名单与选法"
+  description="ChatGPT、Claude、Gemini 用什么机场？本页按 IP 质量、落地区域与会话稳定三项标准筛选在库机场，给出宣称支持 AI 的品牌名单、价格与优惠码，并说明哪些数据尚未复测。"
+  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[48rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">ChatGPT 机场推荐</h1>
+    <div class="verdict">
+      <p class="verdict-label m-0">先说结论</p>
+      <p class="m-0 text-[1.02rem]">
+        AI 场景选机场，决定成败的不是带宽而是 <strong>IP 质量、落地区域、会话稳定性</strong>三项。
+        下面的名单是在库品牌中<strong>宣称支持 AI 解锁</strong>的全部机场，按每 GB 单价排序；
+        「宣称」两个字请认真看——本站尚未完成 AI
+        可用性复测，名单解决的是「从哪几家里挑」，不是「哪家一定能用」。
+      </p>
+    </div>
+    <p class="m-0 mt-4 text-[0.98rem] text-muted">
+      如果你还不清楚 AI 场景为什么和看剧场景的要求完全不同，先读
+      <a href="/best/ai/">AI 场景的选择标准</a>——那篇讲判断方法，这一页给候选名单。
+    </p>
+  </header>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="list-heading">
+    <h2 id="list-heading" class="m-0 text-[1.5rem]">宣称支持 AI 的在库机场</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      入选条件：品牌资料中明确宣称 AI 解锁能力。未作宣称的品牌不在此列——这不代表它们不能用，
+      只代表品牌方没有对这项能力作出承诺，你需要自行试用确认。
+    </p>
+    <div class="mt-6">
+      <BrandPickList scenario="ai" reasons={reasons} limit={8} />
+    </div>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="test-heading">
+    <h2 id="test-heading" class="m-0 text-[1.5rem]">拿到候选后，48 小时自测流程</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      任何 AI 相关的宣传口径都可以用这个流程证伪，成本是一个月的最低套餐：
+    </p>
+    <ol class="path-index mt-6 max-w-[46rem]">
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">第一步：固定一个节点，不要来回切</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          选日本或新加坡等大区的单一节点，避开负载均衡组。跨区跳转是触发验证的最大原因之一。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">第二步：完成一次完整登录</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          能登录只是及格线。重点看有没有反复要求手机验证或提示异常活动。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">第三步：跑一次长对话或长任务</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          普通问答正常但长任务断流，指向的是连接稳定性而非解锁能力，这一步能把两类问题区分开。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">第四步：隔天再登一次</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          次日仍能无障碍进入，才说明这个出口 IP 的信誉是稳定的，而不是恰好赶上好时候。
+        </p>
+      </li>
+    </ol>
+    <p class="m-0 mt-6 text-[0.95rem] text-muted">
+      如果四步中任何一步失败，先排除配置问题——分流规则把 AI 域名走了直连是高频原因，排查顺序见
+      <a href="/fix/nodes-all-timeout/">节点异常排查</a>；确认不是配置问题后再换品牌。
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="pitfall-heading">
+    <h2 id="pitfall-heading" class="m-0 text-[1.5rem]">AI 场景的三个常见误判</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-3">
+      {
+        [
+          {
+            t: '「越贵越稳」',
+            d: '价格买的是带宽与线路，IP 信誉与价格只有弱相关。25 元档不必然比 18 元档的 AI 表现好。',
+          },
+          {
+            t: '「换 IP 能解决验证」',
+            d: '恰恰相反。频繁更换出口是触发验证的主因，正确做法是固定在一个信誉良好的节点上。',
+          },
+          {
+            t: '「解锁 Netflix 就能用 AI」',
+            d: '两者判定逻辑不同：流媒体看 IP 归属区域，AI 看 IP 是否像滥用来源。全区解锁不代表 AI 可用。',
+          },
+        ].map((x) => (
+          <div class="border-t-[3px] border-amber pt-4">
+            <h3 class="m-0 font-display text-[1.08rem]">{x.t}</h3>
+            <p class="m-0 mt-2 text-[0.93rem] text-muted">{x.d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="rule-top mt-14 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">AI 机场常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="meta-text m-0 mt-4">
+      继续：<a href="/best/ai/">AI 场景选择标准</a> ·
+      <a href="/brand-library/">全部在库品牌对照</a> ·
+      <a href="/airport-ranking/">按维度排名</a>
+    </p>
+  </section>
+</Base>

@@ -1,0 +1,22 @@
+---
+/**
+ * 来源标记。本站定位是资料评测与编辑评估，**不进行统一环境下的独立测速**，
+ * 因此没有「本站测试」这一档——见 /data-sources/。
+ *
+ * measured 第三方公开数据 / sourced 官方与渠道资料 / pending 暂无统一测试数据 / risk 风险提示
+ */
+interface Props {
+  status: 'measured' | 'sourced' | 'pending' | 'risk';
+  date?: string;
+}
+const { status, date } = Astro.props;
+const map = {
+  measured: { cls: 'stamp-measured', text: '◐ 第三方公开数据' },
+  sourced: { cls: 'stamp-sourced', text: '◑ 官方与渠道资料' },
+  pending: { cls: 'stamp-pending', text: '◌ 暂无统一测试数据' },
+  risk: { cls: 'stamp-risk', text: '⚠ 风险提示' },
+} as const;
+const m = map[status];
+---
+
+<span class:list={['stamp', m.cls]}>{m.text}{date && ` ${date}`}</span>

@@ -1,0 +1,170 @@
+---
+/** P2 专题：免费试用机场。在库资料未提供试用信息 → 如实说明，并给出「最低价当试用」的替代路径与试用测试清单。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BrandPickList from '@/components/BrandPickList.astro';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const cheapest = (await getCollection('brands'))
+  .filter((b) => b.data.pricePerGb !== null)
+  .sort((a, b) => (a.data.pricePerGb ?? 99) - (b.data.pricePerGb ?? 99))
+  .slice(0, 4);
+
+const reasons: Record<string, string> = {
+  'lingmao-net': '月付 19 元即可开始，用一个月验证完再决定是否继续——不需要任何长周期承诺。',
+  'feimao-yun': '7 元 50GB 是全库最低的一次性支出，用来做「这家能不能用」的验证成本最低。',
+  'xingdao-meng': '套餐颗粒度细，可以先买最小的一档做验证，用量不合适再往上换。',
+  'yifan-yun': '20 元 150GB，验证期内流量充足，能把解锁与晚高峰都测透而不必省着用。',
+};
+
+const faq = [
+  {
+    q: '免费试用机场安全吗？是真的吗？',
+    a: '品牌方提供的正规试用（限速限量的试用套餐）本身没有安全问题，风险来自另一类「免费」——来路不明的免费节点分享。后者你的全部流量都经过陌生人的服务器，技术上对方可以看到并篡改未加密内容，不建议在任何登录账号的场景使用。',
+  },
+  {
+    q: '为什么本站不列免费试用机场名单？',
+    a: '因为在库品牌提供给本站的渠道资料中没有包含试用信息。本站的规则是：资料里没有的内容不替品牌方补充，也不凭印象编写。想确认某家是否有试用，最快的办法是直接问它的在线客服。',
+  },
+  {
+    q: '一元试用机场值得买吗？',
+    a: '作为验证工具值得，作为长期方案不值得。一元档的目的是让你花最低成本测试连通性与解锁能力；但试用套餐的线路与正式套餐未必相同，所以试用通过不代表正式套餐同样表现，这是常见的误判。',
+  },
+  {
+    q: '试用时应该测什么？',
+    a: '按优先级测四项：晚高峰（20:30–22:30）的速度与波动、你真正在意的那个场景（AI 登录与长对话，或流媒体分平台解锁）、多设备同时在线是否触发限制、以及客服的响应速度。白天测速最没有参考价值。',
+  },
+  {
+    q: '试用正常，为什么购买后反而变慢了？',
+    a: '三种常见原因：试用节点与正式套餐节点不同、你从试用期的低负载时段换到了高峰时段、或者品牌在放号期后超售加剧。这也是本站坚持「首单只买最短周期」的原因——真正的验证期是你付费后的第一个月。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '免费试用机场', href: '/free-trial-airport/' },
+];
+---
+
+<Base
+  title="免费试用机场怎么找：试用清单与低成本验证法"
+  description="免费试用机场是真的吗？本页说明正规试用与来路不明免费节点的区别、试用期该测的四项，以及在库品牌资料未提供试用信息时，用最低价套餐做验证的替代路径。"
+  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[48rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">免费试用机场</h1>
+    <div class="verdict">
+      <p class="verdict-label m-0">先说结论</p>
+      <p class="m-0 text-[1.02rem]">
+        先讲一句本站必须说清楚的话：<strong
+          >在库品牌提供给本站的资料中没有包含试用信息， 所以这一页没有「免费试用机场名单」</strong
+        >。资料里没有的东西，本站不替品牌方补写。 但这不影响你达成目的——真正有效的做法是<strong
+          >用最低价套餐当试用</strong
+        >， 花几块到十几块，拿到的是与正式套餐一致的真实体验，比任何限速试用都可靠。
+      </p>
+    </div>
+  </header>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="type-heading">
+    <h2 id="type-heading" class="m-0 text-[1.5rem]">先分清两种「免费」</h2>
+    <div class="table-scroll mt-6 max-w-[48rem]">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">类型</th>
+            <th scope="col">是什么</th>
+            <th scope="col">风险</th>
+            <th scope="col">建议</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>品牌方试用套餐</td>
+            <td>机场自己提供的限速限量试用，作为获客手段</td>
+            <td>低。风险主要是试用线路与正式套餐不同，导致误判</td>
+            <td>可用，但要意识到它测不出正式套餐的真实表现</td>
+          </tr>
+          <tr>
+            <td>来路不明的免费节点</td>
+            <td>群里分享、聚合站抓取的订阅链接</td>
+            <td>高。全部流量经过陌生服务器，未加密内容可被查看或篡改</td>
+            <td>不要在任何登录账号的场景使用，详见免费资源与风险</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="m-0 mt-4 max-w-[46rem] text-[0.95rem] text-muted">
+      完整的免费方案成本分析见<a href="/free/">免费机场与免费节点：能用吗，代价是什么</a>。
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="alt-heading">
+    <h2 id="alt-heading" class="m-0 text-[1.5rem]">替代路径：用最低价套餐当试用</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      这是本站更推荐的做法。理由很实际：试用套餐的节点与正式套餐未必相同，
+      而最低价的正式套餐测出来的就是你真正要用的东西。以下是在库品牌中一次性支出最低的四家。
+    </p>
+    <div class="mt-6">
+      <BrandPickList slugs={cheapest.map((b) => b.id)} reasons={reasons} limit={4} />
+    </div>
+    <p class="meta-text mt-4">
+      注意其中标注「年付摊算」的品牌：它们的最低月单价需要一次性支付整年，
+      作为试用用途应当选择其可月付的档位而不是最低价档。
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="test-heading">
+    <h2 id="test-heading" class="m-0 text-[1.5rem]">试用期必测的四项（按优先级）</h2>
+    <ol class="path-index mt-6 max-w-[46rem]">
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">晚高峰表现（权重最高）</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          20:30–22:30 连续观测，记录中位数而非峰值。白天测速几乎没有参考价值， 完整方法见<a
+            href="/guides/stability-signals/">稳定性核验清单</a
+          >。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">你真正在意的那个场景</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          AI 用户测登录、长对话与次日复登（见 <a href="/chatgpt-airport/">AI 自测流程</a>）；
+          看剧用户分平台、分设备测解锁（见 <a href="/streaming-airport/">流媒体验证法</a>）。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">多设备同时在线</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          把手机、电脑同时连上，确认不会触发设备数限制——这一项很多人到续费后才发现。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">客服响应速度</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          试用期正好可以提一个工单看看多久回复。这是你唯一能低成本观察到的运维能力指标。
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="rule-top mt-14 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">免费试用常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="meta-text m-0 mt-4">
+      继续：<a href="/free/">免费节点的真实成本</a> ·
+      <a href="/cheap-airport/">最低价套餐对照</a> ·
+      <a href="/guides/how-to-choose/">选择标准</a>
+    </p>
+  </section>
+</Base>

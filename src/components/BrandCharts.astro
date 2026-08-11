@@ -1,0 +1,77 @@
+---
+/**
+ * 品牌三图：测速面板导出图（渠道提供）、解锁能力对照（品牌口径）、线路结构示意。
+ * 每张图必须带来源说明——图片本身也是数据，同样受数据来源政策约束。
+ */
+import type { CollectionEntry } from 'astro:content';
+import manifest from '@/lib/image-manifest.json';
+
+interface Props {
+  brand: CollectionEntry<'brands'>['data'];
+  /** 文章内使用时可只显示部分图 */
+  only?: ('speedtest' | 'unlock' | 'topology')[];
+}
+const { brand, only } = Astro.props;
+
+/** 从构建期生成的尺寸清单取真实宽高（避免 CLS）与 WebP 版本（体积约为原图的三分之一） */
+type ImgMeta = { width: number; height: number; webp?: string };
+const dims = (src: string): ImgMeta =>
+  (manifest as Record<string, ImgMeta>)[src] ?? { width: 1200, height: 800 };
+const show = (k: 'speedtest' | 'unlock' | 'topology') => !only || only.includes(k);
+
+const charts = [
+  {
+    key: 'speedtest' as const,
+    // 面板归属存疑时不展示截图——同一份导出挂了多个品牌名，展示等于发布错误数据
+    src: brand.panelDisputed ? null : brand.images.speedtest,
+    title: `${brand.name} 节点测速面板导出图`,
+    source:
+      '来源：第三方测试工具导出的公开数据，非机场决策室执行的测试。测试环境与家庭宽带差异明显，仅供了解节点分布与量级。',
+  },
+  {
+    key: 'unlock' as const,
+    src: brand.images.unlock,
+    title: `${brand.name} 流媒体与 AI 解锁能力对照`,
+    source: '来源：依据品牌公开说明整理，本站未做独立测试。实际表现随节点、地区与时间变化。',
+  },
+  {
+    key: 'topology' as const,
+    src: brand.images.topology,
+    title: `${brand.name} 线路结构示意图`,
+    source: '性质：依据品牌公开说明的线路类型绘制的架构示意图，非实际路由记录，不含性能数据。',
+  },
+].filter((c) => c.src && show(c.key));
+---
+
+{
+  charts.length > 0 && (
+    <section class="mt-12 max-w-[44rem]">
+      <h2 class="m-0 text-[1.35rem]">图表资料</h2>
+      <p class="meta-text m-0 mt-2">
+        本站不进行统一环境下的独立测速，以下图片均非本站的测试结果，每张图的来源与性质单独标注。
+        资料如何核对见<a href="/methodology/">资料核验方法</a>。
+      </p>
+      {charts.map((c) => (
+        <figure class="mt-8 m-0">
+          <picture>
+            {dims(c.src!).webp && <source srcset={dims(c.src!).webp} type="image/webp" />}
+            <img
+              src={c.src}
+              alt={c.title}
+              loading="lazy"
+              decoding="async"
+              width={dims(c.src!).width}
+              height={dims(c.src!).height}
+              class="h-auto w-full border border-line"
+            />
+          </picture>
+          <figcaption class="meta-text mt-2">
+            <strong class="text-ink">{c.title}</strong>
+            <br />
+            {c.source}
+          </figcaption>
+        </figure>
+      ))}
+    </section>
+  )
+}

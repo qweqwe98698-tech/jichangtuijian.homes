@@ -1,0 +1,68 @@
+---
+/** 客户端教程 Hub：按客户端与平台组织，串联故障排查。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+
+const tutorials = (
+  await getCollection('articles', ({ id, data }) => id.startsWith('apps/') && !data.draft)
+).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '客户端教程', href: '/apps/' },
+];
+---
+
+<Base
+  title="客户端教程：Clash、Shadowrocket 从零上手"
+  description="机场订阅买好了，客户端怎么用？Clash、Shadowrocket 等代理客户端的零基础教程：导入订阅、选节点、验证连通、排查常见错误。"
+  schemaItems={[breadcrumbSchema(crumbs)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[46rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">客户端教程</h1>
+    <p class="m-0 mt-3 text-[1.05rem] text-muted">
+      订阅只是一串链接，真正干活的是客户端。每篇教程都按「准备 → 步骤 → 验证 → 常见错误」写，
+      跟着做完就能确认自己每一步是对的。
+    </p>
+  </header>
+
+  <section class="mt-10" aria-label="教程列表">
+    <div class="grid gap-x-10 md:grid-cols-2">
+      {
+        tutorials.map((t) => (
+          <div class="border-t border-line py-5">
+            <p class="meta-text m-0">
+              {t.data.platform ?? '跨平台'} ·{' '}
+              {t.data.difficulty === 'beginner'
+                ? '零基础'
+                : t.data.difficulty === 'advanced'
+                  ? '进阶'
+                  : '入门'}
+            </p>
+            <h2 class="m-0 mt-1 text-[1.2rem]">
+              <a href={`/${t.id}/`} class="text-ink hover:text-accent">
+                {t.data.title}
+              </a>
+            </h2>
+            <p class="m-0 mt-1 text-[0.92rem] text-muted">{t.data.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="rule-top mt-12 max-w-[46rem] pt-8 pb-6" aria-label="连不上">
+    <h2 class="m-0 text-[1.2rem]">装好了但连不上？</h2>
+    <p class="m-0 mt-2 text-[0.95rem] text-muted">
+      客户端配置正确不代表一定能连通。先走一遍
+      <a href="/fix/nodes-all-timeout/">「节点全部超时」排查顺序</a>， 更多症状见<a href="/fix/"
+        >故障排查</a
+      >。想理解背后原理，从
+      <a href="/learn/protocols-explained/">协议知识</a>开始。
+    </p>
+  </section>
+</Base>

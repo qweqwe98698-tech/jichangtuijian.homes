@@ -1,0 +1,282 @@
+---
+/** 品牌档案页：数据行 + 图表 + 套餐优惠 + 风险 + 商业承接（全站唯一外部入口层）。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import VerifyStamp from '@/components/VerifyStamp.astro';
+import BrandCharts from '@/components/BrandCharts.astro';
+import BrandPanelData from '@/components/BrandPanelData.astro';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+export async function getStaticPaths() {
+  const brands = await getCollection('brands');
+  return brands.map((brand) => ({ params: { slug: brand.id }, props: { brand } }));
+}
+
+const { brand } = Astro.props;
+const b = brand.data;
+const tierLabel = { premium: '进阶档', mid: '主流档', budget: '入门档' } as const;
+const riskLabel = { low: '低', medium: '中', high: '高', unknown: '未完成核查' } as const;
+const cycleLabel = {
+  monthly: '月付',
+  quarterly: '季付',
+  yearly: '年付摊算',
+  unknown: '未标注',
+} as const;
+const externalUrl = b.affiliateUrl ?? b.officialUrl;
+
+const faq = [
+  {
+    q: `${b.name}机场怎么样？值得买吗？`,
+    a: `${b.positioning}起步套餐为${b.priceFrom ?? '待核验'}。本站已核对其入口、价格与优惠码（渠道资料），但晚高峰、流媒体与 AI 解锁未做独立测试，建议先用最短周期套餐自行验证再决定是否长期使用。`,
+  },
+  {
+    q: `${b.name}官网入口怎么找？会不会有假网站？`,
+    a: `本页的入口按渠道资料核对后提供。机场行业普遍存在仿冒站点，请勿从搜索广告位或陌生群链接进入付款页；核对域名后再操作，并把可用入口保存到本地。`,
+  },
+  {
+    q: `${b.name}有优惠码吗？`,
+    a: b.couponCode
+      ? `渠道资料提供的优惠码为 ${b.couponCode}。${b.couponNote ?? ''}优惠随时可能调整，以结算页实际显示为准。`
+      : `渠道资料中未提供固定优惠码，购买前可关注官网的活动公告。`,
+  },
+  {
+    q: `${b.name}支持哪些客户端？`,
+    a: `${b.clients.join('、')}。${b.claims.subscriptionImport ? '按品牌口径支持订阅导入第三方客户端（部分需联系在线客服获取）。' : ''}客户端配置方法见本站 Clash 与 Shadowrocket 教程。`,
+  },
+  {
+    q: `${b.name}适合买年付吗？`,
+    a: `不建议首单年付。无论品牌口碑如何，机场行业的跑路风险决定了年付折扣本质上是用风险换的；先按最短周期验证一到两个月，通过后再考虑延长。`,
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '品牌档案', href: '/brands/' },
+  { name: b.name, href: `/brands/${brand.id}/` },
+];
+---
+
+<Base
+  title={`${b.name}机场官网入口、套餐价格与优惠码档案`}
+  description={`${b.name}机场档案：${b.priceFrom ?? '套餐待核验'}起步、优惠码、线路与协议、客户端支持、解锁能力口径、风险等级与官网入口核验状态，数据来源逐条标注。`}
+  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <div class="mt-8 grid gap-10 lg:grid-cols-12">
+    <div class="lg:col-span-8" data-pagefind-body>
+      <header>
+        <p class="meta-text m-0 flex flex-wrap items-center gap-3">
+          <span>{tierLabel[b.tier]}</span>
+          {b.launchYear && <span>运营：{b.launchYear}</span>}
+          <VerifyStamp status="sourced" date={b.lastVerified ?? undefined} />
+          {
+            b.editorialPick && (
+              <a href="/airport-ranking/#picks-heading" class="stamp stamp-measured no-underline">
+                本站主推 第 {b.editorialPick.rank} 位
+              </a>
+            )
+          }
+        </p>
+
+        <h1 class="m-0 mt-2 text-[1.8rem] sm:text-[2rem]">{b.name}</h1>
+        <p class="m-0 mt-3 max-w-[42rem] text-[1.05rem]">{b.positioning}</p>
+
+        {
+          b.editorialPick && (
+            <aside class="mt-5 max-w-[44rem] border-l-[3px] border-accent bg-surface p-4">
+              <p class="meta-text m-0 tracking-widest">为什么把它放进主推位</p>
+              <p class="m-0 mt-1.5 text-[0.95rem]">{b.editorialPick.reason}</p>
+              <p class="m-0 mt-2 text-[0.92rem] text-muted">
+                <strong class="text-ink">保留意见：</strong>
+                {b.editorialPick.caveat}
+              </p>
+              <p class="meta-text m-0 mt-2">
+                主推位是含商业合作的编辑选择，与<a href="/airport-ranking/">按维度计算的榜单</a>
+                相互独立；本页的数据行与风险等级不受主推位影响。
+              </p>
+            </aside>
+          )
+        }
+      </header>
+
+      {/* 套餐与优惠：商业信息前置 */}
+      <section class="mt-8 max-w-[44rem] border border-line bg-surface p-5">
+        <div class="flex flex-wrap items-baseline gap-x-8 gap-y-3">
+          <div>
+            <p class="meta-text m-0 tracking-widest">起步套餐</p>
+            <p class="m-0 font-display text-[1.3rem]">{b.priceFrom ?? '待核验'}</p>
+            <p class="meta-text m-0">
+              {cycleLabel[b.billingCycle]}
+              {b.pricePerGb && ` · 约 ${b.pricePerGb.toFixed(3)} 元/GB`}
+            </p>
+          </div>
+          {
+            b.couponCode && (
+              <div>
+                <p class="meta-text m-0 tracking-widest">优惠码</p>
+                <p class="m-0 font-display text-[1.3rem] text-amber">{b.couponCode}</p>
+                <p class="meta-text m-0">{b.couponNote}</p>
+              </div>
+            )
+          }
+        </div>
+        <p class="meta-text m-0 mt-4 border-t border-line pt-3">
+          价格与优惠为渠道资料口径（核对于 {
+            b.lastVerified
+          }），品牌方可随时调整，付款前请以官网结算页为准。
+        </p>
+      </section>
+
+      {
+        b.highlights.length > 0 && (
+          <section class="mt-10 max-w-[44rem]">
+            <h2 class="m-0 text-[1.35rem]">品牌主打卖点（宣传口径）</h2>
+            <ul class="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+              {b.highlights.map((h) => (
+                <li class="text-[0.95rem]">{h}</li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      <section class="mt-10 max-w-[44rem]">
+        <h2 class="m-0 text-[1.35rem]">背景</h2>
+        <p class="m-0 mt-2 text-[0.97rem] text-muted">{b.background}</p>
+      </section>
+
+      <section class="mt-10 max-w-[44rem]">
+        <h2 class="m-0 mb-3 text-[1.35rem]">数据行</h2>
+        <dl class="data-rows">
+          {
+            b.facts.map((f) => (
+              <div class="data-row">
+                <dt>{f.label}</dt>
+                <dd class="flex flex-wrap items-baseline gap-2">
+                  <span>{f.value}</span>
+                  <VerifyStamp status={f.status} />
+                  {f.note && <span class="meta-text">{f.note}</span>}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+        <p class="meta-text m-0 mt-3">
+          三种来源标记的含义见<a href="/data-sources/">数据来源政策</a>，核验流程见<a
+            href="/methodology/">资料核验方法</a
+          >：「第三方公开数据」有真实测量但非本站执行，「官方与渠道资料」为品牌公开说明，「暂无统一测试数据」表示该项没有可引用来源，本站不做统一环境下的独立测速。
+        </p>
+      </section>
+
+      <BrandPanelData brand={b} />
+
+      <BrandCharts brand={b} />
+
+      <section class="mt-12 grid max-w-[44rem] gap-8 sm:grid-cols-2">
+        <div>
+          <h2 class="m-0 text-[1.15rem]">优势</h2>
+          <ul class="mt-3 list-none space-y-2 p-0 text-[0.94rem]">
+            {b.strengths.map((s) => <li class="border-l-[3px] border-accent pl-3">{s}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h2 class="m-0 text-[1.15rem]">局限与保留意见</h2>
+          <ul class="mt-3 list-none space-y-2 p-0 text-[0.94rem]">
+            {b.limitations.map((s) => <li class="border-l-[3px] border-amber pl-3">{s}</li>)}
+          </ul>
+        </div>
+      </section>
+
+      <section class="mt-10 grid max-w-[44rem] gap-8 sm:grid-cols-2">
+        <div>
+          <h2 class="m-0 text-[1.15rem]">适合谁</h2>
+          <ul class="mt-3 list-disc pl-5 text-[0.94rem]">
+            {b.suitableFor.map((s) => <li>{s}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h2 class="m-0 text-[1.15rem]">不适合谁</h2>
+          <ul class="mt-3 list-disc pl-5 text-[0.94rem]">
+            {b.notSuitableFor.map((s) => <li>{s}</li>)}
+          </ul>
+        </div>
+      </section>
+
+      <section class="mt-10 max-w-[44rem] border border-line bg-surface p-5">
+        <h2 class="m-0 text-[1.15rem]">风险等级：{riskLabel[b.riskLevel]}</h2>
+        <p class="m-0 mt-2 text-[0.93rem] text-muted">
+          本站尚未对该品牌完成独立的运营状态核查，「未完成核查」不代表存在问题，也不构成安全担保。
+          购买策略建议照旧：先按最短周期试用，账户内不留余额，付款前对照
+          <a href="/risk/exit-scam-signals/">跑路信号清单</a>做一次核对。
+        </p>
+      </section>
+
+      <section class="mt-10 max-w-[44rem]">
+        <h2 class="m-0 text-[1.15rem]">套餐与官方入口</h2>
+        <p class="m-0 mt-2 text-[0.95rem] text-muted">{b.pricingNote}</p>
+        <p class="m-0 mt-4">
+          {
+            externalUrl ? (
+              <a
+                href={externalUrl}
+                class="btn-outline"
+                rel="nofollow sponsored noopener"
+                target="_blank"
+              >
+                前往 {b.name} 官网（外部链接，含推广）
+              </a>
+            ) : (
+              <span class="stamp stamp-pending">官方入口核验中，暂不提供外链</span>
+            )
+          }
+        </p>
+        <p class="meta-text m-0 mt-3">
+          谨防仿冒站点：请勿从搜索广告位或陌生群链接进入付款页，核对域名后再操作。
+        </p>
+      </section>
+
+      <section class="rule-top mt-14 max-w-[44rem] pt-8">
+        <h2 class="m-0 mb-5 text-[1.35rem]">关于{b.name}的常见问题</h2>
+        <dl class="m-0">
+          {
+            faq.map((f) => (
+              <div class="mb-5">
+                <dt class="font-display text-[1.05rem]">{f.q}</dt>
+                <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+    </div>
+
+    <aside class="lg:col-span-4">
+      <div class="flex flex-col gap-5 lg:sticky lg:top-6">
+        {
+          b.reviewSlug && (
+            <div class="border border-line p-4">
+              <p class="meta-text m-0 tracking-widest">深度阅读</p>
+              <p class="m-0 mt-2 text-[0.95rem]">
+                <a href={`/${b.reviewSlug}/`}>阅读 {b.name} 完整评测 →</a>
+              </p>
+            </div>
+          )
+        }
+        <div class="border border-line p-4">
+          <p class="meta-text m-0 tracking-widest">交叉验证</p>
+          <ul class="m-0 mt-2 list-none p-0 text-[0.92rem] leading-loose">
+            <li><a href="/airport-ranking/">在排行榜中横向比较</a></li>
+            <li><a href="/brand-library/">在品牌库中筛选同档</a></li>
+            <li><a href="/guides/stability-signals/">用稳定性清单自查</a></li>
+            <li><a href="/risk/exit-scam-signals/">核对跑路风险信号</a></li>
+          </ul>
+        </div>
+        <p class="meta-text m-0">
+          本页含推广合作入口，合作不改变数据与结论，见<a href="/disclaimer/">免责声明</a>。
+        </p>
+      </div>
+    </aside>
+  </div>
+</Base>

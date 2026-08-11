@@ -1,0 +1,441 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import ArticleRow from '@/components/ArticleRow.astro';
+import EditorialPicks from '@/components/EditorialPicks.astro';
+import VerifyStamp from '@/components/VerifyStamp.astro';
+import { SITE } from '@/lib/site';
+import { faqSchema } from '@/lib/schema';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft)).sort(
+  (a, b) =>
+    (b.data.updatedDate ?? b.data.pubDate).valueOf() -
+    (a.data.updatedDate ?? a.data.pubDate).valueOf(),
+);
+const brands = (await getCollection('brands'))
+  .filter((b) => b.data.priceFrom !== null)
+  .sort((a, b) => (a.data.pricePerGb ?? 99) - (b.data.pricePerGb ?? 99));
+
+// 决策路径（IA §3 模块 1）：任务 → 判断标准一句话 → 入口
+const paths = [
+  {
+    task: '我是新手，完全不知道怎么选',
+    criterion: '先弄清三件事：你的场景、你的预算档位、你能接受的风险。',
+    href: '/guides/how-to-choose/',
+    label: '机场选择完整指南',
+  },
+  {
+    task: '我想直接看排名和名单',
+    criterion: '排名只在写明排序依据时才有意义，本站给三份可复算的榜。',
+    href: '/airport-ranking/',
+    label: '2026 机场排行榜',
+  },
+  {
+    task: '我要稳定，不想晚高峰卡顿',
+    criterion: '稳定不是宣传词，是可以逐项核验的 7 个指标。',
+    href: '/guides/stability-signals/',
+    label: '稳定性核验清单',
+  },
+  {
+    task: '我预算有限，想要便宜但不想踩坑',
+    criterion: '低价方案的问题不是慢，是你要学会识别哪些代价能接受。',
+    href: '/cheap-airport/',
+    label: '便宜机场价格对照',
+  },
+  {
+    task: '我主要用 ChatGPT / Claude 等 AI 工具',
+    criterion: 'AI 场景看三点：IP 质量、落地区域、风控触发率。',
+    href: '/chatgpt-airport/',
+    label: 'AI 机场名单与自测法',
+  },
+  {
+    task: '我怕跑路，想先看风险',
+    criterion: '跑路很少毫无征兆，多数信号提前数周就能观察到。',
+    href: '/risk/exit-scam-signals/',
+    label: '跑路信号清单',
+  },
+];
+
+const featured = articles
+  .filter((a) => ['review', 'comparison', 'recommendation'].includes(a.data.contentType))
+  .slice(0, 5);
+
+const scenarios = [
+  { href: '/chatgpt-airport/', t: 'ChatGPT / AI 机场', d: 'IP 质量与会话稳定优先，带宽是次要项' },
+  { href: '/streaming-airport/', t: '流媒体解锁机场', d: '原生 IP 与晚高峰不掉速决定观感' },
+  { href: '/cheap-airport/', t: '便宜机场', d: '7–20 元档价格对照与三条风控底线' },
+  { href: '/iepl-airport/', t: 'IEPL 专线机场', d: '晚高峰确定性，附三种验证专线真伪的方法' },
+  { href: '/clash-airport/', t: 'Clash 机场', d: '订阅格式、协议兼容与第三方客户端支持' },
+  {
+    href: '/shadowrocket-airport/',
+    t: 'iPhone / 小火箭机场',
+    d: '外区账号门槛与自研客户端替代方案',
+  },
+  { href: '/v2rayn-airport/', t: 'v2rayN / Windows 机场', d: 'VLESS 协议支持与 TUN 模式排查' },
+  {
+    href: '/pay-as-you-go-airport/',
+    t: '按量计费 / 不限时',
+    d: '灵活性的定价，与它真实的风险结构',
+  },
+  { href: '/free-trial-airport/', t: '免费试用机场', d: '试用该测什么，以及更可靠的替代验证法' },
+];
+
+const stuckPoints = [
+  {
+    q: '不会选',
+    desc: '还没确定要哪一类方案',
+    links: [
+      { href: '/guides/', label: '开始选择' },
+      { href: '/learn/iplc-vs-iepl/', label: '先搞懂专线是什么' },
+    ],
+  },
+  {
+    q: '不会用',
+    desc: '买好了订阅但客户端没跑起来',
+    links: [
+      { href: '/apps/clash-guide/', label: 'Clash 从零上手' },
+      { href: '/apps/shadowrocket-guide/', label: 'Shadowrocket 教程' },
+    ],
+  },
+  {
+    q: '连不上',
+    desc: '之前能用，现在全部超时',
+    links: [
+      { href: '/fix/nodes-all-timeout/', label: '节点全部超时排查' },
+      { href: '/fix/', label: '更多故障排查' },
+    ],
+  },
+];
+
+const faq = [
+  {
+    q: '2026 年机场应该怎么选？',
+    a: '回答三个问题就能过滤掉九成候选：你的核心场景是什么（决定线路与 IP 要求）、你在哪个预算档（决定候选池）、你的风险底线在哪（决定付费方式）。剩下的候选再用七项硬指标逐一核验，方法见本站的机场选择完整指南。',
+  },
+  {
+    q: '稳定机场推荐应该看哪些指标？',
+    a: '看晚高峰中位速度、丢包率、线路构成是否公开、故障公告的历史记录、节点冗余度、超售的间接证据、运营时长与口碑样本共七项。其中权重最高的是晚高峰（20:30–22:30）连续七天的中位数，只测一次没有参考价值。',
+  },
+  {
+    q: '便宜机场和专线机场有什么区别？',
+    a: '差别在数据出境走哪条路。便宜机场多为公网直连或中转，晚高峰随国际出口一起拥塞；IEPL/IPLC 专线不经公网出口，晚高峰波动小。专线买的是确定性而非速度上限，白天使用为主的人为它付费属于错配。',
+  },
+  {
+    q: '新手第一次购买机场应该注意什么？',
+    a: '三条：只买最短周期（首单绝不年付）、账户里不留余额、核对官网入口不要从广告位进入付款页。先用一个月验证晚高峰与你真正在意的场景，通过了再谈续费。',
+  },
+  {
+    q: 'Clash、Shadowrocket 和 v2rayN 用户选机场有区别吗？',
+    a: '选机场的标准没有区别，区别在订阅格式与客户端获取方式。确认机场提供对应格式的订阅链接、协议被客户端支持、且允许导入第三方客户端即可。iPhone 用户额外要考虑 Shadowrocket 需要外区 Apple ID，这时提供自研客户端的机场更省事。',
+  },
+  {
+    q: 'ChatGPT 和 Netflix 用户选机场的标准一样吗？',
+    a: '不一样，甚至相反。流媒体看 IP 归属区域，AI 看 IP 是否被判定为滥用来源。一家机场可以 Netflix 全区解锁但 ChatGPT 频繁触发验证。两个场景都要的话，需要确认机场对两项都作了明确支持。',
+  },
+  {
+    q: '机场买月付还是年付？',
+    a: '月付。年付折扣换算下来通常只省两三个月的钱，你却要承担十二个月的跑路敞口。只有当一家机场通过了至少三个月的月付观察、且折扣确实可观时，年付才勉强进入可考虑范围。',
+  },
+  {
+    q: '如何判断一个机场是否靠谱？',
+    a: '看四个可观察项：是否提供月付通道、线路构成是否公开写明、公告频道是否有真实的故障与恢复记录、以及促销力度是否反常。只卖年付、拒绝写线路构成、公告栏常年零故障、突然推出超长周期骨折价，任意两项同时出现就该提高警惕。',
+  },
+  {
+    q: '本站的机场推荐榜单是如何排序的？',
+    a: '只用可核验、可复算的维度排序：每 GB 单价、起步门槛、宣称能力覆盖数量。速度与稳定性需要固定网络、固定时段与足量样本才有意义，本站不做这类测试，因此性能不参与排名——用没有来源的数字排出的综合第一没有意义。',
+  },
+  {
+    q: '网站多久更新一次机场信息？',
+    a: '价格与优惠码随品牌调整同步更新；引用的第三方公开数据定期复核、过期即撤下；风险状态每月核查。品牌出现重大风险信号时不受周期限制，确认后 48 小时内更新。',
+  },
+];
+---
+
+<Base
+  title="2026 机场推荐与稳定机场排行榜｜机场决策室"
+  description="2026 机场推荐：16 家在库机场的价格、线路与解锁能力对照，稳定机场、便宜机场、专线机场与 ChatGPT 机场分场景名单，排序依据与数据来源全部公开。先讲标准，再谈推荐。"
+  schemaItems={[faqSchema(faq)]}
+  bareTitle
+>
+  {/* 模块 1：决策引导索引（开版，非 Hero） */}
+  <section class="grid gap-10 pt-10 lg:grid-cols-12" aria-label="决策引导">
+    <div class="lg:col-span-8">
+      <h1 class="m-0 max-w-[26ch] text-[1.8rem] leading-snug sm:text-[2.3rem]">
+        2026 机场推荐与稳定机场排行榜
+      </h1>
+      <p class="m-0 mt-4 max-w-[38rem] text-[1.1rem] text-muted">
+        这里不先给你一份榜单。我们把选择标准、场景差异和风险信号摆在推荐前面——
+        每个数字都标清是谁测的：本站测的标「本站的测试」，第三方工具测的标「第三方实测」，
+        品牌方自己说的标「官方与渠道资料」，没有数据的老实标「暂无统一测试数据」。
+      </p>
+
+      <h2 class="mt-10 mb-2 text-[1rem] tracking-widest text-muted">从你的处境开始</h2>
+      <ol class="path-index">
+        {
+          paths.map((p) => (
+            <li>
+              <p class="m-0 font-display text-[1.08rem]">{p.task}</p>
+              <p class="m-0 mt-1 text-[0.92rem] text-muted">{p.criterion}</p>
+              <p class="m-0 mt-1.5">
+                <a href={p.href} class="text-[0.95rem]">
+                  {p.label} →
+                </a>
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    {/* 研究室日志 */}
+    <aside class="lg:col-span-4">
+      <div class="border border-line bg-surface p-5">
+        <h2 class="m-0 text-[0.95rem] tracking-widest text-muted">研究室日志</h2>
+        <ul class="m-0 mt-4 list-none p-0">
+          {
+            articles.slice(0, 6).map((a) => (
+              <li class="border-b border-line py-3 last:border-b-0">
+                <p class="meta-text m-0">
+                  {(a.data.updatedDate ?? a.data.pubDate).toISOString().slice(0, 10)}
+                </p>
+                <a
+                  href={`/${a.id}/`}
+                  class="text-[0.92rem] leading-snug text-ink hover:text-accent"
+                >
+                  {a.data.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="m-0 mt-4"><a href="/rss.xml" class="meta-text">RSS 订阅更新 →</a></p>
+      </div>
+    </aside>
+  </section>
+
+  {/* 模块 2：编辑主推位（含商业因素，与计算型榜单分开） */}
+  <EditorialPicks />
+
+  {/* 模块 3：在库品牌速览 */}
+  <section class="rule-top mt-16 pt-10" aria-labelledby="brands-heading">
+    <div class="flex flex-wrap items-baseline justify-between gap-4">
+      <h2 id="brands-heading" class="m-0 text-[1.5rem]">
+        在库机场速览：{brands.length} 家价格对照
+      </h2>
+      <p class="m-0 flex gap-4">
+        <a href="/brand-library/" class="meta-text">完整品牌库 →</a>
+        <a href="/airport-ranking/" class="meta-text">排行榜 →</a>
+      </p>
+    </div>
+    <p class="m-0 mt-3 max-w-[46rem] text-[0.95rem] text-muted">
+      按每 GB 单价升序排列的前八家。价格与优惠码为渠道资料口径（核对于 2026-08-11），
+      解锁能力为品牌宣称、本站未做独立测试。收录不等于推荐。
+    </p>
+    <div class="table-scroll mt-6">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">机场</th>
+            <th scope="col">起步套餐</th>
+            <th scope="col">每 GB</th>
+            <th scope="col">线路口径</th>
+            <th scope="col">优惠码</th>
+            <th scope="col">档案</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            brands.slice(0, 8).map((b) => (
+              <tr>
+                <th scope="row" class="whitespace-nowrap">
+                  <a href={`/brands/${b.id}/`}>{b.data.name}</a>
+                </th>
+                <td class="whitespace-nowrap">{b.data.priceFrom}</td>
+                <td class="whitespace-nowrap">{b.data.pricePerGb?.toFixed(3)} 元</td>
+                <td>{b.data.lineTypes.join(' / ').replace(/（品牌口径）/g, '')}</td>
+                <td class="whitespace-nowrap font-display text-amber">
+                  {b.data.couponCode ?? '—'}
+                </td>
+                <td class="whitespace-nowrap">
+                  <a href={`/brands/${b.id}/`}>详情 →</a>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {/* 模块 3：按场景直达 */}
+  <section class="rule-top mt-16 pt-10" aria-labelledby="scenario-heading">
+    <h2 id="scenario-heading" class="m-0 text-[1.5rem]">按使用场景直达名单</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      「哪个机场最好」没有答案，「哪个机场适合我的场景」才有。每个专题都写明入选条件与盲区。
+    </p>
+    <div class="mt-6 grid gap-x-10 gap-y-1 md:grid-cols-2 lg:grid-cols-3">
+      {
+        scenarios.map((s) => (
+          <div class="border-t border-line py-4">
+            <h3 class="m-0 font-display text-[1.08rem]">
+              <a href={s.href} class="text-ink hover:text-accent">
+                {s.t}
+              </a>
+            </h3>
+            <p class="m-0 mt-1 text-[0.9rem] text-muted">{s.d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* 模块 4：三步选择法 */}
+  <section class="rule-top mt-16 pt-10" aria-labelledby="method-heading">
+    <h2 id="method-heading" class="m-0 text-[1.5rem]">三步选择法</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-3">
+      {
+        [
+          {
+            n: '一',
+            t: '定场景',
+            d: '刷网页、看 Netflix、跑 AI 工具、打游戏——不同场景对线路和 IP 的要求完全不同，混着谈就会选错。',
+          },
+          {
+            n: '二',
+            t: '核标准',
+            d: '把候选放进统一的核验清单：线路类型、协议、晚高峰表现、解锁能力、套餐弹性，逐项打勾而不是看宣传。',
+          },
+          {
+            n: '三',
+            t: '查风险',
+            d: '最后倒着问一遍：它有跑路信号吗？长周期套餐值得押注吗？付款方式留了退路吗？',
+          },
+        ].map((s) => (
+          <div class="border-t-[3px] border-accent pt-4">
+            <h3 class="m-0 font-display text-[1.1rem]">
+              第{s.n}步 · {s.t}
+            </h3>
+            <p class="m-0 mt-2 text-[0.94rem] text-muted">{s.d}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="m-0 mt-6">
+      <a href="/guides/how-to-choose/" class="btn-outline">阅读完整选择指南</a>
+    </p>
+  </section>
+
+  {/* 模块 5：本期重点 */}
+  <section class="rule-top mt-16 pt-10" aria-labelledby="featured-heading">
+    <div class="flex items-baseline justify-between gap-4">
+      <h2 id="featured-heading" class="m-0 text-[1.5rem]">本期重点：评测与比较</h2>
+      <a href="/reviews/" class="meta-text shrink-0">全部评测 →</a>
+    </div>
+    <div class="mt-2">
+      {featured.map((a) => <ArticleRow article={a} showSection />)}
+    </div>
+  </section>
+
+  {/* 模块 6：你现在卡在哪一步 */}
+  <section class="rule-top mt-16 pt-10" aria-labelledby="stuck-heading">
+    <h2 id="stuck-heading" class="m-0 text-[1.5rem]">你现在卡在哪一步？</h2>
+    <div class="mt-6 grid gap-8 md:grid-cols-3">
+      {
+        stuckPoints.map((s) => (
+          <div>
+            <h3 class="m-0 font-display text-[1.15rem]">「{s.q}」</h3>
+            <p class="meta-text m-0 mt-1">{s.desc}</p>
+            <ul class="m-0 mt-3 list-none p-0 text-[0.94rem] leading-loose">
+              {s.links.map((l) => (
+                <li>
+                  <a href={l.href}>{l.label} →</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* 模块 7：风险牌摘要 */}
+  <section class="rule-top mt-16 pt-10" aria-labelledby="risk-heading">
+    <div class="flex items-baseline justify-between gap-4">
+      <h2 id="risk-heading" class="m-0 text-[1.5rem]">风险观察板</h2>
+      <a href="/risk/" class="meta-text shrink-0">进入风险观察 →</a>
+    </div>
+    <p class="m-0 mt-3 max-w-[42rem] text-[0.95rem] text-muted">
+      在库品牌的运营状态核查记录。「待验证」表示本站尚未完成独立核查，不代表存在问题，也不构成安全担保。
+      任何品牌都建议按最短周期购买。
+    </p>
+    <dl class="data-rows mt-5 max-w-[46rem]">
+      {
+        brands.slice(0, 6).map((b) => (
+          <div class="data-row">
+            <dt>{b.data.name}</dt>
+            <dd class="flex flex-wrap items-center gap-3">
+              <span>风险核查：未完成</span>
+              <VerifyStamp status="sourced" date={b.data.lastVerified ?? undefined} />
+              <a href={`/brands/${b.id}/`} class="meta-text">
+                档案 →
+              </a>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  {/* 模块 8：首页 FAQ（GEO） */}
+  <section class="rule-top mt-16 pt-10" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">选机场最常问的 10 个问题</h2>
+    <dl class="m-0 mt-6 max-w-[48rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  {/* 模块 9：本站怎么工作 */}
+  <section class="rule-top mt-16 pt-10 pb-4" aria-labelledby="how-heading">
+    <h2 id="how-heading" class="m-0 text-[1.5rem]">这个研究室怎么工作</h2>
+    <div class="mt-5 grid gap-6 md:grid-cols-3">
+      {
+        [
+          {
+            href: '/editorial-policy/',
+            t: '编辑政策',
+            d: '商业关系影响什么、不影响什么，两张清单摆在明处。',
+          },
+          {
+            href: '/methodology/',
+            t: '资料核验方法',
+            d: '怎么核对官方信息、怎么整理套餐与线路资料，全部公开。',
+          },
+          {
+            href: '/data-sources/',
+            t: '数据来源',
+            d: '第三方公开数据、官方与渠道资料、暂无统一测试数据三级标注，绝不混为一谈。',
+          },
+        ].map((x) => (
+          <p class="m-0 text-[0.94rem] text-muted">
+            <a href={x.href} class="font-display text-[1.02rem]">
+              {x.t}
+            </a>
+            <br />
+            {x.d}
+          </p>
+        ))
+      }
+    </div>
+    <p class="meta-text m-0 mt-6 max-w-[46rem]">
+      {SITE.name}（{SITE.domain}）的品牌入口含推广合作，合作不改变数据记录与风险提示，详见
+      <a href="/disclaimer/">免责声明</a>。
+    </p>
+  </section>
+</Base>

@@ -1,0 +1,147 @@
+---
+/** P3 客户端专题：Clash 机场推荐（订阅兼容 + 名单）。教程页为 /apps/clash-guide/，此页承接商业意图。 */
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BrandPickList from '@/components/BrandPickList.astro';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const reasons: Record<string, string> = {
+  'lingmao-net':
+    '月付 19 元 150GB，单价全库最低且不用年付锁定，适合刚配好 Clash、想先跑一个月看看的人。',
+  'yifan-yun': '20 元 150GB，流量宽裕，规则模式下国内直连不占额度，实际可用时间更长。',
+  'guangsu-yun': '17 元 110GB，自研客户端与订阅导入双通道，桌面用 Clash、手机用自研端的组合很顺。',
+  'feimao-yun': '7 元小包，适合作为 Clash 里的备用订阅——主力挂了随时切换，成本极低。',
+  'guangnian-ti': '18 元 110GB，VLESS 协议对 mihomo 内核客户端友好，配置省心。',
+  'weitu-yun': '三网优化入口，对 Clash 用户常遇到的「入口线路差导致全局慢」有针对性。',
+};
+
+const faq = [
+  {
+    q: 'Clash 机场推荐应该怎么选？',
+    a: '先确认三件事：是否提供 Clash 格式订阅链接、协议是否被 mihomo 内核支持（VLESS、Trojan、Hysteria2 都没问题）、以及是否允许订阅导入第三方客户端。三项都满足后，再按你的场景和预算挑，方法与普通选机场没有区别。',
+  },
+  {
+    q: '什么机场支持 Clash？订阅格式不兼容怎么办？',
+    a: '本站在库品牌均按其口径支持订阅导入（部分需联系在线客服获取 Clash 专用链接）。如果拿到的链接导入后没有节点，多半是订阅格式不对，向客服索取 Clash / mihomo 专用订阅即可，不要自行用来路不明的在线转换工具。',
+  },
+  {
+    q: 'Clash Verge、Clash Meta、mihomo 有什么关系？',
+    a: '原版 Clash 已停更，现在的生态由 mihomo（原 Clash Meta）内核延续，Clash Verge Rev、mihomo party 等都是基于它的客户端。选机场时你只需要关心「有没有 Clash 格式订阅」，客户端换来换去订阅是通用的。',
+  },
+  {
+    q: '同一个订阅可以在电脑和手机同时用吗？',
+    a: '技术上可以，但要注意套餐的在线设备数限制。超过限制可能被临时拒绝连接。多设备用户在选套餐时应把设备数当作硬指标看，而不是只看流量。',
+  },
+  {
+    q: 'Clash 装好了但节点全红，是机场的问题吗？',
+    a: '不一定。按概率排序应该先查订阅状态与是否需要刷新，再查本地网络，最后才怀疑客户端。完整排查顺序见本站的节点超时排查页，九成问题在前三步解决。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: 'Clash 机场推荐', href: '/clash-airport/' },
+];
+---
+
+<Base
+  title="Clash 机场推荐：支持 Clash 订阅的机场与选法"
+  description="Clash 机场推荐：支持 Clash / mihomo 订阅导入的在库机场名单、价格与优惠码对照，说明订阅格式怎么要、协议兼容性怎么看，以及节点全红时该查什么。"
+  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[48rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">Clash 机场推荐</h1>
+    <div class="verdict">
+      <p class="verdict-label m-0">先说结论</p>
+      <p class="m-0 text-[1.02rem]">
+        「Clash 机场」不是一个特殊品类。<strong>绝大多数机场都提供 Clash 格式订阅</strong>，
+        所以真正要确认的只有三点：有没有 Clash 专用订阅链接、协议是否被 mihomo 内核支持、
+        允不允许导入第三方客户端。这三项过关之后，选机场的标准就回到普通标准了。
+      </p>
+    </div>
+    <p class="m-0 mt-4 text-[0.98rem] text-muted">
+      还没配好客户端？先看 <a href="/apps/clash-guide/">Clash 使用教程</a>（装、导、选、验四步）；
+      这一页负责「订阅从哪来」。
+    </p>
+  </header>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="check-heading">
+    <h2 id="check-heading" class="m-0 text-[1.5rem]">买之前先核对的三项兼容性</h2>
+    <div class="table-scroll mt-6 max-w-[48rem]">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">要确认的</th>
+            <th scope="col">怎么确认</th>
+            <th scope="col">不满足的后果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Clash 格式订阅</td>
+            <td>用户中心是否有「Clash / mihomo 订阅」入口，或客服能否提供</td>
+            <td>导入后节点列表为空</td>
+          </tr>
+          <tr>
+            <td>协议兼容</td>
+            <td>看节点协议：VLESS、Trojan、Shadowsocks、Hysteria2 均受支持</td>
+            <td>部分节点无法启动或报配置错误</td>
+          </tr>
+          <tr>
+            <td>允许第三方客户端</td>
+            <td>确认是否强制使用自研客户端</td>
+            <td>只能用官方端，Clash 规则与分流配置无法复用</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="m-0 mt-4 max-w-[46rem] text-[0.95rem] text-muted">
+      在库品牌均按其口径支持订阅导入，其中多数同时提供自研客户端——两条路都开着， 桌面端用
+      Clash、移动端用自研客户端是常见组合。协议差异见
+      <a href="/learn/protocols-explained/">协议知识</a>。
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="list-heading">
+    <h2 id="list-heading" class="m-0 text-[1.5rem]">适合 Clash 用户的在库机场</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      Clash 的规则模式会让国内流量直连、不消耗额度，因此实际可用时间通常比标称流量更长——
+      这也是下面按流量与单价挑选的原因。
+    </p>
+    <div class="mt-6">
+      <BrandPickList
+        slugs={[
+          'lingmao-net',
+          'yifan-yun',
+          'guangsu-yun',
+          'guangnian-ti',
+          'weitu-yun',
+          'feimao-yun',
+        ]}
+        reasons={reasons}
+        limit={6}
+      />
+    </div>
+  </section>
+
+  <section class="rule-top mt-14 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">Clash 机场常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="meta-text m-0 mt-4">
+      继续：<a href="/apps/clash-guide/">Clash 使用教程</a> ·
+      <a href="/fix/nodes-all-timeout/">节点全红排查</a> ·
+      <a href="/shadowrocket-airport/">iPhone 用户看这里</a>
+    </p>
+  </section>
+</Base>

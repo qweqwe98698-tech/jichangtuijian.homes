@@ -1,0 +1,44 @@
+---
+/** 信任页 / 说明页通用布局：窄栏文档页（非文章，不带 Article Schema）。 */
+import Base from './Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { breadcrumbSchema, webPageSchema, type Crumb } from '@/lib/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  crumbName?: string;
+  noindex?: boolean;
+  /** 页面语义类型：关于页用 AboutPage、联系页用 ContactPage，其余默认 WebPage */
+  pageType?: 'WebPage' | 'AboutPage' | 'ContactPage' | 'CollectionPage';
+}
+const {
+  title,
+  description,
+  crumbName = title,
+  noindex = false,
+  pageType = 'WebPage',
+} = Astro.props;
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: crumbName, href: Astro.url.pathname },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({ type: pageType, name: title, description, path: Astro.url.pathname }),
+  ]}
+  noindex={noindex}
+>
+  <div class="pt-6">
+    <Breadcrumbs crumbs={crumbs} />
+  </div>
+  <div class="prose-jc mt-8 pb-8">
+    <h1 class="m-0 text-[1.7rem] sm:text-[2rem]">{title}</h1>
+    <slot />
+  </div>
+</Base>

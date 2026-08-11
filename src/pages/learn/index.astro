@@ -1,0 +1,105 @@
+---
+/** 知识库 Hub：概念地图式组织（线路 / 协议 / IP 与解锁），不是文章流。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+
+const entries = await getCollection(
+  'articles',
+  ({ id, data }) => id.startsWith('learn/') && !data.draft,
+);
+const find = (slug: string) => entries.find((e) => e.id === `learn/${slug}`);
+
+const topics = [
+  {
+    group: '线路与专线',
+    intro: '决定晚高峰体验的最大变量。',
+    items: [{ slug: 'iplc-vs-iepl', fallback: 'IPLC / IEPL / 中转 / 直连' }],
+    planned: ['CN2 与三网优化详解'],
+  },
+  {
+    group: '协议与形态',
+    intro: '决定连接方式、抗干扰能力，以及机场到底是什么。',
+    items: [
+      { slug: 'protocols-explained', fallback: 'SS / Trojan / VMess / VLESS / Hysteria2' },
+      { slug: 'airport-vs-vpn', fallback: '机场与 VPN 的区别' },
+    ],
+    planned: ['各协议单篇详解'],
+  },
+  {
+    group: 'IP、流量与解锁',
+    intro: '决定流媒体与 AI 能不能用，以及你的流量够不够。',
+    items: [
+      { slug: 'native-ip', fallback: '原生 IP / 住宅 IP / 数据中心 IP' },
+      { slug: 'traffic-multiplier', fallback: '流量倍率与 100GB 够不够' },
+      { slug: 'streaming-unlock-explained', fallback: '流媒体解锁原理' },
+    ],
+    planned: [],
+  },
+  {
+    group: '平台与服务',
+    intro: '同样连上了，为什么这个能开那个不能。',
+    items: [
+      { slug: 'netflix-region-library', fallback: 'Netflix 各区片库与地区选择' },
+      { slug: 'google-services-guide', fallback: 'Google 全家桶的网络要求差异' },
+    ],
+    planned: ['AI 服务的 IP 风控'],
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '知识库', href: '/learn/' },
+];
+---
+
+<Base
+  title="代理知识库：线路、协议与 IP 一次讲清"
+  description="IPLC 是什么？VLESS 和 VMess 有什么区别？知识库把机场宣传里的技术名词逐个拆解，让你看懂宣传话术背后的真实含义。"
+  schemaItems={[breadcrumbSchema(crumbs)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[46rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">知识库</h1>
+    <p class="m-0 mt-3 text-[1.05rem] text-muted">
+      机场宣传页上的每个技术名词，都是一次「你看不懂就只能信」的信息差。
+      知识库按四条主线拆解这些名词——读懂之后，宣传话术对你就失效了。
+    </p>
+  </header>
+
+  <section class="mt-10 grid gap-x-10 gap-y-2 md:grid-cols-2" aria-label="知识主线">
+    {
+      topics.map((t) => (
+        <div class="border-t-[3px] border-accent pt-4 pb-6">
+          <h2 class="m-0 font-display text-[1.15rem]">{t.group}</h2>
+          <p class="meta-text m-0 mt-1">{t.intro}</p>
+          <ul class="m-0 mt-4 list-none p-0 text-[0.94rem] leading-relaxed">
+            {t.items.map((item) => {
+              const e = find(item.slug);
+              return e ? (
+                <li class="mb-3">
+                  <a href={`/${e.id}/`}>{e.data.title}</a>
+                  <p class="m-0 mt-0.5 text-[0.85rem] text-muted">{e.data.description}</p>
+                </li>
+              ) : null;
+            })}
+            {t.planned.map((p) => (
+              <li class="mb-1.5 text-muted">{p}（整理中）</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+
+  <section class="rule-top mt-8 max-w-[46rem] pt-8 pb-6" aria-label="学以致用">
+    <h2 class="m-0 text-[1.2rem]">知识是为决策服务的</h2>
+    <p class="m-0 mt-2 text-[0.95rem] text-muted">
+      看懂概念之后，回到<a href="/guides/how-to-choose/">选择标准</a>把知识用起来； 动手配置见<a
+        href="/apps/">客户端教程</a
+      >；遇到问题查<a href="/fix/">故障排查</a>。
+    </p>
+  </section>
+</Base>

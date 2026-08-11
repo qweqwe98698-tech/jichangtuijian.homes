@@ -1,0 +1,73 @@
+{
+  "brand": "kuaili",
+  "source": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 381,
+    "pingCount": 5,
+    "trafficUsedGB": null
+  },
+  "accountRows": {
+    "remainingTrafficGB": null,
+    "planExpiry": null
+  },
+  "protocolShown": "Shadowsocks",
+  "totalNodes": 54,
+  "regions": [
+    {
+      "name": "香港",
+      "nodes": 19,
+      "latencyMinMs": 14,
+      "latencyMaxMs": 201,
+      "avgSpeedMinMB": 0,
+      "avgSpeedMaxMB": 75.07,
+      "maxSpeedMaxMB": 78.81
+    },
+    {
+      "name": "台湾",
+      "nodes": 5,
+      "latencyMinMs": 82,
+      "latencyMaxMs": 120,
+      "avgSpeedMinMB": 8.4,
+      "avgSpeedMaxMB": 61.07,
+      "maxSpeedMaxMB": 70.55
+    },
+    {
+      "name": "新加坡",
+      "nodes": 10,
+      "latencyMinMs": 51,
+      "latencyMaxMs": 138,
+      "avgSpeedMinMB": 55.35,
+      "avgSpeedMaxMB": 73.13,
+      "maxSpeedMaxMB": 86.41
+    },
+    {
+      "name": "日本",
+      "nodes": 10,
+      "latencyMinMs": 69,
+      "latencyMaxMs": 74,
+      "avgSpeedMinMB": 60.15,
+      "avgSpeedMaxMB": 67.56,
+      "maxSpeedMaxMB": 79.63
+    },
+    {
+      "name": "美国",
+      "nodes": 10,
+      "latencyMinMs": 161,
+      "latencyMaxMs": 163,
+      "avgSpeedMinMB": 54.2,
+      "avgSpeedMaxMB": 71.58,
+      "maxSpeedMaxMB": 127.04
+    }
+  ],
+  "anomalies": [
+    "页脚「消耗流量=」的数值被遮挡，只能辨认出形如 1?.4GB（十位之后的一位数字无法判读），按规则记为 null；同一段页脚左侧文字（版本/后端）上半部分同样被遮挡，后端按可辨轮廓记为「珠海联通 5Gbps(4.6.4)」，与另外三张截图一致。",
+    "序号 1「HK | 香港 | 02」延迟正常（16ms / 36ms），但平均速度与最大速度均为 0B，因此香港的 avgSpeedMinMB 按原图记为 0；香港其余 18 个节点平均速度区间为 54.43–75.07MB。",
+    "序号 19「HK | 香港 | 20」延迟 201ms、HTTP 延迟 408ms，其余香港节点延迟均在 14–33ms。",
+    "序号 23「TW | 台湾 | 04」平均速度仅 8.40MB，而最大速度 50.41MB，明显低于其余台湾节点（52.40–61.07MB）。",
+    "序号 29「SG | 新加坡 | 05」延迟 138ms，其余新加坡节点在 51–74ms。",
+    "香港节点编号从「香港02」到「香港20」共 19 个，未出现「香港01」。",
+    "表格无账户信息行（无剩余流量 / 套餐到期行），因此 accountRows 全部为 null。"
+  ]
+}

@@ -1,0 +1,50 @@
+---
+/** 评测 Hub：方法先行，评测列表带验证状态。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ArticleRow from '@/components/ArticleRow.astro';
+import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+
+const reviews = (
+  await getCollection('articles', ({ id, data }) => id.startsWith('reviews/') && !data.draft)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '机场评测', href: '/reviews/' },
+];
+---
+
+<Base
+  title="机场评测：按公开资料逐项核对"
+  description="机场评测列表。每篇按公开资料核对撰写：线路口径、套餐、适用场景、优点与局限逐项说明；没有统一测试数据的项目一律如实标注，不给猜测数字。"
+  schemaItems={[breadcrumbSchema(crumbs)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[46rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">机场评测</h1>
+    <p class="m-0 mt-3 text-[1.05rem] text-muted">
+      评测的可信度取决于方法，不取决于形容词。本栏目每篇都遵循同一套
+      <a href="/methodology/">公开的资料核验方法</a>：写清每条信息的来源与核对日期。
+      本站不做统一环境下的独立测速，所以性能类结论一概不给——
+      没有数据支撑的部分，直接告诉你「没有数据」。
+    </p>
+  </header>
+
+  <section class="mt-10 max-w-[52rem]" aria-labelledby="list-heading">
+    <h2 id="list-heading" class="m-0 mb-2 text-[1rem] tracking-widest text-muted">
+      全部评测（{reviews.length} 篇）
+    </h2>
+    {reviews.map((r) => <ArticleRow article={r} />)}
+  </section>
+
+  <section class="rule-top mt-12 max-w-[46rem] pt-8 pb-6" aria-label="补充">
+    <h2 class="m-0 text-[1.2rem]">评测之外</h2>
+    <p class="m-0 mt-2 text-[0.95rem] text-muted">
+      单篇评测回答「它怎么样」，<a href="/vs/">对比</a>回答「它和另一个比怎么样」，
+      <a href="/brands/">品牌档案</a>汇总数据行与官方入口核验状态。三处交叉着看，判断才完整。
+    </p>
+  </section>
+</Base>

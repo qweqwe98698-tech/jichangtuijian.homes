@@ -1,0 +1,173 @@
+---
+/**
+ * 测速面板数据表：把面板截图里的数字变成可索引、可比较的 HTML 表格。
+ * 来源等级为一级「第三方公开数据」——必须连同来源与局限一起呈现，不得单独摆数字。
+ * 本站不做统一环境测速，这些数字不是本站的测试结果。
+ */
+import type { CollectionEntry } from 'astro:content';
+import VerifyStamp from './VerifyStamp.astro';
+
+interface Props {
+  brand: CollectionEntry<'brands'>['data'];
+}
+const { brand } = Astro.props;
+const p = brand.panel;
+
+/**
+ * 区间下限被剔除时（该地区含未测通节点），只剩上限。
+ * 这时必须写成「最高 X」而不是裸露一个数字——否则会被读成「平均值就是 X」。
+ */
+const fmtRange = (a: number | null, b: number | null, unit: string) => {
+  if (a === null && b === null) return '—';
+  if (a === null) return `最高 ${b}${unit}`;
+  if (b === null) return `最低 ${a}${unit}`;
+  return a === b ? `${a}${unit}` : `${a}–${b}${unit}`;
+};
+
+/** 该地区是否因含未测通节点而缺少下限 */
+const hasFailedNode = (r: { latencyMinMs: number | null; avgSpeedMinMB: number | null }) =>
+  r.latencyMinMs === null || r.avgSpeedMinMB === null;
+---
+
+{
+  brand.panelDisputed && (
+    <section class="mt-12 max-w-[46rem]">
+      <div class="flex flex-wrap items-baseline justify-between gap-3">
+        <h2 class="m-0 text-[1.35rem]">测速面板数据</h2>
+        <VerifyStamp status="pending" />
+      </div>
+      <div class="mt-4 border-l-[3px] border-risk bg-surface p-4">
+        <p class="m-0 text-[0.97rem]">
+          <strong>本站已暂缓展示该品牌的测速面板数据与截图。</strong>
+        </p>
+        <p class="m-0 mt-2 text-[0.93rem] text-muted">{brand.panelDisputed}</p>
+        <p class="m-0 mt-2 text-[0.93rem] text-muted">
+          我们选择公开这件事，而不是从两份相同的数据里挑一份挂上去——
+          一份无法确定归属的测速图，比没有测速图更有害。核验完成后本节会补上。 数据处理规则见
+          <a href="/data-sources/">数据来源政策</a>。
+        </p>
+      </div>
+    </section>
+  )
+}
+
+{
+  !brand.panelDisputed && p && p.regions.length > 0 && (
+    <section class="mt-12 max-w-[46rem]">
+      <div class="flex flex-wrap items-baseline justify-between gap-3">
+        <h2 class="m-0 text-[1.35rem]">测速面板数据</h2>
+        <VerifyStamp status="measured" />
+      </div>
+
+      <p class="meta-text m-0 mt-2">
+        以下数字转录自<strong class="text-ink">第三方测试工具导出的公开数据</strong>，
+        <strong class="text-ink">不是本站执行的测试</strong>——本站不进行统一环境下的独立测速。
+        阅读时请把这几条条件放在心上：
+        {p.testedAt ? '数据来自单次批量运行' : '数据来自单次批量运行，且原始时间戳已被移除'}；
+        {p.threads
+          ? `以 ${p.threads} 线程并发采集，速度数值属聚合结果，不代表单连接速度`
+          : '并发线程数未标注'}
+        ； 采集网络为服务商级别的高带宽后端，与家庭宽带的体感不能直接等同。
+        <strong class="text-ink">实际表现因节点与网络环境而异。</strong> 资料如何核对见
+        <a href="/methodology/">资料核验方法</a>。
+      </p>
+
+      <div class="table-scroll mt-5">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">地区</th>
+              <th scope="col">节点数</th>
+              <th scope="col">延迟 RTT</th>
+              <th scope="col">平均速度</th>
+              <th scope="col">最高速度</th>
+            </tr>
+          </thead>
+          <tbody>
+            {p.regions.map((r) => (
+              <tr>
+                <th scope="row" class="whitespace-nowrap">
+                  {r.name}
+                  {hasFailedNode(r) && <sup class="text-amber">*</sup>}
+                </th>
+                <td>{r.nodes}</td>
+                <td class="whitespace-nowrap">{fmtRange(r.latencyMinMs, r.latencyMaxMs, ' ms')}</td>
+                <td class="whitespace-nowrap">
+                  {fmtRange(r.avgSpeedMinMB, r.avgSpeedMaxMB, ' MB/s')}
+                </td>
+                <td class="whitespace-nowrap">
+                  {r.maxSpeedMaxMB !== null ? `${r.maxSpeedMaxMB} MB/s` : '—'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {p.regions.some(hasFailedNode) && (
+        <p class="meta-text m-0 mt-2">
+          <span class="text-amber">*</span>
+          该地区含未测通节点（面板显示 0ms / 0B）。区间下限已剔除，避免渲染成「延迟
+          0ms」这类误导值； 剔除后只剩上限的，标为「最高 X」。
+        </p>
+      )}
+
+      <dl class="data-rows mt-5 text-[0.86rem]">
+        {p.totalNodes !== null && (
+          <div class="data-row">
+            <dt>节点总数</dt>
+            <dd>{p.totalNodes} 个</dd>
+          </div>
+        )}
+        {p.protocolShown && (
+          <div class="data-row">
+            <dt>面板显示协议</dt>
+            <dd>
+              {p.protocolShown}
+              <span class="meta-text ml-2">可能与官网宣传口径不同，以实际订阅为准</span>
+            </dd>
+          </div>
+        )}
+        <div class="data-row">
+          <dt>测试环境</dt>
+          <dd>
+            {[p.tool, p.threads ? `${p.threads} 线程` : null, p.backend]
+              .filter(Boolean)
+              .join(' · ') || '未标注'}
+          </dd>
+        </div>
+        <div class="data-row">
+          <dt>测试时间</dt>
+          <dd>
+            {p.testedAt ? (
+              <>
+                {p.testedAt}
+                {p.inPeakWindow && (
+                  <span class="meta-text ml-2">落在晚高峰窗口（20:30–22:30）内</span>
+                )}
+              </>
+            ) : p.testedBefore ? (
+              `面板时间戳已移除；由账户信息可推断测试早于 ${p.testedBefore}`
+            ) : (
+              '面板时间戳已移除，无法确定'
+            )}
+          </dd>
+        </div>
+      </dl>
+
+      {p.anomalies.length > 0 && (
+        <div class="mt-5 border-l-[3px] border-amber pl-3">
+          <p class="m-0 text-[0.9rem] font-display">面板中的异常项</p>
+          <ul class="m-0 mt-1 list-disc pl-5 text-[0.9rem] text-muted">
+            {p.anomalies.map((a) => (
+              <li>{a}</li>
+            ))}
+          </ul>
+          <p class="meta-text m-0 mt-2">
+            异常项照实列出而不是抹掉——一份没有任何异常的测速表，通常意味着数据被挑选过。
+          </p>
+        </div>
+      )}
+    </section>
+  )
+}

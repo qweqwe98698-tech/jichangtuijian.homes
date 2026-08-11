@@ -1,0 +1,73 @@
+{
+  "brand": "kexin-yun",
+  "source": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 889,
+    "pingCount": 5,
+    "trafficUsedGB": 10.5
+  },
+  "accountRows": {
+    "remainingTrafficGB": null,
+    "planExpiry": null
+  },
+  "protocolShown": "Shadowsocks",
+  "totalNodes": 55,
+  "regions": [
+    {
+      "name": "香港",
+      "nodes": 20,
+      "latencyMinMs": 24,
+      "latencyMaxMs": 104,
+      "avgSpeedMinMB": 28.64,
+      "avgSpeedMaxMB": 53.4,
+      "maxSpeedMaxMB": 56.85
+    },
+    {
+      "name": "台湾",
+      "nodes": 5,
+      "latencyMinMs": 117,
+      "latencyMaxMs": 238,
+      "avgSpeedMinMB": 3.86,
+      "avgSpeedMaxMB": 27.49,
+      "maxSpeedMaxMB": 40.08
+    },
+    {
+      "name": "新加坡",
+      "nodes": 10,
+      "latencyMinMs": 63,
+      "latencyMaxMs": 89,
+      "avgSpeedMinMB": 36.86,
+      "avgSpeedMaxMB": 47.75,
+      "maxSpeedMaxMB": 58.13
+    },
+    {
+      "name": "日本",
+      "nodes": 10,
+      "latencyMinMs": 87,
+      "latencyMaxMs": 201,
+      "avgSpeedMinMB": null,
+      "avgSpeedMaxMB": 43.13,
+      "maxSpeedMaxMB": 49.25
+    },
+    {
+      "name": "美国",
+      "nodes": 10,
+      "latencyMinMs": 170,
+      "latencyMaxMs": 176,
+      "avgSpeedMinMB": null,
+      "avgSpeedMaxMB": 20.28,
+      "maxSpeedMaxMB": 45.81
+    }
+  ],
+  "anomalies": [
+    "序号 42「JP | 日本 | 07」平均速度 12.61KB、最大速度 75.68KB，原图单位为 KB 而非 MB；未做单位换算，故日本的 avgSpeedMinMB 记为 null（其余 9 个日本节点中最低平均速度为 5.90MB，见序号 41）。",
+    "序号 50「US | 美国 | 05」平均速度 688.93KB（原图单位为 KB），最大速度 4.13MB；未做单位换算，故美国的 avgSpeedMinMB 记为 null（其余 9 个美国节点中最低平均速度为 11.40MB，见序号 49）。",
+    "序号 24「TW | 台湾 | 04」平均速度 3.86MB，而最大速度 23.16MB，两者差距明显。",
+    "序号 1「HK | 香港 | 01」延迟 104ms，其余 19 个香港节点均在 24–34ms。",
+    "序号 37 日本02（197ms）、序号 40 日本05（190ms）、序号 41 日本06（201ms）延迟明显高于其余日本节点（87–99ms）。",
+    "HTTP 延迟高值：序号 43 日本08 为 2231ms、序号 28 新加坡03 为 1829ms、序号 54 美国09 为 701ms、序号 49 美国04 为 693ms、序号 23 台湾03 为 675ms、序号 21 台湾01 为 604ms、序号 44 日本09 为 599ms、序号 41 日本06 为 542ms、序号 42 日本07 为 523ms、序号 36 日本01 为 518ms、序号 22 台湾02 为 446ms、序号 12 香港12 为 407ms、序号 30 新加坡05 为 402ms。",
+    "表格无账户信息行（无剩余流量 / 套餐到期行），因此 accountRows 全部为 null。"
+  ]
+}

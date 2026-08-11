@@ -1,0 +1,34 @@
+# Cloudflare Pages 响应头配置
+# 静态资源带内容哈希，可长期强缓存；HTML 必须每次回源校验，否则改了内容用户看到的还是旧页面。
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+
+# 构建产物（文件名含哈希）
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 图片资产：文件名不含哈希，用较短的强缓存 + 后台重验证
+/images/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/pagefind/*
+  Cache-Control: public, max-age=86400
+
+# HTML 页面：始终校验，保证内容更新即时可见
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# 索引类文件：短缓存，便于搜索引擎拿到最新版本
+/sitemap-index.xml
+  Cache-Control: public, max-age=3600
+/rss.xml
+  Cache-Control: public, max-age=3600
+/robots.txt
+  Cache-Control: public, max-age=3600

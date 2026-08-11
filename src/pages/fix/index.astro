@@ -1,0 +1,107 @@
+---
+/** 故障排查 Hub：按症状索引（不在主导航，由教程/Footer 进入）。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+
+const fixes = await getCollection(
+  'articles',
+  ({ id, data }) => id.startsWith('fix/') && !data.draft,
+);
+const find = (slug: string) => fixes.find((f) => f.id === `fix/${slug}`);
+
+/** 按主题分组，症状多了之后平铺一列会失去索引作用 */
+const symptomGroups = [
+  {
+    title: '连不上 / 订阅问题',
+    items: [
+      { slug: 'nodes-all-timeout', symptom: '所有节点都超时，一个能用的都没有' },
+      { slug: 'subscription-update-fail', symptom: '订阅导入报错、更新失败，或更新后节点消失' },
+      { slug: 'v2rayn-cannot-connect', symptom: 'v2rayN 连不上、能测速却打不开网页' },
+      { slug: 'wifi-ok-cellular-fail', symptom: 'Wi-Fi 下能用，切到手机流量就不行' },
+    ],
+  },
+  {
+    title: '慢 / 卡顿',
+    items: [
+      { slug: 'peak-hour-slow', symptom: '白天正常，晚上八九点特别慢、丢包严重' },
+      { slug: 'youtube-buffering', symptom: 'YouTube 一直缓冲、画质自动降到 480p' },
+    ],
+  },
+  {
+    title: 'AI 工具',
+    items: [
+      { slug: 'chatgpt-blocked', symptom: 'ChatGPT 打不开、频繁验证，或长任务中途断流' },
+      { slug: 'claude-code-disconnect', symptom: 'Claude 频繁退出登录、Claude Code 长任务断开' },
+      { slug: 'gemini-region-error', symptom: 'Gemini 无法登录或提示所在地区不支持' },
+    ],
+  },
+  {
+    title: '流媒体与 Google 服务',
+    items: [
+      { slug: 'netflix-not-unlocking', symptom: 'Netflix 提示检测到代理，或只能看自制剧' },
+      { slug: 'disney-plus-not-working', symptom: 'Disney+ 无法播放、提示地区错误或黑屏' },
+      { slug: 'google-search-blocked', symptom: 'Google 打不开、搜索一直跳人机验证' },
+    ],
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '故障排查', href: '/fix/' },
+];
+---
+
+<Base
+  title="故障排查：连不上、超时、不解锁怎么办"
+  description="机场连不上、节点超时、流媒体不解锁？按症状进入对应排查页，每页都给出快速答案和从上到下的排查顺序，不让你瞎试。"
+  schemaItems={[breadcrumbSchema(crumbs)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[46rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">故障排查</h1>
+    <p class="m-0 mt-3 text-[1.05rem] text-muted">
+      排障最忌讳的是乱试。每个排查页都按「最可能 → 最不可能」排好顺序，
+      你只需要对着自己的症状，从第一条开始走。
+    </p>
+  </header>
+
+  {
+    symptomGroups.map((group) => (
+      <section class="mt-10" aria-label={`按症状索引：${group.title}`}>
+        <h2 class="m-0 mb-2 text-[1rem] tracking-widest text-muted">{group.title}</h2>
+        <ol class="path-index max-w-[46rem]">
+          {group.items.map((s) => {
+            const e = s.slug ? find(s.slug) : undefined;
+            return (
+              <li>
+                {e ? (
+                  <>
+                    <a href={`/${e.id}/`} class="font-display text-[1.08rem]">
+                      {s.symptom}
+                    </a>
+                    <p class="m-0 mt-1 text-[0.9rem] text-muted">{e.data.description}</p>
+                  </>
+                ) : (
+                  <p class="m-0 font-display text-[1.08rem] text-muted">{s.symptom}</p>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+    ))
+  }
+
+  <section class="rule-top mt-14 max-w-[46rem] pt-8 pb-6" aria-label="预防">
+    <h2 class="m-0 text-[1.2rem]">与其反复排障，不如换个思路</h2>
+    <p class="m-0 mt-2 text-[0.95rem] text-muted">
+      如果同一家机场频繁出问题，问题可能不在你的配置。用
+      <a href="/guides/stability-signals/">稳定性核验清单</a>重新评估它， 或回到<a
+        href="/guides/how-to-choose/">选择标准</a
+      >重新选。
+    </p>
+  </section>
+</Base>

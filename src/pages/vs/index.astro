@@ -1,0 +1,55 @@
+---
+/** 对比 Hub：取舍表理念说明 + 对比列表。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+
+const comparisons = (
+  await getCollection('articles', ({ id, data }) => id.startsWith('vs/') && !data.draft)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '机场对比', href: '/vs/' },
+];
+---
+
+<Base
+  title="机场对比：把候选放上同一张取舍表"
+  description="两家机场拿不定主意？对比栏目把候选放到统一维度的取舍表上：线路、价格档、场景表现、风险，最后一列永远是「代价」。"
+  schemaItems={[breadcrumbSchema(crumbs)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[46rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">机场对比</h1>
+    <p class="m-0 mt-3 text-[1.05rem] text-muted">
+      比较的意义不是分出冠军，而是看清<em>你为哪一项多付钱、又放弃了什么</em>。
+      所以本站的对比表最后一列永远是「代价」——选 A 的代价、选 B 的代价，写清楚，你来定。
+    </p>
+  </header>
+
+  <section class="mt-10" aria-label="对比列表">
+    <ol class="path-index max-w-[46rem]">
+      {
+        comparisons.map((c) => (
+          <li>
+            <a href={`/${c.id}/`} class="font-display text-[1.15rem]">
+              {c.data.title}
+            </a>
+            <p class="m-0 mt-1 text-[0.93rem] text-muted">{c.data.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="rule-top mt-14 max-w-[46rem] pt-8 pb-6" aria-label="想比的还没有？">
+    <h2 class="m-0 text-[1.2rem]">想比的组合还没有？</h2>
+    <p class="m-0 mt-2 text-[0.95rem] text-muted">
+      对比按品牌评测进度逐组补齐。你可以先用<a href="/guides/how-to-choose/">选择标准</a
+      >自查两家候选， 或通过<a href="/contact/">联系方式</a>告诉我们你想看的组合。
+    </p>
+  </section>
+</Base>

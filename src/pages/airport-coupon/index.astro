@@ -1,0 +1,146 @@
+---
+/** P2 专题：机场优惠码汇总。数据由品牌档案驱动，改优惠码只需改 JSON。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import VerifyStamp from '@/components/VerifyStamp.astro';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const coupons = (await getCollection('brands'))
+  .filter((b) => b.data.couponCode !== null)
+  .sort((a, b) => (a.data.pricePerGb ?? 99) - (b.data.pricePerGb ?? 99));
+
+const faq = [
+  {
+    q: '机场优惠码怎么用？',
+    a: '在官网结算页的优惠码 / 折扣码输入框粘贴后点击应用，价格会即时变化。如果价格没变，多半是该码不适用于你选的套餐或周期——换个套餐再试，或直接放弃这个码，不要为了用码而买不需要的套餐。',
+  },
+  {
+    q: '优惠码为什么用不了？',
+    a: '常见原因有四个：仅限新用户、仅限特定套餐、仅限特定周期（如季付以上）、以及已过期。本页记录的是核对当日的渠道口径，品牌方可随时调整或停用。',
+  },
+  {
+    q: '优惠力度特别大的机场是不是有风险？',
+    a: '力度本身不是问题，力度反常才是。常规的 8–9 折属于正常获客成本；但「三年付一折」「终身套餐骨折价」这类超长周期加超低折扣，是跑路前收割的典型剧本，见跑路信号清单。',
+  },
+  {
+    q: '用了优惠码，我付的钱会更多吗？',
+    a: '不会。本页的入口为推广合作链接，不改变你的支付价格；优惠码也不因为经由本站而失效或打折扣。推广关系不改变本站的数据记录与风险提示。',
+  },
+  {
+    q: '这些优惠码多久更新一次？',
+    a: '优惠码与价格随品牌调整同步更新，核对日期标注在每一条上。若你发现某个码已失效，欢迎通过联系方式告诉我们，核实后按编辑政策更正。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '机场优惠码', href: '/airport-coupon/' },
+];
+---
+
+<Base
+  title="机场优惠码汇总：在库机场折扣码与使用条件"
+  description="机场优惠码与折扣码汇总：在库机场的可用优惠码、适用条件与起步价格对照，标注核对日期，并说明优惠码用不了的四种常见原因与力度反常时的风险信号。"
+  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[48rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">机场优惠码汇总</h1>
+    <div class="verdict">
+      <p class="verdict-label m-0">先说结论</p>
+      <p class="m-0 text-[1.02rem]">
+        优惠码能省的通常是一到两成，而<strong>选错档位会浪费五成以上</strong
+        >——所以先选对，再用码，顺序别反。 另外记住一条反直觉的经验：<strong
+          >折扣力度反常的套餐要警惕</strong
+        >， 常规 8–9 折是正常获客成本，超长周期加骨折价往往是收割剧本。
+      </p>
+    </div>
+  </header>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="table-heading">
+    <h2 id="table-heading" class="m-0 text-[1.5rem]">在库机场优惠码对照</h2>
+    <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+      共 {coupons.length} 家提供优惠码。全部为渠道资料口径，核对于 2026-08-11； 最终以官网结算页显示的价格为准。
+    </p>
+    <div class="table-scroll mt-6">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">机场</th>
+            <th scope="col">优惠码</th>
+            <th scope="col">适用说明</th>
+            <th scope="col">起步套餐</th>
+            <th scope="col">档案</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            coupons.map((b) => (
+              <tr>
+                <th scope="row" class="whitespace-nowrap">
+                  <a href={`/brands/${b.id}/`}>{b.data.name}</a>
+                </th>
+                <td class="whitespace-nowrap font-display text-amber">{b.data.couponCode}</td>
+                <td>{b.data.couponNote}</td>
+                <td class="whitespace-nowrap">{b.data.priceFrom}</td>
+                <td class="whitespace-nowrap">
+                  <a href={`/brands/${b.id}/`}>详情 →</a>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="meta-text mt-3 flex flex-wrap items-center gap-3">
+      <VerifyStamp status="sourced" date="2026-08-11" />
+      <span>优惠码属渠道与品牌方资料，非本站的测试；品牌方可随时调整或停用。</span>
+    </p>
+  </section>
+
+  <section class="rule-top mt-14 pt-10" aria-labelledby="order-heading">
+    <h2 id="order-heading" class="m-0 text-[1.5rem]">正确的省钱顺序</h2>
+    <ol class="path-index mt-6 max-w-[46rem]">
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">先定场景与预算档</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          用<a href="/guides/how-to-choose/">选择指南</a>的三个问题过滤，避免为用不到的能力付费——
+          这一步省下的钱远多于任何优惠码。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">再比同档单价</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          在<a href="/cheap-airport/">价格对照表</a>里比每 GB 单价，注意区分月付价与年付摊算价。
+        </p>
+      </li>
+      <li>
+        <p class="m-0 font-display text-[1.05rem]">最后才用优惠码</p>
+        <p class="m-0 mt-1 text-[0.93rem] text-muted">
+          码是锦上添花。永远不要因为「这个码只能用于年付」就去买年付——首单年付是本站唯一的绝对不建议。
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="rule-top mt-14 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">优惠码常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="meta-text m-0 mt-4">
+      继续：<a href="/cheap-airport/">便宜机场价格对照</a> ·
+      <a href="/risk/exit-scam-signals/">促销反常的风险信号</a> ·
+      <a href="/brand-library/">全部品牌对照</a>
+    </p>
+  </section>
+</Base>

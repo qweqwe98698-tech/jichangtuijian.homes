@@ -1,0 +1,31 @@
+---
+import Base from '@/layouts/Base.astro';
+---
+
+<Base
+  title="页面不存在（404）"
+  description="你访问的页面不存在或已被移动。从决策路径重新出发：选择指南、场景推荐、评测与故障排查。"
+  noindex
+>
+  <div class="mx-auto max-w-[46rem] pt-16 pb-10">
+    <p class="meta-text m-0 tracking-widest">404</p>
+    <h1 class="m-0 mt-2 text-[1.8rem]">这一页不存在</h1>
+    <p class="m-0 mt-3 text-muted">
+      链接可能已失效，或地址拼写有误。别浪费这次点击——从你的实际问题重新出发：
+    </p>
+    <ol class="path-index mt-8">
+      <li>
+        <a href="/guides/how-to-choose/" class="font-display text-[1.05rem]">我不知道机场怎么选</a>
+      </li>
+      <li>
+        <a href="/best/" class="font-display text-[1.05rem]">我想按场景看推荐</a>
+      </li>
+      <li>
+        <a href="/fix/nodes-all-timeout/" class="font-display text-[1.05rem]">我的节点连不上了</a>
+      </li>
+      <li>
+        <a href="/search/" class="font-display text-[1.05rem]">我要搜索具体问题</a>
+      </li>
+    </ol>
+  </div>
+</Base>

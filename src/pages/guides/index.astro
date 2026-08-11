@@ -1,0 +1,58 @@
+---
+/** 开始选择 Hub（机场选择 Pillar）：标准体系导向，不是文章流水列表。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+
+const guides = (
+  await getCollection('articles', ({ id, data }) => id.startsWith('guides/') && !data.draft)
+).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '开始选择', href: '/guides/' },
+];
+---
+
+<Base
+  title="机场怎么选：选择标准与决策指南"
+  description="不知道机场怎么选？从这里开始：建立场景、预算、风险三维选择标准，逐篇核验稳定性、线路与套餐，再进入场景推荐与对比。"
+  schemaItems={[breadcrumbSchema(crumbs)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[46rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">开始选择</h1>
+    <p class="m-0 mt-3 text-[1.05rem] text-muted">
+      推荐榜单谁都会写，但榜单替代不了判断。这个栏目只做一件事：把「怎么选」拆成可以逐项核验的标准。
+      读完这里，你看任何机场的宣传页都会有自己的过滤器。
+    </p>
+  </header>
+
+  <section class="mt-10" aria-label="选择标准体系">
+    <h2 class="m-0 mb-2 text-[1rem] tracking-widest text-muted">按顺序读</h2>
+    <ol class="path-index max-w-[46rem]">
+      {
+        guides.map((g) => (
+          <li>
+            <a href={`/${g.id}/`} class="font-display text-[1.15rem]">
+              {g.data.title}
+            </a>
+            <p class="m-0 mt-1 text-[0.93rem] text-muted">{g.data.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="rule-top mt-14 max-w-[46rem] pt-8 pb-6" aria-label="下一步">
+    <h2 class="m-0 text-[1.2rem]">标准建立之后</h2>
+    <p class="m-0 mt-2 text-[0.95rem] text-muted">
+      有了标准，下一步是把它套到你的场景上：
+      <a href="/best/">场景推荐</a>按使用需求给出候选，
+      <a href="/vs/">机场对比</a>把候选放上同一张取舍表，
+      <a href="/risk/">风险观察</a>帮你在付款前做最后一道核查。
+    </p>
+  </section>
+</Base>

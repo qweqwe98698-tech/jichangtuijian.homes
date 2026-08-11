@@ -1,0 +1,64 @@
+---
+/** 品牌档案索引：数据行式列表（商业承接层入口）。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import VerifyStamp from '@/components/VerifyStamp.astro';
+import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+
+const brands = await getCollection('brands');
+const tierLabel = { premium: '高端档', mid: '中端档', budget: '低价档' } as const;
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '品牌档案', href: '/brands/' },
+];
+---
+
+<Base
+  title="品牌档案：机场品牌资料与验证状态"
+  description="机场品牌档案库：定位、线路、协议、套餐说明、风险等级与官方入口核验状态。每条数据标注验证状态，未核验的不写成事实。"
+  schemaItems={[breadcrumbSchema(crumbs)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[46rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">品牌档案</h1>
+    <p class="m-0 mt-3 text-[1.05rem] text-muted">
+      每个进入本站视野的品牌都有一页档案：结构化数据行、验证状态、风险等级、官方入口核验情况。
+      档案页是全站唯一放置品牌外部入口的地方。
+    </p>
+  </header>
+
+  <section class="mt-10 max-w-[52rem]" aria-label="品牌列表">
+    {
+      brands.map((b) => (
+        <article class="border-b border-line py-6">
+          <p class="meta-text m-0 flex flex-wrap items-center gap-3">
+            <span>{tierLabel[b.data.tier]}</span>
+            {b.data.lastVerified ? (
+              <VerifyStamp status="sourced" date={b.data.lastVerified} />
+            ) : (
+              <VerifyStamp status="pending" />
+            )}
+          </p>
+          <h2 class="m-0 mt-1 text-[1.3rem]">
+            <a href={`/brands/${b.id}/`} class="text-ink hover:text-accent">
+              {b.data.name}
+            </a>
+          </h2>
+          <p class="m-0 mt-1 max-w-[44rem] text-[0.94rem] text-muted">{b.data.positioning}</p>
+          <p class="m-0 mt-2 flex gap-4 text-[0.9rem]">
+            <a href={`/brands/${b.id}/`}>档案 →</a>
+            {b.data.reviewSlug && <a href={`/${b.data.reviewSlug}/`}>深度评测 →</a>}
+          </p>
+        </article>
+      ))
+    }
+  </section>
+
+  <p class="meta-text mt-10 max-w-[46rem] pb-6">
+    收录 ≠ 推荐。档案数据按<a href="/data-sources/">数据来源政策</a>维护；
+    部分品牌入口可能含推广合作，见<a href="/disclaimer/">免责声明</a>。
+  </p>
+</Base>

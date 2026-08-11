@@ -1,0 +1,33 @@
+---
+/** 编辑列表行：Hub 与首页的文章条目（非卡片）。 */
+import type { CollectionEntry } from 'astro:content';
+import { sectionMap } from '@/lib/site';
+import VerifyStamp from './VerifyStamp.astro';
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+  showSection?: boolean;
+}
+const { article, showSection = false } = Astro.props;
+const section = article.id.split('/')[0]!;
+const d = article.data;
+const dateStr = (d.updatedDate ?? d.pubDate).toISOString().slice(0, 10);
+---
+
+<article class="border-b border-line py-5">
+  <p class="meta-text m-0 flex flex-wrap items-center gap-x-3 gap-y-1">
+    {showSection && <span>{sectionMap[section]?.name}</span>}
+    <span>{d.updatedDate ? '更新' : '发布'} {dateStr}</span>
+    {
+      d.lastVerified ? (
+        <VerifyStamp status="sourced" date={d.lastVerified.toISOString().slice(0, 10)} />
+      ) : (
+        d.contentType === 'review' && <VerifyStamp status="pending" />
+      )
+    }
+  </p>
+  <h3 class="m-0 mt-1 text-[1.15rem]">
+    <a href={`/${article.id}/`} class="text-ink hover:text-accent">{d.title}</a>
+  </h3>
+  <p class="m-0 mt-1 max-w-[44rem] text-[0.93rem] text-muted">{d.description}</p>
+</article>

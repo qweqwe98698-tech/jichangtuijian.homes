@@ -1,0 +1,62 @@
+---
+/**
+ * 评测层商业承接 CTA。商业链接唯一出口是品牌数据（INTERNAL-LINK-MAP §4）。
+ * 外链未核验时指向品牌档案页，避免把用户送到未经核对的地址。
+ */
+import { getEntry } from 'astro:content';
+
+interface Props {
+  brandSlug: string;
+}
+const { brandSlug } = Astro.props;
+const brand = await getEntry('brands', brandSlug);
+if (!brand) throw new Error(`BrandCTA: 未找到品牌 ${brandSlug}`);
+const b = brand.data;
+const externalUrl = b.affiliateUrl ?? b.officialUrl;
+---
+
+<aside class="mt-12 border border-line bg-surface p-6" aria-label="品牌承接">
+  <p class="meta-text m-0 tracking-widest">下一步</p>
+  <p class="m-0 mt-2 font-display text-[1.15rem]">查看 {b.name} 的完整档案与套餐信息</p>
+
+  {
+    (b.priceFrom || b.couponCode) && (
+      <div class="mt-4 flex flex-wrap items-baseline gap-x-8 gap-y-2">
+        {b.priceFrom && (
+          <span class="text-[0.95rem]">
+            起步套餐：<strong class="font-display text-[1.05rem]">{b.priceFrom}</strong>
+          </span>
+        )}
+        {b.couponCode && (
+          <span class="text-[0.95rem]">
+            优惠码：<strong class="font-display text-[1.05rem] text-amber">{b.couponCode}</strong>
+          </span>
+        )}
+      </div>
+    )
+  }
+
+  <p class="m-0 mt-3 max-w-[40rem] text-[0.92rem] text-muted">
+    档案页汇总了该品牌的数据行、来源标注、风险等级与图表资料。{b.pricingNote}
+  </p>
+
+  <p class="m-0 mt-4 flex flex-wrap items-center gap-4">
+    <a href={`/brands/${brand.id}/`} class="btn-outline">查看 {b.name} 档案</a>
+    {
+      externalUrl && (
+        <a
+          href={externalUrl}
+          class="text-[0.92rem]"
+          rel="nofollow sponsored noopener"
+          target="_blank"
+        >
+          前往官网（外部链接，含推广）→
+        </a>
+      )
+    }
+  </p>
+  <p class="meta-text m-0 mt-3">
+    首单建议只买最短周期；先按<a href="/guides/stability-signals/">稳定性清单</a
+    >验证晚高峰再考虑续费。
+  </p>
+</aside>

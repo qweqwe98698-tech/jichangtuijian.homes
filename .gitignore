@@ -1,0 +1,23 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+
+# environment
+.env
+.env.production
+
+# 实测原始记录：包含测试网络等本地信息，按需决定是否纳入版本控制
+# 若要保留原始数据可删掉下面两行（模板本身始终保留）
+measurements/*.json
+!measurements/_template.json
+
+# os
+.DS_Store
+Thumbs.db

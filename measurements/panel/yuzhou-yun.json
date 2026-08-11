@@ -1,0 +1,93 @@
+{
+  "brand": "yuzhou-yun",
+  "_note": "转录自项目方 2026-08-11 提供的宇宙云测速面板图（MiaoKo 自定义测试 4.6.4）。与此前误挂的那张（实为飞猫云数据）无关，那份已移入 _mislabeled/。本图带完整时间戳，且落在本站定义的晚高峰窗口内。表格前 3 行为账户信息行（也被测速工具跑了速度），未计入节点数。",
+  "source": {
+    "tool": "MiaoKo 自定义测试（喵速 4.6.4 / 主端 4.3.3）",
+    "threads": 32,
+    "backend": "珠海联通 9Gbps",
+    "durationSec": null,
+    "pingCount": null,
+    "trafficUsedGB": null,
+    "testedAt": "2026-08-05 22:13:21 CST",
+    "inPeakWindow": true
+  },
+  "accountRows": {
+    "remainingTrafficGB": 942.02,
+    "planExpiry": "2027-01-31"
+  },
+  "protocolShown": "Shadowsocks",
+  "totalNodes": 58,
+  "regions": [
+    {
+      "name": "香港",
+      "nodes": 20,
+      "latencyMinMs": 43,
+      "latencyMaxMs": 148,
+      "avgSpeedMinMB": 80.35,
+      "avgSpeedMaxMB": 128.64,
+      "maxSpeedMaxMB": 141.05
+    },
+    {
+      "name": "日本",
+      "nodes": 10,
+      "latencyMinMs": 89,
+      "latencyMaxMs": 327,
+      "avgSpeedMinMB": 92.62,
+      "avgSpeedMaxMB": 133.18,
+      "maxSpeedMaxMB": 146.61
+    },
+    {
+      "name": "新加坡",
+      "nodes": 10,
+      "latencyMinMs": 81,
+      "latencyMaxMs": 445,
+      "avgSpeedMinMB": 52.92,
+      "avgSpeedMaxMB": 115.99,
+      "maxSpeedMaxMB": 133.21
+    },
+    {
+      "name": "美国",
+      "nodes": 10,
+      "latencyMinMs": 193,
+      "latencyMaxMs": 364,
+      "avgSpeedMinMB": 28.52,
+      "avgSpeedMaxMB": 78.6,
+      "maxSpeedMaxMB": 117.94
+    },
+    {
+      "name": "台湾",
+      "nodes": 5,
+      "latencyMinMs": 92,
+      "latencyMaxMs": 181,
+      "avgSpeedMinMB": 26.5,
+      "avgSpeedMaxMB": 62.91,
+      "maxSpeedMaxMB": 97.93
+    },
+    {
+      "name": "马来西亚",
+      "nodes": 2,
+      "latencyMinMs": 233,
+      "latencyMaxMs": 388,
+      "avgSpeedMinMB": 3.2,
+      "avgSpeedMaxMB": 9.16,
+      "maxSpeedMaxMB": 14.14
+    },
+    {
+      "name": "俄罗斯",
+      "nodes": 1,
+      "latencyMinMs": 271,
+      "latencyMaxMs": 271,
+      "avgSpeedMinMB": 7.82,
+      "avgSpeedMaxMB": 7.82,
+      "maxSpeedMaxMB": 14.03
+    }
+  ],
+  "anomalies": [
+    "表格前 3 行是账户信息（剩余流量 942.02GB、距离下次重置 1 天、套餐到期 2027-01-31），测速工具把它们也跑了速度，本站未将其计入 58 个节点",
+    "日本-02 的平均速度 133.18MB 高于其最高速度 131.16MB，面板自身数据矛盾，本站照实记录未做修正",
+    "马来西亚 2 个节点（3.20 / 9.16 MB/s）与俄罗斯 1 个节点（7.82 MB/s）速度远低于主力地区，属边缘节点",
+    "新加坡-01 的 TLS RTT 达 445ms、美国-04 达 364ms、日本-01 达 327ms，均明显高于同区其他节点",
+    "面板类型列显示 Shadowsocks，与该品牌宣传的 VLESS 协议口径不一致，实际下发以订阅为准",
+    "本次为 32 线程并发测试、后端带宽 9Gbps，速度数值属多线程聚合结果，不代表单连接速度，也不代表家庭宽带下的体感"
+  ]
+}

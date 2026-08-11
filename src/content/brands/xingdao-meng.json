@@ -1,0 +1,241 @@
+{
+  "name": "星岛梦",
+  "aliases": [
+    "星岛梦机场"
+  ],
+  "tier": "budget",
+  "positioning": "套餐弹性最大的老牌入门选择：从小流量年付到不限时套餐都有，适合按需求精细挑档位的用户。",
+  "background": "星岛梦在渠道资料中同样被列为六年老牌，特点是套餐种类多且提供不限时套餐。其 8 元起步价是年付摊算价格，选择时需要注意实际支付周期。本站已核对入口与优惠码；性能与解锁没有统一测试数据。",
+  "priceFrom": "8 元 / 月 · 60GB（年付摊算）",
+  "pricePerGb": 0.133,
+  "billingCycle": "yearly",
+  "couponCode": "nmw888",
+  "couponNote": "新人注册 9 折码；起步价为年付摊算，实际支付为整年金额。",
+  "launchYear": "按品牌口径为六年老牌（具体成立年份待核验）",
+  "highlights": [
+    "六年老牌（品牌口径）",
+    "企业级内网专线",
+    "套餐种类多",
+    "支持不限时套餐",
+    "解锁丰富（品牌口径）"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "解锁丰富",
+    "ai": null,
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": "/images/brands/xingdao-meng-speedtest.jpg",
+    "unlock": "/images/brands/xingdao-meng-unlock.png",
+    "topology": "/images/brands/xingdao-meng-topology.png"
+  },
+  "scenarios": [
+    "budget",
+    "newbie",
+    "longterm"
+  ],
+  "protocols": [
+    "Shadowsocks 系（测速面板显示）"
+  ],
+  "lineTypes": [
+    "企业级内网专线（品牌口径）"
+  ],
+  "strengths": [
+    "起步门槛在本批品牌中最低之一，年付摊算每月 8 元适合预算极紧的用户",
+    "套餐颗粒度细，小流量与不限时套餐并存，能按真实用量选档而不是被迫买大包",
+    "不限时套餐对「偶尔用一次」的低频用户是少见的合理选项"
+  ],
+  "limitations": [
+    "8 元为年付摊算价，一次性支出与月付逻辑不同，跑路敞口相应放大",
+    "不限时套餐的长期有效性依赖品牌持续运营，属于结构性风险",
+    "未见 AI 解锁的明确宣称，AI 重度用户需先自行试用验证"
+  ],
+  "suitableFor": [
+    "预算优先的学生党与轻度用户",
+    "用量很低、适合不限时套餐的低频用户",
+    "想先用小套餐试水的新手"
+  ],
+  "notSuitableFor": [
+    "晚高峰有硬需求的远程办公用户",
+    "把 AI 工具作为核心场景的用户",
+    "不接受年付资金占用的用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 8 元 / 月 · 60GB（年付摊算），优惠码 nmw888。价格与优惠为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "入门档",
+      "status": "sourced",
+      "note": "按本批 16 家起步价横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "8 元 / 月 · 60GB（年付摊算）",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.133 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "nmw888",
+      "status": "sourced",
+      "note": "新人注册 9 折码；起步价为年付摊算，实际支付为整年金额。"
+    },
+    {
+      "label": "运营年限",
+      "value": "按品牌口径为六年老牌（具体成立年份待核验）",
+      "status": "sourced"
+    },
+    {
+      "label": "主打线路",
+      "value": "企业级内网专线（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "Shadowsocks 系（测速面板显示）",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "解锁丰富（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "未作宣称",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    },
+    {
+      "label": "节点数量",
+      "value": "55 个（面板导出计数）",
+      "status": "measured",
+      "note": "工具 MAI-TEST-BOT · 32 线程 · 后端 珠海联通 5Gbps(4.6.4) · 面板时间戳已移除，测试时间未知"
+    },
+    {
+      "label": "节点地区覆盖",
+      "value": "香港 20 · 台湾 5 · 新加坡 10 · 日本 10 · 美国 10",
+      "status": "measured",
+      "note": "按面板导出的节点命名归类"
+    },
+    {
+      "label": "香港节点延迟",
+      "value": "25–107 ms",
+      "status": "measured",
+      "note": "20 个节点的区间 · 工具 MAI-TEST-BOT · 32 线程 · 后端 珠海联通 5Gbps(4.6.4) · 面板时间戳已移除，测试时间未知"
+    },
+    {
+      "label": "香港节点平均速度",
+      "value": "69.76 MB/s",
+      "status": "measured",
+      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除，测试时间未知"
+    },
+    {
+      "label": "面板显示协议",
+      "value": "Shadowsocks",
+      "status": "measured",
+      "note": "测速面板中节点的类型列；可能与官网宣传的协议口径不同，以实际订阅为准"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://guangs.xingdaomeng.com/#/?code=1TynBYnR",
+  "reviewSlug": "reviews/xingdao-meng",
+  "panel": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 496,
+    "pingCount": 5,
+    "protocolShown": "Shadowsocks",
+    "totalNodes": 55,
+    "testedAt": null,
+    "inPeakWindow": null,
+    "testedBefore": null,
+    "regions": [
+      {
+        "name": "香港",
+        "nodes": 20,
+        "latencyMinMs": 25,
+        "latencyMaxMs": 107,
+        "avgSpeedMinMB": null,
+        "avgSpeedMaxMB": 69.76,
+        "maxSpeedMaxMB": 78.71
+      },
+      {
+        "name": "台湾",
+        "nodes": 5,
+        "latencyMinMs": 129,
+        "latencyMaxMs": 259,
+        "avgSpeedMinMB": 5.89,
+        "avgSpeedMaxMB": 46.25,
+        "maxSpeedMaxMB": 64.26
+      },
+      {
+        "name": "新加坡",
+        "nodes": 10,
+        "latencyMinMs": 62,
+        "latencyMaxMs": 76,
+        "avgSpeedMinMB": 8.22,
+        "avgSpeedMaxMB": 65.87,
+        "maxSpeedMaxMB": 73.79
+      },
+      {
+        "name": "日本",
+        "nodes": 10,
+        "latencyMinMs": 79,
+        "latencyMaxMs": 107,
+        "avgSpeedMinMB": 25.91,
+        "avgSpeedMaxMB": 53.87,
+        "maxSpeedMaxMB": 64.26
+      },
+      {
+        "name": "美国",
+        "nodes": 10,
+        "latencyMinMs": 170,
+        "latencyMaxMs": 349,
+        "avgSpeedMinMB": 14.2,
+        "avgSpeedMaxMB": 33.66,
+        "maxSpeedMaxMB": 60.29
+      }
+    ],
+    "anomalies": [
+      "序号1 HK|香港|01 平均速度与最大速度均为 0B（延迟 27ms / HTTP 62ms 正常）",
+      "序号6、9、11、19 四个香港节点延迟为 105-107ms，其余香港节点为 25-30ms",
+      "序号11 HK|香港|11 HTTP延迟 404ms",
+      "序号23 TW|台湾|03 平均速度仅 5.89MB、HTTP延迟 699ms；序号22 TW|台湾|02 平均速度 13.40MB",
+      "序号32 SG|新加坡|07 平均速度 8.22MB，但最大速度 49.34MB",
+      "序号39 JP|日本|04 平均速度 25.91MB、序号40 JP|日本|05 平均速度 26.55MB（HTTP 725ms），低于同区其他节点（46-54MB）",
+      "序号53 US|美国|08 延迟 349ms，其余美国节点为 170-179ms"
+    ]
+  },
+  "panelDisputed": null,
+  "editorialPick": {
+    "rank": 2,
+    "reason": "入门门槛最低的老牌选择：年付摊算每月 8 元、每 GB 约 0.133 元，套餐颗粒度细并提供不限时选项，适合用量低、或需要长期留一个备用订阅的人。",
+    "caveat": "最低价为年付摊算，需一次性支付整年，跑路敞口相应放大——首单建议选可月付的档位而不是最低价档；资料中未宣称 AI 解锁能力。"
+  }
+}

@@ -1,0 +1,29 @@
+---
+/** 目录：仅取 h2 层级，桌面侧栏常驻，移动端折叠。零 JS。 */
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+const { headings } = Astro.props;
+const h2s = headings.filter((h) => h.depth === 2);
+---
+
+{
+  h2s.length >= 3 && (
+    <details class="border border-line bg-surface p-4 lg:open:pb-4" open>
+      <summary class="meta-text cursor-pointer list-none tracking-widest select-none">
+        本页目录
+      </summary>
+      <ol class="m-0 mt-3 list-none p-0 text-[0.88rem] leading-relaxed">
+        {h2s.map((h) => (
+          <li class="mt-1.5">
+            <a href={`#${h.slug}`} class="text-muted hover:text-accent">
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </details>
+  )
+}

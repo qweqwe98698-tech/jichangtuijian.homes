@@ -1,0 +1,75 @@
+{
+  "brand": "kuaili",
+  "_note": "转录自项目方 2026-08-11 提供的快狸测速面板图（MiaoKo 自定义测试）。与此前误挂的那张（实为光速云数据）无关，那份已移入 _mislabeled/。本图带完整时间戳，且落在本站定义的晚高峰窗口内。",
+  "source": {
+    "tool": "MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3）",
+    "threads": 32,
+    "backend": "珠海联通 9Gbps",
+    "durationSec": null,
+    "pingCount": null,
+    "trafficUsedGB": null,
+    "testedAt": "2026-08-05 20:35:24 CST",
+    "inPeakWindow": true
+  },
+  "accountRows": {
+    "remainingTrafficGB": null,
+    "planExpiry": null
+  },
+  "protocolShown": "VLESS",
+  "totalNodes": 50,
+  "regions": [
+    {
+      "name": "香港",
+      "nodes": 15,
+      "latencyMinMs": 91,
+      "latencyMaxMs": 121,
+      "avgSpeedMinMB": 470.34,
+      "avgSpeedMaxMB": 550.0,
+      "maxSpeedMaxMB": 634.84
+    },
+    {
+      "name": "台湾",
+      "nodes": 5,
+      "latencyMinMs": 151,
+      "latencyMaxMs": 179,
+      "avgSpeedMinMB": 29.17,
+      "avgSpeedMaxMB": 77.48,
+      "maxSpeedMaxMB": 107.64
+    },
+    {
+      "name": "新加坡",
+      "nodes": 10,
+      "latencyMinMs": 86,
+      "latencyMaxMs": 184,
+      "avgSpeedMinMB": 331.41,
+      "avgSpeedMaxMB": 523.07,
+      "maxSpeedMaxMB": 569.38
+    },
+    {
+      "name": "日本",
+      "nodes": 10,
+      "latencyMinMs": 137,
+      "latencyMaxMs": 144,
+      "avgSpeedMinMB": 22.38,
+      "avgSpeedMaxMB": 169.86,
+      "maxSpeedMaxMB": 381.34
+    },
+    {
+      "name": "美国",
+      "nodes": 10,
+      "latencyMinMs": 241,
+      "latencyMaxMs": 247,
+      "avgSpeedMinMB": 8.33,
+      "avgSpeedMaxMB": 12.36,
+      "maxSpeedMaxMB": 20.27
+    }
+  ],
+  "anomalies": [
+    "香港01 平均速度与最高速度均为 0.00B（未测通），其 TLS RTT 91ms 正常；该节点已排除出香港区的速度区间",
+    "新加坡07 速度为 KB 级（平均 9.60KB / 最高 96.00KB），实质未测通，已排除出新加坡区的速度区间",
+    "美国 10 个节点的平均速度集中在 8.33–12.36 MB/s，显著低于香港（470–550）、新加坡（331–523）与日本（22–170），该地区表现明显偏弱",
+    "日本 06/07/08/09 的 HTTPS 延迟在 1703–2091ms 之间，远高于同区其他节点（706–939ms）",
+    "台湾 5 个节点的 HTTPS 延迟均在 765–1405ms，且平均速度仅 29–77 MB/s，为亚洲各区中最弱",
+    "本次为 32 线程并发测试、后端带宽 9Gbps，速度数值属多线程聚合结果，不代表单连接速度，也不代表家庭宽带下的体感"
+  ]
+}

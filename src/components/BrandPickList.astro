@@ -1,0 +1,73 @@
+---
+/**
+ * 专题页的品牌名单：按场景标签筛选并按每 GB 单价排序。
+ * 每条附「入选理由」与「这条不适合谁」，避免变成无信息量的品牌堆砌。
+ */
+import { getCollection } from 'astro:content';
+import VerifyStamp from './VerifyStamp.astro';
+
+interface Props {
+  /** 场景标签：ai / streaming / budget / iepl / newbie / longterm */
+  scenario?: string;
+  /** 指定 slug 顺序时优先使用 */
+  slugs?: string[];
+  limit?: number;
+  /** 每个品牌在本专题下的入选理由（key = slug） */
+  reasons?: Record<string, string>;
+}
+const { scenario, slugs, limit = 8, reasons = {} } = Astro.props;
+
+const all = (await getCollection('brands')).filter((b) => b.data.priceFrom !== null);
+
+let picked = slugs
+  ? slugs.map((s) => all.find((b) => b.id === s)).filter((b) => b !== undefined)
+  : all.filter((b) => (scenario ? b.data.scenarios.includes(scenario) : true));
+
+if (!slugs) {
+  picked = picked.sort((a, b) => (a.data.pricePerGb ?? 99) - (b.data.pricePerGb ?? 99));
+}
+picked = picked.slice(0, limit);
+---
+
+<ol class="path-index max-w-[50rem]">
+  {
+    picked.map((b) => (
+      <li>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+          <h3 class="m-0 font-display text-[1.15rem]">
+            <a href={`/brands/${b.id}/`} class="text-ink hover:text-accent">
+              {b.data.name}
+            </a>
+          </h3>
+          <p class="m-0 font-display text-[1rem] text-accent">{b.data.priceFrom}</p>
+        </div>
+
+        {reasons[b.id] && <p class="m-0 mt-1.5 text-[0.94rem]">{reasons[b.id]}</p>}
+
+        <dl class="data-rows mt-3 text-[0.86rem]">
+          <div class="data-row">
+            <dt>每 GB 单价</dt>
+            <dd>{b.data.pricePerGb ? `约 ${b.data.pricePerGb.toFixed(3)} 元` : '待核验'}</dd>
+          </div>
+          <div class="data-row">
+            <dt>能力口径</dt>
+            <dd>
+              AI：{b.data.claims.ai ?? '未宣称'} · 流媒体：{b.data.claims.streaming ?? '未宣称'}
+              <VerifyStamp status="sourced" />
+            </dd>
+          </div>
+          <div class="data-row">
+            <dt>不适合</dt>
+            <dd>{b.data.notSuitableFor[0]}</dd>
+          </div>
+        </dl>
+
+        <p class="meta-text m-0 mt-2 flex flex-wrap items-center gap-4">
+          {b.data.couponCode && <span>优惠码 {b.data.couponCode}</span>}
+          <a href={`/brands/${b.id}/`}>档案与图表 →</a>
+          {b.data.reviewSlug && <a href={`/${b.data.reviewSlug}/`}>完整评测 →</a>}
+        </p>
+      </li>
+    ))
+  }
+</ol>

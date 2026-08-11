@@ -1,0 +1,242 @@
+{
+  "name": "光速云",
+  "aliases": [
+    "光速云机场",
+    "GuangsuCloud"
+  ],
+  "tier": "mid",
+  "positioning": "主打 IEPL 企业级内网专线与 VLESS 协议的老牌综合型机场，线路、解锁与自研客户端三项都想覆盖。",
+  "background": "光速云在渠道资料中被列为运营约六年的老牌机场，主打企业级内网专线与 VLESS 协议，并提供自研客户端。本站已核对其入口、起步套餐与优惠码；运营年限、节点规模与解锁能力没有可核验的公开数据，相关数据行按「暂无统一测试数据」标注。",
+  "priceFrom": "17 元 / 月 · 110GB",
+  "pricePerGb": 0.155,
+  "billingCycle": "monthly",
+  "couponCode": "AMM",
+  "couponNote": "通用优惠码，具体折扣与适用套餐以结算页为准。",
+  "launchYear": "按品牌口径为六年老牌（具体成立年份待核验）",
+  "highlights": [
+    "六年老牌（品牌口径）",
+    "IEPL 企业级内网专线",
+    "VLESS 协议",
+    "流媒体全解锁（品牌口径）",
+    "AI 全解锁（品牌口径）",
+    "自研客户端"
+  ],
+  "clients": [
+    "自研客户端",
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "全解锁",
+    "ai": "全解锁",
+    "selfClient": true,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": "/images/brands/guangsu-yun-speedtest.jpg",
+    "unlock": "/images/brands/guangsu-yun-unlock.png",
+    "topology": "/images/brands/guangsu-yun-topology.png"
+  },
+  "scenarios": [
+    "ai",
+    "streaming",
+    "iepl",
+    "longterm"
+  ],
+  "protocols": [
+    "VLESS",
+    "Shadowsocks（测速面板显示）"
+  ],
+  "lineTypes": [
+    "IEPL 企业级内网专线（品牌口径）"
+  ],
+  "strengths": [
+    "定位覆盖面广：专线、解锁、自研客户端三项能力同时宣称，单一订阅可以兼顾办公与娱乐",
+    "起步套餐 110GB 的量级在 17 元档中偏宽裕，每 GB 单价约 0.155 元",
+    "按渠道口径为长期运营品牌，历史样本比新开业机场更容易交叉验证"
+  ],
+  "limitations": [
+    "「六年老牌」为品牌自述，本站尚未取得可独立核验的运营记录",
+    "测速面板显示节点类型为 Shadowsocks 系，与 VLESS 宣传口径需以实际订阅为准",
+    "晚高峰与解锁表现没有统一测试数据"
+  ],
+  "suitableFor": [
+    "既要看流媒体又要跑 AI 工具的综合用户",
+    "希望一份订阅覆盖多设备的家庭用户",
+    "偏好老牌、愿意长期使用的用户"
+  ],
+  "notSuitableFor": [
+    "月预算 10 元以内的极轻度用户",
+    "只需要临时用几天的用户",
+    "要求有统一测试数据才下单的用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 17 元 / 月 · 110GB，优惠码 AMM。价格与优惠为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "主流档",
+      "status": "sourced",
+      "note": "按本批 16 家起步价横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "17 元 / 月 · 110GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.155 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "AMM",
+      "status": "sourced",
+      "note": "通用优惠码，具体折扣与适用套餐以结算页为准。"
+    },
+    {
+      "label": "运营年限",
+      "value": "按品牌口径为六年老牌（具体成立年份待核验）",
+      "status": "sourced"
+    },
+    {
+      "label": "主打线路",
+      "value": "IEPL 企业级内网专线（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "VLESS / Shadowsocks（测速面板显示）",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    },
+    {
+      "label": "节点数量",
+      "value": "54 个（面板导出计数）",
+      "status": "measured",
+      "note": "工具 MAI-TEST-BOT · 32 线程 · 后端 珠海联通 5Gbps(4.6.4) · 面板时间戳已移除，测试时间未知"
+    },
+    {
+      "label": "节点地区覆盖",
+      "value": "香港 19 · 台湾 5 · 新加坡 10 · 日本 10 · 美国 10",
+      "status": "measured",
+      "note": "按面板导出的节点命名归类"
+    },
+    {
+      "label": "香港节点延迟",
+      "value": "14–201 ms",
+      "status": "measured",
+      "note": "19 个节点的区间 · 工具 MAI-TEST-BOT · 32 线程 · 后端 珠海联通 5Gbps(4.6.4) · 面板时间戳已移除，测试时间未知"
+    },
+    {
+      "label": "香港节点平均速度",
+      "value": "75.07 MB/s",
+      "status": "measured",
+      "note": "19 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除，测试时间未知"
+    },
+    {
+      "label": "面板显示协议",
+      "value": "Shadowsocks",
+      "status": "measured",
+      "note": "测速面板中节点的类型列；可能与官网宣传的协议口径不同，以实际订阅为准"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://sahude.gsyvipaff.com/#/?code=keqgvT5Y",
+  "reviewSlug": "reviews/guangsu-yun",
+  "panel": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 381,
+    "pingCount": 5,
+    "protocolShown": "Shadowsocks",
+    "totalNodes": 54,
+    "testedAt": null,
+    "inPeakWindow": null,
+    "testedBefore": null,
+    "regions": [
+      {
+        "name": "香港",
+        "nodes": 19,
+        "latencyMinMs": 14,
+        "latencyMaxMs": 201,
+        "avgSpeedMinMB": null,
+        "avgSpeedMaxMB": 75.07,
+        "maxSpeedMaxMB": 78.81
+      },
+      {
+        "name": "台湾",
+        "nodes": 5,
+        "latencyMinMs": 82,
+        "latencyMaxMs": 120,
+        "avgSpeedMinMB": 8.4,
+        "avgSpeedMaxMB": 61.07,
+        "maxSpeedMaxMB": 70.55
+      },
+      {
+        "name": "新加坡",
+        "nodes": 10,
+        "latencyMinMs": 51,
+        "latencyMaxMs": 138,
+        "avgSpeedMinMB": 55.35,
+        "avgSpeedMaxMB": 73.13,
+        "maxSpeedMaxMB": 86.41
+      },
+      {
+        "name": "日本",
+        "nodes": 10,
+        "latencyMinMs": 69,
+        "latencyMaxMs": 74,
+        "avgSpeedMinMB": 60.15,
+        "avgSpeedMaxMB": 67.56,
+        "maxSpeedMaxMB": 79.63
+      },
+      {
+        "name": "美国",
+        "nodes": 10,
+        "latencyMinMs": 161,
+        "latencyMaxMs": 163,
+        "avgSpeedMinMB": 54.2,
+        "avgSpeedMaxMB": 71.58,
+        "maxSpeedMaxMB": 127.04
+      }
+    ],
+    "anomalies": [
+      "序号1 HK|香港|02 平均速度与最大速度均为 0B（延迟 16ms / HTTP 36ms 正常）",
+      "序号19 HK|香港|20 延迟 201ms、HTTP 408ms，明显高于其余香港节点（14-33ms）",
+      "序号23 TW|台湾|04 平均速度仅 8.40MB，最大速度 50.41MB，为台湾节点中最低"
+    ]
+  },
+  "panelDisputed": null,
+  "editorialPick": {
+    "rank": 1,
+    "reason": "在库品牌里能力覆盖最完整的一家：IEPL 专线、VLESS 协议、AI 与流媒体双解锁、自研客户端四项齐备；也是唯一三项稳定性代理指标（专线口径、运营年限口径、月付通道）都有明确说法的品牌。17 元 110GB 支持月付，能严格执行「先验证再续费」。",
+    "caveat": "「六年老牌」为品牌自述，本站未取得可独立核验的运营记录；面板显示协议为 Shadowsocks 系，与 VLESS 宣传口径需以实际订阅为准。"
+  }
+}

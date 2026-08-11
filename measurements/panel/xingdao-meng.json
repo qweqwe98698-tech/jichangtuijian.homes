@@ -1,0 +1,73 @@
+{
+  "brand": "xingdao-meng",
+  "source": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 496,
+    "pingCount": 5,
+    "trafficUsedGB": 15.1
+  },
+  "accountRows": {
+    "remainingTrafficGB": null,
+    "planExpiry": null
+  },
+  "protocolShown": "Shadowsocks",
+  "totalNodes": 55,
+  "regions": [
+    {
+      "name": "香港",
+      "nodes": 20,
+      "latencyMinMs": 25,
+      "latencyMaxMs": 107,
+      "avgSpeedMinMB": 0,
+      "avgSpeedMaxMB": 69.76,
+      "maxSpeedMaxMB": 78.71
+    },
+    {
+      "name": "台湾",
+      "nodes": 5,
+      "latencyMinMs": 129,
+      "latencyMaxMs": 259,
+      "avgSpeedMinMB": 5.89,
+      "avgSpeedMaxMB": 46.25,
+      "maxSpeedMaxMB": 64.26
+    },
+    {
+      "name": "新加坡",
+      "nodes": 10,
+      "latencyMinMs": 62,
+      "latencyMaxMs": 76,
+      "avgSpeedMinMB": 8.22,
+      "avgSpeedMaxMB": 65.87,
+      "maxSpeedMaxMB": 73.79
+    },
+    {
+      "name": "日本",
+      "nodes": 10,
+      "latencyMinMs": 79,
+      "latencyMaxMs": 107,
+      "avgSpeedMinMB": 25.91,
+      "avgSpeedMaxMB": 53.87,
+      "maxSpeedMaxMB": 64.26
+    },
+    {
+      "name": "美国",
+      "nodes": 10,
+      "latencyMinMs": 170,
+      "latencyMaxMs": 349,
+      "avgSpeedMinMB": 14.2,
+      "avgSpeedMaxMB": 33.66,
+      "maxSpeedMaxMB": 60.29
+    }
+  ],
+  "anomalies": [
+    "序号1 HK|香港|01 平均速度与最大速度均为 0B（延迟 27ms / HTTP 62ms 正常）",
+    "序号6、9、11、19 四个香港节点延迟为 105-107ms，其余香港节点为 25-30ms",
+    "序号11 HK|香港|11 HTTP延迟 404ms",
+    "序号23 TW|台湾|03 平均速度仅 5.89MB、HTTP延迟 699ms；序号22 TW|台湾|02 平均速度 13.40MB",
+    "序号32 SG|新加坡|07 平均速度 8.22MB，但最大速度 49.34MB",
+    "序号39 JP|日本|04 平均速度 25.91MB、序号40 JP|日本|05 平均速度 26.55MB（HTTP 725ms），低于同区其他节点（46-54MB）",
+    "序号53 US|美国|08 延迟 349ms，其余美国节点为 170-179ms"
+  ]
+}

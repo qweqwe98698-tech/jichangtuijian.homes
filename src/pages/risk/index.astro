@@ -1,0 +1,91 @@
+---
+/** 风险观察 Hub：风险牌（品牌状态行）+ 风险文章。 */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import VerifyStamp from '@/components/VerifyStamp.astro';
+import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+
+const riskArticles = (
+  await getCollection('articles', ({ id, data }) => id.startsWith('risk/') && !data.draft)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const brands = await getCollection('brands');
+
+const riskLabel = { low: '低', medium: '中', high: '高', unknown: '未知' } as const;
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '风险观察', href: '/risk/' },
+];
+---
+
+<Base
+  title="风险观察：跑路信号与运营状态记录"
+  description="机场会跑路，而且很少毫无征兆。风险观察栏目记录跑路前的常见信号、套餐购买风险，并对档案内品牌做周期性运营状态核查。"
+  schemaItems={[breadcrumbSchema(crumbs)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[46rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">风险观察</h1>
+    <p class="m-0 mt-3 text-[1.05rem] text-muted">
+      这个行业没有「绝对安全」，只有「风险是否被你看见」。
+      本栏目做两件事：总结可识别的风险信号，以及对档案内品牌做周期性状态核查。
+    </p>
+  </header>
+
+  <section class="mt-10 max-w-[46rem]" aria-labelledby="board-heading">
+    <h2 id="board-heading" class="m-0 mb-1 text-[1.35rem]">风险牌</h2>
+    <p class="meta-text m-0 mb-4">
+      「待验证」= 本站尚未完成独立核查，不代表存在问题。核查周期见<a href="/update-policy/"
+        >更新政策</a
+      >。
+    </p>
+    <dl class="data-rows">
+      {
+        brands.map((b) => (
+          <div class="data-row">
+            <dt>{b.data.name}</dt>
+            <dd class="flex flex-wrap items-center gap-3">
+              <span>风险等级：{riskLabel[b.data.riskLevel]}</span>
+              {b.data.lastVerified ? (
+                <VerifyStamp status="sourced" date={b.data.lastVerified} />
+              ) : (
+                <VerifyStamp status="pending" />
+              )}
+              <a href={`/brands/${b.id}/`} class="meta-text">
+                依据见档案 →
+              </a>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="mt-14 max-w-[46rem]" aria-labelledby="articles-heading">
+    <h2 id="articles-heading" class="m-0 mb-2 text-[1.35rem]">风险研究</h2>
+    <ol class="path-index">
+      {
+        riskArticles.map((a) => (
+          <li>
+            <a href={`/${a.id}/`} class="font-display text-[1.1rem]">
+              {a.data.title}
+            </a>
+            <p class="m-0 mt-1 text-[0.92rem] text-muted">{a.data.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="rule-top mt-14 max-w-[46rem] pt-8 pb-6" aria-label="降低风险">
+    <h2 class="m-0 text-[1.2rem]">把风险控制前置</h2>
+    <p class="m-0 mt-2 text-[0.95rem] text-muted">
+      多数损失来自「长周期套餐 + 没看信号」。选购前读
+      <a href="/guides/how-to-choose/">选择标准</a>里的付费策略一节； 预算敏感的用户尤其要看<a
+        href="/best/budget/">便宜机场的取舍</a
+      >。
+    </p>
+  </section>
+</Base>

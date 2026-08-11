@@ -1,0 +1,81 @@
+{
+  "brand": "weitu-yun",
+  "source": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 391,
+    "pingCount": 5,
+    "trafficUsedGB": 15.6
+  },
+  "accountRows": {
+    "remainingTrafficGB": 732.23,
+    "planExpiry": "2028-11-17"
+  },
+  "protocolShown": "Shadowsocks",
+  "totalNodes": 53,
+  "regions": [
+    {
+      "name": "马来西亚",
+      "nodes": 2,
+      "latencyMinMs": 174,
+      "latencyMaxMs": 177,
+      "avgSpeedMinMB": 0,
+      "avgSpeedMaxMB": 0,
+      "maxSpeedMaxMB": 0
+    },
+    {
+      "name": "香港",
+      "nodes": 20,
+      "latencyMinMs": 19,
+      "latencyMaxMs": 30,
+      "avgSpeedMinMB": 40.75,
+      "avgSpeedMaxMB": 65.38,
+      "maxSpeedMaxMB": 73.79
+    },
+    {
+      "name": "台湾",
+      "nodes": 5,
+      "latencyMinMs": 110,
+      "latencyMaxMs": 215,
+      "avgSpeedMinMB": 39.9,
+      "avgSpeedMaxMB": 52.61,
+      "maxSpeedMaxMB": 62.46
+    },
+    {
+      "name": "日本",
+      "nodes": 9,
+      "latencyMinMs": 75,
+      "latencyMaxMs": 169,
+      "avgSpeedMinMB": 45.48,
+      "avgSpeedMaxMB": 61.8,
+      "maxSpeedMaxMB": 74.48
+    },
+    {
+      "name": "新加坡",
+      "nodes": 8,
+      "latencyMinMs": 60,
+      "latencyMaxMs": 282,
+      "avgSpeedMinMB": 0,
+      "avgSpeedMaxMB": 63.34,
+      "maxSpeedMaxMB": 67.44
+    },
+    {
+      "name": "美国",
+      "nodes": 9,
+      "latencyMinMs": 168,
+      "latencyMaxMs": 336,
+      "avgSpeedMinMB": 31.61,
+      "avgSpeedMaxMB": 60.82,
+      "maxSpeedMaxMB": 92.83
+    }
+  ],
+  "anomalies": [
+    "ss-马来西亚 01 / ss-马来西亚 02（序号3、4）平均速度与最大速度均为 0B，仅有延迟数据",
+    "ss-SG-新加坡BGP-IEPL07（序号45）平均速度与最大速度均为 0B",
+    "新加坡 ss-SG-新加坡BGP-IEPL03（序号41）延迟 282ms，明显高于同地区其他节点（60-70ms）",
+    "美国 ss-US-美国BGP-IEPL10（序号55）延迟 336ms，明显高于同地区其他节点（168-172ms）",
+    "美国节点编号缺少 IEPL07（依次为 01-06、08、09、10）",
+    "序号1、2 为「剩余流量」「套餐到期」账户信息行，未计入节点数"
+  ]
+}

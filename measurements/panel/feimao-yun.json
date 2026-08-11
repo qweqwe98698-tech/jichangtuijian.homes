@@ -1,0 +1,135 @@
+{
+  "brand": "feimao-yun",
+  "source": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 501,
+    "pingCount": 5,
+    "trafficUsedGB": 19.0
+  },
+  "accountRows": {
+    "remainingTrafficGB": 109.97,
+    "planExpiry": "2026-03-28"
+  },
+  "protocolShown": "Shadowsocks",
+  "totalNodes": 62,
+  "regions": [
+    {
+      "name": "香港",
+      "nodes": 19,
+      "latencyMinMs": 15,
+      "latencyMaxMs": 26,
+      "avgSpeedMinMB": 56.18,
+      "avgSpeedMaxMB": 73.52,
+      "maxSpeedMaxMB": 81.0
+    },
+    {
+      "name": "台湾",
+      "nodes": 5,
+      "latencyMinMs": 45,
+      "latencyMaxMs": 130,
+      "avgSpeedMinMB": 19.51,
+      "avgSpeedMaxMB": 64.99,
+      "maxSpeedMaxMB": 83.3
+    },
+    {
+      "name": "新加坡",
+      "nodes": 10,
+      "latencyMinMs": 51,
+      "latencyMaxMs": 63,
+      "avgSpeedMinMB": 52.12,
+      "avgSpeedMaxMB": 73.05,
+      "maxSpeedMaxMB": 86.47
+    },
+    {
+      "name": "日本",
+      "nodes": 10,
+      "latencyMinMs": 72,
+      "latencyMaxMs": 212,
+      "avgSpeedMinMB": 49.86,
+      "avgSpeedMaxMB": 59.83,
+      "maxSpeedMaxMB": 66.85
+    },
+    {
+      "name": "马来西亚",
+      "nodes": 2,
+      "latencyMinMs": 150,
+      "latencyMaxMs": 299,
+      "avgSpeedMinMB": 11.09,
+      "avgSpeedMaxMB": 11.76,
+      "maxSpeedMaxMB": 19.1
+    },
+    {
+      "name": "泰国",
+      "nodes": 1,
+      "latencyMinMs": 633,
+      "latencyMaxMs": 633,
+      "avgSpeedMinMB": 1.91,
+      "avgSpeedMaxMB": 1.91,
+      "maxSpeedMaxMB": 6.42
+    },
+    {
+      "name": "美国",
+      "nodes": 10,
+      "latencyMinMs": 161,
+      "latencyMaxMs": 164,
+      "avgSpeedMinMB": 32.7,
+      "avgSpeedMaxMB": 47.15,
+      "maxSpeedMaxMB": 80.48
+    },
+    {
+      "name": "土耳其",
+      "nodes": 1,
+      "latencyMinMs": 241,
+      "latencyMaxMs": 241,
+      "avgSpeedMinMB": 16.71,
+      "avgSpeedMaxMB": 16.71,
+      "maxSpeedMaxMB": 26.57
+    },
+    {
+      "name": "法国",
+      "nodes": 1,
+      "latencyMinMs": 192,
+      "latencyMaxMs": 192,
+      "avgSpeedMinMB": 8.1,
+      "avgSpeedMaxMB": 8.1,
+      "maxSpeedMaxMB": 24.15
+    },
+    {
+      "name": "英国",
+      "nodes": 1,
+      "latencyMinMs": 190,
+      "latencyMaxMs": 190,
+      "avgSpeedMinMB": 14.05,
+      "avgSpeedMaxMB": 14.05,
+      "maxSpeedMaxMB": 18.71
+    },
+    {
+      "name": "德国",
+      "nodes": 1,
+      "latencyMinMs": 209,
+      "latencyMaxMs": 209,
+      "avgSpeedMinMB": 1.88,
+      "avgSpeedMaxMB": 1.88,
+      "maxSpeedMaxMB": 3.45
+    },
+    {
+      "name": "越南",
+      "nodes": 1,
+      "latencyMinMs": 127,
+      "latencyMaxMs": 127,
+      "avgSpeedMinMB": 10.39,
+      "avgSpeedMaxMB": 10.39,
+      "maxSpeedMaxMB": 11.47
+    }
+  ],
+  "anomalies": [
+    "表格前两行为账户信息行（剩余流量 109.97 GB、套餐到期 2026-03-28），未计入节点数",
+    "序号45 日本09 延迟 212ms，其余日本节点为 72-75ms",
+    "序号49 泰国01 延迟 633ms、HTTP 2544ms，平均速度 1.91MB，为全表最慢",
+    "序号63 德国01 平均速度 1.88MB、最大速度 3.45MB",
+    "序号47 马来西亚01 HTTP延迟 1130ms，平均速度 11.76MB",
+    "序号24 台湾03 平均速度 26.10MB、序号26 台湾05 平均速度 19.51MB，明显低于同区其他节点（60MB 以上）"
+  ]
+}

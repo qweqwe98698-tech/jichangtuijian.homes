@@ -1,0 +1,72 @@
+---
+import { SITE, NAV_ITEMS, MOBILE_NAV_EXTRA, LAST_SITE_UPDATE } from '@/lib/site';
+const path = Astro.url.pathname;
+---
+
+<header class="border-b border-line">
+  {/* 顶部细字信息行：信任前置 */}
+  <div class="border-b border-line bg-surface">
+    <div class="mx-auto flex max-w-[1120px] items-center justify-between gap-4 px-4 py-1.5">
+      <p class="meta-text m-0">研究室记录 · 最近更新 {LAST_SITE_UPDATE}</p>
+      <p class="meta-text m-0 hidden gap-4 sm:flex">
+        <a href="/editorial-policy/">编辑政策</a>
+        <a href="/data-sources/">数据来源</a>
+        <a href="/update-policy/">更新政策</a>
+      </p>
+    </div>
+  </div>
+
+  {/* 报头行 */}
+  <div
+    class="mx-auto flex max-w-[1120px] flex-wrap items-baseline justify-between gap-x-6 gap-y-2 px-4 py-4"
+  >
+    <a href="/" class="font-display text-[1.35rem] text-ink hover:no-underline">
+      机场决策室<span class="meta-text ml-2 hidden tracking-widest sm:inline">{SITE.domain}</span>
+    </a>
+
+    <nav aria-label="主导航" class="hidden md:block">
+      <ul class="m-0 flex list-none gap-5 p-0 text-[0.95rem]">
+        {
+          NAV_ITEMS.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={[
+                  'text-ink hover:text-accent',
+                  path.startsWith(item.href) && 'text-accent underline underline-offset-4',
+                ]}
+                aria-current={path.startsWith(item.href) ? 'true' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li><a href="/search/" class="text-muted hover:text-accent">搜索</a></li>
+      </ul>
+    </nav>
+
+    {/* 移动端零 JS 折叠菜单 */}
+    <details class="md:hidden">
+      <summary class="cursor-pointer list-none select-none text-[0.95rem] text-accent"
+        >菜单 ☰</summary
+      >
+      <nav
+        aria-label="主导航（移动端）"
+        class="absolute left-0 right-0 z-50 mt-3 border-y border-line bg-surface shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
+      >
+        <ul class="m-0 list-none p-0">
+          {
+            [...NAV_ITEMS, ...MOBILE_NAV_EXTRA].map((item) => (
+              <li class="border-b border-line last:border-b-0">
+                <a href={item.href} class="block px-5 py-3 text-ink">
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

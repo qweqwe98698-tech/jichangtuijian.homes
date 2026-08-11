@@ -1,0 +1,219 @@
+---
+/**
+ * 2026 机场排行榜（P1 核心商业页）。
+ * 排序纪律：只用可核验维度排名（单价、门槛、能力覆盖、运营口径），
+ * 不用未实测的速度/稳定性编造「综合第一」。
+ */
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import VerifyStamp from '@/components/VerifyStamp.astro';
+import EditorialPicks from '@/components/EditorialPicks.astro';
+import { SITE } from '@/lib/site';
+import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+
+const all = (await getCollection('brands')).filter((b) => b.data.priceFrom !== null);
+
+const priceValue = (s: string | null) => {
+  const m = s?.match(/([\d.]+)\s*元/);
+  return m ? Number(m[1]) : 999;
+};
+const capabilityScore = (d: (typeof all)[number]['data']) =>
+  (d.claims.ai ? 2 : 0) +
+  (d.claims.streaming ? 2 : 0) +
+  (d.claims.selfClient ? 1 : 0) +
+  (d.lineTypes.some((l) => /IEPL|IPLC|专线/.test(l)) ? 2 : 0) +
+  (d.protocols.some((p) => /VLESS/.test(p)) ? 1 : 0);
+
+const boards = [
+  {
+    id: 'value',
+    title: '性价比榜：每 GB 单价最低',
+    basis: '起步套餐价格 ÷ 流量额度，升序。可核验、可复算，但不含线路质量与倍率因素。',
+    caveat: '年付摊算价会拉低单价，请同时看计费周期一列。',
+    items: [...all]
+      .sort((a, b) => (a.data.pricePerGb ?? 99) - (b.data.pricePerGb ?? 99))
+      .slice(0, 8),
+    metric: (d: (typeof all)[number]['data']) =>
+      d.pricePerGb ? `${d.pricePerGb.toFixed(3)} 元 / GB` : '—',
+  },
+  {
+    id: 'entry',
+    title: '入门门槛榜：起步价最低',
+    basis: '起步套餐的标称月价，升序。反映「最少花多少钱能用起来」。',
+    caveat: '门槛低往往对应小流量包，够不够用要看你的实际用量。',
+    items: [...all]
+      .sort((a, b) => priceValue(a.data.priceFrom) - priceValue(b.data.priceFrom))
+      .slice(0, 8),
+    metric: (d: (typeof all)[number]['data']) => d.priceFrom ?? '—',
+  },
+  {
+    id: 'capability',
+    title: '能力覆盖榜：宣称能力最全',
+    basis: 'AI 解锁、流媒体解锁、专线线路、VLESS 协议、自研客户端五项的宣称覆盖数量。',
+    caveat: '这是宣传口径的覆盖度，不是实测结果——宣称越全越需要试用验证。',
+    items: [...all].sort((a, b) => capabilityScore(b.data) - capabilityScore(a.data)).slice(0, 8),
+    metric: (d: (typeof all)[number]['data']) => `${capabilityScore(d)} / 8 项`,
+  },
+];
+
+const faq = [
+  {
+    q: '2026 机场排行榜是怎么排名的？',
+    a: '本站的排行榜只用可核验、可复算的维度排序：每 GB 单价、起步门槛、宣称能力覆盖数量。速度与晚高峰稳定性需要固定网络、固定时段与足量样本才有意义，本站不做这类测试，因此性能不参与排名——用没有来源的数字排出的「综合第一」没有意义。',
+  },
+  {
+    q: '机场排行榜靠谱吗？为什么不同网站的排名差别很大？',
+    a: '排名差异主要来自三点：排序维度不同（有的按速度、有的按佣金）、测试条件不同（网络、时段、线程数）、以及是否公开方法。判断一份榜单是否可信，看它有没有写清排序依据、测试时间与推广关系披露——三者缺一，排名就只是排版。',
+  },
+  {
+    q: '有推广链接的机场推荐可信吗？',
+    a: '推广关系本身不必然导致不可信，隐瞒才会。本站的做法是：入口链接标注推广、排序依据公开可复算、每家都写出不适合人群与风险提示。你可以按同样的标准去检验任何一份榜单，包括这一份。',
+  },
+  {
+    q: '排行榜多久更新一次？',
+    a: '价格与优惠码随品牌调整同步更新；引用的第三方公开数据按更新政策定期复核，过期即撤下而不是继续挂着。品牌出现重大风险信号时不受周期限制，确认后 48 小时内下调或下架。',
+  },
+  {
+    q: '排名第一的就是最适合我的吗？',
+    a: '不是。榜单回答的是「在某个维度上谁更突出」，不回答「谁适合你」。先用选择指南确定你的场景与预算档，再回到对应的榜单里挑——跨档比较没有意义。',
+  },
+];
+
+const crumbs: Crumb[] = [
+  { name: '首页', href: '/' },
+  { name: '机场排行榜', href: '/airport-ranking/' },
+];
+
+const itemList = {
+  '@type': 'ItemList',
+  name: '2026 机场性价比排行榜',
+  itemListElement: boards[0]!.items.map((b, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: b.data.name,
+    url: `${SITE.url}/brands/${b.id}/`,
+  })),
+};
+---
+
+<Base
+  title="2026 机场排行榜：性价比、入门门槛与能力覆盖三榜"
+  description="2026 机场排行榜与天梯榜：按每 GB 单价、起步门槛、宣称能力覆盖三个可核验维度分别排名，公开排序依据与数据来源，不用缺乏来源的数字编造综合第一。"
+  schemaItems={[breadcrumbSchema(crumbs), itemList, faqSchema(faq)]}
+>
+  <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+
+  <header class="mt-8 max-w-[50rem]">
+    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">2026 机场排行榜</h1>
+    <div class="verdict">
+      <p class="verdict-label m-0">这份榜单怎么读</p>
+      <p class="m-0 text-[1.02rem]">
+        本站不发布「综合排名第一」。速度与晚高峰稳定性需要固定网络、固定时段与足量样本才能下结论，而本站不做统一环境下的独立测速；
+        用没测过的数据排名，只是把猜测包装成榜单。所以这里给三份<strong>可复算</strong>的榜：
+        性价比、入门门槛、能力覆盖——每份都写明排序依据和它的盲区，你按自己的权重取用。
+      </p>
+    </div>
+    <p class="meta-text m-0 mt-4">
+      数据口径：价格、优惠与能力宣称均来自渠道与品牌方资料（核对于 2026-08-11）， 完整对照见<a
+        href="/brand-library/">机场品牌库</a
+      >；排序方法见<a href="/methodology/">资料核验方法</a>。
+    </p>
+  </header>
+
+  <EditorialPicks heading="本站主推（编辑推荐位）" />
+
+  {
+    boards.map((board) => (
+      <section class="rule-top mt-14 pt-10" aria-labelledby={`board-${board.id}`}>
+        <h2 id={`board-${board.id}`} class="m-0 text-[1.5rem]">
+          {board.title}
+        </h2>
+        <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
+          <strong class="text-ink">排序依据：</strong>
+          {board.basis}
+        </p>
+        <p class="m-0 mt-1 max-w-[46rem] text-[0.92rem] text-amber">盲区提醒：{board.caveat}</p>
+
+        <ol class="path-index mt-6 max-w-[50rem]">
+          {board.items.map((b) => (
+            <li>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+                <h3 class="m-0 font-display text-[1.15rem]">
+                  <a href={`/brands/${b.id}/`} class="text-ink hover:text-accent">
+                    {b.data.name}
+                  </a>
+                </h3>
+                <p class="m-0 font-display text-[1.05rem] text-accent">{board.metric(b.data)}</p>
+              </div>
+              <p class="m-0 mt-1 text-[0.92rem] text-muted">{b.data.positioning}</p>
+              <p class="meta-text m-0 mt-1.5 flex flex-wrap items-center gap-3">
+                <span>{b.data.priceFrom}</span>
+                {b.data.couponCode && <span>优惠码 {b.data.couponCode}</span>}
+                <VerifyStamp status="sourced" />
+                <a href={`/brands/${b.id}/`}>档案 →</a>
+                {b.data.reviewSlug && <a href={`/${b.data.reviewSlug}/`}>评测 →</a>}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+
+  <section class="rule-top mt-16 pt-10" aria-labelledby="pick-heading">
+    <h2 id="pick-heading" class="m-0 text-[1.5rem]">按你的情况选榜单</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {
+        [
+          {
+            t: '预算最紧',
+            d: '看入门门槛榜，配合便宜机场的取舍清单控制风险。',
+            href: '/best/budget/',
+            label: '便宜机场怎么选',
+          },
+          {
+            t: '流量用得多',
+            d: '看性价比榜，重点比每 GB 单价与计费周期。',
+            href: '/brand-library/',
+            label: '进入品牌库比较',
+          },
+          {
+            t: '跑 AI 工具',
+            d: '先按 AI 场景标准过滤，再回榜单挑同档。',
+            href: '/best/ai/',
+            label: 'AI 场景选择标准',
+          },
+          {
+            t: '怕踩坑',
+            d: '任何榜单排名都替代不了风险核查，先看信号清单。',
+            href: '/risk/exit-scam-signals/',
+            label: '跑路信号清单',
+          },
+        ].map((x) => (
+          <div class="border-t-[3px] border-accent pt-4">
+            <h3 class="m-0 font-display text-[1.08rem]">{x.t}</h3>
+            <p class="m-0 mt-2 text-[0.93rem] text-muted">{x.d}</p>
+            <p class="m-0 mt-2 text-[0.92rem]">
+              <a href={x.href}>{x.label} →</a>
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="rule-top mt-16 pt-10 pb-6" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="m-0 text-[1.5rem]">关于机场排行榜的常见问题</h2>
+    <dl class="m-0 mt-6 max-w-[46rem]">
+      {
+        faq.map((f) => (
+          <div class="mb-6">
+            <dt class="font-display text-[1.05rem]">{f.q}</dt>
+            <dd class="m-0 mt-1 text-[0.95rem] text-muted">{f.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+</Base>

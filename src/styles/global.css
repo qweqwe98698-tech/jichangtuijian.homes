@@ -1,0 +1,350 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   机场决策室 设计令牌 — 依据 SITE-DNA.md「研究室纸面」
+   浅色 = 暖纸面；深色 = 夜灯纸面。颜色角色化：
+   accent(深杉绿)=可交互/结论  amber(赭石)=评分/注意  risk(暗红)=风险
+   ============================================================ */
+
+@theme {
+  --color-paper: #f7f4ee;
+  --color-surface: #fffdf8;
+  --color-ink: #211d16;
+  --color-muted: #6b6353;
+  --color-line: #ddd5c4;
+  --color-accent: #20614b;
+  --color-accent-deep: #174936;
+  --color-amber: #a05f13;
+  --color-risk: #a33d31;
+
+  --font-serif:
+    'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif CN', 'Songti SC', SimSun, Georgia,
+    serif;
+  --font-sans:
+    -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Segoe UI',
+    sans-serif;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-paper: #1b1f1d;
+    --color-surface: #232826;
+    --color-ink: #e8e3d6;
+    --color-muted: #a09a8a;
+    --color-line: #3a403c;
+    --color-accent: #7dbd9f;
+    --color-accent-deep: #9fd4ba;
+    --color-amber: #d69a52;
+    --color-risk: #d98b7f;
+  }
+}
+
+/* ---------- 基础 ---------- */
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  text-underline-offset: 3px;
+  transition: color 120ms ease;
+}
+a:hover {
+  color: var(--color-accent-deep);
+  text-decoration: underline;
+}
+
+/* 键盘焦点必须可见——Tailwind 的 reset 会去掉默认 outline */
+:where(a, button, summary, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* 尊重系统的「减少动态效果」设置 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- 组件语言 ---------- */
+
+/* 快速结论块：3px 左绿线 */
+.verdict {
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0 2rem;
+}
+.verdict > .verdict-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+/* 验证戳（文字徽章） */
+.stamp {
+  display: inline-block;
+  font-size: 0.72rem;
+  line-height: 1;
+  padding: 0.28em 0.55em;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  vertical-align: 0.15em;
+  white-space: nowrap;
+}
+.stamp-ok {
+  color: var(--color-accent);
+}
+.stamp-measured {
+  color: var(--color-amber);
+}
+.stamp-sourced {
+  color: var(--color-muted);
+}
+.stamp-pending {
+  color: var(--color-muted);
+  border-style: dashed;
+}
+.stamp-risk {
+  color: var(--color-risk);
+}
+
+/* 决策路径列表（Path Index） */
+.path-index {
+  counter-reset: path;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.path-index > li {
+  counter-increment: path;
+  border-top: 1px solid var(--color-line);
+  padding: 0.9rem 0 0.9rem 2.6rem;
+  position: relative;
+}
+.path-index > li::before {
+  content: counter(path, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+.path-index > li:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+
+/* 数据行 */
+.data-rows {
+  border-top: 1px solid var(--color-line);
+}
+.data-row {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-line);
+  font-size: 0.94rem;
+}
+.data-row dt {
+  flex: 0 0 8.5em;
+  color: var(--color-muted);
+}
+.data-row dd {
+  margin: 0;
+  flex: 1;
+}
+
+/* 表格（取舍表 / 对比表） */
+.table-scroll {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-line);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+th,
+td {
+  border: 1px solid var(--color-line);
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+  min-width: 7em;
+}
+th {
+  background: var(--color-surface);
+  font-family: var(--font-serif);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---------- 正文排版 ---------- */
+
+.prose-jc {
+  max-width: 46rem;
+}
+.prose-jc > * + * {
+  margin-top: 1.1em;
+}
+.prose-jc h2 {
+  font-size: 1.5rem;
+  margin-top: 2.6em;
+  padding-top: 1.2em;
+  border-top: 1px solid var(--color-line);
+}
+.prose-jc h3 {
+  font-size: 1.17rem;
+  margin-top: 2em;
+}
+.prose-jc h2 a,
+.prose-jc h3 a {
+  color: inherit;
+}
+.prose-jc h2 a:hover,
+.prose-jc h3 a:hover {
+  text-decoration: none;
+  color: var(--color-accent);
+}
+.prose-jc ul,
+.prose-jc ol {
+  padding-left: 1.4em;
+}
+.prose-jc li + li {
+  margin-top: 0.4em;
+}
+.prose-jc blockquote {
+  border-left: 3px solid var(--color-line);
+  margin: 1.5em 0;
+  padding: 0.2em 1.2em;
+  color: var(--color-muted);
+}
+.prose-jc code {
+  font-size: 0.88em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.35em;
+}
+.prose-jc pre {
+  overflow-x: auto;
+  border: 1px solid var(--color-line);
+  padding: 1em 1.2em;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.prose-jc pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.prose-jc table {
+  font-size: 0.9rem;
+}
+.prose-jc .table-wrap,
+.prose-jc > table {
+  display: block;
+  overflow-x: auto;
+}
+.prose-jc img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--color-line);
+}
+.prose-jc hr {
+  border: 0;
+  border-top: 1px solid var(--color-line);
+  margin: 2.5em 0;
+}
+
+/* ---------- 工具 ---------- */
+
+.meta-text {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+}
+
+/* 触屏设备上，小字链接的点击区域要够大（WCAG 2.5.8 最小 24×24） */
+@media (pointer: coarse) {
+  .meta-text a,
+  .data-row a,
+  figcaption a {
+    display: inline-block;
+    min-height: 24px;
+    line-height: 24px;
+  }
+}
+
+.rule-top {
+  border-top: 1px solid var(--color-line);
+}
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+}
+.btn-outline:hover {
+  background: var(--color-accent);
+  color: var(--color-paper);
+  text-decoration: none;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-surface);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 0;
+}

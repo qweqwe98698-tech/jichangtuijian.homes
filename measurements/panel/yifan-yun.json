@@ -1,0 +1,72 @@
+{
+  "brand": "yifan-yun",
+  "source": {
+    "tool": "MAI-TEST-BOT",
+    "threads": 32,
+    "backend": "珠海联通 5Gbps(4.6.4)",
+    "durationSec": 383,
+    "pingCount": 5,
+    "trafficUsedGB": 22.2
+  },
+  "accountRows": {
+    "remainingTrafficGB": null,
+    "planExpiry": null
+  },
+  "protocolShown": "Shadowsocks",
+  "totalNodes": 55,
+  "regions": [
+    {
+      "name": "香港",
+      "nodes": 20,
+      "latencyMinMs": 16,
+      "latencyMaxMs": 101,
+      "avgSpeedMinMB": 0.0,
+      "avgSpeedMaxMB": 92.27,
+      "maxSpeedMaxMB": 98.24
+    },
+    {
+      "name": "台湾",
+      "nodes": 5,
+      "latencyMinMs": 69,
+      "latencyMaxMs": 121,
+      "avgSpeedMinMB": 25.82,
+      "avgSpeedMaxMB": 82.81,
+      "maxSpeedMaxMB": 104.04
+    },
+    {
+      "name": "新加坡",
+      "nodes": 10,
+      "latencyMinMs": 54,
+      "latencyMaxMs": 59,
+      "avgSpeedMinMB": 29.08,
+      "avgSpeedMaxMB": 89.0,
+      "maxSpeedMaxMB": 113.12
+    },
+    {
+      "name": "日本",
+      "nodes": 10,
+      "latencyMinMs": 66,
+      "latencyMaxMs": 118,
+      "avgSpeedMinMB": 26.45,
+      "avgSpeedMaxMB": 86.53,
+      "maxSpeedMaxMB": 121.14
+    },
+    {
+      "name": "美国",
+      "nodes": 10,
+      "latencyMinMs": 160,
+      "latencyMaxMs": 162,
+      "avgSpeedMinMB": 61.12,
+      "avgSpeedMaxMB": 81.67,
+      "maxSpeedMaxMB": 149.82
+    }
+  ],
+  "anomalies": [
+    "表格中没有「剩余流量」「套餐到期」等账户信息行，全部 55 行均为节点行",
+    "HK|香港|01 平均速度与最大速度均为 0B（测速失败），该行仍按节点计入香港 20 个节点中，因此香港 avgSpeedMinMB 记为 0",
+    "HK|香港|09 延迟RTT 101ms，明显高于其他香港节点（16-24ms）",
+    "HK|香港|11 平均速度 42.70MB，但最大速度 85.10MB，波动较大",
+    "TW|台湾|05 HTTP延迟 627ms；JP|日本|05 HTTP延迟 611ms；JP|日本|04 HTTP延迟 550ms",
+    "TW|台湾|03 平均 25.82MB / 最大 26.44MB；SG|新加坡|03、05、06、10 与 JP|日本|03 平均速度均在 26-33MB 区间，明显低于同区其他节点"
+  ]
+}

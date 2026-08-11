@@ -1,0 +1,94 @@
+---
+/**
+ * 编辑主推位。与 /airport-ranking/ 的计算型榜单相互独立：
+ * 榜单按可复算维度排序、不受商业关系影响；本模块是本站的主动推荐，含商业因素，必须明示披露。
+ * 每一条都必须同时给出推荐理由与保留意见——只写优点的推荐位没有参考价值。
+ */
+import { getCollection } from 'astro:content';
+
+interface Props {
+  /** compact 用于侧栏，full 用于页面主区 */
+  variant?: 'full' | 'compact';
+  heading?: string;
+}
+const { variant = 'full', heading = '本站主推' } = Astro.props;
+
+const picks = (await getCollection('brands'))
+  .filter((b) => b.data.editorialPick !== null)
+  .sort((a, b) => a.data.editorialPick!.rank - b.data.editorialPick!.rank);
+---
+
+{
+  picks.length > 0 &&
+    (variant === 'compact' ? (
+      <div class="border border-line p-4">
+        <p class="meta-text m-0 tracking-widest">{heading}</p>
+        <ol class="m-0 mt-2 list-none p-0 text-[0.92rem] leading-relaxed">
+          {picks.map((b) => (
+            <li class="mt-2">
+              <span class="meta-text mr-1">{b.data.editorialPick!.rank}</span>
+              <a href={`/brands/${b.id}/`}>{b.data.name}</a>
+              <span class="meta-text ml-1">{b.data.priceFrom}</span>
+            </li>
+          ))}
+        </ol>
+        <p class="meta-text m-0 mt-3">
+          编辑推荐位，含商业合作，与<a href="/airport-ranking/">计算型榜单</a>相互独立。
+        </p>
+      </div>
+    ) : (
+      <section class="rule-top mt-16 pt-10" aria-labelledby="picks-heading">
+        <div class="flex flex-wrap items-baseline justify-between gap-3">
+          <h2 id="picks-heading" class="m-0 text-[1.5rem]">
+            {heading}
+          </h2>
+          <a href="/airport-ranking/" class="meta-text shrink-0">
+            想看不受商业影响的排序？去计算型榜单 →
+          </a>
+        </div>
+
+        <p class="m-0 mt-3 max-w-[46rem] text-[0.95rem] text-muted">
+          <strong class="text-ink">这是编辑推荐位，不是排名结果。</strong>
+          它由本站主动选择，<strong class="text-ink">包含商业合作因素</strong>； 而
+          <a href="/airport-ranking/">机场排行榜</a>只按每 GB
+          单价、起步门槛、能力覆盖三项可复算的维度排序，
+          不受商业关系影响。两者分开呈现，是为了让你能自己判断该信哪个。
+          每一条推荐都附上了保留意见——只写优点的推荐位没有参考价值。
+        </p>
+
+        <ol class="path-index mt-8 max-w-[50rem]">
+          {picks.map((b) => (
+            <li>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+                <h3 class="m-0 font-display text-[1.2rem]">
+                  <a href={`/brands/${b.id}/`} class="text-ink hover:text-accent">
+                    {b.data.name}
+                  </a>
+                </h3>
+                <p class="m-0 font-display text-[1.02rem] text-accent">{b.data.priceFrom}</p>
+              </div>
+
+              <p class="m-0 mt-2 text-[0.95rem]">{b.data.editorialPick!.reason}</p>
+
+              <p class="m-0 mt-2 border-l-[3px] border-amber pl-3 text-[0.92rem] text-muted">
+                <strong class="text-ink">保留意见：</strong>
+                {b.data.editorialPick!.caveat}
+              </p>
+
+              <p class="meta-text m-0 mt-3 flex flex-wrap items-center gap-4">
+                {b.data.couponCode && <span>优惠码 {b.data.couponCode}</span>}
+                <a href={`/brands/${b.id}/`}>档案与数据 →</a>
+                {b.data.reviewSlug && <a href={`/${b.data.reviewSlug}/`}>完整评测 →</a>}
+              </p>
+            </li>
+          ))}
+        </ol>
+
+        <p class="meta-text m-0 mt-6 max-w-[46rem]">
+          披露：本站与主推品牌存在推广合作，通过本站入口购买不会改变你的支付价格。
+          合作不影响数据行的来源标注、风险等级与计算型榜单的排序，详见
+          <a href="/editorial-policy/">编辑政策</a>与<a href="/disclaimer/">免责声明</a>。
+        </p>
+      </section>
+    ))
+}
