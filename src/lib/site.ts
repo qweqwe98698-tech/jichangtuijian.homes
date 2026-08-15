@@ -75,4 +75,4 @@ export const SITE_VERIFICATION = {
  * 生成一个 8–128 位的十六进制密钥填在这里，同时把同名文件放到 public/<key>.txt（内容就是该密钥）。
  * 填好后即可用 scripts/indexnow-submit.mjs 推送 URL。留空表示未启用。
  */
-export const INDEXNOW_KEY = '';
+export const INDEXNOW_KEY = '6dd7ea9a7a8507d010b3c6e6822bb46a';

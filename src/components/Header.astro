@@ -42,7 +42,11 @@ const path = Astro.url.pathname;
             </li>
           ))
         }
-        <li><a href="/search/" class="text-muted hover:text-accent">搜索</a></li>
+        {/* /search/ 是 noindex 页，robots.txt 不再 Disallow（否则爬虫读不到 noindex）；
+            改用 nofollow 避免把抓取预算浪费在站内搜索上 */}
+        <li>
+          <a href="/search/" rel="nofollow" class="text-muted hover:text-accent">搜索</a>
+        </li>
       </ul>
     </nav>
 
@@ -59,7 +63,11 @@ const path = Astro.url.pathname;
           {
             [...NAV_ITEMS, ...MOBILE_NAV_EXTRA].map((item) => (
               <li class="border-b border-line last:border-b-0">
-                <a href={item.href} class="block px-5 py-3 text-ink">
+                <a
+                  href={item.href}
+                  rel={item.href === '/search/' ? 'nofollow' : undefined}
+                  class="block px-5 py-3 text-ink"
+                >
                   {item.label}
                 </a>
               </li>
