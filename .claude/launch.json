@@ -3,10 +3,9 @@
   "configurations": [
     {
       "name": "preview",
-      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
-      "runtimeArgs": ["node_modules/astro/astro.js", "preview", "--port", "4399"],
-      "port": 4399,
-      "autoPort": false
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["preview"],
+      "port": 4321
     }
   ]
 }
