@@ -1,5 +1,50 @@
+# 策略：检索类与生成式引用类爬虫全部放行；纯模型训练类拒绝。
+#
+# ⚠️ 本文件生效的前提：必须先在 Cloudflare 后台关闭托管注入
+#    Security → Settings → 按 Bot traffic 过滤 → 关闭
+#    「Set your preference to block training in robots.txt」
+#    托管块是 prepend（前置追加）不是覆盖，不关掉的话线上会出现
+#    两个 User-agent: * 组，按 RFC 9309 部分爬虫只读第一组，
+#    下面这份的 Content-Signal 与规则对它们不可见。
+#
+# 放行说明（这些都落在通配组里，因此都能读到 Content-Signal）：
+#   OAI-SearchBot / ChatGPT-User      ChatGPT 搜索与实时取回
+#   Claude-SearchBot / Claude-User    Claude 搜索与实时取回
+#   PerplexityBot / Perplexity-User   Perplexity
+#   Googlebot                         Search 与 AI Overviews
+#   bingbot                           Bing 索引，也是 Copilot 的唯一来源
+#   Google-Extended                   Gemini 引用与 grounding（刻意不封）
+#   Bytespider                        豆包（刻意不封，中文受众重合度最高）
+#
+# ⚠️ 不要给放行的爬虫单开 Allow 组：RFC 9309 下爬虫只匹配最具体的一组，
+#    单开组会让它读不到通配组里的 Content-Signal。只给要封的 bot 单开组。
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
-Disallow: /search/
+Disallow: /pagefind/
+
+# ── 以下为纯模型训练用途，与 ai-train=no 一致，明确拒绝 ──
+# 它们被封不影响对应产品的检索式引用：
+# GPTBot ≠ OAI-SearchBot，ClaudeBot ≠ Claude-SearchBot。
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+# ── 受众不重合 ──
+User-agent: Amazonbot
+Disallow: /
 
 Sitemap: https://jichangtuijian.homes/sitemap-index.xml

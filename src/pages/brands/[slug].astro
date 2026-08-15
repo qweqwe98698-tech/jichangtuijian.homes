@@ -25,14 +25,31 @@ const cycleLabel = {
 } as const;
 const externalUrl = b.affiliateUrl ?? b.officialUrl;
 
+/**
+ * FAQ 的 acceptedAnswer 会被生成式引擎整段摘走，所以数据缺失时必须换一句完整的话，
+ * 不能让「起步套餐为待核验」「{空}。客户端配置方法见…」这类半截句子进入结构化数据。
+ */
+/** 数据齐全与数据缺失两种情况，各说各的话——不能一句说没核验、下一句说已核对 */
+const verdictAnswer = b.priceFrom
+  ? `${b.positioning}起步套餐为${b.priceFrom}。本站已核对其入口、价格与优惠码（渠道资料），但晚高峰、流媒体与 AI 解锁未做独立测试，建议先用最短周期套餐自行验证再决定是否长期使用。`
+  : `${b.positioning}本站尚未取得该品牌可核对的套餐与价格资料，因此本页不给出具体数字，也不对它作出推荐或不推荐的判断。在补齐资料之前，请以官网信息为准。`;
+
+const clientSentence = b.clients.length
+  ? `${b.name}按品牌口径支持 ${b.clients.join('、')}。${
+      b.claims.subscriptionImport ? '支持订阅导入第三方客户端（部分需联系在线客服获取）。' : ''
+    }`
+  : `${b.name}未在公开资料中说明支持哪些客户端，请以官网为准。`;
+
 const faq = [
   {
     q: `${b.name}机场怎么样？值得买吗？`,
-    a: `${b.positioning}起步套餐为${b.priceFrom ?? '待核验'}。本站已核对其入口、价格与优惠码（渠道资料），但晚高峰、流媒体与 AI 解锁未做独立测试，建议先用最短周期套餐自行验证再决定是否长期使用。`,
+    a: verdictAnswer,
   },
   {
     q: `${b.name}官网入口怎么找？会不会有假网站？`,
-    a: `本页的入口按渠道资料核对后提供。机场行业普遍存在仿冒站点，请勿从搜索广告位或陌生群链接进入付款页；核对域名后再操作，并把可用入口保存到本地。`,
+    a: externalUrl
+      ? `本页的入口按渠道资料核对后提供。机场行业普遍存在仿冒站点，请勿从搜索广告位或陌生群链接进入付款页；核对域名后再操作，并把可用入口保存到本地。`
+      : `本站尚未核对该品牌的官方入口，因此本页不提供跳转链接。机场行业普遍存在仿冒站点，在拿到可核对的官方域名之前，请勿从搜索广告位或陌生群链接进入付款页。`,
   },
   {
     q: `${b.name}有优惠码吗？`,
@@ -42,7 +59,7 @@ const faq = [
   },
   {
     q: `${b.name}支持哪些客户端？`,
-    a: `${b.clients.join('、')}。${b.claims.subscriptionImport ? '按品牌口径支持订阅导入第三方客户端（部分需联系在线客服获取）。' : ''}客户端配置方法见本站 Clash 与 Shadowrocket 教程。`,
+    a: `${clientSentence}客户端配置方法见本站 Clash 与 Shadowrocket 教程。`,
   },
   {
     q: `${b.name}适合买年付吗？`,
@@ -61,6 +78,7 @@ const crumbs: Crumb[] = [
   title={`${b.name}机场官网入口、套餐价格与优惠码档案`}
   description={`${b.name}机场档案：${b.priceFrom ?? '套餐待核验'}起步、优惠码、线路与协议、客户端支持、解锁能力口径、风险等级与官网入口核验状态，数据来源逐条标注。`}
   schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  noindex={b.dataStatus === 'unverified'}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
@@ -123,9 +141,11 @@ const crumbs: Crumb[] = [
           }
         </div>
         <p class="meta-text m-0 mt-4 border-t border-line pt-3">
-          价格与优惠为渠道资料口径（核对于 {
+          {
             b.lastVerified
-          }），品牌方可随时调整，付款前请以官网结算页为准。
+              ? `价格与优惠为渠道资料口径（核对于 ${b.lastVerified}），品牌方可随时调整，付款前请以官网结算页为准。`
+              : '本站尚未核对该品牌的价格与优惠信息，本页不给出具体数字；请以官网结算页为准。'
+          }
         </p>
       </section>
 

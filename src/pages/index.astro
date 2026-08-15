@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import ArticleRow from '@/components/ArticleRow.astro';
 import EditorialPicks from '@/components/EditorialPicks.astro';
+import QuickAnswer from '@/components/QuickAnswer.astro';
 import VerifyStamp from '@/components/VerifyStamp.astro';
 import { SITE } from '@/lib/site';
 import { faqSchema } from '@/lib/schema';
@@ -153,7 +154,7 @@ const faq = [
 
 <Base
   title="2026 机场推荐与稳定机场排行榜｜机场决策室"
-  description="2026 机场推荐：16 家在库机场的价格、线路与解锁能力对照，稳定机场、便宜机场、专线机场与 ChatGPT 机场分场景名单，排序依据与数据来源全部公开。先讲标准，再谈推荐。"
+  description="稳定机场怎么选：16 家在库机场，起步 7–25 元/月，每 GB 0.127–0.180 元，专线与解锁口径逐项标注，核对于 2026-08-11。不用没来源的数字排名，判据全部公开可复算。"
   schemaItems={[faqSchema(faq)]}
   bareTitle
 >
@@ -163,8 +164,12 @@ const faq = [
       <h1 class="m-0 max-w-[26ch] text-[1.8rem] leading-snug sm:text-[2.3rem]">
         2026 机场推荐与稳定机场排行榜
       </h1>
-      <p class="m-0 mt-4 max-w-[38rem] text-[1.1rem] text-muted">
-        这里不先给你一份榜单。我们把选择标准、场景差异和风险信号摆在推荐前面——
+
+      {/* 结论前置：先给可以直接用的答案，方法论退到其后 */}
+      <QuickAnswer />
+
+      <p class="m-0 mt-10 max-w-[38rem] text-[1.1rem] text-muted">
+        上面这份名单只是起点。本站把选择标准、场景差异和风险信号摆在推荐前面——
         每个数字都标清是谁测的：本站测的标「本站的测试」，第三方工具测的标「第三方实测」，
         品牌方自己说的标「官方与渠道资料」，没有数据的老实标「暂无统一测试数据」。
       </p>

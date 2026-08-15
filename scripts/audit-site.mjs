@@ -198,11 +198,69 @@ else {
   const robots = readFileSync(robotsPath, 'utf8');
   if (!/Sitemap:\s*https:\/\/jichangtuijian\.homes/.test(robots))
     blocking.push('robots.txt — 缺少正确的 Sitemap 声明');
-  if (/Disallow:\s*\/\s*$/m.test(robots)) blocking.push('robots.txt — 误屏蔽全站');
+
+  /**
+   * 「误屏蔽全站」只看通配组。给 GPTBot 等纯训练类爬虫单开组写 Disallow: / 是本站的
+   * 有意策略（见 robots.txt 顶部说明），不能一见 Disallow: / 就报错。
+   * 按 RFC 9309 分组：空行分隔，连续的 User-agent 行共享同一组规则。
+   */
+  const groups = [];
+  let current = null;
+  for (const raw of robots.split(/\r?\n/)) {
+    const line = raw.replace(/#.*$/, '').trim();
+    if (!line) continue;
+    const ua = line.match(/^User-agent:\s*(.+)$/i);
+    if (ua) {
+      if (!current || current.rules.length) current = { agents: [], rules: [] };
+      if (!groups.includes(current)) groups.push(current);
+      current.agents.push(ua[1].trim());
+    } else if (current && /^(?:Allow|Disallow):/i.test(line)) {
+      current.rules.push(line);
+    }
+  }
+  const wildcard = groups.filter((g) => g.agents.includes('*'));
+  if (wildcard.some((g) => g.rules.some((r) => /^Disallow:\s*\/\s*$/i.test(r))))
+    blocking.push('robots.txt — 通配组 Disallow: / 会屏蔽全站');
+  if (wildcard.length > 1)
+    blocking.push(
+      `robots.txt — 存在 ${wildcard.length} 个 User-agent: * 组，按 RFC 9309 部分爬虫只读第一组；` +
+        '通常是 Cloudflare 托管 robots.txt 前置注入所致，需在后台关闭',
+    );
 }
 
 // ── §3 RSS ──
 if (!existsSync(join(DIST, 'rss.xml'))) warnings.push('全站 — 缺少 rss.xml');
+
+// ── 结构化数据的空值泄漏 ──
+// 生成式引擎会把 acceptedAnswer.text / name 整段作为可引用片段抽走，
+// 所以模板变量渲染失败（半截句子、空值占位）比在正文里更严重：
+// 用户会看到一句语法不通的话，署本站的名。这类问题必须阻断部署。
+// 只匹配「模板取值失败」的形状，不匹配正常行文。
+// 「本站标注为待核验」是通顺的句子，不能算问题；
+// 「起步套餐为待核验」才是取值槽位漏了默认句。过宽的断言会被习惯性忽略，反而更糟。
+const LD_FIELD = '"(?:text|name|headline|description)"\\s*:\\s*"';
+const LEAK_PATTERNS = [
+  { re: new RegExp(LD_FIELD + '[，。、；：！？）】]'), label: '句子以标点开头（前面的变量取值为空）' },
+  {
+    re: new RegExp(LD_FIELD + '[^"]{0,80}(?:套餐|价格|优惠码|入口|线路|协议)为待核验'),
+    label: '取值槽位漏出「待核验」占位值',
+  },
+  { re: new RegExp(LD_FIELD + '[^"]*(?:undefined|null|NaN)'), label: 'undefined / null / NaN' },
+  { re: new RegExp(LD_FIELD + '[^"]{0,60}（[^）"]{0,20}\\s）'), label: '括号内取值为空（如「核对于 」）' },
+  { re: new RegExp(LD_FIELD + '"'), label: '空字符串' },
+];
+for (const page of pages) {
+  for (const { re, label } of LEAK_PATTERNS) {
+    for (const [, ld] of page.html.matchAll(
+      /<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/g,
+    )) {
+      if (re.test(ld)) {
+        add(blocking, page, `结构化数据存在模板变量泄漏：${label}`);
+        break;
+      }
+    }
+  }
+}
 
 // ── §7 锚文本多样性（同一目标使用大量完全相同锚文本） ──
 const anchorMap = new Map();
