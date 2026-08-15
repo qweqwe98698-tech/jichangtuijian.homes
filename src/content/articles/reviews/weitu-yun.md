@@ -25,6 +25,7 @@ related:
   - learn/protocols-explained
   - guides/stability-signals
   - best/ai
+  - best/stable
 ---
 
 多数机场的宣传页都在讲「解锁了什么」。唯兔云的宣传页讲的是另一件事——**你怎么连上去**。这个差别决定了它适合谁、不适合谁，也决定了这篇评测的写法：它不该按解锁清单来评，而该按入口质量来评。

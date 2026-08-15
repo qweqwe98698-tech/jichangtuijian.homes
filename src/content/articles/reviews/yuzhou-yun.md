@@ -25,6 +25,7 @@ related:
   - reviews/weitu-yun
   - best/budget
   - learn/iplc-vs-iepl
+  - best/stable
 ---
 
 搜「宇宙云机场怎么样」的人，多半卡在同一个疑问上：14.9 元这个价位同时挂着 IEPL 专线和流媒体全解锁，是不是写得太满了。这篇评测按本站惯例把信息拆成三层——可核对的、只是品牌口径的、以及只能由你自己验证的。

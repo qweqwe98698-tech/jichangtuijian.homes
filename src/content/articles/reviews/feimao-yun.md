@@ -25,6 +25,8 @@ related:
   - best/budget
   - risk/exit-scam-signals
   - guides/how-to-choose
+  - best/stable
+  - vs/feimao-yun-vs-xingdao-meng
 ---
 
 「飞猫云机场怎么样」这个搜索背后通常有两种人：一种在找能不能用十几块钱以内解决问题，另一种在给主力机场配备用。这两种需求它都对得上，但都有前提条件。先把可核对的部分和需要你自己判断的部分分开。

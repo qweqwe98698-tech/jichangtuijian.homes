@@ -25,6 +25,8 @@ related:
   - best/budget
   - guides/stability-signals
   - apps/clash-guide
+  - best/stable
+  - vs/lingmao-net-vs-yifan-yun
 ---
 
 如果你正在比价，「灵猫网络机场怎么样」这个问题其实可以被压缩成一句：**它是本批 16 家里，唯一在不要求年付的前提下把每 GB 单价压到 0.127 元的一家**。这篇评测就围绕这个事实展开——它意味着什么，以及它掩盖了什么。

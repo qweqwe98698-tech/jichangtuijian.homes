@@ -47,9 +47,12 @@ export const NAV_ITEMS = [
   ...SECTIONS.filter((s) => s.inNav).map((s) => ({ href: `/${s.key}/`, label: s.name })),
 ];
 
-/** 移动端展开菜单补充项：未进主导航的栏目 */
+/**
+ * 移动端展开菜单补充项：**未进主导航**的栏目。
+ * Header 用 [...NAV_ITEMS, ...MOBILE_NAV_EXTRA] 拼接渲染，
+ * 所以这里不能再列 SECTIONS 中 inNav: true 的栏目（/vs/ 曾重复出现两次）。
+ */
 export const MOBILE_NAV_EXTRA = [
-  { href: '/vs/', label: '机场对比' },
   { href: '/learn/', label: '知识库' },
   { href: '/fix/', label: '故障排查' },
   { href: '/search/', label: '搜索' },

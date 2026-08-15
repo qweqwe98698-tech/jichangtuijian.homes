@@ -21,6 +21,7 @@ related:
   - vs/wgetcloud-vs-nexitally
   - guides/stability-signals
   - best/ai
+  - best/stable
 ---
 
 搜「WgetCloud 怎么样」的人通常已经被种草，想要的是一个「买/不买」的答案。这篇评测给你的是更负责任的版本：**已经能确认的部分、还不能确认的部分、以及你自己就能核验的部分**——三块分开讲。

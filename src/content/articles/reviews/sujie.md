@@ -25,6 +25,7 @@ related:
   - best/ai
   - reviews/kuaili
   - guides/stability-signals
+  - best/stable
 ---
 
 如果你搜到这篇，多半是因为速界的宣传页上只有一件事被放大了：AI 全解锁。本批 16 家里，把 AI 单独拎出来当唯一主卖点、连流媒体都不提的，只有它一家。这种「窄」是它最值得讨论的地方，也是最容易被误读的地方。

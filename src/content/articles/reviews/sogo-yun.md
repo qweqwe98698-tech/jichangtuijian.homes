@@ -25,6 +25,8 @@ related:
   - reviews/kuaili
   - learn/iplc-vs-iepl
   - risk/exit-scam-signals
+  - best/stable
+  - vs/sogo-yun-vs-kuaili
 ---
 
 搜「SOGO 云机场怎么样」的人，通常已经看过 20 元档，想知道再往上走一档是不是更省心。这篇评测会直接回答，但答案可能不是你期待的那种：**在目前可核对的资料范围内，没有任何一项数据能证明这多出的 5 元买到了更好的东西。** 这不是说它不好，而是说它的核心卖点结构性地无法在纸面上验证。

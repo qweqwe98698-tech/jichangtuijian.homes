@@ -25,6 +25,8 @@ related:
   - reviews/sogo-yun
   - reviews/kexin-yun
   - guides/stability-signals
+  - best/stable
+  - vs/sogo-yun-vs-kuaili
 ---
 
 「快狸机场怎么样」这个问题，纸面上很快就能答完：25 元 150GB，VLESS 协议，IEPL 专线口径，AI 与流媒体双全解锁宣称，自研客户端加订阅导入——本批的评估维度它一条不缺。麻烦在于，同价位的 SOGO 云也是一条不缺。所以这篇评测的重点不是复述卖点，而是回答一个更实际的问题：**当两家纸面完全一样，你靠什么做决定？**

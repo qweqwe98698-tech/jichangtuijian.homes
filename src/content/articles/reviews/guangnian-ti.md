@@ -25,6 +25,7 @@ related:
   - reviews/jilian-yun
   - guides/stability-signals
   - learn/protocols-explained
+  - best/stable
 ---
 
 写光年梯这篇评测的难点，不在于它有什么问题，而在于它**几乎和同档所有品牌长得一样**。VLESS 协议、IEPL 专线、性价比小包、流媒体全解锁、AI 全解锁、自研客户端——这六个词，你在 18 元档的好几家宣传页上都能逐字找到。所以这篇不写「它有多好」，写的是：**当卖点完全撞车时，你还能靠什么做决定。**

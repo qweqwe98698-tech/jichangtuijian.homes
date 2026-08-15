@@ -25,6 +25,8 @@ related:
   - reviews/lingmao-net
   - best/budget
   - guides/stability-signals
+  - best/stable
+  - vs/lingmao-net-vs-yifan-yun
 ---
 
 如果你是被「20 元 150GB」这行字带到这篇文章的，那这篇评测的任务很明确：告诉你这个数字确实是真的（按渠道资料核对于 2026-08-11），以及**它没有告诉你的那一半是什么**。

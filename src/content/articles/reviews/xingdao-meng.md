@@ -25,6 +25,8 @@ related:
   - reviews/feimao-yun
   - risk/exit-scam-signals
   - best/budget
+  - best/stable
+  - vs/feimao-yun-vs-xingdao-meng
 ---
 
 搜「星岛梦机场怎么样」的人，多半是被 8 元这个数字带过来的。所以这篇评测先做一件榜单通常不做的事：**把 8 元还原成你真正要付出去的钱**，然后再谈它的套餐结构好在哪、风险在哪。

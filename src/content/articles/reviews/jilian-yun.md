@@ -25,6 +25,8 @@ related:
   - reviews/guangnian-ti
   - best/ai
   - guides/how-to-choose
+  - best/stable
+  - vs/guangsu-yun-vs-jilian-yun
 ---
 
 如果你在比较 18 元档的机场，极连云会给你一个不太舒服的感觉：同样的钱，别家给 110GB 甚至 150GB，它只给 100GB。这篇评测不绕开这一点，反过来把它当成切入口——**贵出来的那部分钱，到底买的是什么，什么时候值，什么时候不值。**

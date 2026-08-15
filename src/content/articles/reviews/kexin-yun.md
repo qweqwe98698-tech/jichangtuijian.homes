@@ -25,6 +25,7 @@ related:
   - reviews/sogo-yun
   - guides/how-to-choose
   - learn/iplc-vs-iepl
+  - best/stable
 ---
 
 搜「可信云机场怎么样」的人，通常已经把 25 元这一档的几家并排放着了，问题不是「它好不好」，而是「同样 25 元，它比隔壁少写了一项 AI 解锁，我是不是亏了」。这篇评测就从这一点切进去。

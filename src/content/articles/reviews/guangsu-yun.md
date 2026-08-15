@@ -25,6 +25,8 @@ related:
   - reviews/feimao-yun
   - best/ai
   - guides/stability-signals
+  - best/stable
+  - vs/guangsu-yun-vs-jilian-yun
 ---
 
 搜「光速云机场怎么样」的人，多半已经在某份榜单上见过它，想确认两件事：卖点是不是真的，以及值不值这个价。这篇评测按本站的一贯做法分成三块——**已经核对过的、只是品牌口径的、以及需要你自己验证的**。
