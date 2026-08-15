@@ -174,6 +174,22 @@ h4,
   border-bottom: 1px solid var(--color-line);
 }
 
+/**
+ * 条目列表：与 path-index 同一套视觉节奏，但**不编号**。
+ * 用在「不构成排名」的清单上——序号会被读成名次，
+ * 在明确写着「这不是排名」的地方给出 01/02/03 是自相矛盾的。
+ */
+.criteria-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-line);
+}
+.criteria-list > li {
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.9rem 0;
+}
+
 /* 数据行 */
 .data-rows {
   border-top: 1px solid var(--color-line);

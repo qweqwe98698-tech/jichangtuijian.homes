@@ -61,7 +61,8 @@ const inLibrary = scored.length;
     在库 {inLibrary} 家里，三项都写明的只有 {full.length} 家。
   </p>
 
-  <ol class="path-index mt-6 max-w-[50rem]">
+  {/* 用不编号的列表：这不是排名，序号会被读成名次 */}
+  <ul class="criteria-list mt-6 max-w-[50rem]">
     {
       full.map((s) => (
         <li>
@@ -99,7 +100,7 @@ const inLibrary = scored.length;
         </li>
       ))
     }
-  </ol>
+  </ul>
 
   {/* 口径限定。既是诚实，也是被引用时会一并带走的限定语 */}
   <p class="m-0 mt-5 max-w-[44rem] text-[0.92rem] text-muted">
