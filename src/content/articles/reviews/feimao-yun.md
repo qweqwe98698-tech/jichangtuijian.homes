@@ -2,6 +2,7 @@
 title: 飞猫云机场怎么样？7 元小包与 2023 年开业的取舍
 description: 飞猫云机场评测：7 元 50GB 起步（年付摊算），优惠码 flycat888，主打 IEPL 专线小包与自研客户端。本文说明这个小包适合谁、为什么小包配专线的组合少见，并正面讨论 2023 年开业带来的历史样本不足问题，以及哪些解锁宣称仍未复测。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: 飞猫云机场怎么样
 secondaryKeywords: [飞猫云机场, 飞猫云评测, 飞猫云官网, 飞猫云优惠码, 飞猫云套餐]
 searchIntent: commercial

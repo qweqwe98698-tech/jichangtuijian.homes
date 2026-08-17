@@ -13,8 +13,10 @@ pnpm install        # 安装依赖
 pnpm dev            # 本地开发（http://localhost:4321）
 pnpm build          # 构建 + Pagefind 索引（产物在 dist/）
 pnpm preview        # 预览构建产物
-pnpm verify         # 一条命令跑完全部验收：build → 死链 → 全站审计 → 测试 → lint → 类型检查
+pnpm verify         # 一条命令跑完全部验收：build → 死链 → 全站审计 → 发布门禁 → 测试 → lint → 类型检查
 pnpm audit:site     # 全站产物审计（H1/canonical/OG/JSON-LD/alt/sitemap 一致性等，需先 build）
+pnpm seo:check      # SEO 发布安全门禁（robots/noindex白名单/canonical自指/sitemap与页面数异常/未知目录/核心URL/标题去重，需先 build）
+pnpm seo:production # 部署后对线上域名做只读抽查（Googlebot/Bingbot 是否被拦截、robots/sitemap 可达性等）
 pnpm check          # Astro/TS 类型检查
 pnpm lint           # ESLint
 pnpm test           # Vitest（SEO 契约测试，需先 build）
@@ -23,7 +25,15 @@ pnpm format         # Prettier
 ```
 
 **发布前只需要记住一条**：`pnpm verify`。它串起全部检查，任何一步失败都会中断——
-`audit:site` 的退出码非 0 表示存在阻断级问题，不应部署。
+`audit:site` 与 `seo:check` 的退出码非 0 表示存在阻断级问题，不应部署。
+
+### SEO 发布安全门禁
+
+`scripts/seo-gate.mjs`（`pnpm seo:check`）是部署前的最后一关，专门防「改一改就把全站从搜索结果里带下去」这类事故。它检查 `audit:site` / `linkcheck` 没查的几件事：noindex 是否出现在白名单（`/404` `/search/` 未核验品牌页）之外的地方、canonical 是否自指、sitemap 与 dist 页面总数相对上一次通过的基线（`seo-baseline.json`）是否出现异常涨跌（判定阈值：跌 >15% 或涨 >50%）、dist 顶层是否出现不在 `src/pages`/`public` 登记范围内的未知目录（防误生成或被黑，**发现后只报告，不自动删除**）。全绿才会把本次结果写成新基线，任何一次阻断都不会污染基线。
+
+任何一次改动只要涉及新增/改文章、改导航、改 SEO 配置（`astro.config.mjs`、`src/lib/site.ts`、`src/lib/schema.ts`）、改 Cloudflare 部署文件（`public/_headers`、`public/_redirects`、`public/robots.txt`）或批量生成页面，发布前必须 `pnpm seo:check` 通过（`RELEASE_DECISION: READY`）。已上线并进入 sitemap 的 URL 不允许无理由修改；确需改动必须同时做 301、并同步 canonical / sitemap / 内链 / 导航 / breadcrumb / schema，禁止直接删除旧 URL。
+
+部署完成后再跑一次 `pnpm seo:production`，对真实域名做只读抽查——本地 `dist/` 检查无法验证 Cloudflare 层面是否误伤了 Googlebot / bingbot（Bot Fight Mode、WAF、JS Challenge），这一步专门补这个盲区。
 
 ## 目录结构
 
@@ -43,6 +53,8 @@ src/
   lib/schema.ts                 JSON-LD 构造
   layouts/  components/  pages/ 布局 / 组件 / 页面
 scripts/check-links.mjs         死链检查
+scripts/seo-gate.mjs            SEO 发布安全门禁（pnpm seo:check）
+scripts/production-check.mjs    线上只读核验（pnpm seo:production）
 scripts/make-og.mjs             重新生成默认 OG 图
 tests/seo.test.ts               页面级 SEO 契约测试
 ```
@@ -137,6 +149,7 @@ node scripts/make-og.mjs            # 重新生成默认 OG 图
 4. 访问 `/search/` 确认 Pagefind 索引已随产物部署
 5. 随便敲一个不存在的路径，确认返回自定义 404 页
 6. 用浏览器开发者工具确认 `_headers` 生效（响应头含 `X-Content-Type-Options`）
+7. 跑 `pnpm seo:production`，确认 Googlebot / bingbot UA 没有被 Cloudflare 拦截，`PRODUCTION_STATUS: LIVE_HEALTHY`
 
 canonical、sitemap、OG 图均已硬绑定正式域名（`astro.config.mjs` 的 `site` 字段）。
 
@@ -144,10 +157,10 @@ canonical、sitemap、OG 图均已硬绑定正式域名（`astro.config.mjs` 的
 
 三项都是**部署后**的手动操作，代码侧已留好接口：
 
-| 事项 | 操作 |
-|---|---|
-| Google Search Console | 取得验证码后填 `src/lib/site.ts` 的 `SITE_VERIFICATION.google`，重新部署即可；也可改用 DNS 验证并保持留空。随后提交 `https://jichangtuijian.homes/sitemap-index.xml` |
-| Bing Webmaster Tools | 同理填 `SITE_VERIFICATION.bing`（对应 `msvalidate.01`），提交同一个 sitemap |
-| IndexNow | 生成 8–128 位十六进制密钥 → 填 `INDEXNOW_KEY` → 在 `public/<key>.txt` 放同名文件（内容即密钥）→ 跑 `node scripts/indexnow-submit.mjs`。先用 `--dry-run` 看一遍要提交什么 |
+| 事项                  | 操作                                                                                                                                                                     |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Google Search Console | 取得验证码后填 `src/lib/site.ts` 的 `SITE_VERIFICATION.google`，重新部署即可；也可改用 DNS 验证并保持留空。随后提交 `https://jichangtuijian.homes/sitemap-index.xml`     |
+| Bing Webmaster Tools  | 同理填 `SITE_VERIFICATION.bing`（对应 `msvalidate.01`），提交同一个 sitemap                                                                                              |
+| IndexNow              | 生成 8–128 位十六进制密钥 → 填 `INDEXNOW_KEY` → 在 `public/<key>.txt` 放同名文件（内容即密钥）→ 跑 `node scripts/indexnow-submit.mjs`。先用 `--dry-run` 看一遍要提交什么 |
 
 留空时不会输出任何空 meta 标签，所以未配置也不会污染页面。

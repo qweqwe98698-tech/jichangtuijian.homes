@@ -2,6 +2,7 @@
 title: WgetCloud 机场评测：高端定位值不值，先看核验进度
 description: WgetCloud 怎么样？本篇按公开资料核对这家高端定位机场：定位与口碑结构分析已完成，测速、解锁、晚高峰等性能数据没有统一来源，无数据项一律如实标注而非给出猜测。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: WgetCloud 怎么样
 secondaryKeywords: [WgetCloud 评测, WgetCloud 机场, WgetCloud 套餐]
 searchIntent: commercial

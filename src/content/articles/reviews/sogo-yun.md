@@ -2,6 +2,7 @@
 title: SOGO 云机场怎么样？多付的 5 元究竟买到什么
 description: SOGO 云机场评测：25 元 150GB 起步、每 GB 约 0.167 元，优惠码 sss777，宣称 IEPL 专线与流媒体、AI 双全解锁。它的单价与 20 元档持平而不占优，所以真正的问题不是贵不贵，而是那多出的 5 元买的线路质量预期能否被验证——本文给出可自己动手的证伪流程。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: SOGO 云机场怎么样
 secondaryKeywords: [SOGO 云机场, SOGO 云评测, SOGO 云官网, SOGO 云优惠码, SOGO 云套餐]
 searchIntent: commercial

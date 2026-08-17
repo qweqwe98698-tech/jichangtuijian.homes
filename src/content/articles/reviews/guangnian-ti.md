@@ -2,6 +2,7 @@
 title: 光年梯机场怎么样？18 元 110GB 与同质化里的选法
 description: 光年梯机场评测：18 元 110GB 起步、每 GB 约 0.164 元，宣称 VLESS 协议、IEPL 专线与 AI、流媒体双解锁，优惠码 gnt6666。它的卖点与同档几乎完全撞车——本文诚实讨论同质化市场里还剩哪些可比项，以及哪些差别只能靠你自己测出来。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: 光年梯机场怎么样
 secondaryKeywords: [光年梯机场, 光年梯评测, 光年梯官网, 光年梯优惠码, 光年梯套餐]
 searchIntent: commercial

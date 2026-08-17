@@ -2,6 +2,7 @@
 title: 光速云机场怎么样？六年老牌 IEPL 专线的实测前评估
 description: 光速云机场评测：17 元 110GB 起步、IEPL 企业级内网专线与 VLESS 协议，优惠码 AMM。本文核对其套餐、线路口径与解锁宣称，说明哪些已核实、哪些暂无统一测试数据，以及适合与不适合谁。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: 光速云机场怎么样
 secondaryKeywords: [光速云机场, 光速云评测, 光速云官网, 光速云优惠码, 光速云套餐]
 searchIntent: commercial

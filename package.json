@@ -14,7 +14,9 @@
     "format": "prettier -w .",
     "linkcheck": "node scripts/check-links.mjs",
     "audit:site": "node scripts/audit-site.mjs",
-    "verify": "pnpm build && pnpm linkcheck && pnpm audit:site && pnpm test && pnpm lint && pnpm check",
+    "seo:check": "node scripts/seo-gate.mjs",
+    "seo:production": "node scripts/production-check.mjs",
+    "verify": "pnpm build && pnpm linkcheck && pnpm audit:site && pnpm seo:check && pnpm test && pnpm lint && pnpm check",
     "data:check": "node scripts/check-data-freshness.mjs"
   },
   "dependencies": {

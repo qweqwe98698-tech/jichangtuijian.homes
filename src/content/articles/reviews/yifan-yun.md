@@ -2,6 +2,7 @@
 title: 一翻云机场怎么样？20 元 150GB 背后的流量陷阱
 description: 一翻云机场评测：20 元 150GB 起步、每 GB 约 0.133 元，是 20 元档里单价最低的一家，优惠码 yfy6666。本文只讲一件事——流量额度和实际带宽是两回事，便宜的 GB 不等于跑得动的 GB，并给出一套在退款窗口内验证「跑不跑得动」的自测动作。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: 一翻云机场怎么样
 secondaryKeywords: [一翻云机场, 一翻云评测, 一翻云官网, 一翻云优惠码, 一翻云套餐]
 searchIntent: commercial

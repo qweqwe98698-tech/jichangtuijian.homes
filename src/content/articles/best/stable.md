@@ -2,6 +2,7 @@
 title: 稳定机场推荐：用可核验的代理指标筛出候选
 description: 稳定机场推荐名单：在没有统一测试数据的前提下，用专线口径、运营年限、月付通道三项可核验的代理指标筛选在库机场，并给出把候选变成结论的自行验证流程。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: 稳定机场推荐
 secondaryKeywords: [稳定机场, 稳定机场排行榜, 靠谱机场推荐, 晚高峰稳定机场, 老牌机场推荐]
 searchIntent: commercial

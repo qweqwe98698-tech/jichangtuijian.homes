@@ -2,6 +2,7 @@
 title: 极连云机场评测：每 GB 0.18 元，贵出来的钱买了什么
 description: 极连云机场评测：18 元 100GB 起步、每 GB 约 0.18 元为本批最高，宣称 IEPL 专线与 AI、流媒体双解锁，优惠码 ji8888。本文从「按能力定价而不是按流量走量」的角度算清这笔溢价买到了什么、什么时候不成立，以及哪些数据本站未做独立测试。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: 极连云机场怎么样
 secondaryKeywords: [极连云机场, 极连云评测, 极连云官网, 极连云优惠码, 极连云套餐]
 searchIntent: commercial

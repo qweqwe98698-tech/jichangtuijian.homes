@@ -2,6 +2,7 @@
 title: 可信云机场怎么样？一家只承诺流媒体的 25 元档
 description: 可信云机场评测：25 元 150GB 起步，IEPL 专线与 VLESS 协议，优惠码 kkk333。它只宣称流媒体全解锁、未宣称 AI 解锁，宣传克制反而更容易核对。本文拆开已核对项、品牌口径项与无数据项，说清同价位少一项能力的代价，并给出下单前用最短周期自测的做法。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: 可信云机场怎么样
 secondaryKeywords: [可信云机场, 可信云评测, 可信云官网, 可信云优惠码, 可信云套餐]
 searchIntent: commercial

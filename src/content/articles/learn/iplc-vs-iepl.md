@@ -2,6 +2,7 @@
 title: IPLC 和 IEPL 是什么？专线、中转、直连一次讲清
 description: 机场宣传里的 IPLC、IEPL、BGP 中转、直连到底是什么？本文用「你的数据走哪条路」讲清四种线路的原理差异、晚高峰表现为什么不同、以及哪些人值得为专线付钱。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: IPLC 是什么
 secondaryKeywords: [IEPL 是什么, IPLC IEPL 区别, 机场专线, 中转 直连]
 searchIntent: informational

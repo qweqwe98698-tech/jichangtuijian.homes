@@ -2,6 +2,7 @@
 title: 稳定机场怎么判断：7 个可以逐项核验的指标
 description: 「稳定」是机场宣传里最廉价的词，也是最贵的需求。这份清单把稳定性拆成 7 个可核验指标：晚高峰中位速度、丢包率、故障响应、线路冗余等，教你用一周试用期测出真相。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: 稳定机场
 secondaryKeywords: [稳定机场推荐, 机场稳定性, 晚高峰, 机场测速]
 searchIntent: commercial

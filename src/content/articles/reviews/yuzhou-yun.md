@@ -2,6 +2,7 @@
 title: 宇宙云机场怎么样？14.9 元看剧向 IEPL 小包评测
 description: 宇宙云机场评测：14.9 元 100GB 起步，宣称 VLESS 协议、IEPL 专线与流媒体全解锁，优惠码 YUZHOU553。本文拆解它为什么是一份「看剧向」小包、AI 用户为什么应该看别家，以及哪些口径本站未做独立测试，帮你在下单前判断这笔钱花得值不值。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: 宇宙云机场怎么样
 secondaryKeywords: [宇宙云机场, 宇宙云评测, 宇宙云官网, 宇宙云优惠码, 宇宙云套餐]
 searchIntent: commercial

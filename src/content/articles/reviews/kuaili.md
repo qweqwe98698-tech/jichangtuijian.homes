@@ -2,6 +2,7 @@
 title: 快狸机场怎么样？纸面最全的 25 元档该怎么判
 description: 快狸机场评测：25 元 150GB 起步，VLESS 协议、IEPL 专线口径、AI 与流媒体双全解锁宣称，优惠码 kkk2222。它的能力面在 25 元档最完整，却与同价 SOGO 云几乎重合。本文讲清纸面一样时靠什么做决定，以及哪些项本站未做独立测试。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: 快狸机场怎么样
 secondaryKeywords: [快狸机场, 快狸评测, 快狸官网, 快狸优惠码, 快狸套餐]
 searchIntent: commercial

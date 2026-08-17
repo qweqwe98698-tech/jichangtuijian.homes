@@ -2,6 +2,7 @@
 title: 二猫云机场怎么样？20 元档中间那个刻度值不值
 description: 二猫云机场评测：20 元 130GB 起步、每 GB 约 0.154 元，优惠码 ermao5555，卡在 120GB 与 150GB 之间。本文从「档位颗粒度」这个少有人讲的角度切入，说明什么样的用量结构会因为上下取整而白花钱，以及它在同价位里既不最便宜也不最多量的真实处境。
 pubDate: 2026-08-11
+updatedDate: 2026-08-15
 primaryKeyword: 二猫云机场怎么样
 secondaryKeywords: [二猫云机场, 二猫云评测, 二猫云官网, 二猫云优惠码, 二猫云套餐]
 searchIntent: commercial
