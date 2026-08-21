@@ -241,11 +241,11 @@ const crumbs: Crumb[] = [
             externalUrl ? (
               <a
                 href={externalUrl}
-                class="btn-outline"
+                class="btn-solid"
                 rel="nofollow sponsored noopener"
                 target="_blank"
               >
-                前往 {b.name} 官网（外部链接，含推广）
+                前往 {b.name} 官网注册
               </a>
             ) : (
               <span class="stamp stamp-pending">官方入口核验中，暂不提供外链</span>
@@ -253,6 +253,7 @@ const crumbs: Crumb[] = [
           }
         </p>
         <p class="meta-text m-0 mt-3">
+          {externalUrl && '以上为推广链接，合作不改变本页数据与结论。'}
           谨防仿冒站点：请勿从搜索广告位或陌生群链接进入付款页，核对域名后再操作。
         </p>
       </section>
@@ -274,6 +275,32 @@ const crumbs: Crumb[] = [
 
     <aside class="lg:col-span-4">
       <div class="flex flex-col gap-5 lg:sticky lg:top-6">
+        {/* 侧栏随页面吸顶跟随，是全页停留最久的位置；转化入口放在最前 */}
+        {
+          externalUrl && (
+            <div class="border border-line bg-surface p-4">
+              <p class="meta-text m-0 tracking-widest">注册入口</p>
+              {b.priceFrom && <p class="m-0 mt-2 font-display text-[1.1rem]">起步 {b.priceFrom}</p>}
+              {b.couponCode && (
+                <p class="m-0 mt-1 text-[0.92rem]">
+                  优惠码{' '}
+                  <strong class="font-display text-[1.02rem] text-amber">{b.couponCode}</strong>
+                </p>
+              )}
+              <p class="m-0 mt-3">
+                <a
+                  href={externalUrl}
+                  class="btn-solid btn-block"
+                  rel="nofollow sponsored noopener"
+                  target="_blank"
+                >
+                  前往 {b.name} 官网注册
+                </a>
+              </p>
+              <p class="meta-text m-0 mt-2">推广链接 · 建议首单只买最短周期</p>
+            </div>
+          )
+        }
         {
           b.reviewSlug && (
             <div class="border border-line p-4">

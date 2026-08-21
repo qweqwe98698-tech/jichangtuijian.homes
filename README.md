@@ -157,10 +157,39 @@ canonical、sitemap、OG 图均已硬绑定正式域名（`astro.config.mjs` 的
 
 三项都是**部署后**的手动操作，代码侧已留好接口：
 
-| 事项                  | 操作                                                                                                                                                                     |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Google Search Console | 取得验证码后填 `src/lib/site.ts` 的 `SITE_VERIFICATION.google`，重新部署即可；也可改用 DNS 验证并保持留空。随后提交 `https://jichangtuijian.homes/sitemap-index.xml`     |
-| Bing Webmaster Tools  | 同理填 `SITE_VERIFICATION.bing`（对应 `msvalidate.01`），提交同一个 sitemap                                                                                              |
-| IndexNow              | 生成 8–128 位十六进制密钥 → 填 `INDEXNOW_KEY` → 在 `public/<key>.txt` 放同名文件（内容即密钥）→ 跑 `node scripts/indexnow-submit.mjs`。先用 `--dry-run` 看一遍要提交什么 |
+| 事项                  | 操作                                                                                                                                                                 |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Google Search Console | 取得验证码后填 `src/lib/site.ts` 的 `SITE_VERIFICATION.google`，重新部署即可；也可改用 DNS 验证并保持留空。随后提交 `https://jichangtuijian.homes/sitemap-index.xml` |
+| Bing Webmaster Tools  | 同理填 `SITE_VERIFICATION.bing`（对应 `msvalidate.01`），提交同一个 sitemap                                                                                          |
+| IndexNow              | 生成 8–128 位十六进制密钥 → 填 `INDEXNOW_KEY` → 在 `public/<key>.txt` 放同名文件（内容即密钥）→ 见下方「IndexNow 提交」                                              |
 
 留空时不会输出任何空 meta 标签，所以未配置也不会污染页面。
+
+#### IndexNow 提交
+
+IndexNow 的协议语义是「**这一条 URL 变了**」。反复告知全站 URL 都变了、而爬虫抓下来发现内容没变，
+会让该 host 的提交信号被降权直至忽略——对一个零外链的新站，这是仅有的主动抓取杠杆，用废了没有替代品。
+所以脚本的默认行为是**只提交你点名的页**，全量必须显式声明：
+
+```bash
+node scripts/indexnow-submit.mjs --dry-run airport-ranking/ cheap-airport/
+```
+
+```bash
+node scripts/indexnow-submit.mjs airport-ranking/ cheap-airport/
+```
+
+**路径参数不要带前导斜杠。** Git Bash（MSYS2）会把 `/airport-ranking/` 当成 Unix 绝对路径，
+在参数到达 node 之前改写成 `C:/Program Files/Git/airport-ranking/`。旧版本据此静默回落到全量提交，
+同一条命令在 PowerShell 下提交 2 条、在 Git Bash 下提交 102 条且无任何告警。现在检测到改写会直接报错退出。
+带斜杠的写法在 PowerShell / CI 下仍然接受；Git Bash 下如果一定要用，加 `MSYS_NO_PATHCONV=1`。
+
+其余三条保护：路径不在 `dist/` 里（拼错或没构建）直接报错；超过 20 条要求显式 `--all`；
+不带任何路径参数裸跑会被拒绝，并提示这两种正确用法。全量提交用：
+
+```bash
+node scripts/indexnow-submit.mjs --all
+```
+
+**时序**：先把内容改动做完、跑通 `pnpm verify`、部署上线，**再**执行定向提交——
+提交一个还没更新的线上 URL，等于用掉一次配额去告知一条假变更。

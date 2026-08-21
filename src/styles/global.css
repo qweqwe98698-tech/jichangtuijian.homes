@@ -353,6 +353,39 @@ th {
   text-decoration: none;
 }
 
+/**
+ * 主转化按钮：全站只用在「前往品牌官网注册」这一个动作上。
+ * 到处都用它就不再是主按钮——次级动作一律用 .btn-outline。
+ * 保持 2px 圆角与杉绿实心，跟「研究室纸面」一致；不做大圆角/渐变/阴影。
+ */
+.btn-solid {
+  display: inline-block;
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  color: var(--color-paper);
+  padding: 0.68rem 1.55rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition:
+    background 120ms ease,
+    border-color 120ms ease;
+}
+.btn-solid:hover {
+  background: var(--color-accent-deep);
+  border-color: var(--color-accent-deep);
+  color: var(--color-paper);
+  text-decoration: none;
+}
+/* 侧栏窄容器里占满整行。两个类=更高优先级，避免和 Tailwind 的 block 打架 */
+.btn-solid.btn-block {
+  display: block;
+  text-align: center;
+  padding-inline: 1rem;
+}
+
 .skip-link {
   position: absolute;
   left: -9999px;
