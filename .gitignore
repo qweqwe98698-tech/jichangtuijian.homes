@@ -18,6 +18,11 @@ pnpm-debug.log*
 measurements/*.json
 !measurements/_template.json
 
+# 本机 pnpm 工具链修补（不入库，避免给线上构建链引入未验证变量）
+# 只在本机 pnpm 主版本高于当初安装 node_modules 的那一版时才需要。
+# 生成方法与原因见 README「本地 pnpm 起不来」。
+pnpm-workspace.yaml
+
 # os
 .DS_Store
 Thumbs.db

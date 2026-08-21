@@ -27,6 +27,39 @@ pnpm format         # Prettier
 **发布前只需要记住一条**：`pnpm verify`。它串起全部检查，任何一步失败都会中断——
 `audit:site` 与 `seo:check` 的退出码非 0 表示存在阻断级问题，不应部署。
 
+### 本地 pnpm 起不来
+
+症状：任何 `pnpm <脚本>` 都直接失败，报下面两条之一，构建根本没开始。
+
+```text
+ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY
+ERR_PNPM_IGNORED_BUILDS
+```
+
+成因是**本机 pnpm 主版本高于当初安装 `node_modules` 的那一版**（用
+`grep packageManager node_modules/.modules.yaml` 对比 `pnpm -v` 即可确认）。
+新版 pnpm 想清掉旧目录重装，非交互环境下问不了就中止；重装后又会因为
+pnpm 10+ 默认拦截依赖的安装脚本而继续判定「依赖未就绪」。
+
+修法两步，都在本机做，不改仓库任何东西：
+
+```bash
+# 1. 在仓库根目录建 pnpm-workspace.yaml（已在 .gitignore 中），放行两个必须跑安装脚本的包
+#    sharp   —— 图片处理与 OG 图生成
+#    esbuild —— Vite / Astro 的构建内核
+printf 'allowBuilds:\n  esbuild: true\n  sharp: true\n' > pnpm-workspace.yaml
+```
+
+```bash
+CI=true pnpm install --frozen-lockfile
+```
+
+`--frozen-lockfile` 保证依赖版本与 `pnpm-lock.yaml` 完全一致，不会顺带升级任何包。
+装完 `pnpm verify` 与 `pnpm preview` 即恢复正常。
+
+该文件**刻意不入库**：Cloudflare 上的构建一直正常，这纯属本机工具链问题，
+提交它等于给线上构建链引入一个无法在本地验证的变量。
+
 ### SEO 发布安全门禁
 
 `scripts/seo-gate.mjs`（`pnpm seo:check`）是部署前的最后一关，专门防「改一改就把全站从搜索结果里带下去」这类事故。它检查 `audit:site` / `linkcheck` 没查的几件事：noindex 是否出现在白名单（`/404` `/search/` 未核验品牌页）之外的地方、canonical 是否自指、sitemap 与 dist 页面总数相对上一次通过的基线（`seo-baseline.json`）是否出现异常涨跌（判定阈值：跌 >15% 或涨 >50%）、dist 顶层是否出现不在 `src/pages`/`public` 登记范围内的未知目录（防误生成或被黑，**发现后只报告，不自动删除**）。全绿才会把本次结果写成新基线，任何一次阻断都不会污染基线。
