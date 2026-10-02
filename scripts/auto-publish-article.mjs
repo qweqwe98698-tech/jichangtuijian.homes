@@ -63,7 +63,7 @@ const TOPIC_MATRIX = [
     contentType: 'troubleshooting',
     searchIntent: 'problem',
     funnelStage: 'consideration',
-    brandCta: 'weifeng-net',
+    brandCta: 'weifeng-wangluo',
     related: ['fix/claude-code-disconnect', 'fix/chatgpt-blocked', 'apps/ai-split-tunneling'],
     promptOutline: `针对开发者使用 Cursor 编辑器时出现的 AI 补全中断、Chat 面板报错 'Connection failed' 或 'FetchError' 的系统性排查指南。涵盖 Electron 底层证书存储、系统代理忽略局部环回地址的现象。逐步指导用户通过环境变量 (HTTP_PROXY / HTTPS_PROXY / NODE_TLS_REJECT_UNAUTHORIZED) 配置，如何在 Clash / Shadowrocket 中针对 Cursor 核心域名 (*.cursor.sh, api2.cursor.sh) 单独配置 DOMAIN-SUFFIX 规则固定走高纯净度住宅或专线节点，并提供 Windows/macOS 终端 curl 探测接口健康状态的排查命令。`
   },
@@ -91,7 +91,7 @@ const TOPIC_MATRIX = [
     funnelStage: 'awareness',
     difficulty: 'intermediate',
     platform: 'Windows / macOS / Android / iOS',
-    brandCta: 'wuyou-link',
+    brandCta: 'wuyou-lianjie',
     related: ['apps/clash-guide', 'apps/shadowrocket-guide', 'learn/protocols-explained'],
     promptOutline: `系统梳理新一代通用代理核心 sing-box 的配置理念与结构。重点对比传统 Clash YAML 与 sing-box JSON 格式的差异。逐节讲解 inbounds（入站 mixed, tun）、outbounds（节点与策略组）、route（基于 rule_set 二进制规则集的路由）三大核心模块的写法。提供完整的可运行 JSON 配置文件模版，指导如何在 iOS (Sing-box GUI) 和 PC 桌面端正确载入订阅并配置自动更新，指出初学者在 DNS independent 独立解析时最常犯的死循环解析错误与避免方案。`
   },
@@ -144,7 +144,7 @@ const TOPIC_MATRIX = [
     contentType: 'troubleshooting',
     searchIntent: 'problem',
     funnelStage: 'consideration',
-    brandCta: 'weifeng-net',
+    brandCta: 'weifeng-wangluo',
     related: ['fix/chatgpt-blocked', 'apps/ai-split-tunneling', 'best/ai'],
     promptOutline: `针对开发者调用 OpenAI Realtime API 或终端用户使用 ChatGPT Advanced Voice（高级语音模式）时，频繁遇到的 WebSocket 握手成功但 WebRTC 语音流中途断开、静音无声的问题。从网络协议层解释原因：语音流走的是 UDP WebRTC 协议，经过 STUN / TURN 服务器协商。如果代理客户端仅配置了 HTTP/TCP 分流，UDP 流量要么被直接丢弃，要么从本地直连泄露被 OpenAI 防火墙检测并切断。给出在 Clash / sing-box 中启用 UDP 代理并为 livekit 域名正确放行路由的具体操作。`
   },
@@ -286,7 +286,7 @@ function buildSystemPrompt() {
      verdict: (string，快速结论摘要，严禁包含“实测”字眼)
      faq: (array of { q: string, a: string }，3-5 组高价值技术问答)
      related: (array of string，站内关联文章路径)
-     brandCta: (可选 string)`;
+     brandCta: (可选 string，【极度重要】若填写必须且只能填纯英文标识如 "guangsu-yun"，绝对不能写中文句子或说明！若无则不写该字段)`;
 }
 
 function buildUserPrompt(topic) {
@@ -301,7 +301,7 @@ function buildUserPrompt(topic) {
 - 内容类型：${topic.contentType}
 - 搜索意图：${topic.searchIntent}
 - 漏斗阶段：${topic.funnelStage}
-- 商业关联品牌（可选）：${topic.brandCta || ''}
+- 商业关联品牌英文代号（brandCta）：${topic.brandCta || '无'}（【极其重要】：若要承接，Frontmatter 中的 brandCta 必须且仅能填纯英文代号如 "${topic.brandCta || 'guangsu-yun'}"，严禁填写任何中文句子！）
 - 推荐站内内链：${topic.related.join(', ')}
 - 当前发布日期：${today}
 
@@ -354,7 +354,7 @@ async function callDeepSeekAPI(systemPrompt, userPrompt) {
 }
 
 // ── 5. 后处理与文本防 AI 纯净化过滤器 ──
-function sanitizeAndEnforceRules(rawContent) {
+function sanitizeAndEnforceRules(rawContent, topic) {
   let content = rawContent.trim();
   
   // 去除可能的 ```markdown ``` 包裹
@@ -406,7 +406,44 @@ function sanitizeAndEnforceRules(rawContent) {
       frontmatter = frontmatter.replace(descMatch[0], `description: "${desc}"`);
     }
 
-    content = `---\n${frontmatter}\n---\n\n${body.trim()}\n`;
+    // 校验 brandCta（核心防错保护：严禁 AI 输出中文长句到 brandCta）
+    const validBrandSlugs = new Set([
+      'guangsu-yun', 'feimao-yun', 'weifeng-wangluo', 'xingdao-meng',
+      'wuyou-lianjie', 'ermao-yun', 'jilian-yun', 'kexin-yun', 'kuaili',
+      'lingmao-net', 'quanqiu-yun', 'sogo-yun', 'sujie', 'u1s1',
+      'weitu-yun', 'wgetcloud', 'yifan-yun', 'yuzhou-yun', 'guangnian-ti',
+      'nexitally', 'dalaoyun', 'firefly', 'huanqiuti', 'liulianyun',
+      'muguang-jiasu', 'shandianshu', 'shanyue', 'shenxing-jiasu',
+      'tiziyun', 'yinxingren', 'yunjiexian'
+    ]);
+
+    const brandMatch = frontmatter.match(/brandCta:\s*["']?([^"'\r\n]+)["']?/);
+    if (brandMatch) {
+      const rawVal = brandMatch[1].trim();
+      let safeBrand = null;
+      if (validBrandSlugs.has(rawVal)) {
+        safeBrand = rawVal;
+      } else if (topic?.brandCta && validBrandSlugs.has(topic.brandCta)) {
+        safeBrand = topic.brandCta;
+      } else {
+        if (rawVal.includes('光速云')) safeBrand = 'guangsu-yun';
+        else if (rawVal.includes('飞猫云')) safeBrand = 'feimao-yun';
+        else if (rawVal.includes('微风网络')) safeBrand = 'weifeng-wangluo';
+        else if (rawVal.includes('星岛梦')) safeBrand = 'xingdao-meng';
+        else if (rawVal.includes('无忧链接')) safeBrand = 'wuyou-lianjie';
+        else if (rawVal.includes('二猫云')) safeBrand = 'ermao-yun';
+      }
+
+      if (safeBrand) {
+        frontmatter = frontmatter.replace(brandMatch[0], `brandCta: "${safeBrand}"`);
+      } else {
+        frontmatter = frontmatter.replace(/\n?\s*brandCta:\s*["']?[^"'\r\n]+["']?/g, '');
+      }
+    } else if (topic?.brandCta && validBrandSlugs.has(topic.brandCta)) {
+      frontmatter += `\nbrandCta: "${topic.brandCta}"`;
+    }
+
+    content = `---\n${frontmatter.trim()}\n---\n\n${body.trim()}\n`;
   }
 
   return content;

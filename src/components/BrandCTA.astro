@@ -10,7 +10,7 @@ interface Props {
 }
 const { brandSlug } = Astro.props;
 const brand = await getEntry('brands', brandSlug);
-if (!brand) throw new Error(`BrandCTA: 未找到品牌 ${brandSlug}`);
+if (!brand) return null;
 const b = brand.data;
 const externalUrl = b.affiliateUrl ?? b.officialUrl;
 ---
