@@ -47,6 +47,11 @@ const symptomGroups = [
   },
 ];
 
+const groupSlugs = new Set(symptomGroups.flatMap((g) => g.items.map((i) => i.slug)));
+const extraFixes = fixes
+  .filter((f) => !groupSlugs.has(f.id.replace('fix/', '')))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
 const crumbs: Crumb[] = [
   { name: '首页', href: '/' },
   { name: '故障排查', href: '/fix/' },
@@ -93,6 +98,24 @@ const crumbs: Crumb[] = [
         </ol>
       </section>
     ))
+  }
+
+  {
+    extraFixes.length > 0 && (
+      <section class="mt-10 max-w-[46rem]" aria-label="更多故障排查专栏">
+        <h2 class="m-0 mb-2 text-[1rem] tracking-widest text-muted">更多故障排查指南</h2>
+        <ol class="path-index">
+          {extraFixes.map((f) => (
+            <li>
+              <a href={`/${f.id}/`} class="font-display text-[1.08rem]">
+                {f.data.title}
+              </a>
+              <p class="m-0 mt-1 text-[0.9rem] text-muted">{f.data.description}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )
   }
 
   <section class="rule-top mt-14 max-w-[46rem] pt-8 pb-6" aria-label="预防">

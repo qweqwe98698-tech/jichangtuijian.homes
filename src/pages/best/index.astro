@@ -20,6 +20,11 @@ const scenarios = [
   { slug: 'iplc', name: '专线场景', ask: 'IPLC / IEPL 值不值（研究中）' },
 ];
 
+const scenarioSlugs = new Set(scenarios.map((s) => s.slug));
+const extraBest = posts
+  .filter((p) => !scenarioSlugs.has(p.id.replace('best/', '')))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
 const crumbs: Crumb[] = [
   { name: '首页', href: '/' },
   { name: '场景推荐', href: '/best/' },
@@ -78,6 +83,31 @@ const crumbs: Crumb[] = [
       }
     </div>
   </section>
+
+  {
+    extraBest.length > 0 && (
+      <section class="mt-10 max-w-[46rem]" aria-label="更多场景专题推荐">
+        <h2 class="m-0 mb-2 text-[1rem] tracking-widest text-muted">更多场景专栏</h2>
+        <div class="grid gap-x-10 md:grid-cols-2">
+          {extraBest.map((p) => (
+            <div class="border-t border-line py-5">
+              <h2 class="m-0 mt-1 text-[1.2rem]">
+                <a href={`/${p.id}/`} class="text-ink hover:text-accent">
+                  {p.data.title}
+                </a>
+              </h2>
+              <p class="m-0 mt-1 text-[0.92rem] text-muted">{p.data.description}</p>
+              <p class="m-0 mt-2">
+                <a href={`/${p.id}/`} class="text-[0.93rem]">
+                  进入指南 →
+                </a>
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
 
   <section class="rule-top mt-12 max-w-[46rem] pt-8 pb-6" aria-label="说明">
     <p class="m-0 text-[0.9rem] text-muted">

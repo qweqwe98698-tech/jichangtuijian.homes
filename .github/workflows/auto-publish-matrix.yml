@@ -1,0 +1,62 @@
+name: Auto Publish SEO/GEO Matrix Article
+
+on:
+  schedule:
+    # 每 4 天 UTC 02:00（北京时间 10:00）自动执行一次
+    - cron: '0 2 */4 * *'
+  workflow_dispatch: # 支持在 GitHub Actions 页面随时手动一键触发
+
+concurrency:
+  group: auto-publish-matrix
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Generate & Publish Matrix Article
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 检出代码仓库
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: 设置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: 安装项目依赖
+        run: pnpm install --frozen-lockfile=false
+
+      - name: 调用 DeepSeek API 生成万字级 SEO/GEO 矩阵文章
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: node scripts/auto-publish-article.mjs
+
+      - name: 执行全站 SEO 契约与质量安全门禁验证
+        run: pnpm verify
+
+      - name: 提交并推送到 GitHub 仓库（不含 [skip ci]，正常触发部署上线）
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          # 检查是否有内容变更
+          if git diff --staged --quiet; then
+            echo "未检测到新生成的文章或变更，跳过提交。"
+            exit 0
+          fi
+
+          # 严格去除 [skip ci]，确保提交能自然触发 Cloudflare Pages / CI 构建部署
+          git commit -m "content: 自动发布 SEO/GEO 深度专题矩阵文章 [自动化矩阵更新]"
+          git push origin main

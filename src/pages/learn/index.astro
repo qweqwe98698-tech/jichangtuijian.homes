@@ -48,6 +48,11 @@ const topics = [
   },
 ];
 
+const topicSlugs = new Set(topics.flatMap((t) => t.items.map((i) => i.slug)));
+const extraLearn = entries
+  .filter((e) => !topicSlugs.has(e.id.replace('learn/', '')))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
 const crumbs: Crumb[] = [
   { name: '首页', href: '/' },
   { name: '知识库', href: '/learn/' },
@@ -93,6 +98,24 @@ const crumbs: Crumb[] = [
       ))
     }
   </section>
+
+  {
+    extraLearn.length > 0 && (
+      <section class="mt-10 max-w-[46rem]" aria-label="深入技术专题">
+        <h2 class="m-0 mb-2 text-[1rem] tracking-widest text-muted">进阶与专题知识</h2>
+        <ol class="path-index">
+          {extraLearn.map((e) => (
+            <li>
+              <a href={`/${e.id}/`} class="font-display text-[1.1rem]">
+                {e.data.title}
+              </a>
+              <p class="m-0 mt-1 text-[0.92rem] text-muted">{e.data.description}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )
+  }
 
   <section class="rule-top mt-8 max-w-[46rem] pt-8 pb-6" aria-label="学以致用">
     <h2 class="m-0 text-[1.2rem]">知识是为决策服务的</h2>

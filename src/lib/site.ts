@@ -59,7 +59,7 @@ export const MOBILE_NAV_EXTRA = [
 ];
 
 /** 站点最近编辑动作日期（顶部信息行显示；发布新内容时更新） */
-export const LAST_SITE_UPDATE = '2026-08-11';
+export const LAST_SITE_UPDATE = '2026-10-02';
 
 /**
  * 站长平台验证。拿到验证码后填在这里即可，无需改模板。
