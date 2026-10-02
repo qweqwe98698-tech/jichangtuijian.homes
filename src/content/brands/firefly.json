@@ -1,0 +1,136 @@
+{
+  "name": "Firefly",
+  "aliases": [
+    "萤火虫机场",
+    "Firefly Cloud"
+  ],
+  "tier": "budget",
+  "positioning": "2026 年新开业低门槛方案，8 元/月 60GB，宣称 IPLC 内网专线与流媒体解锁。",
+  "background": "Firefly 在渠道资料中标注 2026 年开业，主打 IPLC 专线与 8 元低入门门槛，提供 60GB 月流量，适合轻度尝鲜与备用节点。",
+  "priceFrom": "8 元 / 月 · 60GB",
+  "pricePerGb": 0.133,
+  "billingCycle": "monthly",
+  "couponCode": "firefly",
+  "couponNote": "专属优惠码。",
+  "launchYear": "2026",
+  "highlights": [
+    "2026 年开业",
+    "IPLC 专线",
+    "8元低起步",
+    "流媒体全解锁（品牌口径）"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN"
+  ],
+  "claims": {
+    "streaming": "全解锁",
+    "ai": "全解锁",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": null,
+    "topology": null
+  },
+  "scenarios": [
+    "budget",
+    "iepl",
+    "streaming"
+  ],
+  "protocols": [
+    "Shadowsocks",
+    "Trojan"
+  ],
+  "lineTypes": [
+    "IPLC 专线（品牌口径）"
+  ],
+  "strengths": [
+    "8 元月付即可体验 IPLC 专线宣称，试错成本极低",
+    "单价低至 0.133 元/GB，性价比良好"
+  ],
+  "limitations": [
+    "2026 年新上线品牌，缺乏长期运营样本，务必月付试用",
+    "小包容量不适合超高清长视频连续播放"
+  ],
+  "suitableFor": [
+    "寻找低价尝鲜体验专线的新手",
+    "需要低成本第二备用线路的用户"
+  ],
+  "notSuitableFor": [
+    "重度生产力环境与不可中断业务",
+    "一次性购买年付的用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 8 元 / 月 · 60GB，优惠码 firefly。价格与优惠为渠道资料口径（核对于 2026-08-11），下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "入门档",
+      "status": "sourced",
+      "note": "按起步门槛横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "8 元 / 月 · 60GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.133 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "firefly",
+      "status": "sourced",
+      "note": "专属优惠码。"
+    },
+    {
+      "label": "运营年限",
+      "value": "2026 年开业（品牌口径）",
+      "status": "sourced"
+    },
+    {
+      "label": "主打线路",
+      "value": "IPLC 专线（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "Shadowsocks / Trojan",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://vip02.fireflyaff.com/#/?code=2n7VURre",
+  "reviewSlug": null,
+  "panel": null,
+  "panelDisputed": null,
+  "editorialPick": null
+}

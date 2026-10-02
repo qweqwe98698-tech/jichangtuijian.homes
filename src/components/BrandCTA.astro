@@ -15,49 +15,67 @@ const b = brand.data;
 const externalUrl = b.affiliateUrl ?? b.officialUrl;
 ---
 
-<aside class="mt-12 border border-line bg-surface p-6" aria-label="品牌承接">
-  <p class="meta-text m-0 tracking-widest">下一步</p>
-  <p class="m-0 mt-2 font-display text-[1.15rem]">
-    {externalUrl ? `注册 ${b.name}，或先看完整档案与数据来源` : `查看 ${b.name} 的完整档案与套餐信息`}
-  </p>
+<aside class="pro-card mt-12 overflow-hidden border-t-4 border-t-accent p-6 sm:p-7 shadow-sm" aria-label="品牌承接">
+  <div class="flex items-center justify-between gap-3 border-b border-line pb-3">
+    <div class="flex items-center gap-2">
+      <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">✓</span>
+      <span class="meta-text font-bold tracking-wider uppercase">评测选型建议 · 下一步</span>
+    </div>
+    <span class="stamp stamp-sourced">官方渠道口径</span>
+  </div>
+
+  <div class="mt-4 flex flex-wrap items-baseline justify-between gap-4">
+    <div>
+      <h3 class="m-0 font-display text-[1.25rem] font-bold text-ink sm:text-[1.35rem]">
+        {externalUrl ? `选购 ${b.name}，或先查完整技术档案` : `查看 ${b.name} 完整档案与套餐信息`}
+      </h3>
+      <p class="m-0 mt-1 max-w-[38rem] text-[0.92rem] text-muted">
+        {b.positioning.replace(/[。.]+$/, '')}。档案页汇总了该品牌的数据行、协议线路、风险等级与图表资料。
+      </p>
+    </div>
+
+    {b.priceFrom && (
+      <div class="rounded-lg bg-emerald-50 px-3.5 py-1.5 text-right dark:bg-emerald-950/40">
+        <span class="meta-text block">起步门槛</span>
+        <strong class="font-display text-[1.2rem] font-bold text-accent">{b.priceFrom}</strong>
+      </div>
+    )}
+  </div>
 
   {
-    (b.priceFrom || b.couponCode) && (
-      <div class="mt-4 flex flex-wrap items-baseline gap-x-8 gap-y-2">
-        {b.priceFrom && (
-          <span class="text-[0.95rem]">
-            起步套餐：<strong class="font-display text-[1.05rem]">{b.priceFrom}</strong>
-          </span>
-        )}
-        {b.couponCode && (
-          <span class="text-[0.95rem]">
-            优惠码：<strong class="font-display text-[1.05rem] text-amber">{b.couponCode}</strong>
-          </span>
-        )}
+    b.couponCode && (
+      <div class="mt-4 flex flex-wrap items-center gap-2 rounded-lg border border-amber-200 bg-amber-50/70 p-3 text-xs text-amber-900 sm:text-[0.88rem] dark:border-amber-800/40 dark:bg-amber-950/30 dark:text-amber-200">
+        <span class="font-semibold">🎟️ 优惠券/码：</span>
+        <code class="rounded border border-amber-300 bg-surface px-2 py-0.5 font-mono font-bold text-amber-700 select-all dark:border-amber-700 dark:text-amber-400">
+          {b.couponCode}
+        </code>
+        {b.couponNote && <span class="text-muted text-xs">（{b.couponNote}）</span>}
       </div>
     )
   }
 
-  <p class="m-0 mt-3 max-w-[40rem] text-[0.92rem] text-muted">
-    档案页汇总了该品牌的数据行、来源标注、风险等级与图表资料。{b.pricingNote}
-  </p>
-
-  {/* 注册入口是主动作，档案页是次级动作——此前两者的视觉权重是反的 */}
-  <div class="mt-5 flex flex-wrap items-center gap-3">
+  <div class="mt-6 flex flex-wrap items-center gap-3">
     {
       externalUrl && (
-        <a href={externalUrl} class="btn-solid" rel="nofollow sponsored noopener" target="_blank">
-          前往 {b.name} 官网注册
+        <a
+          href={externalUrl}
+          class="btn-solid"
+          rel="nofollow sponsored noopener"
+          target="_blank"
+        >
+          前往 {b.name} 官网选购 ➔
         </a>
       )
     }
     <a href={`/brands/${brand.id}/`} class={externalUrl ? 'btn-outline' : 'btn-solid'}>
-      {externalUrl ? '查看完整档案与数据来源' : `查看 ${b.name} 档案`}
+      {externalUrl ? '查看完整档案与参数 ➔' : `查看 ${b.name} 档案`}
     </a>
   </div>
-  <p class="meta-text m-0 mt-3">
+
+  <p class="meta-text m-0 mt-4 border-t border-line pt-3">
     {externalUrl && '官网入口为推广链接，合作不改变数据与结论。'}首单建议只买最短周期；先按<a
-      href="/guides/stability-signals/">稳定性清单</a
-    >验证晚高峰再考虑续费。
+      href="/guides/stability-signals/"
+      class="text-accent hover:underline"
+    >稳定性清单</a>验证晚高峰再考虑续费。
   </p>
 </aside>

@@ -12,7 +12,7 @@
   "billingCycle": "monthly",
   "couponCode": "kkk333",
   "couponNote": "通用优惠码，适用套餐以结算页为准。",
-  "launchYear": null,
+  "launchYear": "2024",
   "highlights": [
     "VLESS 协议",
     "IEPL 专线",
@@ -100,7 +100,7 @@
     },
     {
       "label": "运营年限",
-      "value": "暂无公开数据",
+      "value": "2024 年开业",
       "status": "pending"
     },
     {

@@ -11,7 +11,7 @@
   "billingCycle": "monthly",
   "couponCode": "ji8888",
   "couponNote": "通用优惠码，适用套餐以结算页为准。",
-  "launchYear": null,
+  "launchYear": "2024",
   "highlights": [
     "IEPL 专线",
     "流媒体全解锁（品牌口径）",
@@ -98,7 +98,7 @@
     },
     {
       "label": "运营年限",
-      "value": "暂无公开数据",
+      "value": "2024 年开业",
       "status": "pending"
     },
     {

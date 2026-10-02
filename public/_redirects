@@ -6,7 +6,11 @@
 https://www.jichangtuijian.homes/*  https://jichangtuijian.homes/:splat  301
 
 # Cloudflare Pages 预览域名不应被索引或产生外链权重
-https://:project.pages.dev/*  https://jichangtuijian.homes/:splat  301
+https://jichangtuijian-homes.pages.dev/*  https://jichangtuijian.homes/:splat  301
 
 # 机器可读的 sitemap 入口有两个常见写法，统一到 Astro 实际产出的那个
 /sitemap.xml  /sitemap-index.xml  301
+
+# 核心历史/别名路径收敛
+/vpn   /learn/airport-vs-vpn/  301
+/vpn/  /learn/airport-vs-vpn/  301

@@ -1,0 +1,143 @@
+{
+  "name": "无忧链接",
+  "aliases": [
+    "无忧链接机场",
+    "WorryFree"
+  ],
+  "tier": "mid",
+  "positioning": "2025 年开业新锐机场，19 元/月 100GB，主打 IEPL 专线接入与月付弹性。",
+  "background": "无忧链接（WorryFree）为 2025 年开业的新锐品牌，主打 IEPL 专线与稳定月付，起步 19 元 100GB，支持主流客户端订阅。",
+  "priceFrom": "19 元 / 月 · 100GB",
+  "pricePerGb": 0.19,
+  "billingCycle": "monthly",
+  "couponCode": "wuyou666",
+  "couponNote": "渠道专属优惠码。",
+  "launchYear": "2025",
+  "highlights": [
+    "2025 年开业",
+    "IEPL 专线",
+    "月付通道",
+    "流媒体全解锁（品牌口径）",
+    "AI 全解锁（品牌口径）"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "全解锁",
+    "ai": "全解锁",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": null,
+    "topology": null
+  },
+  "scenarios": [
+    "mid",
+    "iepl",
+    "ai",
+    "streaming"
+  ],
+  "protocols": [
+    "Shadowsocks",
+    "V2Ray"
+  ],
+  "lineTypes": [
+    "IEPL 专线（品牌口径）"
+  ],
+  "strengths": [
+    "19 元 100GB 支持月付，无需长周期绑定即可验证",
+    "IEPL 专线宣称保证日常网络访问的通畅度"
+  ],
+  "limitations": [
+    "2025 年开业品牌，运营时间尚短，建议保持月付观察",
+    "晚高峰表现未经本站独立测试"
+  ],
+  "suitableFor": [
+    "兼顾日常网页、AI 与流媒体访问的综合用户",
+    "坚持月付验证原则的稳健型用户"
+  ],
+  "notSuitableFor": [
+    "追求极致低单价的重度下载用户",
+    "只考虑 5 年以上老牌的保守用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 19 元 / 月 · 100GB，优惠码 wuyou666。价格与优惠为渠道资料口径（核对于 2026-08-11），下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "主流档",
+      "status": "sourced",
+      "note": "按起步门槛横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "19 元 / 月 · 100GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.190 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "wuyou666",
+      "status": "sourced",
+      "note": "渠道专属优惠码。"
+    },
+    {
+      "label": "运营年限",
+      "value": "2025 年开业（品牌口径）",
+      "status": "sourced"
+    },
+    {
+      "label": "主打线路",
+      "value": "IEPL 专线（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "Shadowsocks / V2Ray",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://wep01.worryfreeaff.com/#/?code=4ZoSbLdL",
+  "reviewSlug": null,
+  "panel": null,
+  "panelDisputed": null,
+  "editorialPick": {
+    "rank": 5,
+    "reason": "2025 年新锐 IEPL 专线品牌，起步 19 元/月 100GB 且原生支持直接月付，无需长周期资金锁定，试水与止损极为灵活。",
+    "caveat": "2025 年开业品牌历史样本相对较少，首单坚持月付验证原则。"
+  }
+}

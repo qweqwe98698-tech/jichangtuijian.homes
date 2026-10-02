@@ -10,9 +10,9 @@
   "priceFrom": "14.9 元 / 月 · 100GB",
   "pricePerGb": 0.149,
   "billingCycle": "monthly",
-  "couponCode": "rabbit",
+  "couponCode": "weitu666",
   "couponNote": "新用户 9 折码。",
-  "launchYear": "2020",
+  "launchYear": "2023",
   "highlights": [
     "2020 年运营",
     "VLESS 协议",
@@ -46,8 +46,7 @@
     "Shadowsocks 系（测速面板显示）"
   ],
   "lineTypes": [
-    "三网优化入口（品牌口径）",
-    "智能负载均衡"
+    "三网优化（品牌口径）"
   ],
   "strengths": [
     "三网优化针对移动/联通/电信分别调优，对入口线路敏感的用户价值明确",
@@ -94,18 +93,18 @@
     },
     {
       "label": "优惠码",
-      "value": "rabbit",
+      "value": "weitu666",
       "status": "sourced",
       "note": "新用户 9 折码。"
     },
     {
       "label": "运营年限",
-      "value": "2020",
+      "value": "2023 年开业",
       "status": "sourced"
     },
     {
       "label": "主打线路",
-      "value": "三网优化入口（品牌口径） / 智能负载均衡",
+      "value": "三网优化（品牌口径）",
       "status": "sourced",
       "note": "品牌宣传口径，未实测"
     },

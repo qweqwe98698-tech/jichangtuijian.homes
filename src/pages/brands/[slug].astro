@@ -6,7 +6,7 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import VerifyStamp from '@/components/VerifyStamp.astro';
 import BrandCharts from '@/components/BrandCharts.astro';
 import BrandPanelData from '@/components/BrandPanelData.astro';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, type Crumb } from '@/lib/schema';
 
 export async function getStaticPaths() {
   const brands = await getCollection('brands');
@@ -72,12 +72,49 @@ const crumbs: Crumb[] = [
   { name: '品牌档案', href: '/brands/' },
   { name: b.name, href: `/brands/${brand.id}/` },
 ];
+
+const brandTaglines: Record<string, string> = {
+  'dalaoyun': '5.6 元极低入门价与专线小包技术档案',
+  'ermao-yun': '20 元档 130GB 均衡配置与参数档案',
+  'feimao-yun': '7 元起步低门槛小包与参数档案',
+  'firefly': '8 元 IPLC 专线尝鲜与流媒体解锁参数档案',
+  'guangnian-ti': '18 元档均衡型配置与参数档案',
+  'guangsu-yun': '老牌专线年付小包与双解锁参数档案',
+  'huanqiuti': '5.6 元极致性价比小包与基础访问档案',
+  'jilian-yun': '全能力中端专线与双解锁参数档案',
+  'kexin-yun': '25 元档流媒体向专线与参数档案',
+  'kuaili': '25 元档全协议双解锁全能型档案',
+  'lingmao-net': '19 元 150GB 月付低单价参数档案',
+  'liulianyun': '5.6 元轻量小包配置与备用节点档案',
+  'muguang-jiasu': '20 元档 IEPL 专线与流媒体解锁档案',
+  'nexitally': '老牌高端定位机场资料与核验状态',
+  'quanqiu-yun': '20 元档双解锁小包与参数档案',
+  'shandianshu': '5.6 元超低单价与 IEPL 专线小包档案',
+  'shanyue': '24 元档企业内网与大流量并发参数档案',
+  'shenxing-jiasu': '14 元 120GB 实用容量与双解锁档案',
+  'sogo-yun': '25 元进阶档双全解锁参数档案',
+  'sujie': '25 元档 AI 解锁优先配置与参数档案',
+  'tiziyun': '7.4 元新锐 IEPL 专线与轻量配置档案',
+  'u1s1': '20 元档流媒体向专线与参数档案',
+  'weifeng-wangluo': '7 元起步 IEPL 专线轻量小包技术档案',
+  'weitu-yun': '三网优化与 60+ 节点参数档案',
+  'wgetcloud': '专线接入高端定位机场资料与核验状态',
+  'wuyou-lianjie': '19 元月付 IEPL 专线新锐机场参数档案',
+  'xingdao-meng': '老牌多套餐弹性档位与参数档案',
+  'yifan-yun': '20 元 150GB 高流量单价与参数档案',
+  'yinxingren': '24 元企业级内网通道与隐私安全档案',
+  'yuzhou-yun': '14.9 元流媒体向 IEPL 小包档案',
+};
+
+const pageTitle = `${b.name}机场档案：${brandTaglines[brand.id] ?? b.positioning}`;
+const cleanPositioning = b.positioning.replace(/[。.]+$/, '');
+const pageDesc = `${b.name}技术参数档案：${cleanPositioning}。${b.priceFrom ? `起步套餐 ${b.priceFrom}。` : ''}收录协议线路、客户端支持、流媒体与 AI 解锁口径及风险等级，数据来源逐条标注。`;
 ---
 
 <Base
-  title={`${b.name}机场官网入口、套餐价格与优惠码档案`}
-  description={`${b.name}机场档案：${b.priceFrom ?? '套餐待核验'}起步、优惠码、线路与协议、客户端支持、解锁能力口径、风险等级与官网入口核验状态，数据来源逐条标注。`}
-  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  title={pageTitle}
+  description={pageDesc}
+  schemaItems={[breadcrumbSchema(crumbs)]}
   noindex={b.dataStatus === 'unverified'}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
@@ -326,4 +363,32 @@ const crumbs: Crumb[] = [
       </div>
     </aside>
   </div>
+
+  {/* 移动端底部常驻转化悬浮栏 */}
+  {
+    externalUrl && (
+      <>
+        <div class="h-16 md:hidden" aria-hidden="true" />
+        <aside class="mobile-sticky-cta flex items-center justify-between gap-3 md:hidden" aria-label="快捷购买入口">
+          <div class="min-w-0 flex-1">
+            <p class="m-0 truncate font-display text-[0.95rem] font-bold text-ink">
+              {b.name}
+            </p>
+            <p class="meta-text m-0 truncate text-[0.78rem]">
+              起步 {b.priceFrom ?? '月付灵活'}
+              {b.couponCode && ` · 券码 ${b.couponCode}`}
+            </p>
+          </div>
+          <a
+            href={externalUrl}
+            class="btn-solid whitespace-nowrap px-4 py-2 text-[0.9rem]"
+            rel="nofollow sponsored noopener"
+            target="_blank"
+          >
+            前往官网 ➔
+          </a>
+        </aside>
+      </>
+    )
+  }
 </Base>

@@ -1,0 +1,142 @@
+{
+  "name": "微风网络",
+  "aliases": [
+    "微风网络机场",
+    "BreezeNet"
+  ],
+  "tier": "budget",
+  "positioning": "2023 年开业的轻度用量方案，约 7 元/月 50GB，主打 IEPL 专线小包与低门槛试水。",
+  "background": "微风网络（BreezeNet）在渠道资料中标注 2023 年开业，主打 IEPL 专线小包与低入门门槛，适合日常轻度浏览、查阅资料与做备用订阅。",
+  "priceFrom": "约 7 元 / 月 · 50GB",
+  "pricePerGb": 0.14,
+  "billingCycle": "yearly",
+  "couponCode": "flat888",
+  "couponNote": "渠道专属优惠码，结算时输入享受折扣。",
+  "launchYear": "2023",
+  "highlights": [
+    "2023 年开业",
+    "IEPL 专线",
+    "低门槛小包",
+    "流媒体全解锁（品牌口径）",
+    "AI 全解锁（品牌口径）"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "全解锁",
+    "ai": "全解锁",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": null,
+    "topology": null
+  },
+  "scenarios": [
+    "budget",
+    "iepl",
+    "newbie"
+  ],
+  "protocols": [
+    "Shadowsocks",
+    "V2Ray"
+  ],
+  "lineTypes": [
+    "IEPL 专线（品牌口径）"
+  ],
+  "strengths": [
+    "约 7 元起步门槛极低，适合轻度用量与试水体验",
+    "低价小包搭配 IEPL 专线宣称，性价比突出"
+  ],
+  "limitations": [
+    "50GB 容量适合轻度翻阅，频繁看 4K 视频需更高档位",
+    "晚高峰表现未经本站独立测试，建议首单先买最短周期"
+  ],
+  "suitableFor": [
+    "每月流量需求不高、预算有限的轻度用户",
+    "需要低成本备用节点防止主服务中断的用户"
+  ],
+  "notSuitableFor": [
+    "每天长时间观看高清视频的大流量用户",
+    "对未独立测速数据持谨慎态度的用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 约 7 元 / 月 · 50GB，优惠码 flat888。价格与优惠为渠道资料口径（核对于 2026-08-11），下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "入门档",
+      "status": "sourced",
+      "note": "按起步门槛横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "约 7 元 / 月 · 50GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.140 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "flat888",
+      "status": "sourced",
+      "note": "渠道专属优惠码，结算时输入享受折扣。"
+    },
+    {
+      "label": "运营年限",
+      "value": "2023 年开业（品牌口径）",
+      "status": "sourced"
+    },
+    {
+      "label": "主打线路",
+      "value": "IEPL 专线（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "Shadowsocks / V2Ray",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://edp01.breezenetaff.com/#/?code=t3huofyI",
+  "reviewSlug": null,
+  "panel": null,
+  "panelDisputed": null,
+  "editorialPick": {
+    "rank": 3,
+    "reason": "2023 年开业的轻量级专线方案，约 7 元/月 50GB，主打 IEPL 专线与低试水门槛，适合作为主备双机场架构中的低成本容灾节点。",
+    "caveat": "运营年限较老牌相比偏短，晚高峰表现建议结合自身宽带实地观察。"
+  }
+}

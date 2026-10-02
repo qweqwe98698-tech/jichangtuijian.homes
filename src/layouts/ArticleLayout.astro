@@ -32,6 +32,10 @@ const path = `/${article.id}/`;
 const author = await getEntry('authors', d.author);
 const authorName = author?.data.name ?? '机场决策室编辑部';
 
+const brandEntry = d.brandCta ? await getEntry('brands', d.brandCta) : null;
+const brandData = brandEntry?.data;
+const externalUrl = brandData?.affiliateUrl ?? brandData?.officialUrl;
+
 const crumbs: Crumb[] = [
   { name: '首页', href: '/' },
   { name: sectionDef.name, href: `/${section}/` },
@@ -112,10 +116,10 @@ const fmt = (date: Date) => date.toISOString().slice(0, 10);
       }
 
       {
-        d.brandCta && (
+        brandData && (
           <>
-            <BrandPanelData brand={(await getEntry('brands', d.brandCta))!.data} />
-            <BrandCharts brand={(await getEntry('brands', d.brandCta))!.data} />
+            <BrandPanelData brand={brandData} />
+            <BrandCharts brand={brandData} />
           </>
         )
       }
@@ -154,4 +158,32 @@ const fmt = (date: Date) => date.toISOString().slice(0, 10);
       </div>
     </aside>
   </div>
+
+  {/* 移动端底部常驻转化悬浮栏 */}
+  {
+    externalUrl && brandData && (
+      <>
+        <div class="h-16 md:hidden" aria-hidden="true" />
+        <aside class="mobile-sticky-cta flex items-center justify-between gap-3 md:hidden" aria-label="快捷购买入口">
+          <div class="min-w-0 flex-1">
+            <p class="m-0 truncate font-display text-[0.95rem] font-bold text-ink">
+              {brandData.name}
+            </p>
+            <p class="meta-text m-0 truncate text-[0.78rem]">
+              起步 {brandData.priceFrom ?? '月付灵活'}
+              {brandData.couponCode && ` · 券码 ${brandData.couponCode}`}
+            </p>
+          </div>
+          <a
+            href={externalUrl}
+            class="btn-solid whitespace-nowrap px-4 py-2 text-[0.9rem]"
+            rel="nofollow sponsored noopener"
+            target="_blank"
+          >
+            前往官网 ➔
+          </a>
+        </aside>
+      </>
+    )
+  }
 </Base>

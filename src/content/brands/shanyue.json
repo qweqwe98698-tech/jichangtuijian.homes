@@ -1,0 +1,137 @@
+{
+  "name": "闪跃",
+  "aliases": [
+    "闪跃机场",
+    "FlashLeap"
+  ],
+  "tier": "mid",
+  "positioning": "2024 年开业企业内网专线方案，24 元/月 150GB，主打大带宽与高并发支持。",
+  "background": "闪跃（FlashLeap）于 2024 年开业，主打企业内网专线线路与月付 150GB 充足流量，兼顾日常大流量与多设备使用。",
+  "priceFrom": "24 元 / 月 · 150GB",
+  "pricePerGb": 0.16,
+  "billingCycle": "monthly",
+  "couponCode": "shanyue",
+  "couponNote": "通用优惠码。",
+  "launchYear": "2024",
+  "highlights": [
+    "2024 年开业",
+    "企业内网专线",
+    "150GB 宽裕流量",
+    "全平台订阅兼容"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "全解锁",
+    "ai": "全解锁",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": null,
+    "topology": null
+  },
+  "scenarios": [
+    "mid",
+    "streaming",
+    "ai"
+  ],
+  "protocols": [
+    "Shadowsocks",
+    "Trojan"
+  ],
+  "lineTypes": [
+    "企业内网（品牌口径）"
+  ],
+  "strengths": [
+    "150GB 充足流量包，满足多端并发与家庭中度使用",
+    "企业内网线路宣称，支持主流平台订阅导入"
+  ],
+  "limitations": [
+    "起步 24 元略高于同类入门档",
+    "晚高峰稳定性未经本站独立测速"
+  ],
+  "suitableFor": [
+    "日常流量消耗较大、有多设备同时在线需求的用户",
+    "看剧与办公混合场景用户"
+  ],
+  "notSuitableFor": [
+    "每月用量在 30GB 以下的极轻度用户",
+    "只接受 10 元以内廉价方案的用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 24 元 / 月 · 150GB，优惠码 shanyue。价格与优惠为渠道资料口径（核对于 2026-08-11），下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "主流档",
+      "status": "sourced",
+      "note": "按起步门槛横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "24 元 / 月 · 150GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.160 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "shanyue",
+      "status": "sourced",
+      "note": "通用优惠码。"
+    },
+    {
+      "label": "运营年限",
+      "value": "2024 年开业（品牌口径）",
+      "status": "sourced"
+    },
+    {
+      "label": "主打线路",
+      "value": "企业内网（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "Shadowsocks / Trojan",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://vip02.flashleapaff.com/#/?code=3lgzm9mm",
+  "reviewSlug": null,
+  "panel": null,
+  "panelDisputed": null,
+  "editorialPick": null
+}

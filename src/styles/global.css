@@ -7,38 +7,39 @@
    ============================================================ */
 
 @theme {
-  --color-paper: #f7f4ee;
-  --color-surface: #fffdf8;
-  --color-ink: #211d16;
-  --color-muted: #6b6353;
-  --color-line: #ddd5c4;
-  --color-accent: #20614b;
-  --color-accent-deep: #174936;
-  --color-amber: #a05f13;
-  --color-risk: #a33d31;
+  --color-paper: #f8fafc;
+  --color-surface: #ffffff;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+  --color-accent: #059669;
+  --color-accent-deep: #047857;
+  --color-amber: #d97706;
+  --color-risk: #ef4444;
 
   --font-serif:
-    'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif CN', 'Songti SC', SimSun, Georgia,
-    serif;
+    system-ui, -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Segoe UI',
+    sans-serif;
   --font-sans:
-    -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Segoe UI',
+    system-ui, -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Segoe UI',
     sans-serif;
 
-  --radius-sm: 2px;
-  --radius-md: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-paper: #1b1f1d;
-    --color-surface: #232826;
-    --color-ink: #e8e3d6;
-    --color-muted: #a09a8a;
-    --color-line: #3a403c;
-    --color-accent: #7dbd9f;
-    --color-accent-deep: #9fd4ba;
-    --color-amber: #d69a52;
-    --color-risk: #d98b7f;
+    --color-paper: #090d16;
+    --color-surface: #111827;
+    --color-ink: #f1f5f9;
+    --color-muted: #94a3b8;
+    --color-line: #1e293b;
+    --color-accent: #10b981;
+    --color-accent-deep: #34d399;
+    --color-amber: #f59e0b;
+    --color-risk: #f87171;
   }
 }
 
@@ -122,30 +123,40 @@ h4,
 
 /* 验证戳（文字徽章） */
 .stamp {
-  display: inline-block;
-  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.74rem;
+  font-weight: 500;
   line-height: 1;
-  padding: 0.28em 0.55em;
-  border: 1px solid currentColor;
-  border-radius: var(--radius-sm);
-  vertical-align: 0.15em;
+  padding: 0.3em 0.65em;
+  border-radius: 9999px;
+  vertical-align: 0.1em;
   white-space: nowrap;
 }
 .stamp-ok {
-  color: var(--color-accent);
+  color: #065f46;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
 }
 .stamp-measured {
-  color: var(--color-amber);
+  color: #92400e;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
 }
 .stamp-sourced {
   color: var(--color-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
 }
 .stamp-pending {
   color: var(--color-muted);
-  border-style: dashed;
+  background: transparent;
+  border: 1px dashed var(--color-line);
 }
 .stamp-risk {
-  color: var(--color-risk);
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
 }
 
 /* 决策路径列表（Path Index） */
@@ -340,50 +351,160 @@ th {
 }
 
 .btn-outline {
-  display: inline-block;
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
-  padding: 0.5rem 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  padding: 0.6rem 1.25rem;
   border-radius: var(--radius-sm);
-  font-size: 0.92rem;
+  font-size: 0.94rem;
+  font-weight: 500;
+  min-height: 42px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  transition: all 140ms ease;
 }
 .btn-outline:hover {
-  background: var(--color-accent);
-  color: var(--color-paper);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: #ecfdf5;
   text-decoration: none;
+  transform: translateY(-1px);
 }
 
 /**
- * 主转化按钮：全站只用在「前往品牌官网注册」这一个动作上。
- * 到处都用它就不再是主按钮——次级动作一律用 .btn-outline。
- * 保持 2px 圆角与杉绿实心，跟「研究室纸面」一致；不做大圆角/渐变/阴影。
+ * 主转化按钮：大面积热区、现代圆角、翡翠绿微阴影
  */
 .btn-solid {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
   background: var(--color-accent);
   border: 1px solid var(--color-accent);
-  color: var(--color-paper);
-  padding: 0.68rem 1.55rem;
+  color: #ffffff !important;
+  padding: 0.72rem 1.6rem;
   border-radius: var(--radius-sm);
-  font-family: var(--font-serif);
-  font-size: 1.02rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
   font-weight: 600;
-  line-height: 1.4;
-  transition:
-    background 120ms ease,
-    border-color 120ms ease;
+  line-height: 1.3;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+  transition: all 140ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  min-height: 44px;
 }
 .btn-solid:hover {
   background: var(--color-accent-deep);
   border-color: var(--color-accent-deep);
-  color: var(--color-paper);
+  color: #ffffff !important;
   text-decoration: none;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+  transform: translateY(-1px);
 }
-/* 侧栏窄容器里占满整行。两个类=更高优先级，避免和 Tailwind 的 block 打架 */
+.btn-solid:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(5, 150, 105, 0.2);
+}
 .btn-solid.btn-block {
-  display: block;
+  display: flex;
+  width: 100%;
   text-align: center;
   padding-inline: 1rem;
+}
+
+/* 现代卡片与标签 */
+.pro-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  transition: box-shadow 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+.pro-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 20px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  transform: translateY(-2px);
+}
+
+.pro-tag-ok {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #065f46;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 9999px;
+  padding: 0.18rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.pro-tag-warn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #92400e;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 9999px;
+  padding: 0.18rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* 场景快速筛选标签（CRO 首页导航） */
+.scenario-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.9rem;
+  border-radius: 9999px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.2;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  transition: all 140ms ease;
+  white-space: nowrap;
+}
+.scenario-pill:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: #ecfdf5;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.12);
+}
+@media (prefers-color-scheme: dark) {
+  .scenario-pill:hover {
+    background: #064e3b;
+    color: #6ee7b7;
+  }
+}
+
+/* 移动端底部常驻转化栏 */
+.mobile-sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--color-line);
+  padding: 0.75rem 1rem;
+  z-index: 45;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+}
+@media (prefers-color-scheme: dark) {
+  .mobile-sticky-cta {
+    background: rgba(17, 24, 39, 0.96);
+  }
 }
 
 .skip-link {

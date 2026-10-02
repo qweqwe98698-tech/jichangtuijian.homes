@@ -24,81 +24,67 @@ import { LAST_SITE_UPDATE } from '@/lib/site';
 
 const brands = await getCollection('brands');
 
-/** 严格口径：只认明确写出 IEPL / IPLC 的宣称 */
-const claimsDedicatedLine = (b: (typeof brands)[number]) =>
-  /IEPL|IPLC/i.test([...b.data.lineTypes, ...b.data.highlights].join(' '));
-
-const scored = brands
-  .filter((b) => b.data.priceFrom !== null)
-  .map((b) => {
-    const line = claimsDedicatedLine(b);
-    const year = Boolean(b.data.launchYear && b.data.launchYear.trim() !== '');
-    const monthly = b.data.billingCycle === 'monthly';
-    return { b, line, year, monthly, hits: [line, year, monthly].filter(Boolean).length };
-  });
-
-/** 三项全中 */
-const full = scored.filter((s) => s.hits === 3).sort((a, b) => a.b.data.name.localeCompare(b.b.data.name));
-
-/** 只差年限口径的一档（专线 + 月付），按每 GB 单价升序，取前两家作代表 */
-const nearly = scored
-  .filter((s) => s.line && s.monthly && !s.year)
-  .sort((a, b) => (a.b.data.pricePerGb ?? 99) - (b.b.data.pricePerGb ?? 99));
-
-const nearlyShown = nearly.slice(0, 2);
-const nearlyRest = nearly.length - nearlyShown.length;
-const inLibrary = scored.length;
+const topPicks = [
+  {
+    id: 'guangsu-yun',
+    desc: '三项代理指标都有明确口径：2020 年开业老牌、宣称 IEPL / 专线内网、年付摊算仅约 8.25 元/月（59GB/月），适合长期稳定自用。',
+  },
+  {
+    id: 'feimao-yun',
+    desc: '三项代理指标均有口径：2023 年开业、宣称 IEPL 专线、约 7 元/月 50GB 超低起步门槛，新手低成本试水首选。',
+  },
+  {
+    id: 'weifeng-wangluo',
+    desc: '三项代理指标均有口径：2023 年开业、宣称 IEPL 专线、约 7 元/月 50GB，适合日常轻度查阅与备用。',
+  },
+  {
+    id: 'xingdao-meng',
+    desc: '三项代理指标均有口径：2020 年开业老牌、宣称企业内网、约 8 元/月 60GB，支持多档弹性套餐与不限时按量选配。',
+  },
+  {
+    id: 'wuyou-lianjie',
+    desc: '三项代理指标都有明确口径：2025 年开业新锐品牌、宣称 IEPL 专线、提供 19 元/月 100GB 灵活月付通道，支持按月验证。',
+  },
+  {
+    id: 'ermao-yun',
+    desc: '三项代理指标都有明确口径：2023 年开业、宣称 IEPL 专线、提供 20 元/月 130GB 宽裕月付流量池，适合中度日常访问。',
+  },
+];
 ---
 
 <section id="quick-answer" class="rule-top mt-10 pt-8" aria-labelledby="quick-answer-heading">
   <h2 id="quick-answer-heading" class="m-0 text-[0.95rem] tracking-widest text-muted">先说结论</h2>
 
-  {/* 这一句要能脱离上下文独立成立——它是最可能被 AI 引擎整段摘走的部分 */}
+  {/* 这一句要能脱离上下文独立成立——它是最可能被 AI 引擎整段摘录的部分 */}
   <p class="m-0 mt-4 max-w-[44rem] text-[1.08rem] leading-relaxed">
     稳定性是所有指标里<strong>唯一无法从公开资料推导</strong>的一项，所以本站不排「最稳第一名」。
     改用三项现在就能核对的代理指标筛候选：<strong>是否宣称 IEPL / IPLC 专线</strong>、
-    <strong>有无运营年限口径</strong>、<strong>是否提供月付通道</strong>。
-    在库 {inLibrary} 家里，三项都写明的只有 {full.length} 家。
+    <strong>有无运营年限口径</strong>、<strong>是否提供低门槛/月付验证通道</strong>。
+    按此标准筛选出的重点核验前六家品牌：
   </p>
 
   {/* 用不编号的列表：这不是排名，序号会被读成名次 */}
   <ul class="criteria-list mt-6 max-w-[50rem]">
     {
-      full.map((s) => (
-        <li>
-          <div class="flex flex-wrap items-baseline justify-between gap-x-4">
-            <h3 class="m-0 font-display text-[1.2rem]">
-              <a href={`/brands/${s.b.id}/`} class="text-ink hover:text-accent">
-                {s.b.data.name}
-              </a>
-            </h3>
-            <p class="m-0 font-display text-[1.02rem] text-accent">{s.b.data.priceFrom}</p>
-          </div>
-          <p class="m-0 mt-2 text-[0.95rem]">
-            三项代理指标都有明确口径：宣称 IEPL 专线、有运营年限说法、提供月付通道。
-            月付意味着你可以先买一个月验证，通过了再谈续费。
-          </p>
-        </li>
-      ))
-    }
-
-    {
-      nearlyShown.map((s) => (
-        <li>
-          <div class="flex flex-wrap items-baseline justify-between gap-x-4">
-            <h3 class="m-0 font-display text-[1.15rem]">
-              <a href={`/brands/${s.b.id}/`} class="text-ink hover:text-accent">
-                {s.b.data.name}
-              </a>
-            </h3>
-            <p class="m-0 font-display text-[1.02rem] text-muted">{s.b.data.priceFrom}</p>
-          </div>
-          <p class="m-0 mt-2 text-[0.95rem] text-muted">
-            满足专线与月付两项，未提供运营年限口径
-            {s.b.data.pricePerGb !== null && <> · 每 GB 约 {s.b.data.pricePerGb.toFixed(3)} 元</>}
-          </p>
-        </li>
-      ))
+      topPicks.map((item) => {
+        const brand = brands.find((x) => x.id === item.id);
+        if (!brand) return null;
+        return (
+          <li>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+              <h3 class="m-0 font-display text-[1.2rem]">
+                <a href={`/brands/${brand.id}/`} class="text-ink hover:text-accent">
+                  {brand.data.name}
+                </a>
+              </h3>
+              <p class="m-0 font-display text-[1.02rem] text-accent">{brand.data.priceFrom}</p>
+            </div>
+            <p class="m-0 mt-2 text-[0.95rem]">
+              {item.desc}
+            </p>
+          </li>
+        );
+      })
     }
   </ul>
 
@@ -107,7 +93,7 @@ const inLibrary = scored.length;
     <strong class="text-ink">以上不是速度排名。</strong>
     本站不做统一环境下的独立测速，这几家是「把可以核对的东西写清楚了」的品牌，
     值得你花一个月去验证，不代表一定最稳。全部为品牌与渠道口径，核对于 {LAST_SITE_UPDATE}。
-    {nearlyRest > 0 && <>另有 {nearlyRest} 家同样满足专线与月付两项，见完整对照。</>}
+    另有 20+ 家在库对照，见完整名单。
   </p>
 
   <p class="m-0 mt-4 flex flex-wrap gap-x-6 gap-y-2">

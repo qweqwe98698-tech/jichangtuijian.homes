@@ -1,0 +1,137 @@
+{
+  "name": "隐形人",
+  "aliases": [
+    "隐形人机场",
+    "Invisible"
+  ],
+  "tier": "mid",
+  "positioning": "2024 年开业企业级内网方案，24 元/月，主打隐私安全与稳定内网通道。",
+  "background": "隐形人（Invisible）开业于 2024 年，主打企业内网专线与月付灵活机制，起步 24 元/月，提供干净 IP 与稳定的加密传输通道。",
+  "priceFrom": "24 元 / 月 · 120GB",
+  "pricePerGb": 0.2,
+  "billingCycle": "monthly",
+  "couponCode": "yxr888",
+  "couponNote": "专属优惠码。",
+  "launchYear": "2024",
+  "highlights": [
+    "2024 年开业",
+    "企业内网通道",
+    "隐私保护优先",
+    "月付弹性支持"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "全解锁",
+    "ai": "全解锁",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": null,
+    "topology": null
+  },
+  "scenarios": [
+    "mid",
+    "streaming",
+    "ai"
+  ],
+  "protocols": [
+    "Shadowsocks",
+    "Trojan"
+  ],
+  "lineTypes": [
+    "企业内网（品牌口径）"
+  ],
+  "strengths": [
+    "主打企业内网与安全隐私，IP 干净度宣称较好",
+    "24 元月付起步，无需年付压注，退路明确"
+  ],
+  "limitations": [
+    "每 GB 单价（0.20 元）略高，属于偏中高端定价",
+    "独立测试数据尚缺，需结合自身晚高峰自测"
+  ],
+  "suitableFor": [
+    "注重会话安全、防风控与多端使用的办公族",
+    "重视按月付费灵活性的用户"
+  ],
+  "notSuitableFor": [
+    "只看价格便宜程度的纯羊毛党",
+    "需要数百 GB 批量下载的重度需求"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 24 元 / 月 · 120GB，优惠码 yxr888。价格与优惠为渠道资料口径（核对于 2026-08-11），下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "主流档",
+      "status": "sourced",
+      "note": "按起步门槛横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "24 元 / 月 · 120GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.200 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "yxr888",
+      "status": "sourced",
+      "note": "专属优惠码。"
+    },
+    {
+      "label": "运营年限",
+      "value": "2024 年开业（品牌口径）",
+      "status": "sourced"
+    },
+    {
+      "label": "主打线路",
+      "value": "企业内网（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "Shadowsocks / Trojan",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://yinxingren1.invisibleaff.com/#/?code=kcyEeoJT",
+  "reviewSlug": null,
+  "panel": null,
+  "panelDisputed": null,
+  "editorialPick": null
+}

@@ -1,0 +1,138 @@
+{
+  "name": "暮光加速",
+  "aliases": [
+    "暮光机场",
+    "Twilight"
+  ],
+  "tier": "mid",
+  "positioning": "2023 年开业均衡方案，20 元/月 120GB，主打 IEPL 专线与流媒体解锁支持。",
+  "background": "暮光加速（Twilight）开业于 2023 年，主打 IEPL 专线与月付灵活机制，起步 20 元 120GB，支持多端订阅导入。",
+  "priceFrom": "20 元 / 月 · 120GB",
+  "pricePerGb": 0.167,
+  "billingCycle": "monthly",
+  "couponCode": "muguang5555",
+  "couponNote": "通用优惠码。",
+  "launchYear": "2023",
+  "highlights": [
+    "2023 年开业",
+    "IEPL 专线",
+    "月付通道",
+    "流媒体全解锁（品牌口径）"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "全解锁",
+    "ai": "全解锁",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": null,
+    "topology": null
+  },
+  "scenarios": [
+    "mid",
+    "iepl",
+    "streaming",
+    "ai"
+  ],
+  "protocols": [
+    "Shadowsocks",
+    "V2Ray"
+  ],
+  "lineTypes": [
+    "IEPL 专线（品牌口径）"
+  ],
+  "strengths": [
+    "20 元 120GB 的容量与价位定位主流，适合中度日常访问",
+    "支持月付通道，便于用户自行验证晚高峰"
+  ],
+  "limitations": [
+    "晚高峰表现与解锁率未经本站独立测试",
+    "单价较超大流量包没有明显成本优势"
+  ],
+  "suitableFor": [
+    "日常看剧、社媒浏览兼顾办公的用户",
+    "希望月付灵活续订的用户"
+  ],
+  "notSuitableFor": [
+    "预算 10 元以内的轻度用户",
+    "海量数据下载需求者"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 20 元 / 月 · 120GB，优惠码 muguang5555。价格与优惠为渠道资料口径（核对于 2026-08-11），下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "主流档",
+      "status": "sourced",
+      "note": "按起步门槛横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "20 元 / 月 · 120GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.167 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "muguang5555",
+      "status": "sourced",
+      "note": "通用优惠码。"
+    },
+    {
+      "label": "运营年限",
+      "value": "2023 年开业（品牌口径）",
+      "status": "sourced"
+    },
+    {
+      "label": "主打线路",
+      "value": "IEPL 专线（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "Shadowsocks / V2Ray",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://varnexa.twilightaff.com/#/?code=D1LHglg3",
+  "reviewSlug": null,
+  "panel": null,
+  "panelDisputed": null,
+  "editorialPick": null
+}

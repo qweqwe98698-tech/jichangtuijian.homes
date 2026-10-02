@@ -1,0 +1,135 @@
+{
+  "name": "大佬云",
+  "aliases": [
+    "大佬云机场",
+    "DaLaoYun"
+  ],
+  "tier": "budget",
+  "positioning": "百元内高性价比梯队，约 5.6 元/月 60GB，宣称 IEPL 专线接入与快速响应。",
+  "background": "大佬云在 2024 年推出低价小包，约 5.6 元/月 60GB，主打极致单价与轻量级节点支持。",
+  "priceFrom": "约 5.6 元 / 月 · 60GB",
+  "pricePerGb": 0.093,
+  "billingCycle": "yearly",
+  "couponCode": "dly888",
+  "couponNote": "专属优惠码。",
+  "launchYear": "2024",
+  "highlights": [
+    "2024 年开业",
+    "IEPL 专线",
+    "极低试水门槛",
+    "多节点覆盖"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN"
+  ],
+  "claims": {
+    "streaming": "全解锁",
+    "ai": "全解锁",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": null,
+    "topology": null
+  },
+  "scenarios": [
+    "budget",
+    "iepl",
+    "newbie"
+  ],
+  "protocols": [
+    "Shadowsocks"
+  ],
+  "lineTypes": [
+    "IEPL 专线（品牌口径）"
+  ],
+  "strengths": [
+    "门槛极低，适合低预算尝鲜",
+    "支持多种通用客户端快速配置导入"
+  ],
+  "limitations": [
+    "低单价易伴随带宽复用率提高，建议先测试连通率",
+    "年付摊算方式需注意单次支付周期风险"
+  ],
+  "suitableFor": [
+    "刚接触机场、希望以最小成本试水的新手",
+    "需要长期低成本备用节点的用户"
+  ],
+  "notSuitableFor": [
+    "对晚高峰抖动容忍度为零的用户",
+    "专业企业生产环境"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-11",
+  "pricingNote": "起步套餐 约 5.6 元 / 月 · 60GB，优惠码 dly888。价格与优惠为渠道资料口径（核对于 2026-08-11），下单前请以官网结算页为准。",
+  "facts": [
+    {
+      "label": "档位",
+      "value": "入门档",
+      "status": "sourced",
+      "note": "按起步门槛横向归类"
+    },
+    {
+      "label": "起步套餐",
+      "value": "约 5.6 元 / 月 · 60GB",
+      "status": "sourced",
+      "note": "渠道资料 2026-08-11"
+    },
+    {
+      "label": "每 GB 单价",
+      "value": "约 0.093 元 / GB",
+      "status": "sourced",
+      "note": "按起步套餐价格 ÷ 流量计算，仅供横向比较"
+    },
+    {
+      "label": "优惠码",
+      "value": "dly888",
+      "status": "sourced",
+      "note": "专属优惠码。"
+    },
+    {
+      "label": "运营年限",
+      "value": "2024 年开业（品牌口径）",
+      "status": "sourced"
+    },
+    {
+      "label": "主打线路",
+      "value": "IEPL 专线（品牌口径）",
+      "status": "sourced",
+      "note": "品牌宣传口径，未实测"
+    },
+    {
+      "label": "协议",
+      "value": "Shadowsocks",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "AI 工具解锁",
+      "value": "全解锁（品牌口径）",
+      "status": "pending",
+      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+    },
+    {
+      "label": "晚高峰表现",
+      "value": "暂无统一测试数据",
+      "status": "pending",
+      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://qwerty.dalaoyunaff.com/#/?code=jCPLmoWN",
+  "reviewSlug": null,
+  "panel": null,
+  "panelDisputed": null,
+  "editorialPick": null
+}

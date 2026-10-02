@@ -20,9 +20,9 @@
 #    单开组会让它读不到通配组里的 Content-Signal。只给要封的 bot 单开组。
 
 User-agent: *
-Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 Disallow: /pagefind/
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 # ── 以下为纯模型训练用途，与 ai-train=no 一致，明确拒绝 ──
 # 它们被封不影响对应产品的检索式引用：

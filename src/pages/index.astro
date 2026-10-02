@@ -154,7 +154,7 @@ const faq = [
 
 <Base
   title="2026 机场推荐与稳定机场排行榜｜机场决策室"
-  description="2026 机场推荐怎么选：16 家在库机场逐项对照，起步 7–25 元/月，每 GB 0.127–0.180 元，含稳定机场排行榜、便宜机场、IEPL 专线与 ChatGPT 机场名单，判据公开可复算。"
+  description="2026 机场推荐怎么选：多款在库品牌逐项对照，起步 5.6–25 元/月，涵盖百元内便宜机场、稳定 IEPL 专线与 ChatGPT 节点名单，全维度判据公开可复算。"
   schemaItems={[faqSchema(faq)]}
   bareTitle
 >
@@ -168,10 +168,42 @@ const faq = [
       {/* 结论前置：先给可以直接用的答案，方法论退到其后 */}
       <QuickAnswer />
 
-      <p class="m-0 mt-10 max-w-[38rem] text-[1.1rem] text-muted">
+      {/* 场景决策胶囊（CRO 快速筛选导航） */}
+      <nav class="mt-6 flex flex-wrap items-center gap-2" aria-label="场景快速筛选">
+        <span class="meta-text mr-1 font-bold tracking-wider">快捷定位：</span>
+        <a href="#picks-heading" class="scenario-pill">
+          <span>🔥</span>
+          <span>编辑推荐</span>
+        </a>
+        <a href="/chatgpt-airport/" class="scenario-pill">
+          <span>🤖</span>
+          <span>ChatGPT / AI</span>
+        </a>
+        <a href="/streaming-airport/" class="scenario-pill">
+          <span>🎬</span>
+          <span>4K 流媒体</span>
+        </a>
+        <a href="/cheap-airport/" class="scenario-pill">
+          <span>💰</span>
+          <span>10元内便宜</span>
+        </a>
+        <a href="/iepl-airport/" class="scenario-pill">
+          <span>⚡</span>
+          <span>IEPL 纯专线</span>
+        </a>
+        <a href="/pay-as-you-go-airport/" class="scenario-pill">
+          <span>⏳</span>
+          <span>按量不限时</span>
+        </a>
+        <a href="/airport-ranking/" class="scenario-pill">
+          <span>📊</span>
+          <span>完整排行榜</span>
+        </a>
+      </nav>
+
+      <p class="m-0 mt-8 max-w-[38rem] text-[1.05rem] text-muted">
         上面这份名单只是起点。本站把选择标准、场景差异和风险信号摆在推荐前面——
-        每个数字都标清是谁测的：本站测的标「本站的测试」，第三方工具测的标「第三方实测」，
-        品牌方自己说的标「官方与渠道资料」，没有数据的老实标「暂无统一测试数据」。
+        第三方工具测的标「第三方实测」，品牌方自己说的标「官方与渠道资料」，没有数据的老实标「暂无统一测试数据」。
       </p>
 
       <h2 class="mt-10 mb-2 text-[1rem] tracking-widest text-muted">从你的处境开始</h2>
