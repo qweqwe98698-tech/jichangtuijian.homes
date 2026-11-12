@@ -76,5 +76,8 @@
   ],
   "officialUrl": null,
   "affiliateUrl": null,
-  "reviewSlug": null
+  "reviewSlug": null,
+  "suppressIndex": true,
+  "clientNotes": "高门槛高端定位，本站未开展独立性能测试且未挂载推广入口，继续保持 noindex 状态。",
+  "launchYear": null
 }

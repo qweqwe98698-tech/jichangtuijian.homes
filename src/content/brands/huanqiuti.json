@@ -131,5 +131,17 @@
   "reviewSlug": null,
   "panel": null,
   "panelDisputed": null,
-  "editorialPick": null
+  "editorialPick": null,
+  "plans": [
+    {
+      "name": "环球梯·年付标准方案（渠道口径）",
+      "cycle": "年付",
+      "price": "约 ¥67.2 / 年",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "约 0.093 元/GB",
+      "note": "折约 5.6 元/月；季付及以上 7 折"
+    }
+  ],
+  "priceBasis": "年付约 5.6 元/月 · 60GB 档，季付及以上 7 折（码 HQ66）；外部渠道中其注册链接缺少常规 # 号路径，访问前需确认页面正常打开。"
 }

@@ -7,8 +7,8 @@
   "tier": "mid",
   "positioning": "2025 年开业新锐机场，19 元/月 100GB，主打 IEPL 专线接入与月付弹性。",
   "background": "无忧链接（WorryFree）为 2025 年开业的新锐品牌，主打 IEPL 专线与稳定月付，起步 19 元 100GB，支持主流客户端订阅。",
-  "priceFrom": "19 元 / 月 · 100GB",
-  "pricePerGb": 0.19,
+  "priceFrom": "79 元 / 年（40GB/月） · 19 元 / 月（100GB）",
+  "pricePerGb": 0.165,
   "billingCycle": "monthly",
   "couponCode": "wuyou666",
   "couponNote": "渠道专属优惠码。",
@@ -33,9 +33,17 @@
     "subscriptionImport": true
   },
   "images": {
-    "speedtest": null,
-    "unlock": null,
-    "topology": null
+    "speedtest": "/images/brands/wuyou-lianjie-speedtest.jpg",
+    "unlock": "/images/brands/wuyou-lianjie-unlock.png",
+    "topology": "/images/brands/wuyou-lianjie-topology.png",
+    "gallery": [
+      {
+        "src": "/images/brands/wuyou-lianjie-unlock-panel.jpg",
+        "title": "无忧链接 50 节点御三家流媒体解锁原图（2026-07-18 21:47）",
+        "source": "第三方测试工具 MiaoKo（珠海联通 9Gbps）导出原图：Netflix 50/50 节点解锁、Disney+ 50/50 节点解锁、YouTube 49/50 解锁（HKG-01 显示送中 CN）。",
+        "kind": "unlock"
+      }
+    ]
   },
   "scenarios": [
     "mid",
@@ -69,7 +77,7 @@
   "riskLevel": "unknown",
   "dataStatus": "partial",
   "lastVerified": "2026-08-11",
-  "pricingNote": "起步套餐 19 元 / 月 · 100GB，优惠码 wuyou666。价格与优惠为渠道资料口径（核对于 2026-08-11），下单前请以官网结算页为准。",
+  "pricingNote": "「MINI链接」年付 79 元/年（40GB/月），「舒心链接」月付 19 元/月（100GB），另提供 100GB/300GB 永久不限时包；优惠码 wuyou666。",
   "facts": [
     {
       "label": "档位",
@@ -128,16 +136,172 @@
       "value": "暂无统一测试数据",
       "status": "pending",
       "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    },
+    {
+      "label": "节点数量",
+      "value": "50 个（面板导出计数）",
+      "status": "measured",
+      "note": "工具 MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-07-18 21:40:48 CST（落在晚高峰窗口 20:30–22:30 内）"
+    },
+    {
+      "label": "节点地区覆盖",
+      "value": "香港 15 · 新加坡 10 · 日本 10 · 台湾 5 · 美国 10",
+      "status": "measured",
+      "note": "按面板导出的节点命名归类"
+    },
+    {
+      "label": "香港节点延迟",
+      "value": "100–130 ms",
+      "status": "measured",
+      "note": "15 个节点的区间 · 工具 MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-07-18 21:40:48 CST（落在晚高峰窗口 20:30–22:30 内）"
+    },
+    {
+      "label": "香港节点平均速度",
+      "value": "392.62–554.59 MB/s",
+      "status": "measured",
+      "note": "15 个节点的区间 · 非晚高峰专门测试，测试于 2026-07-18 21:40:48 CST（落在晚高峰窗口 20:30–22:30 内）"
+    },
+    {
+      "label": "面板显示协议",
+      "value": "VLESS",
+      "status": "measured",
+      "note": "测速面板中节点的类型列；可能与官网宣传的协议口径不同，以实际订阅为准"
     }
   ],
   "officialUrl": null,
   "affiliateUrl": "https://wep01.worryfreeaff.com/#/?code=4ZoSbLdL",
-  "reviewSlug": null,
-  "panel": null,
+  "reviewSlug": "reviews/wuyou-lianjie",
+  "panel": {
+    "tool": "MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3）",
+    "threads": 32,
+    "backend": "珠海联通 9Gbps",
+    "durationSec": null,
+    "pingCount": null,
+    "protocolShown": "VLESS",
+    "totalNodes": 50,
+    "testedAt": "2026-07-18 21:40:48 CST",
+    "inPeakWindow": true,
+    "testedBefore": null,
+    "regions": [
+      {
+        "name": "香港",
+        "nodes": 15,
+        "latencyMinMs": 100,
+        "latencyMaxMs": 130,
+        "avgSpeedMinMB": 392.62,
+        "avgSpeedMaxMB": 554.59,
+        "maxSpeedMaxMB": 638.48
+      },
+      {
+        "name": "新加坡",
+        "nodes": 10,
+        "latencyMinMs": 102,
+        "latencyMaxMs": 172,
+        "avgSpeedMinMB": 94.83,
+        "avgSpeedMaxMB": 352.7,
+        "maxSpeedMaxMB": 446.19
+      },
+      {
+        "name": "日本",
+        "nodes": 10,
+        "latencyMinMs": 134,
+        "latencyMaxMs": 155,
+        "avgSpeedMinMB": 60.17,
+        "avgSpeedMaxMB": 198.31,
+        "maxSpeedMaxMB": 408.61
+      },
+      {
+        "name": "台湾",
+        "nodes": 5,
+        "latencyMinMs": 143,
+        "latencyMaxMs": 269,
+        "avgSpeedMinMB": 65.74,
+        "avgSpeedMaxMB": 94.72,
+        "maxSpeedMaxMB": 110.78
+      },
+      {
+        "name": "美国",
+        "nodes": 10,
+        "latencyMinMs": 240,
+        "latencyMaxMs": 253,
+        "avgSpeedMinMB": 12.13,
+        "avgSpeedMaxMB": 18.13,
+        "maxSpeedMaxMB": 56.52
+      }
+    ],
+    "anomalies": [
+      "新加坡 SIN-02 平均速度 17.59KB、最高 175.93KB（HTTPS 延迟 1631ms），实质未测通，已排除出新加坡区速度下限",
+      "日本 TYO-09 的 HTTPS 延迟跳高至 2526ms，其余日本节点 HTTPS 延迟多在 702–843ms",
+      "同日 21:47 配套御三家流媒体解锁测试（无忧链接2.jpg）显示：Netflix 50/50、Disney+ 50/50 同区解锁，YouTube 49/50 解锁（仅 香港HKG-01 显示送中 CN）",
+      "美国 10 个 LAX 节点平均速度仅 12.13–18.13 MB/s，远低于香港专区（393–555 MB/s）",
+      "本次为 21:40 晚高峰窗口内 32 线程并发测试，多节点全部 FullCone 居多（部分新加坡 RestrictedCone / Unknown），聚合速度不代表单连接体感"
+    ]
+  },
   "panelDisputed": null,
   "editorialPick": {
     "rank": 5,
     "reason": "2025 年新锐 IEPL 专线品牌，起步 19 元/月 100GB 且原生支持直接月付，无需长周期资金锁定，试水与止损极为灵活。",
     "caveat": "2025 年开业品牌历史样本相对较少，首单坚持月付验证原则。"
-  }
+  },
+  "priceBasis": "常规月付「舒心链接」¥19/月 100GB（0.190 元/GB）；另有年付「MINI链接」¥79/年 每月 40GB（折约 6.58 元/月），以及 100GB/300GB 永久不限时包。",
+  "clientNotes": "2026 年 10 月起主推官方专属客户端下载登录即用，免繁琐格式转换，适合 TikTok 跨区直连与轻度电商辅助；同时兼容标准订阅架构。",
+  "plans": [
+    {
+      "name": "MINI链接",
+      "cycle": "年付",
+      "price": "¥79",
+      "traffic": "40GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.165 元/GB",
+      "note": "折约 6.58 元/月"
+    },
+    {
+      "name": "舒心链接",
+      "cycle": "月付",
+      "price": "¥19",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.190 元/GB"
+    },
+    {
+      "name": "省心链接",
+      "cycle": "月付",
+      "price": "¥33",
+      "traffic": "200GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.165 元/GB"
+    },
+    {
+      "name": "随心链接",
+      "cycle": "月付",
+      "price": "¥77",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.154 元/GB"
+    },
+    {
+      "name": "忘忧链接",
+      "cycle": "月付",
+      "price": "¥117",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.117 元/GB"
+    },
+    {
+      "name": "100G永久不限时 无忧链接",
+      "cycle": "一次性付费",
+      "price": "¥108",
+      "traffic": "100GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.080 元/GB"
+    },
+    {
+      "name": "300G永久不限时 无忧链接",
+      "cycle": "一次性付费",
+      "price": "¥298",
+      "traffic": "300GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.993 元/GB"
+    }
+  ]
 }

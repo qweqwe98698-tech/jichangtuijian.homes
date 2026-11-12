@@ -59,7 +59,7 @@ export const MOBILE_NAV_EXTRA = [
 ];
 
 /** 站点最近编辑动作日期（顶部信息行显示；发布新内容时更新） */
-export const LAST_SITE_UPDATE = '2026-11-09';
+export const LAST_SITE_UPDATE = '2026-11-12';
 
 /**
  * 站长平台验证。拿到验证码后填在这里即可，无需改模板。
@@ -78,4 +78,4 @@ export const SITE_VERIFICATION = {
  * 生成一个 8–128 位的十六进制密钥填在这里，同时把同名文件放到 public/<key>.txt（内容就是该密钥）。
  * 填好后即可用 scripts/indexnow-submit.mjs 推送 URL。留空表示未启用。
  */
-export const INDEXNOW_KEY = '6dd7ea9a7a8507d010b3c6e6822bb46a';
+export const INDEXNOW_KEY = '7a25c3a12650451bbfdab04595008d14';

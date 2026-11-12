@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BrandPickList from '@/components/BrandPickList.astro';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, faqSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const cheapest = (await getCollection('brands'))
   .filter((b) => b.data.pricePerGb !== null)
@@ -49,8 +49,17 @@ const crumbs: Crumb[] = [
 
 <Base
   title="免费试用机场怎么找：试用清单与低成本验证法"
-  description="免费试用机场是真的吗？本页说明正规试用与来路不明免费节点的区别、试用期该测的四项，以及在库品牌资料未提供试用信息时，用最低价套餐做验证的替代路径。"
-  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  description="免费试用机场怎么找？区分正规试用与高风险免费节点，附上试用必测4项及低成本月付小包的替代验证路径。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '免费试用机场清单',
+      description: '机场免费试用规则、必测项目与低价替代验证路径',
+      path: '/free-trial-airport/',
+    }),
+    faqSchema(faq),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 

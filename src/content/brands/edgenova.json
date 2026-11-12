@@ -1,0 +1,159 @@
+{
+  "name": "EdgeNova（边缘节点）",
+  "aliases": [
+    "EdgeNova",
+    "边缘节点"
+  ],
+  "tier": "mid",
+  "positioning": "高速直连 + IPLC 多线路自动分配，提供 ¥15/月（72GB）限时月付与新用户 8 折码 TH888。",
+  "background": "EdgeNova（边缘节点）以高速直连、IPLC 专线和多线路自动分配为核心卖点，提供限时小额月付（¥15/72GB）与年付小包（¥108/45GB/月），标准系列「极界」分 120GB 到 1000GB 四档且全面支持支付宝、微信和 USDT。",
+  "priceFrom": "¥15 / 月（72GB） · 年付 ¥108（45GB/月）",
+  "pricePerGb": 0.2,
+  "billingCycle": "monthly",
+  "priceBasis": "限时月付 ¥15/72GB（约 0.208 元/GB）或限时年付 ¥108/45GB/月（折 9 元/月）；标准套餐「极界·标准」¥25/月 120GB，可用新用户 8 折码 TH888。",
+  "couponCode": "TH888",
+  "couponNote": "8 折优惠码 TH888（以结算页对限时档是否生效为准）。",
+  "paymentMethods": [
+    "支付宝",
+    "微信",
+    "USDT"
+  ],
+  "launchYear": null,
+  "highlights": [
+    "限时月付 ¥15/72GB 试错门槛友好，兼具 108 元年付小包",
+    "IPLC 多线路自动分配定位，极界系列最高月付 1TB",
+    "支持支付宝、微信、USDT 与 TH888 八折券"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "缺少独立逐项测试结果（需自行核实）",
+    "ai": "缺少独立逐项测试结果（需自行核实）",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/edgenova-unlock.png",
+    "topology": "/images/brands/edgenova-topology.png"
+  },
+  "scenarios": [
+    "iepl",
+    "mid",
+    "newbie"
+  ],
+  "protocols": [
+    "多协议混合（品牌资料未细列）"
+  ],
+  "lineTypes": [
+    "高速直连 / IPLC 多线路自动分配（品牌口径）"
+  ],
+  "strengths": [
+    "同时保留 15 元限时月付试错与 8 折优惠码，注册与国内支付渠道齐全"
+  ],
+  "limitations": [
+    "限时套餐名称存在时效风险；注意极界部分档位年付单价约合 10.8–11.5 倍月付，优惠幅度有限",
+    "缺少地区实拍测速及流媒体、AI 逐项解锁校验数据"
+  ],
+  "suitableFor": [
+    "想使用 ¥15 月付先做尝试、看重多国内支付通道的用户"
+  ],
+  "notSuitableFor": [
+    "重度长期用户仅按官网原年付购买前建议先对比折扣力度"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "suppressIndex": false,
+  "lastVerified": "2026-08-09",
+  "pricingNote": "限时月付 ¥15（72G）、限时年付 ¥108（45G/月）、极界标准 ¥25（120G）至极限 ¥200（1000G）；优惠码 TH888（8 折）。",
+  "plans": [
+    {
+      "name": "限时月付",
+      "cycle": "月付",
+      "price": "¥15",
+      "traffic": "72GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.208 元/GB"
+    },
+    {
+      "name": "限时年付",
+      "cycle": "年付",
+      "price": "¥108",
+      "traffic": "45GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.200 元/GB"
+    },
+    {
+      "name": "极界·标准",
+      "cycle": "月付",
+      "price": "¥25",
+      "traffic": "120GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.208 元/GB"
+    },
+    {
+      "name": "极界·标准",
+      "cycle": "年付",
+      "price": "¥270",
+      "traffic": "120GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.188 元/GB"
+    },
+    {
+      "name": "极界·进阶",
+      "cycle": "月付",
+      "price": "¥50",
+      "traffic": "250GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.200 元/GB"
+    },
+    {
+      "name": "极界·进阶",
+      "cycle": "年付",
+      "price": "¥570",
+      "traffic": "250GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.190 元/GB"
+    },
+    {
+      "name": "极界·高级",
+      "cycle": "月付",
+      "price": "¥100",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.200 元/GB"
+    },
+    {
+      "name": "极界·极限",
+      "cycle": "月付",
+      "price": "¥200",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.200 元/GB"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "中端直连/IPLC 型",
+      "status": "sourced"
+    },
+    {
+      "label": "起步套餐",
+      "value": "¥15 / 月（72GB） · 年付 ¥108（45GB/月）",
+      "status": "sourced"
+    },
+    {
+      "label": "优惠码与支付",
+      "value": "TH888（8 折） · 支付宝/微信/USDT",
+      "status": "sourced"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://work.edgenovaaff.cc/#/register?code=cl3iB5YG",
+  "reviewSlug": null
+}

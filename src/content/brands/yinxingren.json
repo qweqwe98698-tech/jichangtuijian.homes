@@ -7,11 +7,11 @@
   "tier": "mid",
   "positioning": "2024 年开业企业级内网方案，24 元/月，主打隐私安全与稳定内网通道。",
   "background": "隐形人（Invisible）开业于 2024 年，主打企业内网专线与月付灵活机制，起步 24 元/月，提供干净 IP 与稳定的加密传输通道。",
-  "priceFrom": "24 元 / 月 · 120GB",
-  "pricePerGb": 0.2,
+  "priceFrom": "109 元 / 年（80GB/月） · 24 元 / 月（144GB）",
+  "pricePerGb": 0.114,
   "billingCycle": "monthly",
   "couponCode": "yxr888",
-  "couponNote": "专属优惠码。",
+  "couponNote": "渠道码 yxr888；2026-10 清单另记录 8 折码 moon80。",
   "launchYear": "2024",
   "highlights": [
     "2024 年开业",
@@ -26,15 +26,15 @@
     "sing-box 系"
   ],
   "claims": {
-    "streaming": "全解锁",
-    "ai": "全解锁",
-    "selfClient": false,
-    "subscriptionImport": true
+    "streaming": "品牌资料标注解锁 Netflix / Disney+ / YouTube / HBO Max / Spotify（TikTok 视节点）",
+    "ai": "品牌资料标注支持 ChatGPT（Claude / Gemini 视节点）",
+    "selfClient": true,
+    "subscriptionImport": false
   },
   "images": {
     "speedtest": null,
-    "unlock": null,
-    "topology": null
+    "unlock": "/images/brands/yinxingren-unlock.png",
+    "topology": "/images/brands/yinxingren-topology.png"
   },
   "scenarios": [
     "mid",
@@ -130,8 +130,84 @@
   ],
   "officialUrl": null,
   "affiliateUrl": "https://yinxingren1.invisibleaff.com/#/?code=kcyEeoJT",
-  "reviewSlug": null,
+  "reviewSlug": "reviews/yinxingren",
   "panel": null,
   "panelDisputed": null,
-  "editorialPick": null
+  "editorialPick": null,
+  "priceBasis": "月付「白银纪元」¥24/月 144GB（0.167 元/GB，早期摘要标 100GB）；年付「星耀风暴」¥109/年 80GB/月（折约 9.08 元/月）。",
+  "clientNotes": "官方自带全平台客户端，不提供第三方订阅链接（不支持直接导入 Clash / Shadowrocket）。",
+  "plans": [
+    {
+      "name": "星耀风暴 365天不熄",
+      "cycle": "年付",
+      "price": "¥109",
+      "traffic": "80GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.114 元/GB"
+    },
+    {
+      "name": "隐形人 白银纪元",
+      "cycle": "月付",
+      "price": "¥24",
+      "traffic": "144GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "隐形人 黄金序列",
+      "cycle": "月付",
+      "price": "¥48",
+      "traffic": "360GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB"
+    },
+    {
+      "name": "隐形人 铂金至臻",
+      "cycle": "月付",
+      "price": "¥105",
+      "traffic": "750GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.140 元/GB"
+    },
+    {
+      "name": "隐形人 钻石穹顶",
+      "cycle": "月付",
+      "price": "¥185",
+      "traffic": "1.6TB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.113 元/GB"
+    },
+    {
+      "name": "一次性小流量",
+      "cycle": "一次性付费",
+      "price": "¥229",
+      "traffic": "160GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.431 元/GB"
+    },
+    {
+      "name": "一次性标准流量包",
+      "cycle": "一次性付费",
+      "price": "¥549",
+      "traffic": "420GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.307 元/GB"
+    },
+    {
+      "name": "一次性精英流量包",
+      "cycle": "一次性付费",
+      "price": "¥1199",
+      "traffic": "1.0TB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.171 元/GB"
+    },
+    {
+      "name": "王者定制版",
+      "cycle": "月付",
+      "price": "¥680",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "1.360 元/GB"
+    }
+  ]
 }

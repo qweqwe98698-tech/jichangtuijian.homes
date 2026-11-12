@@ -34,8 +34,8 @@
   },
   "images": {
     "speedtest": null,
-    "unlock": null,
-    "topology": null
+    "unlock": "/images/brands/tiziyun-unlock.png",
+    "topology": "/images/brands/tiziyun-topology.png"
   },
   "scenarios": [
     "budget",
@@ -131,8 +131,20 @@
   ],
   "officialUrl": null,
   "affiliateUrl": "https://tiziyun3.ladderaff.com/#/?code=7EmnpHs0",
-  "reviewSlug": null,
+  "reviewSlug": "reviews/tiziyun",
   "panel": null,
   "panelDisputed": null,
-  "editorialPick": null
+  "editorialPick": null,
+  "clientNotes": "唯一在渠道资料中强调「小白一键登录零门槛」的自研全平台客户端品牌，同时兼容通用第三方订阅导入（比纯闭环客户端更灵活）。",
+  "plans": [
+    {
+      "name": "梯子云·年付入门档（渠道口径）",
+      "cycle": "年付",
+      "price": "约 ¥88.8 / 年",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "约 0.123 元/GB",
+      "note": "折合约 7.4 元/月，更多月付档以官网为准"
+    }
+  ]
 }

@@ -1,17 +1,18 @@
 {
   "name": "暮光加速",
   "aliases": [
+    "暮光云",
     "暮光机场",
     "Twilight"
   ],
   "tier": "mid",
   "positioning": "2023 年开业均衡方案，20 元/月 120GB，主打 IEPL 专线与流媒体解锁支持。",
   "background": "暮光加速（Twilight）开业于 2023 年，主打 IEPL 专线与月付灵活机制，起步 20 元 120GB，支持多端订阅导入。",
-  "priceFrom": "20 元 / 月 · 120GB",
-  "pricePerGb": 0.167,
+  "priceFrom": "20 元 / 月（120GB） · 年付 109 元（70GB/月）",
+  "pricePerGb": 0.13,
   "billingCycle": "monthly",
   "couponCode": "muguang5555",
-  "couponNote": "通用优惠码。",
+  "couponNote": "渠道优惠码 muguang5555（若结算页不支持请向官方客服确认当期活动）。",
   "launchYear": "2023",
   "highlights": [
     "2023 年开业",
@@ -33,8 +34,8 @@
   },
   "images": {
     "speedtest": null,
-    "unlock": null,
-    "topology": null
+    "unlock": "/images/brands/muguang-jiasu-unlock.png",
+    "topology": "/images/brands/muguang-jiasu-topology.png"
   },
   "scenarios": [
     "mid",
@@ -68,7 +69,7 @@
   "riskLevel": "unknown",
   "dataStatus": "partial",
   "lastVerified": "2026-08-11",
-  "pricingNote": "起步套餐 20 元 / 月 · 120GB，优惠码 muguang5555。价格与优惠为渠道资料口径（核对于 2026-08-11），下单前请以官网结算页为准。",
+  "pricingNote": "年付轻量版 109 元/年（70GB/月），基础月付 20 元/月（120GB），另有不限时流量包与独享定制套餐；渠道优惠码 muguang5555。",
   "facts": [
     {
       "label": "档位",
@@ -131,8 +132,84 @@
   ],
   "officialUrl": null,
   "affiliateUrl": "https://varnexa.twilightaff.com/#/?code=D1LHglg3",
-  "reviewSlug": null,
+  "reviewSlug": "reviews/muguang-jiasu",
   "panel": null,
   "panelDisputed": null,
-  "editorialPick": null
+  "editorialPick": null,
+  "priceBasis": "常规月付基础版 ¥20/月 120GB（折约 0.167 元/GB）；另有年付轻量版 ¥109/年 每月70GB（折约 9.08 元/月、0.130 元/GB）及不限时一次性包（150GB/400GB/800GB）。",
+  "clientNotes": "主打 BGP 智能调度与全平台客户端（Windows/macOS/iOS/Android/Linux），多设备同时在线；此前外部压缩包内一份文件误将「快狸」截图命名为暮光加速，经核验与标题对照后本页不挂载错位面板图。",
+  "plans": [
+    {
+      "name": "【暮光·年付轻量版】",
+      "cycle": "年付",
+      "price": "¥109",
+      "traffic": "70GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.130 元/GB"
+    },
+    {
+      "name": "【暮光·基础版】",
+      "cycle": "月付",
+      "price": "¥20",
+      "traffic": "120GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "【暮光·标准版】",
+      "cycle": "月付",
+      "price": "¥40",
+      "traffic": "240GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "【暮光·旗舰版】",
+      "cycle": "月付",
+      "price": "¥100",
+      "traffic": "700GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.143 元/GB"
+    },
+    {
+      "name": "【暮光·至尊版】",
+      "cycle": "月付",
+      "price": "¥180",
+      "traffic": "1500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "【暮光·不限时轻量包】",
+      "cycle": "一次性付费",
+      "price": "¥219",
+      "traffic": "150GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.460 元/GB"
+    },
+    {
+      "name": "【暮光·不限时标准包】",
+      "cycle": "一次性付费",
+      "price": "¥529",
+      "traffic": "400GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.323 元/GB"
+    },
+    {
+      "name": "【暮光·不限时大容量包】",
+      "cycle": "一次性付费",
+      "price": "¥959",
+      "traffic": "800GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.199 元/GB"
+    },
+    {
+      "name": "独享私人定制节点",
+      "cycle": "月付",
+      "price": "¥600",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "1.200 元/GB"
+    }
+  ]
 }

@@ -1,0 +1,74 @@
+{
+  "brand": "weifeng-wangluo",
+  "_note": "转录自桌面实测资料 extracted/微风-节点测速实测.png（MiaoKo 4.7.0 / 主端 4.3.3，测试时间 2026-07-19 18:38:20 CST，非晚高峰窗口）。",
+  "source": {
+    "tool": "MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3）",
+    "threads": 32,
+    "backend": "珠海联通 9Gbps",
+    "durationSec": null,
+    "pingCount": null,
+    "trafficUsedGB": null,
+    "testedAt": "2026-07-19 18:38:20 CST",
+    "inPeakWindow": false
+  },
+  "accountRows": {
+    "remainingTrafficGB": null,
+    "planExpiry": null
+  },
+  "protocolShown": "VLESS",
+  "totalNodes": 50,
+  "regions": [
+    {
+      "name": "香港",
+      "nodes": 15,
+      "latencyMinMs": 97,
+      "latencyMaxMs": 211,
+      "avgSpeedMinMB": 468.91,
+      "avgSpeedMaxMB": 546.2,
+      "maxSpeedMaxMB": 619.64
+    },
+    {
+      "name": "台湾",
+      "nodes": 5,
+      "latencyMinMs": 151,
+      "latencyMaxMs": 213,
+      "avgSpeedMinMB": 73.28,
+      "avgSpeedMaxMB": 103.0,
+      "maxSpeedMaxMB": 113.86
+    },
+    {
+      "name": "新加坡",
+      "nodes": 10,
+      "latencyMinMs": 78,
+      "latencyMaxMs": 96,
+      "avgSpeedMinMB": 135.34,
+      "avgSpeedMaxMB": 401.25,
+      "maxSpeedMaxMB": 534.96
+    },
+    {
+      "name": "日本",
+      "nodes": 10,
+      "latencyMinMs": 135,
+      "latencyMaxMs": 143,
+      "avgSpeedMinMB": 79.73,
+      "avgSpeedMaxMB": 257.97,
+      "maxSpeedMaxMB": 382.99
+    },
+    {
+      "name": "美国",
+      "nodes": 10,
+      "latencyMinMs": 243,
+      "latencyMaxMs": 250,
+      "avgSpeedMinMB": 9.9,
+      "avgSpeedMaxMB": 21.03,
+      "maxSpeedMaxMB": 90.6
+    }
+  ],
+  "anomalies": [
+    "台湾 02 平均与最高速度均为 0.00B（TLS RTT 213ms、HTTPS 延迟 1453ms），已排除出台湾区速度下限统计",
+    "日本 05 平均速度 8.00KB、最高 80.00KB（TLS RTT 137ms），实质未测通，已排除出日本区速度下限统计",
+    "香港09 TLS RTT 达 211ms，同区其余节点集中在 97–115ms；台湾5节点 HTTPS 延迟整体偏高（936–1453ms）",
+    "美国 10 个节点平均速度集中在 9.90–21.03 MB/s，远低于香港/新加坡；单节点 03 突发最高达 90.60 MB/s",
+    "本次测试时间为 18:38 CST（晚高峰 20:30–22:30 之前），32 线程并发聚合结果不代表晚高峰或单连接体感"
+  ]
+}

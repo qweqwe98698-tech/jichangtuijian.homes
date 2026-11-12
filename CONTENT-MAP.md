@@ -39,30 +39,19 @@
 - 品牌事实（成立时间/公司/运营状态）：只写有公开依据的定位描述，其余标待验证。
 - frontmatter `lastVerified` 记录最近核验日期；评测类必须有 `dataSource` 说明。
 
-## 3.5 品牌矩阵（2026-08-11 上线）
+## 3.5 品牌矩阵（2026-11-12 同步）
 
-16 家在库品牌，每家三件套：**品牌档案页 + 深度评测 + 三张图表**。
+在库动态品牌档案（含早期观察品牌 `wgetcloud`、`nexitally` 及扩展渠道品牌共 30+ 家），核心品牌配备「品牌档案页 + 深度评测」；其中首批评测 16 家配有渠道参考图表，新增评测含 `reviews/weifeng-wangluo`、`reviews/wuyou-lianjie` 等。关键在校对字段：
 
-| slug         | 品牌     | 起步价             | 优惠码    | 场景标签                      |
-| ------------ | -------- | ------------------ | --------- | ----------------------------- |
-| lingmao-net  | 灵猫网络 | 19 元 / 150GB 月付 | lmao888   | budget, streaming, newbie     |
-| xingdao-meng | 星岛梦   | 8 元 / 60GB 年付   | nmw888    | budget, newbie, longterm      |
-| yifan-yun    | 一翻云   | 20 元 / 150GB      | yfy6666   | ai, streaming, iepl, budget   |
-| feimao-yun   | 飞猫云   | 7 元 / 50GB 年付   | flycat888 | budget, ai, streaming, newbie |
-| weitu-yun    | 唯兔云   | 14.9 元 / 100GB    | rabbit    | budget, newbie                |
-| yuzhou-yun   | 宇宙云   | 14.9 元 / 100GB    | YUZHOU553 | budget, streaming             |
-| ermao-yun    | 二猫云   | 20 元 / 130GB      | ermao5555 | ai, streaming, iepl           |
-| guangsu-yun  | 光速云   | 17 元 / 110GB      | AMM       | ai, streaming, iepl, longterm |
-| guangnian-ti | 光年梯   | 18 元 / 110GB      | gnt6666   | ai, streaming, iepl           |
-| kexin-yun    | 可信云   | 25 元 / 150GB      | kkk333    | streaming, iepl               |
-| kuaili       | 快狸     | 25 元 / 150GB      | kkk2222   | ai, streaming, iepl           |
-| quanqiu-yun  | 全球云   | 20 元 / 120GB      | qqy7777   | ai, streaming, iepl           |
-| sogo-yun     | SOGO 云  | 25 元 / 150GB      | sss777    | ai, streaming, iepl           |
-| u1s1         | U1S1     | 20 元 / 120GB      | akaka     | streaming, iepl               |
-| sujie        | 速界     | 25 元 / 150GB      | sss1111   | ai, iepl                      |
-| jilian-yun   | 极连云   | 18 元 / 100GB      | ji8888    | ai, streaming, iepl           |
+| slug          | 品牌     | 起步价口径（核对态）  | 优惠码    | 场景标签                      |
+| ------------- | -------- | --------------------- | --------- | ----------------------------- |
+| weitu-yun     | 唯兔云   | 14.9 元 / 月 · 100GB  | weitu666  | budget, newbie                |
+| guangsu-yun   | 光速云   | 99 元 / 年 · 59GB/月  | AMM       | ai, streaming, iepl, longterm |
+| feimao-yun    | 飞猫云   | 约 7 元 / 月 · 50GB   | flycat888 | budget, ai, streaming, newbie |
+| weifeng-wangluo | 微风网络 | 约 7 元 / 月 · 50GB | flat888   | budget, iepl, newbie          |
+| wuyou-lianjie | 无忧链接 | 19 元 / 月 · 100GB    | wuyou666  | mid, iepl, ai, streaming      |
 
-另有两家仅档案无商务数据的观察品牌：wgetcloud、nexitally。
+注：其余 13+ 篇早期已同步评测与扩展档案以 `src/content/brands/*.json` 实盘字段为唯一事实源。
 
 ### 品牌图表的三种性质（写作时必须区分）
 
@@ -76,8 +65,8 @@
 
 ## 4. 扩展计划（按优先级）
 
-**第二批（场景推荐补全）**：✅ /best/stable/ 已上线（用可核验代理指标筛选，不承诺最稳）；待办 /best/premium/。
-场景类商业词已由专题页承接（见 SEO-STRATEGY §6.5），/best/streaming/ 与 /best/iplc/ 不再单独建页，避免与 /streaming-airport/、/iepl-airport/ 内耗。
+**第二批（场景推荐补全）**：✅ /best/stable/、/best/premium/ 均已上线。
+场景类商业词已由专题页承接（见 SEO-STRATEGY §6.5），/best/streaming/ 与 /best/iplc/ 不再单独建页，避免与 /streaming-airport/、/iepl-airport/ 内耗，并在 /best/ 中直接卡片引导。
 **第三批（问题解决长尾）**：✅ 已上线 subscription-update-fail、wifi-ok-cellular-fail、chatgpt-blocked、peak-hour-slow、netflix-not-unlocking、v2rayn-cannot-connect；待办 shadowrocket-timeout、clash-verge-startup-fail。
 **第四批（协议与 IP 知识）**：✅ 已上线 learn/airport-vs-vpn、learn/native-ip、learn/traffic-multiplier、learn/streaming-unlock-explained；待办 shadowsocks、trojan、vmess、vless、hysteria2 各「是什么」承接页。
 **第六批（P1 平台引流三系列，2026-08-11）**：✅ AI 系列 fix/claude-code-disconnect、fix/gemini-region-error、apps/ai-split-tunneling；流媒体系列 learn/streaming-unlock-explained、fix/disney-plus-not-working、learn/netflix-region-library；Google 系列 fix/google-search-blocked、fix/youtube-buffering、learn/google-services-guide。分工与内耗防护见 SEO-STRATEGY §6.55。

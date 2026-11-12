@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import VerifyStamp from '@/components/VerifyStamp.astro';
-import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const riskArticles = (
   await getCollection('articles', ({ id, data }) => id.startsWith('risk/') && !data.draft)
@@ -21,8 +21,16 @@ const crumbs: Crumb[] = [
 
 <Base
   title="风险观察：跑路信号与运营状态记录"
-  description="机场会跑路，而且很少毫无征兆。风险观察栏目记录跑路前的常见信号、套餐购买风险，并对档案内品牌做周期性运营状态核查。"
-  schemaItems={[breadcrumbSchema(crumbs)]}
+  description="机场跑路信号、年付不限时风险与在库品牌核查记录：学会识别异常高折扣与资金池诱饵，把试错风险压到最低。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '风险观察',
+      description: '机场跑路信号清单与在库品牌运营风险核查板',
+      path: '/risk/',
+    }),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 

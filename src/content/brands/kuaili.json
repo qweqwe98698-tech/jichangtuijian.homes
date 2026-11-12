@@ -34,7 +34,7 @@
     "subscriptionImport": true
   },
   "images": {
-    "speedtest": null,
+    "speedtest": "/images/brands/kuaili-speedtest.png",
     "unlock": "/images/brands/kuaili-unlock.png",
     "topology": "/images/brands/kuaili-topology.png"
   },
@@ -137,25 +137,25 @@
       "label": "节点数量",
       "value": "50 个（面板导出计数）",
       "status": "measured",
-      "note": "工具 MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-08-05 20:35:24 CST（落在晚高峰窗口 20:30–22:30 内）"
+      "note": "工具 MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-08-11 19:52:22 CST"
     },
     {
       "label": "节点地区覆盖",
-      "value": "香港 15 · 台湾 5 · 新加坡 10 · 日本 10 · 美国 10",
+      "value": "香港 15 · 新加坡 10 · 日本 10 · 台湾 5 · 美国 10",
       "status": "measured",
       "note": "按面板导出的节点命名归类"
     },
     {
       "label": "香港节点延迟",
-      "value": "91–121 ms",
+      "value": "98–202 ms",
       "status": "measured",
-      "note": "15 个节点的区间 · 工具 MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-08-05 20:35:24 CST（落在晚高峰窗口 20:30–22:30 内）"
+      "note": "15 个节点的区间 · 工具 MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-08-11 19:52:22 CST"
     },
     {
       "label": "香港节点平均速度",
-      "value": "470.34–550 MB/s",
+      "value": "505.02–550.88 MB/s",
       "status": "measured",
-      "note": "15 个节点的区间 · 非针对晚高峰的专门测试，测试于 2026-08-05 20:35:24 CST（落在晚高峰窗口 20:30–22:30 内）"
+      "note": "15 个节点的区间 · 非晚高峰专门测试，测试于 2026-08-11 19:52:22 CST"
     },
     {
       "label": "面板显示协议",
@@ -175,64 +175,75 @@
     "pingCount": null,
     "protocolShown": "VLESS",
     "totalNodes": 50,
-    "testedAt": "2026-08-05 20:35:24 CST",
-    "inPeakWindow": true,
+    "testedAt": "2026-08-11 19:52:22 CST",
+    "inPeakWindow": false,
     "testedBefore": null,
     "regions": [
       {
         "name": "香港",
         "nodes": 15,
-        "latencyMinMs": 91,
-        "latencyMaxMs": 121,
-        "avgSpeedMinMB": 470.34,
-        "avgSpeedMaxMB": 550,
-        "maxSpeedMaxMB": 634.84
-      },
-      {
-        "name": "台湾",
-        "nodes": 5,
-        "latencyMinMs": 151,
-        "latencyMaxMs": 179,
-        "avgSpeedMinMB": 29.17,
-        "avgSpeedMaxMB": 77.48,
-        "maxSpeedMaxMB": 107.64
+        "latencyMinMs": 98,
+        "latencyMaxMs": 202,
+        "avgSpeedMinMB": 505.02,
+        "avgSpeedMaxMB": 550.88,
+        "maxSpeedMaxMB": 619.75
       },
       {
         "name": "新加坡",
         "nodes": 10,
-        "latencyMinMs": 86,
-        "latencyMaxMs": 184,
-        "avgSpeedMinMB": 331.41,
-        "avgSpeedMaxMB": 523.07,
-        "maxSpeedMaxMB": 569.38
+        "latencyMinMs": 90,
+        "latencyMaxMs": 125,
+        "avgSpeedMinMB": 145.87,
+        "avgSpeedMaxMB": 419.59,
+        "maxSpeedMaxMB": 570.86
       },
       {
         "name": "日本",
         "nodes": 10,
-        "latencyMinMs": 137,
-        "latencyMaxMs": 144,
-        "avgSpeedMinMB": 22.38,
-        "avgSpeedMaxMB": 169.86,
-        "maxSpeedMaxMB": 381.34
+        "latencyMinMs": 131,
+        "latencyMaxMs": 146,
+        "avgSpeedMinMB": 106.71,
+        "avgSpeedMaxMB": 189.69,
+        "maxSpeedMaxMB": 377.67
+      },
+      {
+        "name": "台湾",
+        "nodes": 5,
+        "latencyMinMs": 152,
+        "latencyMaxMs": 391,
+        "avgSpeedMinMB": 47.48,
+        "avgSpeedMaxMB": 90.39,
+        "maxSpeedMaxMB": 124.2
       },
       {
         "name": "美国",
         "nodes": 10,
-        "latencyMinMs": 241,
-        "latencyMaxMs": 247,
-        "avgSpeedMinMB": 8.33,
-        "avgSpeedMaxMB": 12.36,
-        "maxSpeedMaxMB": 20.27
+        "latencyMinMs": 243,
+        "latencyMaxMs": 249,
+        "avgSpeedMinMB": 8.63,
+        "avgSpeedMaxMB": 13.89,
+        "maxSpeedMaxMB": 32
       }
     ],
     "anomalies": [
-      "香港01 平均速度与最高速度均为 0.00B（未测通），其 TLS RTT 91ms 正常；该节点已排除出香港区的速度区间",
-      "新加坡07 速度为 KB 级（平均 9.60KB / 最高 96.00KB），实质未测通，已排除出新加坡区的速度区间",
-      "美国 10 个节点的平均速度集中在 8.33–12.36 MB/s，显著低于香港（470–550）、新加坡（331–523）与日本（22–170），该地区表现明显偏弱",
-      "日本 06/07/08/09 的 HTTPS 延迟在 1703–2091ms 之间，远高于同区其他节点（706–939ms）",
-      "台湾 5 个节点的 HTTPS 延迟均在 765–1405ms，且平均速度仅 29–77 MB/s，为亚洲各区中最弱",
-      "本次为 32 线程并发测试、后端带宽 9Gbps，速度数值属多线程聚合结果，不代表单连接速度，也不代表家庭宽带下的体感"
+      "新加坡08（Singapore08）平均速度 9.60KB、最高 96.00KB（TLS RTT 107ms），属实质未测通节点，已排除出新加坡区的速度下限统计",
+      "美国 10 个节点平均速度集中在 8.63–13.89 MB/s，明显低于香港（505–551 MB/s）与新加坡主力节点（205–420 MB/s）",
+      "台湾 05 的 TLS RTT 跳升至 391ms（其余 4 个节点为 152–203ms），全区平均速度在 47.48–90.39 MB/s",
+      "香港02（197ms）与香港13（202ms）TLS RTT 明显高于同区多数节点（98–122ms），但下载吞吐未见衰减",
+      "本次为 32 线程并发测试、后端带宽 9Gbps（19:52 采集，早于 20:30 晚高峰窗口），速度数值属多线程聚合结果，不代表单连接或家宽实际体验"
     ]
   },
-  "panelDisputed": null
+  "panelDisputed": null,
+  "clientNotes": "同时支持自研客户端与 Clash / Shadowrocket / v2rayN / sing-box 第三方订阅导入；本页已装配 2026-08-11 19:52 MiaoKo 50 节点 VLESS 原图，早期压缩包曾将同名文件误标为其他品牌。",
+  "plans": [
+    {
+      "name": "快狸·进阶入门档（渠道口径）",
+      "cycle": "月付",
+      "price": "¥25",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB",
+      "note": "其余长周期/高流量档以官网结算页为准"
+    }
+  ]
 }

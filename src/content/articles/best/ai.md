@@ -1,6 +1,6 @@
 ---
 title: ChatGPT / Claude 用什么机场：AI 场景的选择标准
-description: AI 工具对机场的要求和看视频完全不同：IP 风控、落地区域、会话保持缺一不可。本文给出 AI 场景的三项核心标准、候选核验流程与常见误区，附候选核对说明。
+description: ChatGPT / Claude 机场怎么选？拆解原生 IP 风控、固定落地区域与会话稳定三项核心标准及核验流程。
 pubDate: 2026-08-11
 primaryKeyword: AI 机场
 secondaryKeywords: [ChatGPT 机场, Claude 机场, ChatGPT 用什么机场, AI 工具 代理]

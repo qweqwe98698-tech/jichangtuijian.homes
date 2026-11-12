@@ -8,13 +8,13 @@
 | Pillar     | Pillar Page                             | Cluster（现有 → 规划）                                                  |
 | ---------- | --------------------------------------- | ----------------------------------------------------------------------- |
 | 机场选择   | /guides/（Hub）+ /guides/how-to-choose/ | stability-signals → 便宜怎么选、高端适合谁、线路判断、套餐选择          |
-| 场景推荐   | /best/                                  | ai、budget → stable、premium、streaming、iplc                           |
-| 评测       | /reviews/                               | wgetcloud → 每品牌一篇                                                  |
+| 场景推荐   | /best/                                  | ai、budget、stable、premium → streaming/iepl 由专题页承接              |
+| 评测       | /reviews/                               | 每品牌一篇（商业承接前一站，含无忧链接/微风网络等）                     |
 | 对比       | /vs/                                    | wgetcloud-vs-nexitally → 高频品牌两两对比                               |
-| 客户端     | /apps/                                  | clash-guide、shadowrocket-guide → v2rayN、各平台                        |
-| 协议与线路 | /learn/                                 | iplc-vs-iepl、protocols-explained → 各协议单篇、原生 IP、流媒体解锁原理 |
-| 故障排查   | /fix/                                   | nodes-all-timeout → 订阅失败、ChatGPT 打不开、Netflix 不解锁、晚高峰慢  |
-| 风险观察   | /risk/                                  | exit-scam-signals → 长周期套餐风险、运营状态判断                        |
+| 客户端     | /apps/                                  | clash-guide、shadowrocket-guide → TUN/sing-box/AI 分流                  |
+| 协议与线路 | /learn/                                 | iplc-vs-iepl、protocols-explained、traffic-multiplier 等技术集群        |
+| 故障排查   | /fix/                                   | nodes-all-timeout → 订阅失败、ChatGPT/Claude/Cursor、晚高峰慢           |
+| 风险观察   | /risk/                                  | exit-scam-signals、yearly-plan-risk                                     |
 
 ## 2. 关键词矩阵（页面 ↔ 关键词唯一对应，禁止互相蚕食）
 
@@ -22,10 +22,10 @@
 
 | 关键词                                 | 页面                                                            | Funnel                 |
 | -------------------------------------- | --------------------------------------------------------------- | ---------------------- |
-| 机场推荐 / 2026 机场推荐 / 机场怎么选  | /guides/how-to-choose/ + 首页                                   | consideration→decision |
-| 稳定机场推荐 / 稳定机场怎么看          | /guides/stability-signals/（后接 /best/stable/）                | consideration          |
-| 便宜机场 / 高性价比机场                | /best/budget/                                                   | decision               |
-| 高端机场 / IPLC 机场 / IEPL 机场       | 规划 /best/premium/ /best/iplc/（当前由 iplc-vs-iepl 承接上游） | decision               |
+| 机场推荐 / 2026 机场推荐 / 机场怎么选  | 首页 + /guides/how-to-choose/ + /airport-ranking/               | consideration→decision |
+| 稳定机场推荐 / 稳定机场怎么看          | /best/stable/ + /guides/stability-signals/                      | decision               |
+| 便宜机场 / 高性价比机场                | /best/budget/ + /cheap-airport/                                 | decision               |
+| 高端机场 / IPLC 机场 / IEPL 机场       | /best/premium/ + /iepl-airport/（上游 /learn/iplc-vs-iepl/）    | decision               |
 | 机场评测 / XX 机场怎么样 / XX 机场评测 | /reviews/<brand>/                                               | decision               |
 | XX 机场 vs YY 机场                     | /vs/<a>-vs-<b>/                                                 | decision               |
 | XX 机场官网 / 套餐                     | /brands/<slug>/                                                 | transaction            |
@@ -35,8 +35,8 @@
 | 关键词                                   | 页面                         |
 | ---------------------------------------- | ---------------------------- |
 | ChatGPT 机场 / Claude 机场 / AI 机场     | /best/ai/                    |
-| Netflix 机场 / 流媒体机场 / 原生 IP 机场 | 规划 /best/streaming/        |
-| Clash 机场 / Clash 订阅                  | /apps/clash-guide/（工具词） |
+| Netflix 机场 / 流媒体机场 / 原生 IP 机场 | /streaming-airport/                                          |
+| Clash 机场 / Clash 订阅                  | /clash-airport/ + /apps/clash-guide/                         |
 
 ### 技术知识词（informational，上游）
 
@@ -55,14 +55,11 @@ IPLC 是什么 / IEPL 是什么 → /learn/iplc-vs-iepl/；VLESS、VMess、Troja
 每个可索引页面在 frontmatter 中必须声明：`primaryKeyword`、`secondaryKeywords`、`searchIntent`、`contentType`、`funnelStage`，并保证：
 
 - Title：主词前置，≤30 中文字符，站名后缀「｜机场决策室」。
-- Description：120–155 字符，含主词 + 一个行动理由。
+- Description：50–74 字符（核心专题控制在 74 字符内以防止 SERP 截断；Schema 允许 50–170），含主词 + 一个行动理由。
 - H1 唯一且 ≠ Title 逐字复制。
 - 每页 ≥3 条站内出链、≥1 条被内链（无孤岛，见 INTERNAL-LINK-MAP.md）。
 
-**已知待优化项（2026-08-11 记录）**：当前多数页面的 Description 为 110–150 个中文字符，
-而中文搜索结果的摘要通常在 78–80 字左右截断。所有 Description 均已把主关键词与核心价值前置，
-因此截断不影响关键信息呈现，但后续优化时应把长度压到 75 字以内，尾部信息移入正文。
-这属于打磨项而非阻塞项，不影响索引与排名基础。
+**已落地优化项（2026-11-12 记录）**：首页、排行榜、品牌库、全部场景专题页、核心评测与对比页的 Description 已压紧至 54–74 字符；`auto-publish-article.mjs` 亦已同步收敛摘要长度与裸域名反引号规则。
 
 ## 4. GEO（生成式引擎优化）表达规范
 

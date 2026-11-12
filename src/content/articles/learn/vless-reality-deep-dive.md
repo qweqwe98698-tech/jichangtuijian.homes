@@ -36,7 +36,7 @@ brandCta: "feimao-yun"
 
 证书透明度日志是一个容易被忽视的暴露面。任何公共 CA 签发的证书都会进入 CT Log，任何人都能通过 crt.sh 之类的查询接口枚举某个域名下的全部证书。运维者用一个不常见的域名申请证书，等于在公开数据库里挂了一个标记。即便域名本身看起来无害，证书的签发时间、SAN 列表、签发 CA 都会成为关联分析的素材。
 
-VLESS-Reality 的设计目标很直接：让服务端在不持有任何自有证书、不申请任何域名、不产生任何 CT Log 记录的前提下，完成一次可验证的 TLS 1.3 握手。它借用的对象是境外知名合规站点，例如 apple.com、cloudflare.com、www.microsoft.com、www.amazon.com。这些站点的证书链、SNI、TLS 指纹都是公开且稳定的，借用它们的握手特征，探测方难以从握手层面区分代理服务端与真实站点。
+VLESS-Reality 的设计目标很直接：让服务端在不持有任何自有证书、不申请任何域名、不产生任何 CT Log 记录的前提下，完成一次可验证的 TLS 1.3 握手。它借用的对象是境外知名合规站点，例如 `apple.com`、`cloudflare.com`、`www.microsoft.com`、`www.amazon.com`。这些站点的证书链、SNI、TLS 指纹都是公开且稳定的，借用它们的握手特征，探测方难以从握手层面区分代理服务端与真实站点。
 
 理解 Reality 需要先理解 TLS 1.3 握手的几个关键变化，因为 Reality 的所有机制都建立在这些变化之上。
 
@@ -176,7 +176,7 @@ privateKey 与 publicKey 是配对的，publicKey 由 privateKey 推导得到。
 
 - TLS 1.3 版本标识
 - 一组 Cipher Suites，顺序与 Chrome 一致
-- SNI 扩展，值为 www.microsoft.com
+- SNI 扩展，值为 `www.microsoft.com`
 - key_share 扩展，包含客户端 X25519 临时公钥
 - supported_versions、signature_algorithms、ALPN 等扩展
 - 一个由 uTLS 生成的 GREASE 值（Chrome 会插入随机 GREASE 扩展）
@@ -210,8 +210,8 @@ Reality 模式下，服务端返回的 ServerHello 使用目标站点的证书�
 
 探测方看到的结果是：
 
-- ServerHello 来自 www.microsoft.com
-- 证书链是 www.microsoft.com 的真实证书
+- ServerHello 来自 `www.microsoft.com`
+- 证书链是 `www.microsoft.com` 的真实证书
 - ALPN、扩展、TLS 版本都与真实站点一致
 - 响应时间与真实站点接近（取决于服务端到目标站点的网络延迟）
 
@@ -317,7 +317,7 @@ shortId 是 0 到 16 位十六进制字符串，用于区分客户端。服务�
 
 ### serverNames 与 dest 的一致性
 
-serverNames 列表中的域名必须与 dest 站点证书的 SAN 匹配。例如 dest 为 www.microsoft.com:443，serverNames 应包含 www.microsoft.com。如果 serverNames 中的域名不在目标站点证书的 SAN 中，握手会因为 SNI 与证书不一致而失败。
+serverNames 列表中的域名必须与 dest 站点证书的 SAN 匹配。例如 dest 为 `www.microsoft.com:443`，serverNames 应包含 `www.microsoft.com`。如果 serverNames 中的域名不在目标站点证书的 SAN 中，握手会因为 SNI 与证书不一致而失败。
 
 ### 常见故障排查
 

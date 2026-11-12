@@ -7,7 +7,7 @@
   "tier": "budget",
   "positioning": "入门门槛最低的 IEPL 小包方案：7 元起的性价比小包，专为流量需求不大的轻度用户设计。",
   "background": "飞猫云在渠道资料中标注 2023 年开业，主打 IEPL 专线下的性价比小包，并提供自研客户端。7 元起步为年付摊算价。开业时间较短意味着可交叉验证的历史样本有限，这一点在风险评估中需要计入。",
-  "priceFrom": "约 7 元 / 月 · 50GB",
+  "priceFrom": "84 元 / 年（50GB/月） · 25 元 / 月（150GB）",
   "pricePerGb": 0.14,
   "billingCycle": "yearly",
   "couponCode": "flycat888",
@@ -29,10 +29,10 @@
     "sing-box 系"
   ],
   "claims": {
-    "streaming": "全解锁",
-    "ai": "全解锁",
+    "streaming": "品牌资料标注解锁主流流媒体",
+    "ai": "品牌资料标注支持常见 AI 工具（Gemini 视节点）",
     "selfClient": true,
-    "subscriptionImport": true
+    "subscriptionImport": false
   },
   "images": {
     "speedtest": "/images/brands/feimao-yun-speedtest.jpg",
@@ -74,7 +74,7 @@
   "riskLevel": "unknown",
   "dataStatus": "partial",
   "lastVerified": "2026-08-11",
-  "pricingNote": "起步套餐 7 元 / 月 · 50GB（年付摊算），优惠码 flycat888。价格与优惠为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，下单前请以官网结算页为准。",
+  "pricingNote": "年付学生版 84 元/年（50GB/月），月付星耀版 25 元/月（150GB）；优惠码 flycat888（8 折适用范围以结算页为准）。",
   "facts": [
     {
       "label": "档位",
@@ -156,7 +156,7 @@
       "label": "香港节点平均速度",
       "value": "56.18–73.52 MB/s",
       "status": "measured",
-      "note": "19 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除；由账户信息推断测试早于 2026-03-28"
+      "note": "19 个节点的区间 · 非晚高峰专门测试，面板时间戳已移除；由账户信息推断测试早于 2026-03-28"
     },
     {
       "label": "面板显示协议",
@@ -303,5 +303,66 @@
     "rank": 2,
     "reason": "入门门槛最低的 IEPL 专线小包方案：约 7 元/月 50GB，月均成本极低，适合轻度浏览、查资料与新手试水体验。",
     "caveat": "50GB 小包容量适合轻度用量，频繁观看 4K 视频需选择更高流量套餐。"
-  }
+  },
+  "priceBasis": "学生年付版 ¥84/年 每月 50GB（折约 7 元/月）；常规月付星耀版 ¥25/月 150GB，提供不限时 1TB 与 500GB 定制档。",
+  "clientNotes": "采用专属客户端模式（下载登录后直接连接，不提供通用第三方订阅链接），适合追求零配置的新手用户。",
+  "plans": [
+    {
+      "name": "飞猫·学生版",
+      "cycle": "年付",
+      "price": "¥84",
+      "traffic": "50GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.140 元/GB",
+      "note": "折约 7 元/月"
+    },
+    {
+      "name": "飞猫·星耀版",
+      "cycle": "月付",
+      "price": "¥25",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "飞猫·星环版",
+      "cycle": "月付",
+      "price": "¥45",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "飞猫·银河版",
+      "cycle": "月付",
+      "price": "¥85",
+      "traffic": "600GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.142 元/GB"
+    },
+    {
+      "name": "飞猫·宇宙版",
+      "cycle": "月付",
+      "price": "¥150",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "飞猫·不限时套餐",
+      "cycle": "一次性付费",
+      "price": "¥680",
+      "traffic": "1000GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.680 元/GB"
+    },
+    {
+      "name": "飞猫·定制套餐",
+      "cycle": "月付",
+      "price": "¥550",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "1.100 元/GB"
+    }
+  ]
 }

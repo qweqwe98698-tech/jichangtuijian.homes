@@ -6,11 +6,11 @@
   "tier": "mid",
   "positioning": "20 元档的双解锁均衡型：VLESS + IEPL 小包，流媒体与 AI 解锁同时宣称，自研客户端齐备。",
   "background": "全球云的卖点结构与 U1S1 同价同量，差别在于它同时宣称 AI 全解锁。对于同时使用 ChatGPT 与流媒体的用户，这一项是它与 U1S1 的主要分野。运营年限未在资料中给出。",
-  "priceFrom": "20 元 / 月 · 120GB",
-  "pricePerGb": 0.167,
+  "priceFrom": "99 元 / 年（59GB/月） · 20 元 / 月（120GB）",
+  "pricePerGb": 0.14,
   "billingCycle": "monthly",
   "couponCode": "qqy7777",
-  "couponNote": "通用优惠码，适用套餐以结算页为准。",
+  "couponNote": "渠道码 qqy7777；2026-10 清单另记录 8 折码 qq88。",
   "launchYear": "2026",
   "highlights": [
     "VLESS 协议",
@@ -28,10 +28,10 @@
     "sing-box 系"
   ],
   "claims": {
-    "streaming": "解锁",
-    "ai": "全解锁",
+    "streaming": "品牌资料标注解锁 Netflix / Disney+ / TikTok",
+    "ai": "品牌资料标注支持 ChatGPT / Claude",
     "selfClient": true,
-    "subscriptionImport": true
+    "subscriptionImport": false
   },
   "images": {
     "speedtest": "/images/brands/quanqiu-yun-speedtest.jpg",
@@ -155,7 +155,7 @@
       "label": "香港节点平均速度",
       "value": "73.41–91.42 MB/s",
       "status": "measured",
-      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除；由账户信息推断测试早于 2026-11-30"
+      "note": "20 个节点的区间 · 非晚高峰专门测试，面板时间戳已移除；由账户信息推断测试早于 2026-11-30"
     },
     {
       "label": "面板显示协议",
@@ -299,5 +299,81 @@
       "韩国-01 平均速度仅 2.25MB / 最大 2.75MB"
     ]
   },
-  "panelDisputed": null
+  "panelDisputed": null,
+  "priceBasis": "BGP 智能优化入门月付 ¥20/月 120GB；另有年付轻量版 ¥99/年 59GB/月，三档不限时包及 680 元独享专线。",
+  "clientNotes": "专属客户端下载登录即用，不提供通用第三方订阅链接；Trojan / Shadowsocks 双协议。",
+  "plans": [
+    {
+      "name": "轻量版",
+      "cycle": "年付",
+      "price": "¥99",
+      "traffic": "59GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.140 元/GB"
+    },
+    {
+      "name": "BGP 智能优化·入门方案",
+      "cycle": "月付",
+      "price": "¥20",
+      "traffic": "120GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "BGP 智能优化·进阶方案",
+      "cycle": "月付",
+      "price": "¥40",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB"
+    },
+    {
+      "name": "BGP 智能优化·高端方案",
+      "cycle": "月付",
+      "price": "¥100",
+      "traffic": "700GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.143 元/GB"
+    },
+    {
+      "name": "BGP 智能优化·商业方案",
+      "cycle": "月付",
+      "price": "¥180",
+      "traffic": "1500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "BGP 智能优化·不限时轻量包",
+      "cycle": "一次性付费",
+      "price": "¥100",
+      "traffic": "100GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.000 元/GB"
+    },
+    {
+      "name": "BGP 智能优化·不限时标准包",
+      "cycle": "一次性付费",
+      "price": "¥360",
+      "traffic": "400GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.900 元/GB"
+    },
+    {
+      "name": "BGP 智能优化·不限时大容量包",
+      "cycle": "一次性付费",
+      "price": "¥700",
+      "traffic": "800GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.875 元/GB"
+    },
+    {
+      "name": "独享私人专线节点",
+      "cycle": "月付",
+      "price": "¥680",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "1.360 元/GB"
+    }
+  ]
 }

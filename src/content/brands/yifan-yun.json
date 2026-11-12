@@ -6,11 +6,11 @@
   "tier": "mid",
   "positioning": "20 元档里流量给得最多的一家：150GB 起步把每 GB 单价压到 0.133 元，同时宣称双解锁。",
   "background": "一翻云与其他 20 元档品牌的差别集中在流量：同样 20 元起步给到 150GB，单价约 0.133 元/GB，是本批中位偏低的水平。卖点仍是 VLESS + IEPL + 双解锁 + 自研客户端的标准组合。运营年限未给出。",
-  "priceFrom": "20 元 / 月 · 150GB",
+  "priceFrom": "98 元 / 年（60GB/月） · 20 元 / 月（150GB）",
   "pricePerGb": 0.133,
   "billingCycle": "monthly",
   "couponCode": "yfy6666",
-  "couponNote": "通用优惠码，适用套餐以结算页为准。",
+  "couponNote": "渠道码 yfy6666；2026-10 清单另记录 9 折码 1FLYYUN，具体以结算页为准。",
   "launchYear": "2024",
   "highlights": [
     "VLESS 协议",
@@ -156,7 +156,7 @@
       "label": "香港节点平均速度",
       "value": "92.27 MB/s",
       "status": "measured",
-      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除，测试时间未知"
+      "note": "20 个节点的区间 · 非晚高峰专门测试，面板时间戳已移除，测试时间未知"
     },
     {
       "label": "面板显示协议",
@@ -235,5 +235,73 @@
       "TW|台湾|03 平均 25.82MB / 最大 26.44MB；SG|新加坡|03、05、06、10 与 JP|日本|03 平均速度均在 26-33MB 区间，明显低于同区其他节点"
     ]
   },
-  "panelDisputed": null
+  "panelDisputed": null,
+  "priceBasis": "月付轻享版 ¥20/月 150GB（0.133 元/GB），年付小包 ¥98/年 每月 60GB，另有 100GB/250GB/500GB 永久不限时包；提供 yfy6666 与 1FLYYUN（9 折）。",
+  "clientNotes": "支持 Hysteria 2 / VLESS-Reality / Shadowsocks 三协议，兼容第三方订阅导入，无零成本试用。",
+  "plans": [
+    {
+      "name": "98¥·年付小包",
+      "cycle": "年付",
+      "price": "¥98",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.136 元/GB"
+    },
+    {
+      "name": "轻享版",
+      "cycle": "月付",
+      "price": "¥20",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB"
+    },
+    {
+      "name": "舒享版",
+      "cycle": "月付",
+      "price": "¥35",
+      "traffic": "350GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.100 元/GB"
+    },
+    {
+      "name": "尊享版",
+      "cycle": "月付",
+      "price": "¥55",
+      "traffic": "600GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.092 元/GB"
+    },
+    {
+      "name": "极致版",
+      "cycle": "月付",
+      "price": "¥95",
+      "traffic": "1.2TB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.077 元/GB"
+    },
+    {
+      "name": "轻享版·不限时包",
+      "cycle": "一次性付费",
+      "price": "¥100",
+      "traffic": "100GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.000 元/GB"
+    },
+    {
+      "name": "舒享版·不限时包",
+      "cycle": "一次性付费",
+      "price": "¥200",
+      "traffic": "250GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.800 元/GB"
+    },
+    {
+      "name": "尊享版·不限时包",
+      "cycle": "一次性付费",
+      "price": "¥400",
+      "traffic": "500GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.800 元/GB"
+    }
+  ]
 }

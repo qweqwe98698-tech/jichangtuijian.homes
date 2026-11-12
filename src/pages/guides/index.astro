@@ -3,7 +3,7 @@
 import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
-import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const guides = (
   await getCollection('articles', ({ id, data }) => id.startsWith('guides/') && !data.draft)
@@ -17,21 +17,88 @@ const crumbs: Crumb[] = [
 
 <Base
   title="机场怎么选：选择标准与决策指南"
-  description="不知道机场怎么选？从这里开始：建立场景、预算、风险三维选择标准，逐篇核验稳定性、线路与套餐，再进入场景推荐与对比。"
-  schemaItems={[breadcrumbSchema(crumbs)]}
+  description="机场怎么选才不踩坑？从场景匹配、预算单价、晚高峰7项稳定性信号与跑路风控出发，建立一套可复用的挑选标准。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '开始选择',
+      description: '机场选择标准与晚高峰稳定性核验方法体系',
+      path: '/guides/',
+    }),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
   <header class="mt-8 max-w-[46rem]">
     <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">开始选择</h1>
     <p class="m-0 mt-3 text-[1.05rem] text-muted">
-      推荐榜单谁都会写，但榜单替代不了判断。这个栏目只做一件事：把「怎么选」拆成可以逐项核验的标准。
-      读完这里，你看任何机场的宣传页都会有自己的过滤器。
+      推荐榜单谁都会写，但榜单替代不了个人判断。这个栏目只做一件事：把「机场怎么选」拆解成可以逐项核对的公开客观标准。读完这里的选型逻辑，无论面对何种宣传口径，你都能建立清晰的决策过滤网。
     </p>
   </header>
 
+  <section class="mt-8 max-w-[46rem] rounded-lg border border-line bg-surface p-6" aria-label="选型三大法则">
+    <h2 class="m-0 text-[1.2rem] text-ink">机场选型三大铁律</h2>
+    <ul class="m-0 mt-3 space-y-2 pl-5 text-[0.95rem] text-muted">
+      <li><strong>需求先于名气</strong>：根据你的真实网络场景（日常办公、学术检索、流媒体还是 AI 开发）选择对应线路，避免为不需要的溢价买单。</li>
+      <li><strong>单价复算真实成本</strong>：抛开宣传话术，将套餐统一换算为「每 GB 实际单价」与「单月可用额度」，看清倍率与扣费规则。</li>
+      <li><strong>风险敞口最小化</strong>：新接触任何品牌首单坚决月付，拒绝在未验证稳定性的情况下直接年付，把试错成本控制在一杯咖啡钱以内。</li>
+    </ul>
+  </section>
+
+  <section class="mt-10 max-w-[46rem]" aria-label="核心选型指标优先级">
+    <h2 class="m-0 text-[1.3rem]">核心选型指标权重与核查要点</h2>
+    <p class="m-0 mt-2 text-[0.95rem] text-muted">
+      在评估一家候选机场时，不同维度的价值差异极大。以下是编辑部总结的理性选型权重参考：
+    </p>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full text-left text-[0.92rem]">
+        <thead>
+          <tr class="border-b border-line text-ink">
+            <th class="py-2 pr-4 font-semibold">评估维度</th>
+            <th class="py-2 pr-4 font-semibold">推荐权重</th>
+            <th class="py-2 pr-4 font-semibold">核心关注指标</th>
+            <th class="py-2 font-semibold">常见认知误区</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-line text-muted">
+          <tr>
+            <td class="py-2.5 pr-4 font-medium text-ink">网络晚高峰韧性</td>
+            <td class="py-2.5 pr-4 text-emerald-600 font-semibold">35%</td>
+            <td class="py-2.5 pr-4">20:30–22:30 丢包率、多入口容灾、是否为专线</td>
+            <td class="py-2.5">只看非高峰期单次测速峰值</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-4 font-medium text-ink">客户端与协议兼容</td>
+            <td class="py-2.5 pr-4 text-emerald-600 font-semibold">25%</td>
+            <td class="py-2.5 pr-4">是否支持通用订阅导入、协议多样性（SS/VLESS/Trojan）</td>
+            <td class="py-2.5">忽视仅支持自研客户端带来的平台绑定限制</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-4 font-medium text-ink">资费与计费周期</td>
+            <td class="py-2.5 pr-4 text-emerald-600 font-semibold">20%</td>
+            <td class="py-2.5 pr-4">是否有低门槛月付、折合每GB单价、流量倍率规则</td>
+            <td class="py-2.5">只看年付折扣总价，忽视跑路本金损失</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-4 font-medium text-ink">运营透明度与公告</td>
+            <td class="py-2.5 pr-4 text-emerald-600 font-semibold">10%</td>
+            <td class="py-2.5 pr-4">TG频道/公告栏是否有真实故障复盘、运营时长记录</td>
+            <td class="py-2.5">相信「永久零故障」宣传</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-4 font-medium text-ink">流媒体与特定工具</td>
+            <td class="py-2.5 pr-4 text-emerald-600 font-semibold">10%</td>
+            <td class="py-2.5 pr-4">原生IP纯净度、ChatGPT/Netflix 维护响应速度</td>
+            <td class="py-2.5">认为解锁能力永久稳定不变</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <section class="mt-10" aria-label="选择标准体系">
-    <h2 class="m-0 mb-2 text-[1rem] tracking-widest text-muted">按顺序读</h2>
+    <h2 class="m-0 mb-2 text-[1rem] tracking-widest text-muted">按顺序阅读核心指南</h2>
     <ol class="path-index max-w-[46rem]">
       {
         guides.map((g) => (

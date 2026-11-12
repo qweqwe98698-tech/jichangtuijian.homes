@@ -3,7 +3,7 @@
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BrandPickList from '@/components/BrandPickList.astro';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, faqSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const reasons: Record<string, string> = {
   sujie:
@@ -51,8 +51,17 @@ const crumbs: Crumb[] = [
 
 <Base
   title="ChatGPT 机场推荐：AI 工具可用的机场名单与选法"
-  description="ChatGPT、Claude、Gemini 用什么机场？本页按 IP 质量、落地区域与会话稳定三项标准筛选在库机场，给出宣称支持 AI 的品牌名单、价格与优惠码，并说明哪些数据尚未复测。"
-  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  description="ChatGPT/Claude/Gemini机场怎么选？按IP纯净度、地区与会话稳定筛选AI可用名单与优惠码，标明未复测范围。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: 'ChatGPT 机场推荐',
+      description: '宣称支持 ChatGPT、Claude 与 Gemini 的在库机场名单与风控判断标准',
+      path: '/chatgpt-airport/',
+    }),
+    faqSchema(faq),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 

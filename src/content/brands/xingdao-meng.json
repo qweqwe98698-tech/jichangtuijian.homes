@@ -6,7 +6,7 @@
   "tier": "budget",
   "positioning": "套餐弹性最大的老牌入门选择：从小流量年付到不限时套餐都有，适合按需求精细挑档位的用户。",
   "background": "星岛梦在渠道资料中同样被列为六年老牌，特点是套餐种类多且提供不限时套餐。其 8 元起步价是年付摊算价格，选择时需要注意实际支付周期。本站已核对入口与优惠码；性能与解锁没有统一测试数据。",
-  "priceFrom": "约 8 元 / 月 · 60GB",
+  "priceFrom": "96 元 / 年（60GB/月） · 25 元 / 月（150GB）",
   "pricePerGb": 0.133,
   "billingCycle": "yearly",
   "couponCode": "nmw888",
@@ -152,7 +152,7 @@
       "label": "香港节点平均速度",
       "value": "69.76 MB/s",
       "status": "measured",
-      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除，测试时间未知"
+      "note": "20 个节点的区间 · 非晚高峰专门测试，面板时间戳已移除，测试时间未知"
     },
     {
       "label": "面板显示协议",
@@ -237,5 +237,81 @@
     "rank": 4,
     "reason": "2020 年开业老牌企业内网专线机场，入门约 8 元/月 60GB，套餐颗粒度精细并支持按量不限时选项，弹性极佳。",
     "caveat": "8 元起步价格需年付摊算达成，单月独立购买门槛相对稍高。"
-  }
+  },
+  "priceBasis": "年付「贴心小包」¥96/年 每月 60GB（折约 8 元/月），常规月付超量版 ¥25/月 150GB，另有三档永久不限时流量包及 680 元定制档。",
+  "plans": [
+    {
+      "name": "星岛梦·贴心小包",
+      "cycle": "年付",
+      "price": "¥96",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB",
+      "note": "折约 8 元/月"
+    },
+    {
+      "name": "星岛梦·超量150G",
+      "cycle": "月付",
+      "price": "¥25",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "星岛梦·进阶300G",
+      "cycle": "月付",
+      "price": "¥50",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "星岛梦·闪光500G",
+      "cycle": "月付",
+      "price": "¥70",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.140 元/GB"
+    },
+    {
+      "name": "星岛梦·旗舰1T版",
+      "cycle": "月付",
+      "price": "¥130",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.130 元/GB"
+    },
+    {
+      "name": "星岛梦·永久不限时100",
+      "cycle": "一次性付费",
+      "price": "¥100",
+      "traffic": "100GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.000 元/GB"
+    },
+    {
+      "name": "星岛梦·永久不限时300",
+      "cycle": "一次性付费",
+      "price": "¥300",
+      "traffic": "300GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.000 元/GB"
+    },
+    {
+      "name": "星岛梦·永久不限时1TB",
+      "cycle": "一次性付费",
+      "price": "¥600",
+      "traffic": "1000GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.600 元/GB"
+    },
+    {
+      "name": "星岛梦·定制套餐",
+      "cycle": "月付",
+      "price": "¥680",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "1.360 元/GB"
+    }
+  ]
 }

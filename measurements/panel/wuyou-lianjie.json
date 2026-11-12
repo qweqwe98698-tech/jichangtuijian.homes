@@ -1,0 +1,74 @@
+{
+  "brand": "wuyou-lianjie",
+  "_note": "转录自桌面实测资料 zip_extracted/无忧链接.jpg（MiaoKo 4.7.0，测试时间 2026-07-18 21:40:48 CST，落在晚高峰窗口内）；另配套无忧链接2.jpg（21:47:23 CST）记录同批 50 节点御三家流媒体解锁情况。",
+  "source": {
+    "tool": "MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3）",
+    "threads": 32,
+    "backend": "珠海联通 9Gbps",
+    "durationSec": null,
+    "pingCount": null,
+    "trafficUsedGB": null,
+    "testedAt": "2026-07-18 21:40:48 CST",
+    "inPeakWindow": true
+  },
+  "accountRows": {
+    "remainingTrafficGB": null,
+    "planExpiry": null
+  },
+  "protocolShown": "VLESS",
+  "totalNodes": 50,
+  "regions": [
+    {
+      "name": "香港",
+      "nodes": 15,
+      "latencyMinMs": 100,
+      "latencyMaxMs": 130,
+      "avgSpeedMinMB": 392.62,
+      "avgSpeedMaxMB": 554.59,
+      "maxSpeedMaxMB": 638.48
+    },
+    {
+      "name": "新加坡",
+      "nodes": 10,
+      "latencyMinMs": 102,
+      "latencyMaxMs": 172,
+      "avgSpeedMinMB": 94.83,
+      "avgSpeedMaxMB": 352.7,
+      "maxSpeedMaxMB": 446.19
+    },
+    {
+      "name": "日本",
+      "nodes": 10,
+      "latencyMinMs": 134,
+      "latencyMaxMs": 155,
+      "avgSpeedMinMB": 60.17,
+      "avgSpeedMaxMB": 198.31,
+      "maxSpeedMaxMB": 408.61
+    },
+    {
+      "name": "台湾",
+      "nodes": 5,
+      "latencyMinMs": 143,
+      "latencyMaxMs": 269,
+      "avgSpeedMinMB": 65.74,
+      "avgSpeedMaxMB": 94.72,
+      "maxSpeedMaxMB": 110.78
+    },
+    {
+      "name": "美国",
+      "nodes": 10,
+      "latencyMinMs": 240,
+      "latencyMaxMs": 253,
+      "avgSpeedMinMB": 12.13,
+      "avgSpeedMaxMB": 18.13,
+      "maxSpeedMaxMB": 56.52
+    }
+  ],
+  "anomalies": [
+    "新加坡 SIN-02 平均速度 17.59KB、最高 175.93KB（HTTPS 延迟 1631ms），实质未测通，已排除出新加坡区速度下限",
+    "日本 TYO-09 的 HTTPS 延迟跳高至 2526ms，其余日本节点 HTTPS 延迟多在 702–843ms",
+    "同日 21:47 配套御三家流媒体解锁测试（无忧链接2.jpg）显示：Netflix 50/50、Disney+ 50/50 同区解锁，YouTube 49/50 解锁（仅 香港HKG-01 显示送中 CN）",
+    "美国 10 个 LAX 节点平均速度仅 12.13–18.13 MB/s，远低于香港专区（393–555 MB/s）",
+    "本次为 21:40 晚高峰窗口内 32 线程并发测试，多节点全部 FullCone 居多（部分新加坡 RestrictedCone / Unknown），聚合速度不代表单连接体感"
+  ]
+}

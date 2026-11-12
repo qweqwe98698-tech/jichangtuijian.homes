@@ -7,11 +7,11 @@
   "tier": "mid",
   "positioning": "2024 年开业企业内网专线方案，24 元/月 150GB，主打大带宽与高并发支持。",
   "background": "闪跃（FlashLeap）于 2024 年开业，主打企业内网专线线路与月付 150GB 充足流量，兼顾日常大流量与多设备使用。",
-  "priceFrom": "24 元 / 月 · 150GB",
-  "pricePerGb": 0.16,
+  "priceFrom": "96 元 / 年（60GB/月） · 24 元 / 月（150GB）",
+  "pricePerGb": 0.133,
   "billingCycle": "monthly",
   "couponCode": "shanyue",
-  "couponNote": "通用优惠码。",
+  "couponNote": "8 折优惠码 shanyue（仅限闪动/飞跃/瞬移/跃迁月付序列，年付版不适用）。",
   "launchYear": "2024",
   "highlights": [
     "2024 年开业",
@@ -26,15 +26,15 @@
     "sing-box 系"
   ],
   "claims": {
-    "streaming": "全解锁",
-    "ai": "全解锁",
-    "selfClient": false,
-    "subscriptionImport": true
+    "streaming": "品牌资料标注原生 IP 解锁 Netflix / Disney+ / HBO",
+    "ai": "品牌资料标注支持 ChatGPT / Claude / Gemini",
+    "selfClient": true,
+    "subscriptionImport": false
   },
   "images": {
     "speedtest": null,
-    "unlock": null,
-    "topology": null
+    "unlock": "/images/brands/shanyue-unlock.png",
+    "topology": "/images/brands/shanyue-topology.png"
   },
   "scenarios": [
     "mid",
@@ -130,8 +130,53 @@
   ],
   "officialUrl": null,
   "affiliateUrl": "https://vip02.flashleapaff.com/#/?code=3lgzm9mm",
-  "reviewSlug": null,
+  "reviewSlug": "reviews/shanyue",
   "panel": null,
   "panelDisputed": null,
-  "editorialPick": null
+  "editorialPick": null,
+  "priceBasis": "年付入门版 ¥96/年 每月 60GB（折约 8 元/月，不参与折扣），月付「闪动 Flicker」¥24/月 150GB。",
+  "clientNotes": "专属客户端下载登录即用，不提供通用订阅链接（不支持导入 Clash / Shadowrocket）。",
+  "plans": [
+    {
+      "name": "闪跃年付版",
+      "cycle": "年付",
+      "price": "¥96",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB",
+      "note": "不参与 8 折码"
+    },
+    {
+      "name": "闪动 (Flicker)",
+      "cycle": "月付",
+      "price": "¥24",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.160 元/GB"
+    },
+    {
+      "name": "飞跃 (Leap)",
+      "cycle": "月付",
+      "price": "¥44",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.147 元/GB"
+    },
+    {
+      "name": "瞬移 (Teleport)",
+      "cycle": "月付",
+      "price": "¥84",
+      "traffic": "600GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.140 元/GB"
+    },
+    {
+      "name": "跃迁 (Warp)",
+      "cycle": "月付",
+      "price": "¥134",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.134 元/GB"
+    }
+  ]
 }

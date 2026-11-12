@@ -6,15 +6,15 @@
   ],
   "tier": "budget",
   "positioning": "以三网优化和智能负载均衡为技术卖点的中低价选择，节点覆盖 60+，强调国内入口的接入质量。",
-  "background": "唯兔云在渠道资料中标注 2020 年运营至今，卖点集中在 VLESS 协议、60+ 节点覆盖、三网优化与智能负载均衡——这组卖点指向的是「国内入口接入质量」，而不是解锁能力。资料中未宣称流媒体或 AI 全解锁，本站如实记录。",
-  "priceFrom": "14.9 元 / 月 · 100GB",
-  "pricePerGb": 0.149,
+  "background": "唯兔云在渠道资料中标注 2023 年开业运营至今，卖点集中在 VLESS 协议、60+ 节点覆盖、三网优化与智能负载均衡——这组卖点指向的是「国内入口接入质量」，而不是解锁能力。资料中未宣称流媒体或 AI 全解锁，本站如实记录。",
+  "priceFrom": "79.9 元 / 年（45GB/月） · 14.9 元 / 月（100GB）",
+  "pricePerGb": 0.148,
   "billingCycle": "monthly",
   "couponCode": "weitu666",
   "couponNote": "新用户 9 折码。",
   "launchYear": "2023",
   "highlights": [
-    "2020 年运营",
+    "2023 年开业",
     "VLESS 协议",
     "节点覆盖 60+",
     "三网优化",
@@ -51,7 +51,7 @@
   "strengths": [
     "三网优化针对移动/联通/电信分别调优，对入口线路敏感的用户价值明确",
     "智能负载均衡有助于摊平单节点拥塞，是少数把调度能力写进卖点的品牌",
-    "2020 年起运营，历史长度在本批中偏上"
+    "2023 年起运营至今，同时提供月付试错与多地区节点覆盖"
   ],
   "limitations": [
     "资料中未宣称流媒体与 AI 解锁能力，这两个场景需要自行试用确认",
@@ -71,7 +71,7 @@
   "riskLevel": "unknown",
   "dataStatus": "partial",
   "lastVerified": "2026-08-11",
-  "pricingNote": "起步套餐 14.9 元 / 月 · 100GB，优惠码 rabbit。价格与优惠为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，下单前请以官网结算页为准。",
+  "pricingNote": "年付限量款 79.9 元/年，节假日限时月付 14.9 元/100GB，常规月付 19.9 元/150GB，支持永久不限时流量包；优惠码 weitu666。",
   "facts": [
     {
       "label": "档位",
@@ -153,7 +153,7 @@
       "label": "香港节点平均速度",
       "value": "40.75–65.38 MB/s",
       "status": "measured",
-      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除；由账户信息推断测试早于 2028-11-17"
+      "note": "20 个节点的区间 · 非晚高峰专门测试，面板时间戳已移除；由账户信息推断测试早于 2028-11-17"
     },
     {
       "label": "面板显示协议",
@@ -241,5 +241,90 @@
       "序号1、2 为「剩余流量」「套餐到期」账户信息行，未计入节点数"
     ]
   },
-  "panelDisputed": null
+  "panelDisputed": null,
+  "priceBasis": "节假日限时月付 ¥14.9/月 100GB（常规普通版 ¥19.9/150GB）；年付限量款 ¥79.9/年 每月 45GB（折约 6.66 元/月），年付加强专线 ¥120/年 75GB/月。",
+  "plans": [
+    {
+      "name": "唯兔云·年付版限量款",
+      "cycle": "年付",
+      "price": "¥79.90",
+      "traffic": "45GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.148 元/GB",
+      "note": "限量款"
+    },
+    {
+      "name": "唯兔云·年付加强专线",
+      "cycle": "年付",
+      "price": "¥120",
+      "traffic": "75GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB"
+    },
+    {
+      "name": "唯兔云·节假日限时开启",
+      "cycle": "月付",
+      "price": "¥14.9",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.149 元/GB",
+      "note": "限时活动开启"
+    },
+    {
+      "name": "唯兔云·普通版",
+      "cycle": "月付",
+      "price": "¥19.90",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB"
+    },
+    {
+      "name": "唯兔云·进阶版",
+      "cycle": "月付",
+      "price": "¥29.90",
+      "traffic": "200GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "唯兔云·专业版",
+      "cycle": "月付",
+      "price": "¥59.90",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "唯兔云·至尊版",
+      "cycle": "月付",
+      "price": "¥119.90",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "唯兔云·永久不限时 100G",
+      "cycle": "一次性付费",
+      "price": "¥100",
+      "traffic": "100GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.000 元/GB"
+    },
+    {
+      "name": "唯兔云·永久不限时 200G",
+      "cycle": "一次性付费",
+      "price": "¥160",
+      "traffic": "200GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.800 元/GB"
+    },
+    {
+      "name": "唯兔云·永久不限时 500G",
+      "cycle": "一次性付费",
+      "price": "¥340",
+      "traffic": "500GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.680 元/GB"
+    }
+  ]
 }

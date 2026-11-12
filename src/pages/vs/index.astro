@@ -3,7 +3,7 @@
 import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
-import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const comparisons = (
   await getCollection('articles', ({ id, data }) => id.startsWith('vs/') && !data.draft)
@@ -17,20 +17,87 @@ const crumbs: Crumb[] = [
 
 <Base
   title="机场对比：把候选放上同一张取舍表"
-  description="两家机场拿不定主意？对比栏目把候选放到统一维度的取舍表上：线路、价格档、场景表现、风险，最后一列永远是「代价」。"
-  schemaItems={[breadcrumbSchema(crumbs)]}
+  description="两家机场拿不定主意？横向对比每GB单价、线路口径、计费周期与风险代价，帮你按使用场景直接拍板。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '机场对比',
+      description: '多品牌机场横向取舍对照表目录',
+      path: '/vs/',
+    }),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
   <header class="mt-8 max-w-[46rem]">
     <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">机场对比</h1>
     <p class="m-0 mt-3 text-[1.05rem] text-muted">
-      比较的意义不是分出冠军，而是看清<em>你为哪一项多付钱、又放弃了什么</em>。
-      所以本站的对比表最后一列永远是「代价」——选 A 的代价、选 B 的代价，写清楚，你来定。
+      比较的意义不是分出谁是“天下第一”，而是看清<em>你为哪一项特性多付了钱、又为了低价放弃了什么</em>。
+      本站所有横向对比均拒绝主观吹捧，基于公开核对的价格梯度、网络架构与生态支持，把候选双方放上同一张客观取舍表。
     </p>
   </header>
 
-  <section class="mt-10" aria-label="对比列表">
+  <section class="mt-8 max-w-[46rem] rounded-lg border border-line bg-surface p-6" aria-label="横向对比四大维度">
+    <h2 class="m-0 text-[1.2rem] text-ink">候选机场决选的四大黄金维度</h2>
+    <div class="mt-3 grid gap-4 sm:grid-cols-2 text-[0.93rem] text-muted">
+      <div>
+        <p class="m-0 font-semibold text-ink">1. 真实单位流量成本（元/GB）</p>
+        <p class="m-0 mt-1">剔除按月清零与高倍率水分，对比同等有效可用流量下各自的折合单价。</p>
+      </div>
+      <div>
+        <p class="m-0 font-semibold text-ink">2. 晚高峰网络架构确定性</p>
+        <p class="m-0 mt-1">对比两者的网络出境形式：是公网中转还是端内专线？是否具备多运营商入口容灾？</p>
+      </div>
+      <div>
+        <p class="m-0 font-semibold text-ink">3. 客户端自由度与平台绑定</p>
+        <p class="m-0 mt-1">是支持 Clash/v2rayN/Shadowrocket 自由导入，还是必须依赖封闭的专属客户端？</p>
+      </div>
+      <div>
+        <p class="m-0 font-semibold text-ink">4. 试错周期与迁移成本</p>
+        <p class="m-0 mt-1">是否有低门槛月付通道？如果线路调整或故障，你的资金敞口是多少？</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-10 max-w-[46rem]" aria-label="核心对比取舍维度">
+    <h2 class="m-0 text-[1.3rem]">横向对比决策矩阵参考</h2>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full text-left text-[0.92rem]">
+        <thead>
+          <tr class="border-b border-line text-ink">
+            <th class="py-2 pr-4 font-semibold">对比考察点</th>
+            <th class="py-2 pr-4 font-semibold">候选 A 胜出场景</th>
+            <th class="py-2 pr-4 font-semibold">候选 B 胜出场景</th>
+            <th class="py-2 font-semibold">最终决选建议</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-line text-muted">
+          <tr>
+            <td class="py-2.5 pr-4 font-medium text-ink">极低资费 vs 专线稳定</td>
+            <td class="py-2.5 pr-4">预算优先、轻度查资料、可接受晚高峰轻微波动</td>
+            <td class="py-2.5 pr-4">全天候跨国办公、证券交易、晚高峰拒绝任何卡顿</td>
+            <td class="py-2.5">办公主力选 B，轻度备用选 A</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-4 font-medium text-ink">专属客户端 vs 通用订阅</td>
+            <td class="py-2.5 pr-4">新手小白、不喜欢手动配置规则、全家老人共用</td>
+            <td class="py-2.5 pr-4">Geek 极客、多端自建规则、需要软路由分流</td>
+            <td class="py-2.5">多设备多系统极客优先选 B</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-4 font-medium text-ink">按月清零 vs 永久不过期</td>
+            <td class="py-2.5 pr-4">每月流量消耗平稳（> 100GB）的高频用户</td>
+            <td class="py-2.5 pr-4">平时只在出差或特定时刻启用的低频用户</td>
+            <td class="py-2.5">高频月付最省，低频不过期最划算</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mt-10" aria-label="精选对比文章列表">
+    <h2 class="m-0 mb-4 text-[1.3rem]">精选候选对决评测</h2>
     <ol class="path-index max-w-[46rem]">
       {
         comparisons.map((c) => (

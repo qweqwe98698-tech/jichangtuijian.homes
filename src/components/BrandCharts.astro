@@ -41,17 +41,25 @@ const charts = [
     source: '性质：依据品牌公开说明的线路类型绘制的架构示意图，非实际路由记录，不含性能数据。',
   },
 ].filter((c) => c.src && show(c.key));
+const gallery = (brand.panelDisputed ? [] : (brand.images.gallery ?? [])).map((g) => ({
+  key: g.kind,
+  src: g.src,
+  title: g.title,
+  source: g.source,
+}));
+
+const allCharts = [...charts, ...gallery];
 ---
 
 {
-  charts.length > 0 && (
+  allCharts.length > 0 && (
     <section class="mt-12 max-w-[44rem]">
-      <h2 class="m-0 text-[1.35rem]">图表资料</h2>
+      <h2 class="m-0 text-[1.35rem]">图表资料与实拍面板（{allCharts.length} 张）</h2>
       <p class="meta-text m-0 mt-2">
-        本站不进行统一环境下的独立测速，以下图片均非本站的测试结果，每张图的来源与性质单独标注。
-        资料如何核对见<a href="/methodology/">资料核验方法</a>。
+        本站不进行统一环境下的独立测速，以下图片均为渠道提供之第三方工具导出或架构对照图，并非本站执行测试；
+        每张图的采集批次与来源性质均已单独标注。资料如何核对见<a href="/methodology/">资料核验方法</a>。
       </p>
-      {charts.map((c) => (
+      {allCharts.map((c) => (
         <figure class="mt-8 m-0">
           <picture>
             {dims(c.src!).webp && <source srcset={dims(c.src!).webp} type="image/webp" />}

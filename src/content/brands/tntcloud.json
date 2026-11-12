@@ -1,0 +1,175 @@
+{
+  "name": "TNTCloud",
+  "aliases": [
+    "TNT Cloud",
+    "3A 加速器",
+    "AAA Speed"
+  ],
+  "tier": "budget",
+  "positioning": "原 3A 加速器团队出品，IPLC 内网专线，主打 30 元/季限量包（10 元/月·60GB）与 TikTok 直播定制。",
+  "background": "TNTCloud 前身为 3A 加速器 / AAA Speed 老牌分站团队，采用 IPLC 内网专线定位，资料记载 2000Mbps 带宽能力，除了 VIP1–VIP4 常规梯度外，以 ¥30/季（每月 60GB，折约 10 元/月）特色季付轻量包及跨境电商、TikTok 直播定制服务形成辨识度。",
+  "priceFrom": "¥30 / 季（60GB/月） · ¥20 / 月（110GB）",
+  "pricePerGb": 0.167,
+  "billingCycle": "quarterly",
+  "priceBasis": "门槛为季付轻量包 ¥30（60GB/月，折 10 元/月；年付 ¥98）；常规月付 VIP1 ¥20/月 110GB，可用 85 折码 TNT85（限量包除外）。",
+  "couponCode": "TNT85",
+  "couponNote": "85 折优惠码 TNT85（轻量限量包不支持）；长周期可享季 9/半 85/年 8 折。",
+  "paymentMethods": [
+    "支付宝",
+    "微信",
+    "USDT"
+  ],
+  "launchYear": null,
+  "highlights": [
+    "老牌分站背景（原 3A 加速器 / AAA Speed）",
+    "¥30/季（60GB/月）特色季付轻量包门槛低",
+    "支持跨境电商与 TikTok 直播专线定制"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "缺少独立逐项测试结果（品牌侧重点含跨境电商/直播定制）",
+    "ai": "缺少独立逐项测试结果（需自行核实）",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/tntcloud-unlock.png",
+    "topology": "/images/brands/tntcloud-topology.png"
+  },
+  "scenarios": [
+    "budget",
+    "iepl",
+    "mid"
+  ],
+  "protocols": [
+    "主流代理协议（品牌资料未细列）"
+  ],
+  "lineTypes": [
+    "IPLC 内网专线（品牌口径）"
+  ],
+  "strengths": [
+    "季付仅需 30 元即可试用 IPLC 专线定位服务，试错金额小于整年包",
+    "叠加 TNT85 优惠码后，VIP1–VIP4 常规套餐具备价格弹性"
+  ],
+  "limitations": [
+    "尚未留存地区测速均值表与逐平台解锁报告",
+    "暂无官方独立合作推广直达入口"
+  ],
+  "suitableFor": [
+    "想以 30 元季度小额验证 IPLC 专线或寻求跨境直播定制通道的用户"
+  ],
+  "notSuitableFor": [
+    "只信任有实拍节点截图与公开协议核验的严谨用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "suppressIndex": false,
+  "lastVerified": "2026-08-09",
+  "pricingNote": "轻量包 ¥30/季（年付 ¥98）含 60GB/月；VIP1 ¥20/月（110GB）至 VIP4 ¥160/月（1100GB）；常规套餐可用 85 折码 TNT85。",
+  "plans": [
+    {
+      "name": "轻量包",
+      "cycle": "季付",
+      "price": "¥30",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB",
+      "note": "折 10 元/月；TNT85 不适用"
+    },
+    {
+      "name": "轻量包",
+      "cycle": "半年付",
+      "price": "¥56",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.156 元/GB"
+    },
+    {
+      "name": "轻量包",
+      "cycle": "年付",
+      "price": "¥98",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.136 元/GB"
+    },
+    {
+      "name": "VIP1",
+      "cycle": "月付",
+      "price": "¥20",
+      "traffic": "110GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.182 元/GB"
+    },
+    {
+      "name": "VIP1",
+      "cycle": "年付",
+      "price": "¥192",
+      "traffic": "110GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.145 元/GB"
+    },
+    {
+      "name": "VIP2",
+      "cycle": "月付",
+      "price": "¥40",
+      "traffic": "220GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.182 元/GB"
+    },
+    {
+      "name": "VIP2",
+      "cycle": "年付",
+      "price": "¥336",
+      "traffic": "220GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.127 元/GB"
+    },
+    {
+      "name": "VIP3",
+      "cycle": "月付",
+      "price": "¥80",
+      "traffic": "460GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.174 元/GB"
+    },
+    {
+      "name": "VIP4",
+      "cycle": "月付",
+      "price": "¥160",
+      "traffic": "1100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.145 元/GB"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "轻量季付 / 电商定制型",
+      "status": "sourced"
+    },
+    {
+      "label": "起步套餐",
+      "value": "¥30 / 季 · 60GB/月（VIP1 ¥20/月 110GB）",
+      "status": "sourced"
+    },
+    {
+      "label": "优惠码",
+      "value": "TNT85（85 折，限量包除外）",
+      "status": "sourced"
+    },
+    {
+      "label": "支付方式",
+      "value": "支付宝 / 微信 / USDT",
+      "status": "sourced"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": null,
+  "reviewSlug": null
+}

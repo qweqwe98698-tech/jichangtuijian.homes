@@ -3,7 +3,7 @@
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BrandPickList from '@/components/BrandPickList.astro';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, faqSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const reasons: Record<string, string> = {
   'lingmao-net':
@@ -47,8 +47,17 @@ const crumbs: Crumb[] = [
 
 <Base
   title="流媒体解锁机场推荐：Netflix 与 Disney+ 可用名单"
-  description="流媒体解锁机场推荐：在库机场中宣称支持 Netflix、Disney+、YouTube 解锁的品牌名单与价格对照，说明原生 IP 与 DNS 解锁的差别，以及解锁失效时该怎么判断。"
-  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  description="流媒体解锁机场推荐：汇总宣称解锁Netflix/Disney+/YouTube的品牌与单价，讲清原生IP与DNS解锁区别。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '流媒体解锁机场推荐',
+      description: '宣称支持 Netflix 与 Disney+ 解锁的在库机场名单与单价对照',
+      path: '/streaming-airport/',
+    }),
+    faqSchema(faq),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 

@@ -34,7 +34,12 @@ const authorName = author?.data.name ?? '机场决策室编辑部';
 
 const brandEntry = d.brandCta ? await getEntry('brands', d.brandCta) : null;
 const brandData = brandEntry?.data;
-const externalUrl = brandData?.affiliateUrl ?? brandData?.officialUrl;
+const showReviewPanels = d.contentType === 'review' && Boolean(brandData);
+const showBrandCta =
+  Boolean(d.brandCta) && ['review', 'comparison', 'recommendation'].includes(d.contentType);
+const isAiTopic =
+  /(chatgpt|claude|gemini|cursor|codex|ai)/i.test(article.id) ||
+  /(ChatGPT|Claude|Gemini|Cursor|AI)/i.test(d.title);
 
 const crumbs: Crumb[] = [
   { name: '首页', href: '/' },
@@ -116,7 +121,7 @@ const fmt = (date: Date) => date.toISOString().slice(0, 10);
       }
 
       {
-        brandData && (
+        showReviewPanels && brandData && (
           <>
             <BrandPanelData brand={brandData} />
             <BrandCharts brand={brandData} />
@@ -124,7 +129,38 @@ const fmt = (date: Date) => date.toISOString().slice(0, 10);
         )
       }
       <FAQ faq={d.faq} />
-      {d.brandCta && <BrandCTA brandSlug={d.brandCta} />}
+      {
+        showBrandCta && d.brandCta ? (
+          <BrandCTA brandSlug={d.brandCta} />
+        ) : (
+          <aside class="my-10 border border-line bg-surface p-5" aria-label="下一步选型路径">
+            <p class="meta-text m-0 tracking-widest">专题选型承接</p>
+            <p class="m-0 mt-2 text-[1rem] font-display text-ink">
+              读完原理与排查，准备对比或更换稳定线路？
+            </p>
+            <p class="m-0 mt-1.5 text-[0.92rem] text-muted">
+              先用七项硬指标对照候选，再查看公开可复算的单价与能力矩阵，不按广告排名买单。
+            </p>
+            <div class="mt-4 flex flex-wrap gap-3 text-sm">
+              <a href="/best/stable/" class="btn-solid">
+                2026 稳定机场候选 →
+              </a>
+              <a href="/guides/how-to-choose/" class="btn-outline">
+                七步选机场标准
+              </a>
+              {isAiTopic ? (
+                <a href="/chatgpt-airport/" class="btn-outline">
+                  AI 工具可用机场名单
+                </a>
+              ) : (
+                <a href="/airport-ranking/" class="btn-outline">
+                  在库机场排行榜
+                </a>
+              )}
+            </div>
+          </aside>
+        )
+      }
       <RelatedLinks related={d.related} />
     </article>
 
@@ -158,32 +194,4 @@ const fmt = (date: Date) => date.toISOString().slice(0, 10);
       </div>
     </aside>
   </div>
-
-  {/* 移动端底部常驻转化悬浮栏 */}
-  {
-    externalUrl && brandData && (
-      <>
-        <div class="h-16 md:hidden" aria-hidden="true" />
-        <aside class="mobile-sticky-cta flex items-center justify-between gap-3 md:hidden" aria-label="快捷购买入口">
-          <div class="min-w-0 flex-1">
-            <p class="m-0 truncate font-display text-[0.95rem] font-bold text-ink">
-              {brandData.name}
-            </p>
-            <p class="meta-text m-0 truncate text-[0.78rem]">
-              起步 {brandData.priceFrom ?? '月付灵活'}
-              {brandData.couponCode && ` · 券码 ${brandData.couponCode}`}
-            </p>
-          </div>
-          <a
-            href={externalUrl}
-            class="btn-solid whitespace-nowrap px-4 py-2 text-[0.9rem]"
-            rel="nofollow sponsored noopener"
-            target="_blank"
-          >
-            前往官网 ➔
-          </a>
-        </aside>
-      </>
-    )
-  }
 </Base>

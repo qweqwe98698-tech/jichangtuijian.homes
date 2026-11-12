@@ -131,5 +131,18 @@
   "reviewSlug": null,
   "panel": null,
   "panelDisputed": null,
-  "editorialPick": null
+  "editorialPick": null,
+  "plans": [
+    {
+      "name": "云界线·年付标准方案（渠道口径）",
+      "cycle": "年付",
+      "price": "约 ¥67.2 / 年",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "约 0.093 元/GB",
+      "note": "折约 5.6 元/月；季付及以上 7 折"
+    }
+  ],
+  "priceBasis": "年付约 5.6 元/月 · 60GB 档，季付及以上 7 折（码 yjx888）；与同价位站群共享相近底层架构。",
+  "clientNotes": "推广入口沿用已核实可用的 HBaZ91c6 参数（外部清单另有缺 # 号样式或备选 code 记录，若跳转异常可向官方确认）。"
 }

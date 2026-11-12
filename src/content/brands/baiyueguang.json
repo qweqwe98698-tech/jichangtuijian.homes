@@ -1,0 +1,200 @@
+{
+  "name": "白月光",
+  "aliases": [
+    "白月光机场",
+    "Sibker"
+  ],
+  "tier": "mid",
+  "positioning": "季付 66 元起（100GB/月）的 Shadowsocks 79 地区覆盖机场，附 2026-07-17 历史 108 节点测试摘要。",
+  "background": "白月光在历史品牌档案中以丰富的地区名目与较低的季付门槛（66 元/季、每月 100GB）见长。2026-07-17留存的第三方历史测速覆盖 108 个节点、名义涉及 79 个地区，近期实际运营套餐与折扣以官网为准。",
+  "priceFrom": "¥66 / 季（100GB/月）",
+  "pricePerGb": 0.22,
+  "billingCycle": "quarterly",
+  "priceBasis": "历史套餐表暂无单月付记录，最入门为「小包」季付 ¥66（每月100GB，折约 22 元/月）；旗舰包年付 2500GB/月。",
+  "couponCode": null,
+  "couponNote": "当前未记录公开优惠码。",
+  "launchYear": null,
+  "highlights": [
+    "季付 ¥66 起（100GB/月），一次投入门槛可控",
+    "历史 108 节点名义覆盖多达 79 个地区名目",
+    "Shadowsocks 协议，通用客户端兼容性广",
+    "保留 2026-07-17 历史测试地区汇总对比"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "历史测试部分节点解锁 Netflix / Disney+ / YouTube / HBO Max / TikTok（Spotify 当次失败）",
+    "ai": "历史测试部分节点支持 ChatGPT / OpenAI（2026-07-17）",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/baiyueguang-unlock.png",
+    "topology": "/images/brands/baiyueguang-topology.png"
+  },
+  "scenarios": [
+    "streaming",
+    "mid",
+    "budget"
+  ],
+  "protocols": [
+    "Shadowsocks"
+  ],
+  "lineTypes": [
+    "多地区覆盖线路（历史资料）"
+  ],
+  "strengths": [
+    "季度入门 66 元即可获得 100GB/月，在季付型品牌中支出负担不大",
+    "节点国家与地区分布较广，包含港澳台美日新及越南/泰国/马来等冷门东南亚标签"
+  ],
+  "limitations": [
+    "2026-07-17 历史测试中台湾组吞吐偏低（0.03Mbps）、Spotify 检测失败，且港/美延迟偏高（160ms/302ms）",
+    "缺少常规月付试错选项，当前优惠码与最新价格未同步"
+  ],
+  "suitableFor": [
+    "需要较多冷门亚太国家节点标签的用户",
+    "接受季度付费、预算控制在每月 20 元出头的轻量用户"
+  ],
+  "notSuitableFor": [
+    "对 Spotify 原生解锁、台湾高频高带宽或极低游戏延迟要求极高的用户",
+    "只买单月随用随弃的新手"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "suppressIndex": false,
+  "lastVerified": "2026-08-24",
+  "pricingNote": "小包季付 ¥66/季（100GB/月）至旗舰包年付 ¥2500（2500GB/月）；旧档案口径，下单前请核对官网结算页。",
+  "plans": [
+    {
+      "name": "小包",
+      "cycle": "季付",
+      "price": "¥66",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.220 元/GB"
+    },
+    {
+      "name": "中包",
+      "cycle": "季付",
+      "price": "¥126",
+      "traffic": "250GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.168 元/GB"
+    },
+    {
+      "name": "大包",
+      "cycle": "季付",
+      "price": "¥156",
+      "traffic": "400GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.130 元/GB"
+    },
+    {
+      "name": "超大包",
+      "cycle": "季付",
+      "price": "¥216",
+      "traffic": "750GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.096 元/GB"
+    },
+    {
+      "name": "不差钱",
+      "cycle": "季付",
+      "price": "¥231",
+      "traffic": "900GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.086 元/GB"
+    },
+    {
+      "name": "旗舰包",
+      "cycle": "年付",
+      "price": "¥2500",
+      "traffic": "2500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.083 元/GB"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "中端季付型",
+      "status": "sourced"
+    },
+    {
+      "label": "起步套餐",
+      "value": "¥66 / 季 · 100GB/月",
+      "status": "sourced",
+      "note": "2026-08-24 历史档案"
+    },
+    {
+      "label": "协议",
+      "value": "Shadowsocks",
+      "status": "sourced"
+    },
+    {
+      "label": "历史节点总数",
+      "value": "108 节点 / 79 个地区标签（2026-07-17）",
+      "status": "sourced",
+      "note": "历史第三方测试留存，香港 10 节点全通"
+    },
+    {
+      "label": "流媒体与 AI 解锁",
+      "value": "部分节点可用 NF/D+/YT/ChatGPT，Spotify 当次失败",
+      "status": "sourced"
+    }
+  ],
+  "thirdPartySummary": {
+    "testedAt": "2026-07-17",
+    "toolNote": "历史项目留存的 108 节点地区统计值（非单节点明细、非近期新测）",
+    "regions": [
+      {
+        "region": "香港",
+        "latency": "160.7 ms",
+        "download": "114.94 Mbps (14.37 MB/s)"
+      },
+      {
+        "region": "新加坡",
+        "latency": "186.8 ms",
+        "download": "85.22 Mbps"
+      },
+      {
+        "region": "日本",
+        "latency": "202.4 ms",
+        "download": "77.65 Mbps"
+      },
+      {
+        "region": "美国",
+        "latency": "302.6 ms",
+        "download": "70.53 Mbps"
+      },
+      {
+        "region": "台湾",
+        "latency": "—",
+        "download": "0.03 Mbps"
+      },
+      {
+        "region": "加拿大",
+        "latency": "344 ms",
+        "download": "62.00 Mbps"
+      },
+      {
+        "region": "韩国",
+        "latency": "358 ms",
+        "download": "31.28 Mbps"
+      }
+    ],
+    "unlockNotes": [
+      "AI（2026-07-17）：ChatGPT / OpenAI 部分节点可用",
+      "流媒体（2026-07-17）：Netflix、YouTube、Bilibili、HBO Max、Disney+、TVBAnywhere、TikTok 部分可用；Spotify 该次测试失败"
+    ],
+    "caveat": "仅作 2026-07-17 历史环境记录，非实时保障；请先核对官网当前节点状况。"
+  },
+  "officialUrl": null,
+  "affiliateUrl": "https://sibker.com/register?invite_code=gg6puAId",
+  "reviewSlug": "reviews/baiyueguang"
+}

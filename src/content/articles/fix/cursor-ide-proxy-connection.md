@@ -488,7 +488,7 @@ TUN 模式方面，Windows 需要安装 Wintun 驱动，macOS 需要授权系统
 | 2 | 进程继承 | cat /proc/PID/environ | Cursor 进程能看到代理变量 |
 | 3 | DNS 解析 | dig api2.cursor.sh | 返回 CDN 网段 IP |
 | 4 | TCP 可达 | nc -zv api2.cursor.sh 443 | succeeded |
-| 5 | TLS 握手 | curl -v https://api2.cursor.sh/ | SSL certificate verify ok |
+| 5 | TLS 握手 | `curl -v https://api2.cursor.sh/` | SSL certificate verify ok |
 | 6 | 接口响应 | curl -w "%{http_code}" | 200 或 401 |
 | 7 | 证书信任 | node -e "..." | 正确加载 CA bundle |
 | 8 | 分流规则 | Clash 日志 | 命中 AI-Residential 组 |

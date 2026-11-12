@@ -1,0 +1,188 @@
+{
+  "name": "FlyingBird（飞鸟机场）",
+  "aliases": [
+    "飞鸟机场",
+    "FlyingBird",
+    "一云梯同源"
+  ],
+  "tier": "mid",
+  "positioning": "Shadowsocks 全专线 IPLC 机场，15 元/月（100GB）起、无倍率不限速，隶属一云梯/飞鸟同源站群。",
+  "background": "FlyingBird（飞鸟机场）在历史品牌库中被明确记录为一云梯/飞鸟同源站群核心成员之一，主打 Shadowsocks 全专线 IPLC、无倍率计费与不限速策略，套餐涵盖青铜到钻石四个规格与月/季/半年/年四个计费周期。",
+  "priceFrom": "¥15 / 月（100GB）",
+  "pricePerGb": 0.15,
+  "billingCycle": "monthly",
+  "priceBasis": "历史套餐表提供月/季/半年/年四个周期：青铜月付 ¥15/100GB，年付 ¥144（约 12 元/月）；叠加优惠码最高可达约 64 折。",
+  "couponCode": "theo",
+  "couponNote": "theo（9 折，限每用户 1 次）/ year85（年付 85 折，可用 5 次）；配合季 9/半 85/年 8 周期折扣。",
+  "paymentMethods": [
+    "支付宝",
+    "USDT（无微信）"
+  ],
+  "clientNotes": "Shadowsocks 协议兼容性佳，历史资料暂未提供独立注册推广入口，需用户自行核对最新官方域名。",
+  "launchYear": null,
+  "highlights": [
+    "全专线 IPLC + 无倍率 + 不限速定位",
+    "月/季/半年/年四档周期完整，100GB 到 1000GB 梯度",
+    "支持支付宝与 USDT（无微信）"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "Surge / Stash"
+  ],
+  "claims": {
+    "streaming": "缺少独立逐项测试结果（需自行核实）",
+    "ai": "缺少独立逐项测试结果（需自行核实）",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/flyingbird-unlock.png",
+    "topology": "/images/brands/flyingbird-topology.png"
+  },
+  "scenarios": [
+    "iepl",
+    "mid",
+    "longterm"
+  ],
+  "protocols": [
+    "Shadowsocks"
+  ],
+  "lineTypes": [
+    "全专线 IPLC（品牌口径）"
+  ],
+  "strengths": [
+    "青铜 15 元/月 100GB、年付 144 元定价清晰，叠加年付折扣后单价更具优势",
+    "全线标注 1 倍率不限速，适合不喜欢高倍率扣费规则的用户"
+  ],
+  "limitations": [
+    "暂无可比地区测速与逐项 AI/流媒体面板验证",
+    "未提供独立官方入口且不支持微信支付"
+  ],
+  "suitableFor": [
+    "习惯 Shadowsocks 协议、看重无倍率透明计费的月付或年付用户"
+  ],
+  "notSuitableFor": [
+    "仅用微信付款、需要官方即时推广直达入口的用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "suppressIndex": false,
+  "lastVerified": "2026-08-09",
+  "pricingNote": "青铜 15 元/月（100GB）、白银 30 元/月（200GB）、黄金 75 元/月（500GB）、钻石 150 元/月（1000GB）；季9/半85/年8 折，可用码 theo/year85。",
+  "plans": [
+    {
+      "name": "青铜套餐",
+      "cycle": "月付",
+      "price": "¥15",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "青铜套餐",
+      "cycle": "季付",
+      "price": "¥41",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.137 元/GB"
+    },
+    {
+      "name": "青铜套餐",
+      "cycle": "半年付",
+      "price": "¥77",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.128 元/GB"
+    },
+    {
+      "name": "青铜套餐",
+      "cycle": "年付",
+      "price": "¥144",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "白银套餐",
+      "cycle": "月付",
+      "price": "¥30",
+      "traffic": "200GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "白银套餐",
+      "cycle": "年付",
+      "price": "¥288",
+      "traffic": "200GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "黄金套餐",
+      "cycle": "月付",
+      "price": "¥75",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "黄金套餐",
+      "cycle": "年付",
+      "price": "¥720",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "钻石套餐",
+      "cycle": "月付",
+      "price": "¥150",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "钻石套餐",
+      "cycle": "年付",
+      "price": "¥1440",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "中端 SS 专线型",
+      "status": "sourced"
+    },
+    {
+      "label": "起步套餐",
+      "value": "¥15 / 月 · 100GB（青铜年付 ¥144）",
+      "status": "sourced",
+      "note": "2026-08-09 历史品牌库口径"
+    },
+    {
+      "label": "协议与倍率",
+      "value": "Shadowsocks · 1 倍率不限速（品牌口径）",
+      "status": "sourced"
+    },
+    {
+      "label": "支付方式",
+      "value": "支付宝 / USDT（无微信）",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体与 AI",
+      "value": "暂无统一测试记录",
+      "status": "pending"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": null,
+  "reviewSlug": null
+}

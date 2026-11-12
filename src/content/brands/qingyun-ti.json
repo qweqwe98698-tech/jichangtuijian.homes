@@ -1,0 +1,174 @@
+{
+  "name": "青云梯",
+  "aliases": [
+    "青云梯机场",
+    "V4Speed"
+  ],
+  "tier": "mid",
+  "positioning": "运营 6 年以上老牌团队（前 V4Speed），SS + 企业级 IPLC 与三网智能负载均衡，年付 96 元起。",
+  "background": "青云梯前身为 V4Speed，在历史品牌库中标注已运营 6 年以上，属于成熟老牌阵列之一。架构采用 Shadowsocks + 企业级 IPLC，并强调三网优化、智能负载均衡、最高 6Gbps 带宽容量与 10+ 地区 80+ 节点布局，兼顾企业定制。",
+  "priceFrom": "¥96 / 年（60GB/月） · ¥25 / 月（150GB）",
+  "pricePerGb": 0.133,
+  "billingCycle": "monthly",
+  "priceBasis": "年付小包 ¥96/年（60GB/月，不适用折扣码）；常规月付 VIP1 ¥25/月 150GB 起，可用 qyt85 / qyt80 折扣码及长期折扣。",
+  "couponCode": "qyt80",
+  "couponNote": "qyt85（85 折）/ qyt80（8 折），年付小包不支持；系统另有长周期递增折扣。",
+  "paymentMethods": [
+    "支付宝",
+    "微信",
+    "USDT"
+  ],
+  "launchYear": "2020",
+  "highlights": [
+    "6 年以上运营历史品牌（原 V4Speed 团队背景）",
+    "企业级 IPLC + 三网智能负载均衡（资料标称 80+ 节点）",
+    "支持支付宝/微信/USDT 与企业定制方案"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "Stash / Surge"
+  ],
+  "claims": {
+    "streaming": "缺少独立逐项测试结果（需自行核实）",
+    "ai": "缺少独立逐项测试结果（需自行核实）",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/qingyun-ti-unlock.png",
+    "topology": "/images/brands/qingyun-ti-topology.png"
+  },
+  "scenarios": [
+    "longterm",
+    "iepl",
+    "mid"
+  ],
+  "protocols": [
+    "Shadowsocks"
+  ],
+  "lineTypes": [
+    "企业级 IPLC + 三网负载均衡（品牌口径）"
+  ],
+  "strengths": [
+    "运营年头长、历史资料与企业定制记录比新创机场丰富",
+    "VIP1–VIP4 套餐与 qyt80 八折码叠加后具备稳定性价比"
+  ],
+  "limitations": [
+    "当前档案尚未补充近期单节点测速表与流媒体实拍图",
+    "历史未保存直达合作入口地址"
+  ],
+  "suitableFor": [
+    "偏好 5 年+老牌成熟 Shadowsocks IPLC 体系的个人及团队用户"
+  ],
+  "notSuitableFor": [
+    "需要 5–10 元单月临时试错或 VLESS 专属协议的用户"
+  ],
+  "riskLevel": "low",
+  "dataStatus": "partial",
+  "suppressIndex": false,
+  "lastVerified": "2026-08-09",
+  "pricingNote": "年付小包 ¥96（60GB/月）；VIP1 ¥25/月（150GB）、VIP2 ¥45（300GB）、VIP3 ¥85（600GB）、VIP4 ¥150（1000GB），可用 8 折码 qyt80。",
+  "plans": [
+    {
+      "name": "年付小包",
+      "cycle": "年付",
+      "price": "¥96",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB",
+      "note": "qyt85/qyt80 不适用"
+    },
+    {
+      "name": "VIP1",
+      "cycle": "月付",
+      "price": "¥25",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "VIP1",
+      "cycle": "季付",
+      "price": "¥67",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.149 元/GB"
+    },
+    {
+      "name": "VIP1",
+      "cycle": "年付",
+      "price": "¥240",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB"
+    },
+    {
+      "name": "VIP2",
+      "cycle": "月付",
+      "price": "¥45",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "VIP2",
+      "cycle": "年付",
+      "price": "¥432",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "VIP3",
+      "cycle": "月付",
+      "price": "¥85",
+      "traffic": "600GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.142 元/GB"
+    },
+    {
+      "name": "VIP4",
+      "cycle": "月付",
+      "price": "¥150",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "VIP4",
+      "cycle": "年付",
+      "price": "¥1360",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.113 元/GB"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "老牌成熟 IPLC 型",
+      "status": "sourced"
+    },
+    {
+      "label": "运营时长",
+      "value": "6 年以上（曾用名 V4Speed）",
+      "status": "sourced"
+    },
+    {
+      "label": "起步套餐",
+      "value": "¥96 / 年（60GB/月） · ¥25 / 月（150GB）",
+      "status": "sourced"
+    },
+    {
+      "label": "协议与规模",
+      "value": "Shadowsocks · 10+ 地区 80+ 节点（资料口径）",
+      "status": "sourced"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": null,
+  "reviewSlug": null
+}

@@ -28,6 +28,7 @@ faq:
   - q: 手机上能用 Clash 吗？
     a: Android 可用 Clash Meta for Android（FlClash 等亦可）；iOS 没有 Clash，同类需求用 Shadowrocket 或 Stash，见本站 Shadowrocket 教程。
 related:
+  - apps/client-matrix
   - apps/shadowrocket-guide
   - fix/nodes-all-timeout
   - learn/protocols-explained

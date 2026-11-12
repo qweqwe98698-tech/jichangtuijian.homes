@@ -266,7 +266,7 @@ format 为 binary 时加载 .srs 编译格式，为 source 时加载 JSON 源格
 
 | 字段 | 含义 | 示例 |
 | --- | --- | --- |
-| domain | 精确域名 | "www.example.com" |
+| `domain` | 精确域名 | `"www.example.com"` |
 | domain_suffix | 域名后缀 | ".google.com" |
 | domain_keyword | 域名关键词 | "ads" |
 | domain_regex | 域名正则 | "^ad[0-9]+\\." |

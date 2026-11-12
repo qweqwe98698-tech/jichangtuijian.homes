@@ -154,7 +154,7 @@
       "label": "香港节点平均速度",
       "value": "28.64–53.4 MB/s",
       "status": "measured",
-      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除，测试时间未知"
+      "note": "20 个节点的区间 · 非晚高峰专门测试，面板时间戳已移除，测试时间未知"
     },
     {
       "label": "面板显示协议",
@@ -234,5 +234,17 @@
       "表格无账户信息行（无剩余流量 / 套餐到期行），因此 accountRows 全部为 null。"
     ]
   },
-  "panelDisputed": null
+  "panelDisputed": null,
+  "plans": [
+    {
+      "name": "可信云·进阶入门档（渠道口径）",
+      "cycle": "月付",
+      "price": "¥25",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    }
+  ],
+  "priceBasis": "¥25/月 150GB，渠道资料中诚实标注「AI 与流媒体缺乏统一测试对照」。",
+  "clientNotes": "支持第三方客户端，VLESS + IEPL 专线定位；优惠码 kkk333。"
 }

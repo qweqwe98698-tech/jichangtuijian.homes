@@ -4,7 +4,8 @@ import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import VerifyStamp from '@/components/VerifyStamp.astro';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { LAST_SITE_UPDATE } from '@/lib/site';
+import { breadcrumbSchema, faqSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const coupons = (await getCollection('brands'))
   .filter((b) => b.data.couponCode !== null)
@@ -41,8 +42,17 @@ const crumbs: Crumb[] = [
 
 <Base
   title="机场优惠码汇总：在库机场折扣码与使用条件"
-  description="机场优惠码与折扣码汇总：在库机场的可用优惠码、适用条件与起步价格对照，标注核对日期，并说明优惠码用不了的四种常见原因与力度反常时的风险信号。"
-  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  description="在库机场优惠码大全：核对可用折扣码、适用套餐与起步价，附优惠码失效4大排查原因与异常高折扣防坑指南。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '机场优惠码汇总',
+      description: '在库机场可用优惠码、适用条件与起步价格对照',
+      path: '/airport-coupon/',
+    }),
+    faqSchema(faq),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
@@ -62,7 +72,7 @@ const crumbs: Crumb[] = [
   <section class="rule-top mt-14 pt-10" aria-labelledby="table-heading">
     <h2 id="table-heading" class="m-0 text-[1.5rem]">在库机场优惠码对照</h2>
     <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
-      共 {coupons.length} 家提供优惠码。全部为渠道资料口径，核对于 2026-08-11； 最终以官网结算页显示的价格为准。
+      共 {coupons.length} 家提供优惠码。全部为渠道资料口径，核对于 {LAST_SITE_UPDATE}； 最终以官网结算页显示的价格为准。
     </p>
     <div class="table-scroll mt-6">
       <table>
@@ -95,7 +105,7 @@ const crumbs: Crumb[] = [
       </table>
     </div>
     <p class="meta-text mt-3 flex flex-wrap items-center gap-3">
-      <VerifyStamp status="sourced" date="2026-08-11" />
+      <VerifyStamp status="sourced" date={LAST_SITE_UPDATE} />
       <span>优惠码属渠道与品牌方资料，非本站的测试；品牌方可随时调整或停用。</span>
     </p>
   </section>

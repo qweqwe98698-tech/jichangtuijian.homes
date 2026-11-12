@@ -66,13 +66,31 @@ const brands = defineCollection({
     // ── 商务信息（来源：品牌方/渠道提供，属二级来源，需标注口径） ──
     /** 起步套餐价格描述，例："17 元 / 月 · 110GB" */
     priceFrom: z.string().nullable().default(null),
+    /** 起步价计算口径补充说明（例如年付摊算 vs 当期完整套餐表最低月付） */
+    priceBasis: z.string().nullable().default(null),
     /** 每 GB 单价（元），用于性价比排序；无法计算时为 null */
     pricePerGb: z.number().nullable().default(null),
     /** 起步套餐的计费周期 */
     billingCycle: z.enum(['monthly', 'quarterly', 'yearly', 'unknown']).default('unknown'),
+    /** 完整多档套餐价格表（渠道与官网整理） */
+    plans: z
+      .array(
+        z.object({
+          name: z.string(),
+          cycle: z.string(),
+          price: z.string(),
+          traffic: z.string(),
+          trafficCycle: z.string(),
+          pricePerGb: z.string().optional(),
+          note: z.string().optional(),
+        }),
+      )
+      .default([]),
     couponCode: z.string().nullable().default(null),
     couponNote: z.string().nullable().default(null),
     launchYear: z.string().nullable().default(null),
+    paymentMethods: z.array(z.string()).default([]),
+    clientNotes: z.string().nullable().default(null),
     /** 品牌主打卖点（宣传口径原样收录，前台需标注「品牌口径」） */
     highlights: z.array(z.string()).default([]),
     clients: z.array(z.string()).default([]),
@@ -91,6 +109,16 @@ const brands = defineCollection({
         speedtest: z.string().nullable().default(null),
         unlock: z.string().nullable().default(null),
         topology: z.string().nullable().default(null),
+        gallery: z
+          .array(
+            z.object({
+              src: z.string(),
+              title: z.string(),
+              source: z.string(),
+              kind: z.enum(['speedtest', 'unlock', 'carrier', 'topology']).default('speedtest'),
+            }),
+          )
+          .default([]),
       })
       .default({}),
     /** 适配的场景标签，用于专题页筛选：ai / streaming / budget / iepl / gaming / newbie */
@@ -178,6 +206,26 @@ const brands = defineCollection({
         note: z.string().optional(),
       }),
     ),
+    /** 历史书面第三方测试摘要（有具体日期记录，非 2026-10-19 同质模板表） */
+    thirdPartySummary: z
+      .object({
+        testedAt: z.string(),
+        toolNote: z.string(),
+        regions: z
+          .array(
+            z.object({
+              region: z.string(),
+              latency: z.string(),
+              download: z.string(),
+            }),
+          )
+          .default([]),
+        unlockNotes: z.array(z.string()).default([]),
+        caveat: z.string(),
+      })
+      .nullable()
+      .default(null),
+    suppressIndex: z.boolean().default(false),
     officialUrl: z.string().url().nullable(),
     affiliateUrl: z.string().url().nullable(),
     reviewSlug: z.string().nullable(),

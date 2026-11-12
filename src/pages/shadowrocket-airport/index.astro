@@ -3,16 +3,16 @@
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BrandPickList from '@/components/BrandPickList.astro';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, faqSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const reasons: Record<string, string> = {
   'guangsu-yun':
     '自研客户端 + 订阅导入双通道，iPhone 上可以先用自研端快速跑通，再迁到小火箭做精细分流。',
   'yuzhou-yun': '14.9 元档且提供自研客户端，适合不想折腾外区 Apple ID 的用户先用官方端起步。',
   u1s1: '20 元 120GB，流媒体向配置，配合小火箭的分流规则看剧体验完整。',
-  'lingmao-net': '月付单价最低，适合 iPhone 用户按月验证后再决定是否长期使用。',
-  'feimao-yun': '7 元小包做备用订阅，小火箭里多存一条订阅，主力异常时一键切换。',
-  kuaili: '能力面完整，多设备家庭共用时一份订阅覆盖 iPhone、iPad 与桌面端。',
+  'lingmao-net': '改用官方专属客户端后省去外区账号折腾，适合不想买小火箭的轻量用户按图索引。',
+  'tiziyun': '同时提供官方客户端一键登录与通用订阅导入，先免区跑通、后续买到小火箭可无缝迁移。',
+  kuaili: '同时提供自研端与第三方订阅导入，多设备家庭共用时一份订阅覆盖 iPhone、iPad 与桌面端。',
 };
 
 const faq = [
@@ -46,8 +46,17 @@ const crumbs: Crumb[] = [
 
 <Base
   title="Shadowrocket 机场推荐：iPhone 可用的机场与订阅"
-  description="Shadowrocket（小火箭）机场推荐：适合 iPhone 与 iOS 的在库机场名单、价格与优惠码，说明外区 Apple ID 的门槛、自研客户端能否替代小火箭，以及订阅导入失败怎么处理。"
-  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  description="Shadowrocket（小火箭）可用机场名单：价格、优惠码与iOS自研客户端替代方案，说明Apple ID购买与导入排查。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: 'Shadowrocket 机场推荐',
+      description: '适配 iPhone 与 Shadowrocket 小火箭的机场名单与订阅导入指南',
+      path: '/shadowrocket-airport/',
+    }),
+    faqSchema(faq),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
@@ -94,7 +103,7 @@ const crumbs: Crumb[] = [
     </p>
     <div class="mt-6">
       <BrandPickList
-        slugs={['lingmao-net', 'yuzhou-yun', 'guangsu-yun', 'u1s1', 'kuaili', 'feimao-yun']}
+        slugs={['tiziyun', 'yuzhou-yun', 'guangsu-yun', 'u1s1', 'kuaili', 'lingmao-net']}
         reasons={reasons}
         limit={6}
       />
@@ -115,6 +124,7 @@ const crumbs: Crumb[] = [
     </dl>
     <p class="meta-text m-0 mt-4">
       继续：<a href="/apps/shadowrocket-guide/">小火箭教程</a> ·
+      <a href="/apps/client-matrix/">全平台客户端选型指南</a> ·
       <a href="/clash-airport/">电脑端看这里</a> ·
       <a href="/brand-library/">全部品牌对照</a>
     </p>

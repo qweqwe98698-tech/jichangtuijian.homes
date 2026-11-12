@@ -7,11 +7,11 @@
   "tier": "mid",
   "positioning": "月付即拿到低单价的中端选择：150GB 起步且无需年付锁定，是本批里月付性价比最突出的一家。",
   "background": "灵猫网络的特点是起步套餐直接给到月付 19 元 150GB，每 GB 单价约 0.127 元，在不锁定长周期的前提下拿到较低单价。品牌口径为企业级内网专线、套餐种类多并支持不限时套餐。运营年限未在资料中给出，本站按待核验处理。",
-  "priceFrom": "19 元 / 月 · 150GB",
-  "pricePerGb": 0.127,
+  "priceFrom": "85 元 / 年（45GB/月） · 25 元 / 月（150GB）",
+  "pricePerGb": 0.157,
   "billingCycle": "monthly",
   "couponCode": "lmao888",
-  "couponNote": "新人注册 9 折码。",
+  "couponNote": "渠道码 lmao888；另有 8 折码 lingmao（年付小包不适用）。",
   "launchYear": "2024",
   "highlights": [
     "企业级内网专线",
@@ -26,10 +26,10 @@
     "sing-box 系"
   ],
   "claims": {
-    "streaming": "解锁丰富",
-    "ai": null,
-    "selfClient": false,
-    "subscriptionImport": true
+    "streaming": "品牌资料标注解锁 Netflix / Disney+ / YouTube / TikTok",
+    "ai": "品牌资料标注支持 ChatGPT 等常见 AI 工具",
+    "selfClient": true,
+    "subscriptionImport": false
   },
   "images": {
     "speedtest": "/images/brands/lingmao-net-speedtest.jpg",
@@ -152,7 +152,7 @@
       "label": "香港节点平均速度",
       "value": "33.22 MB/s",
       "status": "measured",
-      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除，测试时间未知"
+      "note": "20 个节点的区间 · 非晚高峰专门测试，面板时间戳已移除，测试时间未知"
     },
     {
       "label": "面板显示协议",
@@ -234,5 +234,59 @@
     ]
   },
   "panelDisputed": null,
-  "editorialPick": null
+  "editorialPick": null,
+  "priceBasis": "完整套餐表含年付小包 ¥85/年（45GB/月，折约 7.08 元/月）与月付 Small ¥25/月 150GB（2026-08 渠道曾标 19 元/月 150GB）；自 2026-10 起主推专属客户端、不提供订阅链接。",
+  "clientNotes": "2026 年 10 月起改用专属客户端下载登录即用（不提供第三方订阅链接），1 倍流量、不限速、不限设备。",
+  "plans": [
+    {
+      "name": "灵猫·年付小包",
+      "cycle": "年付",
+      "price": "¥85",
+      "traffic": "45GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.157 元/GB",
+      "note": "8 折码不适用"
+    },
+    {
+      "name": "灵猫·年付Small",
+      "cycle": "年付",
+      "price": "¥195",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.108 元/GB"
+    },
+    {
+      "name": "灵猫·季付Big",
+      "cycle": "季付",
+      "price": "¥125",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.139 元/GB"
+    },
+    {
+      "name": "灵猫·年付Big",
+      "cycle": "年付",
+      "price": "¥295",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.082 元/GB"
+    },
+    {
+      "name": "灵猫·月付Small",
+      "cycle": "月付",
+      "price": "¥25",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB",
+      "note": "早期渠道记录曾为 ¥19/150GB"
+    },
+    {
+      "name": "灵猫·月付Big",
+      "cycle": "月付",
+      "price": "¥45",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    }
+  ]
 }

@@ -1,0 +1,173 @@
+{
+  "name": "FATCAT（肥猫云）",
+  "aliases": [
+    "肥猫云",
+    "FATCAT 机场"
+  ],
+  "tier": "mid",
+  "positioning": "企业级 IEPL/IPLC 抗封锁内网专线定位，提供 ¥96/年（60GB/月）年付加强版及最高 1500GB 企业档。",
+  "background": "FATCAT（肥猫云）定位企业级 IEPL/IPLC 内网专线，强调敏感时期的抗干扰与抗封锁能力。除常规 120GB–1500GB 四档循环套餐外，保留年付 96 元（每月 60GB）低价入门通道，支持支付宝、微信与 USDT。",
+  "priceFrom": "96 元 / 年（60GB/月） · 20 元 / 月（120GB）",
+  "pricePerGb": 0.133,
+  "billingCycle": "monthly",
+  "priceBasis": "年付加强版 ¥96/年（每月60GB，折约 8 元/月）；基础月付 ¥20/月 120GB，系统提供季 9/半 85/年 8/2年 7/3年 6 折递增优惠。",
+  "couponCode": null,
+  "couponNote": "无独立优惠码，系统按计费周期阶梯打折（最高约 48 折）。",
+  "paymentMethods": [
+    "支付宝",
+    "微信",
+    "USDT"
+  ],
+  "launchYear": null,
+  "highlights": [
+    "企业级 IEPL / IPLC 内网专线，强调抗干扰与抗封锁（品牌口径）",
+    "年付 ¥96 小包与 120G–1500G 四档循环包并存",
+    "支持支付宝、微信与 USDT 支付"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "缺少独立逐项测试结果（需自行核实）",
+    "ai": "缺少独立逐项测试结果（需自行核实）",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/fatcat-unlock.png",
+    "topology": "/images/brands/fatcat-topology.png"
+  },
+  "scenarios": [
+    "iepl",
+    "mid",
+    "longterm"
+  ],
+  "protocols": [
+    "主流代理协议（品牌资料未细列）"
+  ],
+  "lineTypes": [
+    "企业级 IEPL / IPLC 内网专线（品牌口径）"
+  ],
+  "strengths": [
+    "8 元/月级年付小包与企业 1500GB 档同时存在，覆盖个人到团队跨度大",
+    "长周期自动降价清晰，最高至三年 6 折"
+  ],
+  "limitations": [
+    "具体协议字段与地区测速数据尚未在当前档案中补充",
+    "暂无独立合作推广直达入口"
+  ],
+  "suitableFor": [
+    "注重抗封锁冗余定位、需要 300GB–1500GB 较高月流量的长期用户"
+  ],
+  "notSuitableFor": [
+    "必须先看多地区速度表再购买的保守型用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "suppressIndex": false,
+  "lastVerified": "2026-08-09",
+  "pricingNote": "年付加强版 ¥96（60GB/月），基础月付 ¥20（120GB），标准 ¥40（300GB），旗舰 ¥100（700GB），企业 ¥180（1500GB）；支持支付宝/微信/USDT。",
+  "plans": [
+    {
+      "name": "年付加强版",
+      "cycle": "年付",
+      "price": "¥96",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB"
+    },
+    {
+      "name": "基础套餐",
+      "cycle": "月付",
+      "price": "¥20",
+      "traffic": "120GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "基础套餐",
+      "cycle": "年付",
+      "price": "¥192",
+      "traffic": "120GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB"
+    },
+    {
+      "name": "标准套餐",
+      "cycle": "月付",
+      "price": "¥40",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB"
+    },
+    {
+      "name": "标准套餐",
+      "cycle": "年付",
+      "price": "¥384",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.107 元/GB"
+    },
+    {
+      "name": "旗舰套餐",
+      "cycle": "月付",
+      "price": "¥100",
+      "traffic": "700GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.143 元/GB"
+    },
+    {
+      "name": "旗舰套餐",
+      "cycle": "年付",
+      "price": "¥960",
+      "traffic": "700GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.114 元/GB"
+    },
+    {
+      "name": "企业套餐",
+      "cycle": "月付",
+      "price": "¥180",
+      "traffic": "1500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "企业套餐",
+      "cycle": "年付",
+      "price": "¥1728",
+      "traffic": "1500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.096 元/GB"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "中端内网专线型",
+      "status": "sourced"
+    },
+    {
+      "label": "起步套餐",
+      "value": "¥96 / 年（60GB/月） · ¥20 / 月（120GB）",
+      "status": "sourced"
+    },
+    {
+      "label": "主打线路",
+      "value": "企业级 IEPL / IPLC 内网专线（品牌口径）",
+      "status": "sourced"
+    },
+    {
+      "label": "支付方式",
+      "value": "支付宝 / 微信 / USDT",
+      "status": "sourced"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": null,
+  "reviewSlug": null
+}

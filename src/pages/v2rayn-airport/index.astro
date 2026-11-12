@@ -3,7 +3,7 @@
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BrandPickList from '@/components/BrandPickList.astro';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, faqSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const reasons: Record<string, string> = {
   'guangnian-ti':
@@ -13,7 +13,7 @@ const reasons: Record<string, string> = {
   'weitu-yun': 'VLESS 协议加三网优化入口，对 Windows 用户常见的「入口线路差导致全局慢」有针对性。',
   'yifan-yun': 'VLESS + 150GB，Windows 上开 TUN 模式跑全局时流量消耗更快，额度宽裕会省心不少。',
   u1s1: 'VLESS 协议，20 元 120GB，流媒体向配置，适合桌面端看剧为主的用户。',
-  'quanqiu-yun': 'VLESS 协议且 AI 与流媒体口径齐备，适合在电脑上同时跑 AI 工具与视频的用户。',
+  kuaili: 'VLESS + IEPL 且支持第三方订阅导入，附 50 节点实时速率分布图，适合桌面端综合场景。',
 };
 
 const faq = [
@@ -47,8 +47,17 @@ const crumbs: Crumb[] = [
 
 <Base
   title="v2rayN 机场推荐：Windows 电脑可用的机场与订阅"
-  description="v2rayN 机场推荐：适合 Windows 与 v2rayN 用户的在库机场名单、价格与优惠码，说明订阅格式怎么要、协议支持怎么看，以及 TUN 模式断网时该怎么把问题分开排查。"
-  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  description="v2rayN/Windows可用机场推荐：支持VLESS/VMess订阅的品牌与优惠码对比，说明TUN模式断网分流排查方法。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: 'v2rayN 机场推荐',
+      description: '适配 Windows 与 v2rayN 客户端的在库机场名单与订阅配置要点',
+      path: '/v2rayn-airport/',
+    }),
+    faqSchema(faq),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
@@ -117,11 +126,16 @@ const crumbs: Crumb[] = [
     </p>
     <div class="mt-6">
       <BrandPickList
-        slugs={['guangnian-ti', 'guangsu-yun', 'weitu-yun', 'yifan-yun', 'u1s1', 'quanqiu-yun']}
+        slugs={['guangnian-ti', 'guangsu-yun', 'weitu-yun', 'yifan-yun', 'u1s1', 'kuaili']}
         reasons={reasons}
         limit={6}
       />
     </div>
+    <p class="meta-text m-0 mt-4">
+      需注意「仅自研端」品牌无法向 v2rayN 导入订阅；Windows 多内核客户端对比见<a
+        href="/apps/client-matrix/">全平台客户端选型指南</a
+      >。
+    </p>
   </section>
 
   <section class="rule-top mt-14 pt-10 pb-6" aria-labelledby="faq-heading">

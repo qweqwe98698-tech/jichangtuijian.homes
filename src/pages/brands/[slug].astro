@@ -6,7 +6,7 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import VerifyStamp from '@/components/VerifyStamp.astro';
 import BrandCharts from '@/components/BrandCharts.astro';
 import BrandPanelData from '@/components/BrandPanelData.astro';
-import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 export async function getStaticPaths() {
   const brands = await getCollection('brands');
@@ -74,48 +74,90 @@ const crumbs: Crumb[] = [
 ];
 
 const brandTaglines: Record<string, string> = {
-  'dalaoyun': '5.6 元极低入门价与专线小包技术档案',
-  'ermao-yun': '20 元档 130GB 均衡配置与参数档案',
-  'feimao-yun': '7 元起步低门槛小包与参数档案',
-  'firefly': '8 元 IPLC 专线尝鲜与流媒体解锁参数档案',
-  'guangnian-ti': '18 元档均衡型配置与参数档案',
-  'guangsu-yun': '老牌专线年付小包与双解锁参数档案',
-  'huanqiuti': '5.6 元极致性价比小包与基础访问档案',
-  'jilian-yun': '全能力中端专线与双解锁参数档案',
-  'kexin-yun': '25 元档流媒体向专线与参数档案',
-  'kuaili': '25 元档全协议双解锁全能型档案',
-  'lingmao-net': '19 元 150GB 月付低单价参数档案',
-  'liulianyun': '5.6 元轻量小包配置与备用节点档案',
-  'muguang-jiasu': '20 元档 IEPL 专线与流媒体解锁档案',
-  'nexitally': '老牌高端定位机场资料与核验状态',
-  'quanqiu-yun': '20 元档双解锁小包与参数档案',
-  'shandianshu': '5.6 元超低单价与 IEPL 专线小包档案',
-  'shanyue': '24 元档企业内网与大流量并发参数档案',
-  'shenxing-jiasu': '14 元 120GB 实用容量与双解锁档案',
-  'sogo-yun': '25 元进阶档双全解锁参数档案',
-  'sujie': '25 元档 AI 解锁优先配置与参数档案',
-  'tiziyun': '7.4 元新锐 IEPL 专线与轻量配置档案',
-  'u1s1': '20 元档流媒体向专线与参数档案',
-  'weifeng-wangluo': '7 元起步 IEPL 专线轻量小包技术档案',
-  'weitu-yun': '三网优化与 60+ 节点参数档案',
-  'wgetcloud': '专线接入高端定位机场资料与核验状态',
-  'wuyou-lianjie': '19 元月付 IEPL 专线新锐机场参数档案',
-  'xingdao-meng': '老牌多套餐弹性档位与参数档案',
-  'yifan-yun': '20 元 150GB 高流量单价与参数档案',
-  'yinxingren': '24 元企业级内网通道与隐私安全档案',
-  'yuzhou-yun': '14.9 元流媒体向 IEPL 小包档案',
+  'dalaoyun': '官网入口、约5.6元小包与dly888优惠码',
+  'ermao-yun': '官网与20元130GB套餐、ermao5555优惠码',
+  'feimao-yun': '官网入口、约7元IEPL小包与flycat888优惠码',
+  'firefly': '官网与8元IPLC专线套餐、firefly优惠码档案',
+  'guangnian-ti': '官网入口、18元110GB套餐与gnt6666优惠码',
+  'guangsu-yun': '官网入口、99元/年套餐与AMM优惠码技术档案',
+  'huanqiuti': '官网、约5.6元入门套餐与HQ66优惠码档案',
+  'jilian-yun': '官网入口、18元100GB套餐与ji8888优惠码',
+  'kexin-yun': '官网入口、25元流媒体专线与kkk333优惠码',
+  'kuaili': '官网入口、25元全能套餐与kkk2222优惠码',
+  'lingmao-net': '官网与19元150GB月付套餐、lmao888优惠码',
+  'liulianyun': '官网、约5.6元备用小包与ll88优惠码档案',
+  'muguang-jiasu': '官网入口、20元IEPL套餐与muguang5555优惠码',
+  'nexitally': '品牌资料、专线定位与官方入口核验状态',
+  'quanqiu-yun': '官网与20元双解锁套餐、qqy7777优惠码档案',
+  'shandianshu': '官网、约5.6元IEPL小包与sd88优惠码档案',
+  'shanyue': '官网入口、24元企业内网套餐与shanyue优惠码',
+  'shenxing-jiasu': '官网与约14元120GB套餐、xs0077优惠码档案',
+  'sogo-yun': '官网入口、25元双全解锁套餐与sss777优惠码',
+  'sujie': '官网与25元AI专线套餐、sss1111优惠码档案',
+  'tiziyun': '官网入口、约7.4元专线小包与tiziyun优惠码',
+  'u1s1': '官网与20元流媒体专线、akaka优惠码档案',
+  'weifeng-wangluo': '官网入口、137元/年清风档、50节点面板图与flat888优惠码',
+  'weitu-yun': '官网入口、14.9元/100GB月付、79.9元/年限量档与优惠码weitu666',
+  'wgetcloud': '官网注册入口、297元/季Trojan专线与59节点历史测试档案',
+  'wuyou-lianjie': '官网入口、79元/年MINI、19元月付、50节点流媒体原图与wuyou666',
+  'xingdao-meng': '官网与96元/年贴心小包、多档不限时包及nmw888优惠码',
+  'yifan-yun': '官网入口、20元150GB三协议大流量与yfy6666优惠码',
+  'yinxingren': '官网与109元/年小包、24元月付及yxr888优惠码档案',
+  'yunjiexian': '官网与约5.6元IEPL小包、yjx888优惠码档案',
+  'yuzhou-yun': '官网入口、14.9元流媒体档、50节点面板图与YUZHOU553优惠码',
+  baiyueguang: '官网入口、66元/季100GB档与79地区历史测试档案',
+  flyingbird: '飞鸟机场套餐表、Shadowsocks专线与theo/year85优惠码',
+  cyberguard: '官网入口、32元350GB大流量、半年95元与不限时流量包档案',
+  'longmao-yun': '龙猫云套餐表、SS与IPLC专线及多周期折扣档案',
+  fatcat: '肥猫云套餐表、96元/年加强版与企业级内网专线档案',
+  tntcloud: 'TNTCloud原3A加速器、30元/季轻量包与TNT85优惠码档案',
+  'qingyun-ti': '青云梯老牌团队、96元/年与qyt80八折优惠码档案',
+  'shanshui-yun': '官网入口、15元100GB琴档、88元年付与27节点历史档案',
+  'lingdong-yun': '官网入口、99元/年与20元月付、OpenAI全解锁档案',
+  langwang: '浪网品牌资料与遮挡字段核验状态',
+  edgenova: '官网入口、15元限时月付、多线路分配与TH888八折码',
+  sslar: 'SSLAR企业IEPL与多线BGP、17元月付与ko3eTt0w优惠码',
 };
 
-const pageTitle = `${b.name}机场档案：${brandTaglines[brand.id] ?? b.positioning}`;
-const cleanPositioning = b.positioning.replace(/[。.]+$/, '');
-const pageDesc = `${b.name}技术参数档案：${cleanPositioning}。${b.priceFrom ? `起步套餐 ${b.priceFrom}。` : ''}收录协议线路、客户端支持、流媒体与 AI 解锁口径及风险等级，数据来源逐条标注。`;
+const customDescriptions: Record<string, string> = {
+  'weitu-yun': '唯兔云最新官网入口核验、14.9元/100GB限时月付（年付79.9元起）与优惠码weitu666，含10档完整套餐表、IPLC三网优化与60+节点参数档案。',
+  'guangnian-ti': '光年梯官网入口核验、18元/月110GB套餐与优惠码gnt6666，收录IEPL专线、VLESS协议、63节点第三方导出数据与深度评测。',
+  'feimao-yun': '飞猫云官网入口、84元/年（50GB/月）与25元月付星耀版价格及优惠码flycat888，附专属客户端说明与测速面板原图。',
+  'jilian-yun': '极连云官网入口核验、18元/月100GB套餐与优惠码ji8888，收录IEPL专线、63节点面板延迟与AI工具口径档案。',
+  'guangsu-yun': '光速云官网入口、99元/年（69GB/月）、147元/247GB永久包与优惠码AMM，含70节点VLESS解锁与三网入口6组面板原图。',
+  'weifeng-wangluo': '微风网络官网入口、清风137元/年（100GB/月）与乘风27元月付全表、优惠码flat888，附50节点VLESS面板实拍图。',
+  'wuyou-lianjie': '无忧链接官网入口、MINI 79元/年与19元月付全表、优惠码wuyou666，附50节点测速原图与NF/D+ 50/50全解锁面板原图。',
+  firefly: 'Firefly（萤火虫）官网入口、96元/年与多周期Lite至Nova完整价格表、8折码firefly，及专属客户端使用提示。',
+  wgetcloud: 'WgetCloud官网入口、297元/季（230GB/月）Trojan专线三档套餐表，附2026-05-02 59节点全区历史测速与AI/流媒体汇总。',
+};
+
+const pageTitle = `${b.name}${brandTaglines[brand.id] ?? `官网与参数档案：${b.positioning}`}`;
+const pageH1 =
+  b.dataStatus === 'unverified'
+    ? `${b.name}品牌资料与官方入口核验状态`
+    : `${b.name}官网入口、套餐价格与参数档案`;
+
+const clampDesc = (s: string) => (s.length <= 74 ? s : `${s.slice(0, 72).replace(/[，。；、\s]+$/, '')}。`);
+const autoDesc =
+  b.dataStatus === 'unverified'
+    ? `${b.name}品牌资料与核验状态：目前暂未完成官方入口与完整配额核查，仅记录公开宣传口径与风控提醒，下单前请自行核实。`
+    : `${b.name}官网入口与参数核验：${b.priceFrom ?? '暂未定价'}${b.couponCode ? `，优惠码${b.couponCode}` : ''}。附完整套餐表、${b.lineTypes[0] ?? '线路口径'}与协议档案。`;
+const pageDesc = customDescriptions[brand.id] ?? clampDesc(autoDesc);
 ---
 
 <Base
   title={pageTitle}
   description={pageDesc}
-  schemaItems={[breadcrumbSchema(crumbs)]}
-  noindex={b.dataStatus === 'unverified'}
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'WebPage',
+      name: pageH1,
+      description: pageDesc,
+      path: `/brands/${brand.id}/`,
+    }),
+  ]}
+  noindex={b.dataStatus === 'unverified' || b.suppressIndex}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
@@ -135,7 +177,7 @@ const pageDesc = `${b.name}技术参数档案：${cleanPositioning}。${b.priceF
           }
         </p>
 
-        <h1 class="m-0 mt-2 text-[1.8rem] sm:text-[2rem]">{b.name}</h1>
+        <h1 class="m-0 mt-2 text-[1.8rem] sm:text-[2rem]">{pageH1}</h1>
         <p class="m-0 mt-3 max-w-[42rem] text-[1.05rem]">{b.positioning}</p>
 
         {
@@ -177,6 +219,25 @@ const pageDesc = `${b.name}技术参数档案：${cleanPositioning}。${b.priceF
             )
           }
         </div>
+        {b.priceBasis && <p class="m-0 mt-3 text-[0.9rem] text-muted">{b.priceBasis}</p>}
+        {
+          (b.paymentMethods?.length > 0 || b.clientNotes) && (
+            <div class="mt-3 space-y-1 border-t border-line pt-3 text-[0.88rem] text-muted">
+              {b.paymentMethods?.length > 0 && (
+                <p class="m-0">
+                  <strong class="text-ink">支付方式：</strong>
+                  {b.paymentMethods.join(' · ')}
+                </p>
+              )}
+              {b.clientNotes && (
+                <p class="m-0">
+                  <strong class="text-ink">客户端与订阅方式：</strong>
+                  {b.clientNotes}
+                </p>
+              )}
+            </div>
+          )
+        }
         <p class="meta-text m-0 mt-4 border-t border-line pt-3">
           {
             b.lastVerified
@@ -185,6 +246,45 @@ const pageDesc = `${b.name}技术参数档案：${cleanPositioning}。${b.priceF
           }
         </p>
       </section>
+
+      {
+        b.plans && b.plans.length > 0 && (
+          <section class="mt-8 max-w-[46rem]">
+            <h2 class="m-0 text-[1.35rem]">完整套餐价格表（渠道核对口径）</h2>
+            <p class="meta-text m-0 mt-1">
+              以下展开已知计费周期与流量包档位，折合单价仅按标称流量简单除算，未计入节点倍率与折扣叠加；结算请以官网当前页为准。
+            </p>
+            <div class="table-scroll mt-3">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">套餐名称</th>
+                    <th scope="col">计费周期</th>
+                    <th scope="col">价格</th>
+                    <th scope="col">标称流量</th>
+                    <th scope="col">发放方式</th>
+                    <th scope="col">折合单价</th>
+                    <th scope="col">说明</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {b.plans.map((p) => (
+                    <tr>
+                      <th scope="row" class="whitespace-nowrap">{p.name}</th>
+                      <td class="whitespace-nowrap">{p.cycle}</td>
+                      <td class="whitespace-nowrap font-display">{p.price}</td>
+                      <td class="whitespace-nowrap">{p.traffic}</td>
+                      <td class="whitespace-nowrap">{p.trafficCycle}</td>
+                      <td class="whitespace-nowrap">{p.pricePerGb ?? '—'}</td>
+                      <td class="min-w-[8rem] text-[0.86rem] text-muted">{p.note ?? '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )
+      }
 
       {
         b.highlights.length > 0 && (
@@ -226,6 +326,45 @@ const pageDesc = `${b.name}技术参数档案：${cleanPositioning}。${b.priceF
           >：「第三方公开数据」有真实测量但非本站执行，「官方与渠道资料」为品牌公开说明，「暂无统一测试数据」表示该项没有可引用来源，本站不做统一环境下的独立测速。
         </p>
       </section>
+
+      {
+        b.thirdPartySummary && (
+          <section class="mt-10 max-w-[46rem]">
+            <h2 class="m-0 text-[1.35rem]">历史第三方测试汇总（{b.thirdPartySummary.testedAt}）</h2>
+            <p class="meta-text m-0 mt-2">{b.thirdPartySummary.toolNote}</p>
+            {b.thirdPartySummary.regions.length > 0 && (
+              <div class="table-scroll mt-3">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">地区 / 测试项</th>
+                      <th scope="col">统计延迟</th>
+                      <th scope="col">统计下载</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {b.thirdPartySummary.regions.map((r) => (
+                      <tr>
+                        <th scope="row" class="whitespace-nowrap">{r.region}</th>
+                        <td class="whitespace-nowrap">{r.latency}</td>
+                        <td class="whitespace-nowrap">{r.download}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            {b.thirdPartySummary.unlockNotes.length > 0 && (
+              <ul class="mt-3 list-none space-y-1.5 p-0 text-[0.92rem] text-muted">
+                {b.thirdPartySummary.unlockNotes.map((u) => (
+                  <li class="border-l-2 border-amber pl-3">{u}</li>
+                ))}
+              </ul>
+            )}
+            <p class="meta-text m-0 mt-3 border-l-2 border-line pl-3">{b.thirdPartySummary.caveat}</p>
+          </section>
+        )
+      }
 
       <BrandPanelData brand={b} />
 
@@ -351,6 +490,8 @@ const pageDesc = `${b.name}技术参数档案：${cleanPositioning}。${b.priceF
         <div class="border border-line p-4">
           <p class="meta-text m-0 tracking-widest">交叉验证</p>
           <ul class="m-0 mt-2 list-none p-0 text-[0.92rem] leading-loose">
+            <li><a href="/">2026 机场推荐总览</a></li>
+            <li><a href="/best/stable/">稳定机场推荐候选标准</a></li>
             <li><a href="/airport-ranking/">在排行榜中横向比较</a></li>
             <li><a href="/brand-library/">在品牌库中筛选同档</a></li>
             <li><a href="/guides/stability-signals/">用稳定性清单自查</a></li>

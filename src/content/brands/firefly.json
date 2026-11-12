@@ -1,17 +1,18 @@
 {
   "name": "Firefly",
   "aliases": [
-    "萤火虫机场",
-    "Firefly Cloud"
+    "萤火虫",
+    "Firefly 机场",
+    "飞鸟同系"
   ],
   "tier": "budget",
-  "positioning": "2026 年新开业低门槛方案，8 元/月 60GB，宣称 IPLC 内网专线与流媒体解锁。",
-  "background": "Firefly 在渠道资料中标注 2026 年开业，主打 IPLC 专线与 8 元低入门门槛，提供 60GB 月流量，适合轻度尝鲜与备用节点。",
-  "priceFrom": "8 元 / 月 · 60GB",
+  "positioning": "IPLC 专线 + VLESS 原生 IP，年付 96 元起，与微风/飞鸟存在同系关联。",
+  "background": "Firefly（中文品牌资料亦作「萤火虫」）主打 IPLC 专线接入与 VLESS 协议，渠道资料称团队拥有 8 年运维经验、原生 IP 覆盖港新日美并解锁主流 AI（ChatGPT/Gemini/Meta AI）；2026 年 10 月起改用专属客户端登录即用，不提供通用订阅链接。与微风网络、FlyingBird 属于同源系站群。",
+  "priceFrom": "96 元 / 年（60GB/月） · 25 元 / 月（150GB）",
   "pricePerGb": 0.133,
-  "billingCycle": "monthly",
+  "billingCycle": "yearly",
   "couponCode": "firefly",
-  "couponNote": "专属优惠码。",
+  "couponNote": "新用户 8 折（年付 96 元小包不适用）；季 9 / 半 85 / 年 8 / 两年 7 / 三年 6 折。",
   "launchYear": "2026",
   "highlights": [
     "2026 年开业",
@@ -25,15 +26,15 @@
     "v2rayN"
   ],
   "claims": {
-    "streaming": "全解锁",
-    "ai": "全解锁",
-    "selfClient": false,
-    "subscriptionImport": true
+    "streaming": "品牌资料标注原生 IP 全解锁主流流媒体",
+    "ai": "品牌资料标注支持 ChatGPT / Gemini / Meta AI / Claude",
+    "selfClient": true,
+    "subscriptionImport": false
   },
   "images": {
     "speedtest": null,
-    "unlock": null,
-    "topology": null
+    "unlock": "/images/brands/firefly-unlock.png",
+    "topology": "/images/brands/firefly-topology.png"
   },
   "scenarios": [
     "budget",
@@ -66,7 +67,7 @@
   "riskLevel": "unknown",
   "dataStatus": "partial",
   "lastVerified": "2026-08-11",
-  "pricingNote": "起步套餐 8 元 / 月 · 60GB，优惠码 firefly。价格与优惠为渠道资料口径（核对于 2026-08-11），下单前请以官网结算页为准。",
+  "pricingNote": "年付版 96 元/年（60GB/月），Lite 月付 25 元/150GB，支持季付至三年付递增折扣及 100 元/100GB 不限时包；优惠码 firefly，支持支付宝/USDT（无微信）。",
   "facts": [
     {
       "label": "档位",
@@ -129,8 +130,129 @@
   ],
   "officialUrl": null,
   "affiliateUrl": "https://vip02.fireflyaff.com/#/?code=2n7VURre",
-  "reviewSlug": null,
+  "reviewSlug": "reviews/firefly",
   "panel": null,
   "panelDisputed": null,
-  "editorialPick": null
+  "editorialPick": null,
+  "priceBasis": "年付入门版 ¥96/年 每月 60GB（折约 8 元/月，不参与折扣码）；常规月付 Lite 档 ¥25/月 150GB，最高支持 3 年付（最低约 64 折）及 ¥100/100GB 不限时。",
+  "paymentMethods": [
+    "支付宝",
+    "USDT（无微信）"
+  ],
+  "clientNotes": "专属客户端，下载登录即用（不提供第三方订阅链接）；品牌资料标注不限速、不限设备连接数。",
+  "plans": [
+    {
+      "name": "Firefly 年付版",
+      "cycle": "年付",
+      "price": "¥96",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB",
+      "note": "优惠码不适用"
+    },
+    {
+      "name": "Firefly 不限时",
+      "cycle": "一次性付费",
+      "price": "¥100",
+      "traffic": "100GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.000 元/GB"
+    },
+    {
+      "name": "Firefly Lite",
+      "cycle": "月付",
+      "price": "¥25",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "Firefly Lite（季付）",
+      "cycle": "季付",
+      "price": "¥67",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.149 元/GB"
+    },
+    {
+      "name": "Firefly Lite（半年付）",
+      "cycle": "半年付",
+      "price": "¥127",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.141 元/GB"
+    },
+    {
+      "name": "Firefly Lite（年付）",
+      "cycle": "年付",
+      "price": "¥240",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB"
+    },
+    {
+      "name": "Firefly Lite（两年付）",
+      "cycle": "两年付",
+      "price": "¥420",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.117 元/GB"
+    },
+    {
+      "name": "Firefly Lite（三年付）",
+      "cycle": "三年付",
+      "price": "¥540",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.100 元/GB"
+    },
+    {
+      "name": "Firefly Plus",
+      "cycle": "月付",
+      "price": "¥45",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "Firefly Plus（年付）",
+      "cycle": "年付",
+      "price": "¥432",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "Firefly Blaze",
+      "cycle": "月付",
+      "price": "¥85",
+      "traffic": "600GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.142 元/GB"
+    },
+    {
+      "name": "Firefly Blaze（年付）",
+      "cycle": "年付",
+      "price": "¥816",
+      "traffic": "600GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.113 元/GB"
+    },
+    {
+      "name": "Firefly Nova",
+      "cycle": "月付",
+      "price": "¥150",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "Firefly Nova（年付）",
+      "cycle": "年付",
+      "price": "¥1360",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.113 元/GB"
+    }
+  ]
 }

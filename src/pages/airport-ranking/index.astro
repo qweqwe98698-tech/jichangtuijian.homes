@@ -9,14 +9,21 @@ import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import VerifyStamp from '@/components/VerifyStamp.astro';
 import EditorialPicks from '@/components/EditorialPicks.astro';
-import { SITE } from '@/lib/site';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { SITE, LAST_SITE_UPDATE } from '@/lib/site';
+import { breadcrumbSchema, faqSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
-const all = (await getCollection('brands')).filter((b) => b.data.priceFrom !== null);
+const all = (await getCollection('brands')).filter(
+  (b) => b.data.priceFrom !== null && !b.data.suppressIndex && b.data.dataStatus !== 'unverified',
+);
 
 const priceValue = (s: string | null) => {
-  const m = s?.match(/([\d.]+)\s*元/);
-  return m ? Number(m[1]) : 999;
+  if (!s) return 999;
+  const m = s.match(/¥\s*([\d.]+)|([\d.]+)\s*元/);
+  if (!m) return 999;
+  const val = Number(m[1] ?? m[2]);
+  if (/\/\s*年/.test(s)) return Number((val / 12).toFixed(2));
+  if (/\/\s*季/.test(s)) return Number((val / 3).toFixed(2));
+  return val;
 };
 const capabilityScore = (d: (typeof all)[number]['data']) =>
   (d.claims.ai ? 2 : 0) +
@@ -99,13 +106,23 @@ const itemList = {
 
 <Base
   title="2026 机场排行榜：性价比、入门门槛与能力覆盖三榜"
-  description="2026 机场排行榜与天梯榜：按每 GB 单价、起步门槛、宣称能力覆盖三个可核验维度分别排名，公开排序依据与数据来源，不用缺乏来源的数字编造综合第一。"
-  schemaItems={[breadcrumbSchema(crumbs), itemList, faqSchema(faq)]}
+  description="2026机场排行榜：按每GB单价、起步门槛与宣称能力覆盖三维度公开排序，不编造主观第一，附稳定机场筛选与深度评测入口。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '2026 机场排行榜',
+      description: '按每 GB 单价、起步门槛与能力覆盖三个可复算维度公开排序',
+      path: '/airport-ranking/',
+    }),
+    itemList,
+    faqSchema(faq),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
   <header class="mt-8 max-w-[50rem]">
-    <h1 class="m-0 text-[1.8rem] sm:text-[2.2rem]">2026 机场排行榜</h1>
+    <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">2026 机场排行榜</h1>
     <div class="verdict">
       <p class="verdict-label m-0">这份榜单怎么读</p>
       <p class="m-0 text-[1.02rem]">
@@ -115,9 +132,9 @@ const itemList = {
       </p>
     </div>
     <p class="meta-text m-0 mt-4">
-      数据口径：价格、优惠与能力宣称均来自渠道与品牌方资料（核对于 2026-08-11）， 完整对照见<a
+      数据口径：价格、优惠与能力宣称均来自渠道与品牌方资料（核对于 {LAST_SITE_UPDATE}）， 完整对照见<a
         href="/brand-library/">机场品牌库</a
-      >；排序方法见<a href="/methodology/">资料核验方法</a>。
+      >；重点筛选晚高峰韧性见<a href="/best/stable/">稳定机场推荐</a>；排序方法见<a href="/methodology/">资料核验方法</a>。
     </p>
   </header>
 

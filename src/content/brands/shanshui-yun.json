@@ -1,0 +1,191 @@
+{
+  "name": "山水云",
+  "aliases": [
+    "山水云机场"
+  ],
+  "tier": "budget",
+  "positioning": "¥15/月（100GB）与 ¥88/年（64GB/月）轻量阶梯型机场，保留 2026-06-29 历史 27 节点测试记录。",
+  "background": "山水云采用高辨识度的「琴/棋/书」月付三档（15/25/50 元）搭配年付/半年付/季付轻量梯度（88 元/年 64GB 或 88 元/半年 128GB），预算友好。2026-06-29 留存的 12 地区 27 节点历史测速中共有 22 节点取得非零速度，其中美国节点均速表现突出。",
+  "priceFrom": "88 元 / 年（64GB/月） · 15 元 / 月（100GB）",
+  "pricePerGb": 0.115,
+  "billingCycle": "monthly",
+  "priceBasis": "月付「琴」档 ¥15/月 100GB（0.150 元/GB）；64GB 轻量包年付 ¥88（折约 7.33 元/月，0.115 元/GB），另有半年 ¥88/128GB 与季 ¥75/256GB 梯度。",
+  "couponCode": null,
+  "couponNote": "当前未记录公开优惠码。",
+  "launchYear": null,
+  "highlights": [
+    "¥15/月 100GB 月付梯度清楚，且有 ¥88/年（64GB）低成本年付",
+    "覆盖港日新美台越泰英印尼法德加 12 个地区名目",
+    "2026-06-29 历史测试美国均值 180.29Mbps 为当批最佳组，多AI/流媒体可用"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "历史测试（2026-06-29）显示 Netflix / Disney+ / Max / TikTok 可用",
+    "ai": "历史测试（2026-06-29）显示 ChatGPT / Claude / Gemini 可用",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/shanshui-yun-unlock.png",
+    "topology": "/images/brands/shanshui-yun-topology.png"
+  },
+  "scenarios": [
+    "budget",
+    "streaming",
+    "ai",
+    "newbie"
+  ],
+  "protocols": [
+    "历史资料尚未列明具体协议"
+  ],
+  "lineTypes": [
+    "多地区通用接入（历史资料）"
+  ],
+  "strengths": [
+    "同时具备 15 元低门槛月付与 75–88 元多流量季度/半年灵活选项",
+    "2026-06-29 历史数据中美、日、港、新均达到 142–180 Mbps 级吞吐且主流 AI 齐备"
+  ],
+  "limitations": [
+    "2026-06-29 测试总节点 27 个，其中 5 个节点未取得非零下载，需留意冗余度",
+    "具体协议类型及近期更新状态尚缺，仅作历史档案参照"
+  ],
+  "suitableFor": [
+    "预算在 15–25 元/月、同时兼顾美日节点速度与主流流媒体解锁的轻量用户"
+  ],
+  "notSuitableFor": [
+    "依赖大量香港高冗余节点库重度下载的用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "suppressIndex": false,
+  "lastVerified": "2026-08-24",
+  "pricingNote": "64G 年付 ¥88，128G 半年 ¥88，256G 季付 ¥75；月付琴 100G ¥15、棋 200G ¥25、书 500G ¥50。",
+  "plans": [
+    {
+      "name": "64G/轻量套餐",
+      "cycle": "年付",
+      "price": "¥88",
+      "traffic": "64GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.115 元/GB",
+      "note": "折约 7.33 元/月"
+    },
+    {
+      "name": "128G/轻量套餐",
+      "cycle": "半年付",
+      "price": "¥88",
+      "traffic": "128GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.115 元/GB"
+    },
+    {
+      "name": "256G/轻量套餐",
+      "cycle": "季付",
+      "price": "¥75",
+      "traffic": "256GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.098 元/GB"
+    },
+    {
+      "name": "100G/月-琴",
+      "cycle": "月付",
+      "price": "¥15",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "200G/月-棋",
+      "cycle": "月付",
+      "price": "¥25",
+      "traffic": "200GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.125 元/GB"
+    },
+    {
+      "name": "500G/月-书",
+      "cycle": "月付",
+      "price": "¥50",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.100 元/GB"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "轻量平价型",
+      "status": "sourced"
+    },
+    {
+      "label": "起步套餐",
+      "value": "¥15 / 月 · 100GB（64G 年付 ¥88）",
+      "status": "sourced"
+    },
+    {
+      "label": "历史节点数量",
+      "value": "27 节点 / 12 地区（22 个测通 · 2026-06-29）",
+      "status": "sourced"
+    },
+    {
+      "label": "流媒体与 AI",
+      "value": "2026-06-29 测试标注 ChatGPT/Claude/Gemini 与 NF/D+/HBO/TT 可用",
+      "status": "sourced"
+    }
+  ],
+  "thirdPartySummary": {
+    "testedAt": "2026-06-29",
+    "toolNote": "历史留存 12 地区 27 节点测试均值统计（22 节点非零下载，非实时测速）",
+    "regions": [
+      {
+        "region": "美国",
+        "latency": "349.3 ms",
+        "download": "180.29 Mbps (22.54 MB/s)"
+      },
+      {
+        "region": "日本",
+        "latency": "229.8 ms",
+        "download": "160.51 Mbps"
+      },
+      {
+        "region": "香港",
+        "latency": "151.4 ms",
+        "download": "152.86 Mbps"
+      },
+      {
+        "region": "新加坡",
+        "latency": "179.8 ms",
+        "download": "142.98 Mbps"
+      },
+      {
+        "region": "越南",
+        "latency": "232 ms",
+        "download": "87.68 Mbps"
+      },
+      {
+        "region": "泰国",
+        "latency": "217 ms",
+        "download": "82.00 Mbps"
+      },
+      {
+        "region": "英国",
+        "latency": "328 ms",
+        "download": "65.20 Mbps"
+      }
+    ],
+    "unlockNotes": [
+      "AI（2026-06-29）：ChatGPT、Claude、Gemini 可用",
+      "流媒体（2026-06-29）：Netflix、Disney+、Max/HBO、TikTok 可用"
+    ],
+    "caveat": "该组数据采样于 2026-06-29，当前协议类型与现时线路稳定性请以官网试探结果为准。"
+  },
+  "officialUrl": null,
+  "affiliateUrl": "https://sldm1.ssyylf.com/#/register?code=YD5iQ888",
+  "reviewSlug": "reviews/shanshui-yun"
+}

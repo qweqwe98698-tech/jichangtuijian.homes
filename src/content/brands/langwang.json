@@ -1,0 +1,156 @@
+{
+  "name": "浪网",
+  "aliases": [
+    "浪网机场",
+    "WaveNet"
+  ],
+  "tier": "premium",
+  "positioning": "IEPL 专线多档长周期方案（入门 ¥30/月），但因原资料多处字段与入门流量截图遮挡，暂标待验证状态。",
+  "background": "浪网在 2026-08-09 品牌库快照中标称 IEPL 专线，套餐从入门、进阶（450GB）、高端（800GB）到商业（2000GB）均有覆盖，同时提供年付标准（¥119/80G）及流量包与定制线路包。但由于入门档流量数字被截图遮挡（标注为截150G），且协议类型、客户端方式与地区节点均未明确核验，本站暂不参与检索索引或推荐排名。",
+  "priceFrom": "¥30 / 月（截 150G 遮挡待核对） · 年付标准 ¥119（80GB/月）",
+  "pricePerGb": null,
+  "billingCycle": "monthly",
+  "priceBasis": "年付标准明确 ¥119/年（80GB/月）；入门月付 ¥30 原截图显示遮挡（疑似 150G 档），实际额度未确认。",
+  "couponCode": null,
+  "couponNote": "尚未核实公开优惠码。",
+  "launchYear": null,
+  "highlights": [
+    "提供多达三年期的入门到 2TB 商业周期套餐与一次性流量包",
+    "明确披露截图遮挡与字段缺口，未凑数估算流量数据"
+  ],
+  "clients": [
+    "通用/专属客户端信息尚缺"
+  ],
+  "claims": {
+    "streaming": "缺字段：尚未开展解锁测试",
+    "ai": "缺字段：尚未开展解锁测试",
+    "selfClient": false,
+    "subscriptionImport": false
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": null,
+    "topology": null
+  },
+  "scenarios": [
+    "iepl"
+  ],
+  "protocols": [
+    "具体协议暂无公开核验"
+  ],
+  "lineTypes": [
+    "IEPL 专线（品牌截图标注）"
+  ],
+  "strengths": [
+    "商业级至 2000GB 大容量及三年期阶梯定价清晰列出"
+  ],
+  "limitations": [
+    "核心字段缺口较大：协议、客户端支持、地区覆盖、设备上限均未核实",
+    "入门套餐流量数字原图存在遮挡（截150G），且无速度或解锁测试记录"
+  ],
+  "suitableFor": [
+    "愿意自行注册查验完整后台协议与客服回应的进阶调研用户"
+  ],
+  "notSuitableFor": [
+    "看重完整核验资料或需要低试错成本的新手用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "unverified",
+  "suppressIndex": true,
+  "lastVerified": "2026-08-09",
+  "pricingNote": "年付标准 ¥119（80GB/月），入门 ¥30/月（原图流量遮挡），进阶 ¥70/450GB，高端 ¥120/800GB，商业 ¥200/2000GB，因核验字段不足暂设为不收索引。",
+  "plans": [
+    {
+      "name": "浪网 年付标准",
+      "cycle": "年付",
+      "price": "¥119",
+      "traffic": "80GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.124 元/GB"
+    },
+    {
+      "name": "浪网 入门",
+      "cycle": "月付",
+      "price": "¥30",
+      "traffic": "截图遮挡（截150G）",
+      "trafficCycle": "每月",
+      "note": "原截图流量数字受遮挡，以官网为准"
+    },
+    {
+      "name": "浪网 进阶",
+      "cycle": "月付",
+      "price": "¥70",
+      "traffic": "450GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.156 元/GB"
+    },
+    {
+      "name": "浪网 高端",
+      "cycle": "月付",
+      "price": "¥120",
+      "traffic": "800GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "浪网 商业",
+      "cycle": "月付",
+      "price": "¥200",
+      "traffic": "2000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.100 元/GB"
+    },
+    {
+      "name": "浪网 小流量包",
+      "cycle": "一次性付费",
+      "price": "¥239",
+      "traffic": "180GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.328 元/GB"
+    },
+    {
+      "name": "浪网 标准流量包",
+      "cycle": "一次性付费",
+      "price": "¥569",
+      "traffic": "450GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.264 元/GB"
+    },
+    {
+      "name": "浪网 精英流量包",
+      "cycle": "一次性付费",
+      "price": "¥1099",
+      "traffic": "900GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.221 元/GB"
+    },
+    {
+      "name": "浪网 定制线路包",
+      "cycle": "月付",
+      "price": "¥640",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "1.280 元/GB"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "档案信息待补齐（noindex）",
+      "status": "pending"
+    },
+    {
+      "label": "已记录起价",
+      "value": "年付标准 ¥119（80GB/月） / 入门 ¥30（遮挡待确认）",
+      "status": "sourced"
+    },
+    {
+      "label": "协议与客户端",
+      "value": "暂无公开信息",
+      "status": "pending"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": "https://varnexa.wavenetaff.com/#/?code=xwAM4tTd",
+  "reviewSlug": null
+}

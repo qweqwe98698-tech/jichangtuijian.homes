@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import ArticleRow from '@/components/ArticleRow.astro';
-import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const reviews = (
   await getCollection('articles', ({ id, data }) => id.startsWith('reviews/') && !data.draft)
@@ -18,8 +18,16 @@ const crumbs: Crumb[] = [
 
 <Base
   title="机场评测：按公开资料逐项核对"
-  description="机场评测列表。每篇按公开资料核对撰写：线路口径、套餐、适用场景、优点与局限逐项说明；没有统一测试数据的项目一律如实标注，不给猜测数字。"
-  schemaItems={[breadcrumbSchema(crumbs)]}
+  description="机场评测合集：按线路口径、套餐单价、适用人群与优缺点逐项核对，无统一测速数据一律如实标明，不编造主观结论。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '机场评测',
+      description: '按公开核验方法撰写的机场深度评测索引',
+      path: '/reviews/',
+    }),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 

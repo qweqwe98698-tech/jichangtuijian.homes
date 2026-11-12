@@ -3,7 +3,7 @@
 import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
-import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const fixes = await getCollection(
   'articles',
@@ -60,8 +60,16 @@ const crumbs: Crumb[] = [
 
 <Base
   title="故障排查：连不上、超时、不解锁怎么办"
-  description="机场连不上、节点超时、流媒体不解锁？按症状进入对应排查页，每页都给出快速答案和从上到下的排查顺序，不让你瞎试。"
-  schemaItems={[breadcrumbSchema(crumbs)]}
+  description="节点全部超时、ChatGPT提示异常、Netflix看不了或晚高峰掉速？按概率从高到低逐层定位故障源头与修复步骤。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '故障排查',
+      description: '代理客户端连不上、超慢、ChatGPT 或流媒体不解锁分层排查手册',
+      path: '/fix/',
+    }),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 

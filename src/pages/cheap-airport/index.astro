@@ -4,32 +4,49 @@ import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BrandPickList from '@/components/BrandPickList.astro';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { LAST_SITE_UPDATE } from '@/lib/site';
+import { breadcrumbSchema, faqSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const brands = (await getCollection('brands'))
-  .filter((b) => b.data.pricePerGb !== null)
+  .filter((b) => b.data.pricePerGb !== null && !b.data.suppressIndex && b.data.dataStatus !== 'unverified')
   .sort((a, b) => (a.data.pricePerGb ?? 99) - (b.data.pricePerGb ?? 99));
 
 const cheapest = brands.slice(0, 6);
 
 const reasons: Record<string, string> = {
+  cyberguard:
+    '¥32/月 350GB 折合单价 0.091 元/GB，适合大流量预算用户；另有 ¥95 半年付轻量档与不限时流量包（仅存 2025 历史测速）。',
+  dalaoyun:
+    '年付约 5.6 元/月含 60GB，支持 VLESS + 第三方订阅导入，与同系 5.6 元档品牌配置相似。',
+  shandianshu:
+    '年付约 5.6 元/月含 60GB（IEPL + VLESS + 第三方订阅），季度及以上可用优惠码 sd88。',
+  yunjiexian:
+    '年付约 5.6 元/月含 60GB，规格与同档相近；注册前建议优先确认跳转地址可正常打开。',
+  liulianyun:
+    '年付约 5.6 元/月含 60GB，是该档位中未在公开渠道明确写出协议细节的备选站之一。',
+  huanqiuti:
+    '年付约 5.6 元/月含 60GB，规格与同档相近；同样需核对注册入口状态再决定下单。',
+  yinxingren:
+    '星耀风暴年付 109 元（80GB/月）折合 0.114 元/GB，仅用自研客户端且不提供第三方订阅。',
+  'weifeng-wangluo':
+    '「清风」年付 137 元（100GB/月）含 IEPL + VLESS 与 50 节点实拍面板图，综合透明度更高。',
   'feimao-yun':
-    '7 元 50GB 是全库最低门槛，小包结构精准匹配「一天几十分钟」的轻度用量；代价是 2023 年开业、历史短，且最低价为年付摊算。',
+    '84 元/年（50GB/月）门槛极低，采用专属客户端免配订阅模式；注意最低价为年付摊算。',
   'xingdao-meng':
-    '8 元 60GB 同为年付摊算价，胜在套餐颗粒度细、有不限时选项，适合用量极低但希望长期留着备用的人。',
+    '96 元/年（60GB/月），套餐颗粒度细且含不限时流量包与 55 节点测速面板导出图。',
   'lingmao-net':
-    '月付 19 元 150GB，每 GB 约 0.127 元——全库月付单价最低，不用拿年付换折扣，风控上比前两家更友好。',
+    '月付 Small 25 元/150GB（年付小包 85 元/45GB），2026 年 10 月起全面转专属客户端使用。',
   'yifan-yun':
-    '20 元 150GB，单价与灵猫接近，同时多了 AI 与流媒体解锁宣称，适合预算紧但场景多的用户。',
-  'weitu-yun':
-    '14.9 元 100GB，卖点是三网优化与负载均衡而非解锁；适合入口线路差、以浏览办公为主的用户。',
-  'yuzhou-yun': '14.9 元 100GB 且宣称流媒体全解锁，是低价档里少见的看剧向选择；未宣称 AI 能力。',
+    '月付 20 元 150GB，支持 Hysteria2 / VLESS / SS 三协议与第三方订阅导入，兼容主流分流规则。',
+  'weitu-yun': '限时月付 14.9 元 100GB，卖点是三网优化与负载均衡，适合入口差的用户。',
+  'yuzhou-yun': '14.9 元 100GB 渠道档且附 50 节点 VLESS 测速面板截图，适合看剧向尝鲜。',
+  'shanshui-yun': '年付 88 元 64GB/月、月付「琴」15 元 100GB，附 2026-06-29 历史 27 节点统计数据。',
 };
 
 const faq = [
   {
     q: '便宜机场一般多少钱一个月？',
-    a: '本站在库品牌的起步价区间为 7–25 元/月，其中 15 元以下属于入门档。需要注意两点：一是最低价往往是年付摊算价，实际要一次性支付整年；二是低价套餐通常是小流量包，单价低不等于总花费低。',
+    a: '本站在库品牌的起步价区间覆盖 5.6–32 元/月，其中 15 元以下属于入门档。需要注意两点：一是最低价往往是年付摊算价，实际要一次性支付整年；二是低价套餐通常是小流量包，或单位流量低但单次起付金额较高。',
   },
   {
     q: '每月 10 元的机场靠谱吗？',
@@ -57,8 +74,17 @@ const crumbs: Crumb[] = [
 
 <Base
   title="便宜机场推荐：入门档价格对照与低价避坑名单"
-  description="便宜机场推荐名单：在库机场按每 GB 单价排序，7 元起的入门档到 20 元档全对照，标注哪些是年付摊算价、哪些是小流量包，并给出低价方案的三条风控底线。"
-  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  description="2026便宜机场名单：约5.6元至20元入门档按每GB单价排序，区分年付摊算与小包月付，附低价防跑路三条底线。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '便宜机场推荐',
+      description: '入门档低价机场价格对照与风控底线说明',
+      path: '/cheap-airport/',
+    }),
+    faqSchema(faq),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
@@ -109,9 +135,11 @@ const crumbs: Crumb[] = [
                 <td class="whitespace-nowrap">
                   {b.data.billingCycle === 'yearly'
                     ? '年付摊算'
-                    : b.data.billingCycle === 'monthly'
-                      ? '月付'
-                      : '—'}
+                    : b.data.billingCycle === 'quarterly'
+                      ? '季付'
+                      : b.data.billingCycle === 'monthly'
+                        ? '月付'
+                        : '—'}
                 </td>
                 <td class="whitespace-nowrap font-display text-amber">
                   {b.data.couponCode ?? '—'}
@@ -123,7 +151,7 @@ const crumbs: Crumb[] = [
       </table>
     </div>
     <p class="meta-text mt-3">
-      价格为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，以官网结算页为准。
+      价格为渠道资料口径（核对于 {LAST_SITE_UPDATE}），品牌方可随时调整，以官网结算页为准。
     </p>
   </section>
 

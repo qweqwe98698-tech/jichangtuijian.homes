@@ -2,16 +2,17 @@
   "name": "光速云",
   "aliases": [
     "光速云机场",
-    "GuangsuCloud"
+    "光速云官网",
+    "LightSpeedCloud"
   ],
   "tier": "mid",
   "positioning": "主打 IEPL 企业级内网专线与 VLESS 协议的老牌综合型机场，线路、解锁与自研客户端三项都想覆盖。",
   "background": "光速云在渠道资料中被列为运营约六年的老牌机场，主打企业级内网专线与 VLESS 协议，并提供自研客户端。本站已核对其入口、起步套餐与优惠码；运营年限、节点规模与解锁能力没有可核验的公开数据，相关数据行按「暂无统一测试数据」标注。",
-  "priceFrom": "99 元 / 年 · 59GB/月",
-  "pricePerGb": 0.14,
+  "priceFrom": "99 元 / 年（69GB/月） · 25 元 / 月（168GB）",
+  "pricePerGb": 0.119,
   "billingCycle": "yearly",
   "couponCode": "AMM",
-  "couponNote": "通用优惠码，结算时输入享受折扣。",
+  "couponNote": "新人优惠码（年付轻量版与永久147套餐标注不参与折扣；半年 9 折 / 年付 8 折 / 两年 75 折 / 三年 7 折）。",
   "launchYear": "2020 年开业（品牌口径）",
   "highlights": [
     "六年老牌（品牌口径）",
@@ -29,15 +30,47 @@
     "sing-box 系"
   ],
   "claims": {
-    "streaming": "全解锁",
-    "ai": "全解锁",
+    "streaming": "主流解锁（部分平台视节点）",
+    "ai": "部分支持（ChatGPT / Gemini 需切节点，Claude 可用）",
     "selfClient": true,
     "subscriptionImport": true
   },
   "images": {
     "speedtest": "/images/brands/guangsu-yun-speedtest.jpg",
     "unlock": "/images/brands/guangsu-yun-unlock.png",
-    "topology": "/images/brands/guangsu-yun-topology.png"
+    "topology": "/images/brands/guangsu-yun-topology.png",
+    "gallery": [
+      {
+        "src": "/images/brands/guangsu-yun-speedtest-vless.jpg",
+        "title": "光速云 70 节点 VLESS / AnyTLS 下载测速原图（2026-08-19 12:20）",
+        "source": "第三方测速工具（广州电信 1Gbps / 8 线程）导出原图：共测 70 个 VLESS/AnyTLS 节点，其中 1 个新加坡节点未测通（69/70 取得速度读数），用于观察跨协议表现。",
+        "kind": "speedtest"
+      },
+      {
+        "src": "/images/brands/guangsu-yun-unlock-vless.jpg",
+        "title": "光速云 70 节点 10 项流媒体与 AI 解锁原图（2026-08-19 12:18）",
+        "source": "第三方检测工具导出 10 列矩阵原图：覆盖 Netflix、Disney+、YouTube、TikTok、ChatGPT、Gemini、Claude 等常见服务状态，具体需结合目标地区节点判断。",
+        "kind": "unlock"
+      },
+      {
+        "src": "/images/brands/guangsu-yun-carrier-ct.jpg",
+        "title": "光速云「广东电信」入口 62 节点 Shadowsocks 测速原图（2026-08-19 12:13）",
+        "source": "第三方测速工具同日「电信入口」62 节点 SS 导出原图，用于电信宽带与三网横向对照。",
+        "kind": "carrier"
+      },
+      {
+        "src": "/images/brands/guangsu-yun-carrier-cm.jpg",
+        "title": "光速云「广东移动」入口 62 节点 Shadowsocks 测速原图（2026-08-19 12:13）",
+        "source": "第三方测速工具同日「移动入口」62 节点 SS 导出原图，可观察移动侧延迟与速率变化。",
+        "kind": "carrier"
+      },
+      {
+        "src": "/images/brands/guangsu-yun-carrier-cu.jpg",
+        "title": "光速云「广东联通」入口 62 节点 Shadowsocks 测速原图（2026-08-19 12:13）",
+        "source": "第三方测速工具同日「联通入口」62 节点 SS 导出原图，补齐三网对比参考。",
+        "kind": "carrier"
+      }
+    ]
   },
   "scenarios": [
     "ai",
@@ -54,28 +87,28 @@
   ],
   "strengths": [
     "定位覆盖面广：专线、解锁、自研客户端三项能力同时宣称，单一订阅可以兼顾办公与娱乐",
-    "起步套餐 110GB 的量级在 17 元档中偏宽裕，每 GB 单价约 0.155 元",
+    "年付起步 99 元 · 59GB/月，折合月均约 8.25 元（每 GB 约 0.140 元），长期使用单价较低",
     "按渠道口径为长期运营品牌，历史样本比新开业机场更容易交叉验证"
   ],
   "limitations": [
     "「六年老牌」为品牌自述，本站尚未取得可独立核验的运营记录",
     "测速面板显示节点类型为 Shadowsocks 系，与 VLESS 宣传口径需以实际订阅为准",
-    "晚高峰与解锁表现没有统一测试数据"
+    "起步方案按年付结算，晚高峰与解锁表现暂无统一测试数据"
   ],
   "suitableFor": [
     "既要看流媒体又要跑 AI 工具的综合用户",
     "希望一份订阅覆盖多设备的家庭用户",
-    "偏好老牌、愿意长期使用的用户"
+    "偏好老牌、接受年付分摊长期成本的用户"
   ],
   "notSuitableFor": [
-    "月预算 10 元以内的极轻度用户",
-    "只需要临时用几天的用户",
+    "坚持先买单月短期试水、不愿年付锁定的用户",
+    "月预算极低或只需要临时用几天的用户",
     "要求有统一测试数据才下单的用户"
   ],
   "riskLevel": "unknown",
   "dataStatus": "partial",
   "lastVerified": "2026-08-11",
-  "pricingNote": "起步套餐 17 元 / 月 · 110GB，优惠码 AMM。价格与优惠为渠道资料口径（核对于 2026-08-11），品牌方可随时调整，下单前请以官网结算页为准。",
+  "pricingNote": "年付轻量版 99 元/年（每月 69GB），永久不限时 147 元/247GB，常规月付极速版 25 元/168GB；新人码 AMM（特殊套餐不参与折扣），支持支付宝/微信/USDT。",
   "facts": [
     {
       "label": "档位",
@@ -157,7 +190,7 @@
       "label": "香港节点平均速度",
       "value": "75.07 MB/s",
       "status": "measured",
-      "note": "19 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除，测试时间未知"
+      "note": "19 个节点的区间 · 非晚高峰专门测试，面板时间戳已移除，测试时间未知"
     },
     {
       "label": "面板显示协议",
@@ -238,5 +271,74 @@
     "rank": 1,
     "reason": "在库品牌中运营年限最久（2020 年开业）、线路宣称 IEPL/专线内网，年付套餐折合月付仅约 8.25 元/59GB，适合追求长期稳定自用的用户。",
     "caveat": "起步套餐按年付形式结算，初次购买建议结合自身设备环境先行测试。"
-  }
+  },
+  "priceBasis": "完整套餐表含致敬斯诺克147永久版（¥147/247GB不过期）、轻量版（¥99/年，每月69GB，折合约8.25元/月；2026-08部分渠道曾写59GB/月）及极速版月付（¥25/168GB）。特殊套餐不支持退款，建议先小额验证。",
+  "paymentMethods": [
+    "支付宝",
+    "微信",
+    "USDT"
+  ],
+  "clientNotes": "提供自研客户端，并保留 Clash、Shadowrocket 等第三方订阅导入能力，不限设备数。",
+  "plans": [
+    {
+      "name": "光速云·致敬斯诺克147永久套餐",
+      "cycle": "一次性付费",
+      "price": "¥147",
+      "traffic": "247GB",
+      "trafficCycle": "永久不过期",
+      "pricePerGb": "0.595 元/GB",
+      "note": "不打折；轻量办公/邮件/轻度视频"
+    },
+    {
+      "name": "光速云·轻量版",
+      "cycle": "年付",
+      "price": "¥99",
+      "traffic": "69GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.119 元/GB",
+      "note": "不打折；2026-08曾标59GB/月"
+    },
+    {
+      "name": "光速云·极速版",
+      "cycle": "月付",
+      "price": "¥25",
+      "traffic": "168GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.149 元/GB",
+      "note": "全节点1倍率、最高2.5Gbps；支持长周期折扣"
+    },
+    {
+      "name": "光速云·流光版",
+      "cycle": "月付",
+      "price": "¥34",
+      "traffic": "268GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.127 元/GB"
+    },
+    {
+      "name": "光速云·量子版",
+      "cycle": "月付",
+      "price": "¥68",
+      "traffic": "568GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "光速云·无界版",
+      "cycle": "月付",
+      "price": "¥138",
+      "traffic": "900GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.153 元/GB"
+    },
+    {
+      "name": "光速云·定制套餐",
+      "cycle": "月付",
+      "price": "¥680",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "1.360 元/GB",
+      "note": "按需独立部署、独享原生 IP 与独立带宽"
+    }
+  ]
 }

@@ -58,7 +58,6 @@ const picks = (await getCollection('brands'))
 
         <div class="mt-8 grid gap-6 max-w-[56rem]">
           {picks.map((b) => {
-            const extUrl = b.data.affiliateUrl ?? b.data.officialUrl;
             const rankEmoji =
               b.data.editorialPick!.rank === 1
                 ? '🥇'
@@ -107,9 +106,9 @@ const picks = (await getCollection('brands'))
                         🎟️ 优惠码：<strong>{b.data.couponCode}</strong>
                       </span>
                     )}
-                    <a href={`/brands/${b.id}/`} class="text-muted hover:text-accent underline text-xs">
-                      技术参数与数据行 →
-                    </a>
+                    {b.data.lineTypes[0] && (
+                      <span class="text-muted text-xs">{b.data.lineTypes[0]}</span>
+                    )}
                   </div>
 
                   <div class="flex items-center gap-2.5">
@@ -118,16 +117,9 @@ const picks = (await getCollection('brands'))
                         深度评测
                       </a>
                     )}
-                    {extUrl && (
-                      <a
-                        href={extUrl}
-                        class="btn-solid text-sm"
-                        rel="nofollow sponsored noopener"
-                        target="_blank"
-                      >
-                        前往官网选购 ➔
-                      </a>
-                    )}
+                    <a href={`/brands/${b.id}/`} class="btn-solid text-sm">
+                      官网入口与优惠 →
+                    </a>
                   </div>
                 </div>
               </div>

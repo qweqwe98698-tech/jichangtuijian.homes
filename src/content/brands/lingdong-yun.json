@@ -1,0 +1,223 @@
+{
+  "name": "灵动云",
+  "aliases": [
+    "灵动云机场"
+  ],
+  "tier": "mid",
+  "positioning": "2025 年 VLESS/IEPL 专线新站，OpenAI 各地区基本全解锁但 TikTok/新台 YT 存在历史瑕疵。",
+  "background": "灵动云是 2025 年开业的 VLESS 专线机场（官网文宣亦混提 VLESS/Trojan 并在页面标注 IEPL），套餐矩阵极其丰富，横跨「穿云」¥99/年 70GB 到「凌霄」1.5TB 三年期及三档不限时流量包。2026-07-20/21 珠海联通 9Gbps 60 节点历史检验中呈现「OpenAI 全解锁高亮、但 TikTok 多失败且新/台 YT 送中、台节点识别 ES」的典型分化特征。",
+  "priceFrom": "99 元 / 年（70GB/月） · 20 元 / 月（100GB）",
+  "pricePerGb": 0.118,
+  "billingCycle": "monthly",
+  "priceBasis": "月付「拂风」¥20/月 100GB（可按季/半年/1–3年递减至 ¥540/3年）；「穿云」年付 ¥99（70GB/月），另有 150G/400G/800G 一次性流量包。",
+  "couponCode": null,
+  "couponNote": "当前未记录公开优惠码，以结算页周期自动折扣为主。",
+  "paymentMethods": [
+    "支付宝",
+    "USDT（微信需联系客服）"
+  ],
+  "launchYear": "2025",
+  "highlights": [
+    "OpenAI / ChatGPT 在 2026-07 60 节点检验中基本全地区解锁",
+    "VLESS 实测协议、不限速不限设备，覆盖 3 年周期与一次性包",
+    "客观保留 2026-07 测试负面与瑕疵细节（TikTok 多失败、台节点识别 ES）"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "历史检验提示 TikTok 多失败、新/台 YouTube 送中、台湾识别 ES",
+    "ai": "2026-07 历史 60 节点检验中 OpenAI 各地区基本全解锁",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/lingdong-yun-unlock.png",
+    "topology": "/images/brands/lingdong-yun-topology.png"
+  },
+  "scenarios": [
+    "ai",
+    "mid",
+    "longterm"
+  ],
+  "protocols": [
+    "VLESS（历史检验实显，文案亦提 Trojan）"
+  ],
+  "lineTypes": [
+    "IEPL 专线（页面截图标注口径）"
+  ],
+  "strengths": [
+    "OpenAI 多地区解锁稳定度在 2026-07 校验样本中表现突出",
+    "套餐周期跨越月付到三年付、并配齐三档不限时流量包，选型自由度高"
+  ],
+  "limitations": [
+    "2026-07-20/21 测试整体速度属「够用级」（20–80 MB/s），HTTPS 延迟偏高",
+    "TikTok 大多失败、新加坡/台湾 YouTube 出现送中、台湾落地识别偏欧（ES）且美国01整节点失败",
+    "至尊定制 ¥620 档在原截图中流量上限被遮挡，微信支付需客服人工处理"
+  ],
+  "suitableFor": [
+    "以 ChatGPT / OpenAI 文本科研与编程为核心目的、对下载速率峰值要求不极端的用户",
+    "需要一次性流量包（150G–800G）作 AI 专属备线的用户"
+  ],
+  "notSuitableFor": [
+    "TikTok 跨境直播或高度依赖台湾原生流媒体 / 低游戏延迟的用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "suppressIndex": false,
+  "lastVerified": "2026-08-09",
+  "pricingNote": "穿云年付 ¥99（70GB/月），拂风月付 ¥20（100GB）至凌霄 ¥180（1.5TB）；闲云/惊云/飞云一次性包 ¥199/¥499/¥899。",
+  "plans": [
+    {
+      "name": "灵动·穿云",
+      "cycle": "年付",
+      "price": "¥99",
+      "traffic": "70GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.118 元/GB"
+    },
+    {
+      "name": "灵动·拂风",
+      "cycle": "月付",
+      "price": "¥20",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.200 元/GB"
+    },
+    {
+      "name": "灵动·拂风",
+      "cycle": "季付",
+      "price": "¥57",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.190 元/GB"
+    },
+    {
+      "name": "灵动·拂风",
+      "cycle": "年付",
+      "price": "¥204",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.170 元/GB"
+    },
+    {
+      "name": "灵动·拂风",
+      "cycle": "三年付",
+      "price": "¥540",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "灵动·驭浪",
+      "cycle": "月付",
+      "price": "¥50",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "灵动·破晓",
+      "cycle": "月付",
+      "price": "¥100",
+      "traffic": "700GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.143 元/GB"
+    },
+    {
+      "name": "灵动·凌霄",
+      "cycle": "月付",
+      "price": "¥180",
+      "traffic": "1.5TB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.117 元/GB"
+    },
+    {
+      "name": "灵动·闲云（小流量包）",
+      "cycle": "一次性付费",
+      "price": "¥199",
+      "traffic": "150GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.327 元/GB"
+    },
+    {
+      "name": "灵动·惊云（标准流量包）",
+      "cycle": "一次性付费",
+      "price": "¥499",
+      "traffic": "400GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.248 元/GB"
+    },
+    {
+      "name": "灵动·飞云（精英流量包）",
+      "cycle": "一次性付费",
+      "price": "¥899",
+      "traffic": "800GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.124 元/GB"
+    },
+    {
+      "name": "灵动云·至尊私人定制",
+      "cycle": "月付",
+      "price": "¥620",
+      "traffic": "原图遮挡",
+      "trafficCycle": "每月",
+      "note": "截图流量列被遮挡，下单前需客服确认配额"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "AI 优化 / 多周期型",
+      "status": "sourced"
+    },
+    {
+      "label": "起步套餐",
+      "value": "¥20 / 月 · 100GB（穿云年付 ¥99 · 70GB/月）",
+      "status": "sourced"
+    },
+    {
+      "label": "协议",
+      "value": "VLESS（检验面板） / 文案提 Trojan",
+      "status": "sourced"
+    },
+    {
+      "label": "历史 60 节点检验",
+      "value": "20–80 MB/s 够用级，OpenAI 基本全解锁（2026-07-20/21）",
+      "status": "sourced"
+    },
+    {
+      "label": "已知瑕疵提醒",
+      "value": "TikTok 多失败 / 新台 YT 送中 / 台湾落地识别 ES / US01 失败",
+      "status": "sourced"
+    }
+  ],
+  "thirdPartySummary": {
+    "testedAt": "2026-07-20 / 2026-07-21",
+    "toolNote": "珠海联通 9Gbps 环境 60 测速 / 60 解锁历史测试纪要",
+    "regions": [
+      {
+        "region": "综合下载水平",
+        "latency": "HTTPS 延迟整体偏高",
+        "download": "20–80 MB/s（够用级）"
+      },
+      {
+        "region": "美国01",
+        "latency": "—",
+        "download": "整节点失败（测试记录）"
+      }
+    ],
+    "unlockNotes": [
+      "AI 亮点（2026-07-20/21）：OpenAI 各地区节点基本全部解锁，适合优先 AI 对话用户",
+      "流媒体瑕疵（2026-07-20/21）：TikTok 多数节点失败；新加坡/台湾节点 YouTube 出现送中；台湾落地 NF/D+ 识别为 ES（欧洲）"
+    ],
+    "caveat": "反映 2026-07-20/21 测试样本特征，选购流媒体或 TikTok 需求前务必先核实最新落地状况。"
+  },
+  "officialUrl": null,
+  "affiliateUrl": "https://varnexa.lingdongaff.com/#/?code=wZvEhEoI",
+  "reviewSlug": "reviews/lingdong-yun"
+}

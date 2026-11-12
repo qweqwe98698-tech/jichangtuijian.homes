@@ -4,23 +4,43 @@ import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import VerifyStamp from '@/components/VerifyStamp.astro';
-import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, webPageSchema, type Crumb } from '@/lib/schema';
+import { LAST_SITE_UPDATE } from '@/lib/site';
 
-const brands = await getCollection('brands');
-const tierLabel = { premium: '高端档', mid: '中端档', budget: '低价档' } as const;
+const brands = (await getCollection('brands')).sort((a, b) => {
+  const aHidden = a.data.dataStatus === 'unverified' || a.data.suppressIndex ? 1 : 0;
+  const bHidden = b.data.dataStatus === 'unverified' || b.data.suppressIndex ? 1 : 0;
+  if (aHidden !== bHidden) return aHidden - bHidden;
+  const ap = a.data.editorialPick?.rank ?? 99;
+  const bp = b.data.editorialPick?.rank ?? 99;
+  if (ap !== bp) return ap - bp;
+  return (a.data.pricePerGb ?? 99) - (b.data.pricePerGb ?? 99);
+});
+const tierLabel = { premium: '进阶 / 高端档', mid: '主流档', budget: '入门档' } as const;
 
 const crumbs: Crumb[] = [
   { name: '首页', href: '/' },
   { name: '品牌档案', href: '/brands/' },
 ];
+
+const pageDesc = `收录 ${brands.length} 家机场官网入口、起步价格、优惠码与风险状态，每项标注数据口径与核验状态。`;
 ---
 
 <Base
-  title="品牌档案：机场品牌资料与验证状态"
-  description="机场品牌档案库：定位、线路、协议、套餐说明、风险等级与官方入口核验状态。每条数据标注验证状态，未核验的不写成事实。"
-  schemaItems={[breadcrumbSchema(crumbs)]}
+  title="品牌档案：机场官网入口、价格与验证状态"
+  description={pageDesc}
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '品牌档案：机场官网入口、价格与验证状态',
+      description: pageDesc,
+      path: '/brands/',
+    }),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
+  <div class="meta-text mt-3">全站档案口径同步于 {LAST_SITE_UPDATE}</div>
 
   <header class="mt-8 max-w-[46rem]">
     <h1 class="m-0 text-[1.8rem] sm:text-[2rem]">品牌档案</h1>
@@ -36,6 +56,8 @@ const crumbs: Crumb[] = [
         <article class="border-b border-line py-6">
           <p class="meta-text m-0 flex flex-wrap items-center gap-3">
             <span>{tierLabel[b.data.tier]}</span>
+            {b.data.priceFrom && <span>{b.data.priceFrom}</span>}
+            {b.data.couponCode && <span class="text-amber">码 {b.data.couponCode}</span>}
             {b.data.lastVerified ? (
               <VerifyStamp status="sourced" date={b.data.lastVerified} />
             ) : (

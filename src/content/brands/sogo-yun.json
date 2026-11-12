@@ -7,11 +7,11 @@
   "tier": "premium",
   "positioning": "25 元进阶档：以 VLESS + IEPL 专线为基础，流媒体与 AI 双全解锁，定价逻辑偏能力而非走量。",
   "background": "SOGO 云进入本批的 25 元档，与快狸、可信云、速界同价。它的卖点是双全解锁加自研客户端，属于「能力全开」的宣传路线。25 元档的共同问题是：单价并不比 20 元档更优，用户实际买的是对线路质量的预期，而这恰恰是最需要实测验证的部分。",
-  "priceFrom": "25 元 / 月 · 150GB",
-  "pricePerGb": 0.167,
+  "priceFrom": "98 元 / 年（60GB/月） · 25 元 / 月（150GB）",
+  "pricePerGb": 0.136,
   "billingCycle": "monthly",
   "couponCode": "sss777",
-  "couponNote": "通用优惠码，适用套餐以结算页为准。",
+  "couponNote": "渠道码 sss777；2026-10 清单另记录 9 折码 SOGO10000。",
   "launchYear": "2026",
   "highlights": [
     "VLESS 协议",
@@ -29,10 +29,10 @@
     "sing-box 系"
   ],
   "claims": {
-    "streaming": "全解锁",
-    "ai": "全解锁",
+    "streaming": "品牌资料标注解锁 Netflix / Disney+ / YouTube / TikTok（HBO / Spotify 视节点）",
+    "ai": "品牌资料标注支持 ChatGPT（Claude / Gemini 视节点）",
     "selfClient": true,
-    "subscriptionImport": true
+    "subscriptionImport": false
   },
   "images": {
     "speedtest": "/images/brands/sogo-yun-speedtest.jpg",
@@ -156,7 +156,7 @@
       "label": "香港节点平均速度",
       "value": "60.76 MB/s",
       "status": "measured",
-      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除；由账户信息推断测试早于 2026-10-11"
+      "note": "20 个节点的区间 · 非晚高峰专门测试，面板时间戳已移除；由账户信息推断测试早于 2026-10-11"
     },
     {
       "label": "面板显示协议",
@@ -297,5 +297,81 @@
       "表格首 3 行为账户信息行（剩余流量 / 距离下次重置剩余 / 套餐到期），未计入节点数。"
     ]
   },
-  "panelDisputed": null
+  "panelDisputed": null,
+  "priceBasis": "小包年付版 ¥98/年 每月 60GB（折约 8.17 元/月），基础月付 ¥25/月 150GB，另有四档不限时一次性包（120GB–1TB）。",
+  "clientNotes": "自研客户端覆盖 Windows/macOS/iOS/Android 与软路由，不提供通用第三方订阅链接（无法直接导入 Clash / Shadowrocket）。",
+  "plans": [
+    {
+      "name": "小包-年付版",
+      "cycle": "年付",
+      "price": "¥98",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.136 元/GB"
+    },
+    {
+      "name": "基础版",
+      "cycle": "月付",
+      "price": "¥25",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.167 元/GB"
+    },
+    {
+      "name": "优选版",
+      "cycle": "月付",
+      "price": "¥45",
+      "traffic": "350GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.129 元/GB"
+    },
+    {
+      "name": "强化版",
+      "cycle": "月付",
+      "price": "¥80",
+      "traffic": "550GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.145 元/GB"
+    },
+    {
+      "name": "顶配版",
+      "cycle": "月付",
+      "price": "¥150",
+      "traffic": "1.1TB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.133 元/GB"
+    },
+    {
+      "name": "SOGO基础餐不限时版",
+      "cycle": "一次性付费",
+      "price": "¥120",
+      "traffic": "120GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "1.000 元/GB"
+    },
+    {
+      "name": "SOGO优选餐不限时版",
+      "cycle": "一次性付费",
+      "price": "¥220",
+      "traffic": "250GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.880 元/GB"
+    },
+    {
+      "name": "SOGO强化餐不限时版",
+      "cycle": "一次性付费",
+      "price": "¥450",
+      "traffic": "500GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.900 元/GB"
+    },
+    {
+      "name": "SOGO至尊餐不限时版",
+      "cycle": "一次性付费",
+      "price": "¥850",
+      "traffic": "1.0TB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.830 元/GB"
+    }
+  ]
 }

@@ -162,6 +162,44 @@ const TOPIC_MATRIX = [
     promptOutline: `为需要高频访问 GitHub、Docker Hub、HuggingFace 以及调用 OpenAI/Anthropic API 的开发者梳理科学的代理选型准则。指出与“看视频只看峰值带宽”不同，开发者场景的致命痛点在于“TCP 握手抖动、连接维持时间、出口 IP 漂移频率”。提出四维评估指标：BGP 多线入口响应时间、IEPL 专线 SLA 丢包率、NAT 映射保持时长、ASN 机构欺诈评级。对比几类主流网络架构在持续流式输出（SSE/Streaming）长连接场景下的实际表现差异。`
   },
   {
+    section: 'reviews',
+    slug: 'yinxingren',
+    title: '隐形人机场评测：24 元企业内网专线与优惠码 yxr888',
+    primaryKeyword: '隐形人机场',
+    secondaryKeywords: ['隐形人评测', '隐形人官网', '隐形人优惠码', 'yxr888'],
+    contentType: 'review',
+    searchIntent: 'commercial',
+    funnelStage: 'decision',
+    brandCta: 'yinxingren',
+    related: ['best/premium', 'best/stable', 'guides/how-to-choose'],
+    promptOutline: `结合站内隐形人（Invisible）品牌档案开展深度评测：2024 年开业（品牌口径），24 元/月 120GB 纯月付起步（约 0.200 元/GB），Shadowsocks/Trojan 与企业内网专线宣称，优惠码 yxr888，流媒体与 AI 双全解锁口径且无自研客户端。重点分析单价 0.200 元与 24 元企业内网定位下，适合重视会话稳定与月付退路的办公族，不适合追求低单价或大流量下载的用户，并与同价位闪跃（24元/150GB）、25元 IEPL 档客观对照。`
+  },
+  {
+    section: 'reviews',
+    slug: 'shanyue',
+    title: '闪跃机场评测：24 元 150GB 企业内网专线适合多设备吗',
+    primaryKeyword: '闪跃机场',
+    secondaryKeywords: ['闪跃评测', '闪跃官网', '闪跃优惠码', 'shanyue'],
+    contentType: 'review',
+    searchIntent: 'commercial',
+    funnelStage: 'decision',
+    brandCta: 'shanyue',
+    related: ['best/premium', 'best/stable', 'guides/how-to-choose'],
+    promptOutline: `围绕闪跃（FlashLeap）展开客观评测：2024 年开业（品牌口径），24 元/月 150GB 纯月付起步（约 0.160 元/GB），企业内网专线、Shadowsocks/Trojan、流媒体与 AI 双全解锁宣称，优惠码 shanyue。对比同价隐形人（24元/120GB）及主流 18–20 元月付档（极连云、灵猫网络、一翻云），拆解大并发与家庭混合场景的取舍与首月自测步骤。`
+  },
+  {
+    section: 'vs',
+    slug: 'weitu-yun-vs-guangnian-ti',
+    title: '唯兔云和光年梯怎么选：两家高关注机场的公开参数对比',
+    primaryKeyword: '唯兔云和光年梯怎么选',
+    secondaryKeywords: ['唯兔云vs光年梯', '唯兔云官网', '光年梯官网', '稳定机场对比'],
+    contentType: 'comparison',
+    searchIntent: 'commercial',
+    funnelStage: 'decision',
+    related: ['reviews/weitu-yun', 'reviews/guangnian-ti', 'best/stable', 'guides/how-to-choose'],
+    promptOutline: `把唯兔云与光年梯放在同一张对比表里逐项拆解公开档案差异：唯兔云（2023 年开业，优惠码 weitu666）与光年梯的套餐结构、周期绑定特征、支持客户端与协议差异、适用场景分化及共同的未独立测速边界，给出不靠玄学排序的按月试水对照方法。`
+  },
+  {
     section: 'guides',
     slug: 'airport-speed-vs-latency',
     title: '带宽与延迟的真实关系：为什么千兆节点看网页依然卡顿',
@@ -170,9 +208,8 @@ const TOPIC_MATRIX = [
     contentType: 'wiki',
     searchIntent: 'informational',
     funnelStage: 'awareness',
-    brandCta: 'xingdao-meng',
     related: ['guides/how-to-choose', 'guides/stability-signals', 'fix/peak-hour-slow'],
-    promptOutline: `从计算机网络传输机制（Bandwidth-Delay Product 带宽时延积）出发，破除初学者“测速跑满几百兆就等于网速快”的认知误区。用严谨的数学模型与网络拓扑图示阐明：网页浏览、代码交互与 API 响应高度依赖 RTT（往返时延）与 Packet Loss（丢包率），而非单一大文件下载峰值带宽。解释 1% 的微小丢包如何导致 TCP 拥塞窗口减半并触发多次重传，从而把 500Mbps 线路的实际体验降到不如一条丢包为 0 的 50Mbps 纯专线。`
+    promptOutline: `从计算机网络传输机制（Bandwidth-Delay Product 带宽时延积）出发，破除初学者“测速跑满几百兆就等于网速快”的认知误区。用严谨的数学模型与网络拓扑阐明：网页浏览、代码交互与 API 响应高度依赖 RTT（往返时延）与 Packet Loss（丢包率），而非单一大文件下载峰值带宽。解释 1% 的微小丢包如何导致 TCP 拥塞窗口减半并触发多次重传，从而把 500Mbps 线路的实际体验降到不如一条丢包为 0 的 50Mbps 纯专线。`
   },
   {
     section: 'risk',
@@ -184,9 +221,8 @@ const TOPIC_MATRIX = [
     searchIntent: 'problem',
     funnelStage: 'awareness',
     riskLevel: 'high',
-    brandCta: 'feimao-yun',
     related: ['risk/exit-scam-signals', 'learn/iplc-vs-iepl', 'guides/stability-signals'],
-    promptOutline: `揭露灰色市场中不良机场用廉价单线云服务器反向代理、套上“IEPL 极速专线”标签高价售卖的常见套路。从技术特征上给出可量化的识别依据：真专线端到端走内网裸纤，不经过国际公网交换中心，全天 Ping 时延波动应小于 3ms 且无敏感跳数；假专线白天低负载看似延迟低，一旦进入晚高峰 20:30-22:30，由于公网出海带宽拥堵，丢包率瞬间飙升至 15% 以上。提供使用 mtr / traceroute 与开源网络探测工具核验链路质量的规范操作步骤。`
+    promptOutline: `揭露灰色市场中不良机场用廉价单线云服务器反向代理、套上“IEPL 极速专线”标签高价售卖的常见套路。从技术特征上给出可量化的识别依据：真专线端到端走内网路径，全天 Ping 抖动相对更小；假专线白天看似正常，进入晚高峰 20:30-22:30 因公网拥堵丢包攀升。提供 mtr / traceroute 规范探测与判断边界。`
   }
 ];
 
@@ -212,7 +248,7 @@ function getExistingArticleSlugs() {
 function selectNextTopic() {
   const existing = getExistingArticleSlugs();
   console.log(`[MatrixEngine] 当前站内共有 ${existing.size} 篇已发布文章。`);
-  
+
   // 查找题库中尚未发布的题目
   for (const item of TOPIC_MATRIX) {
     const fullId = `${item.section}/${item.slug}`;
@@ -231,22 +267,21 @@ function selectNextTopic() {
     { sec: 'best', prefix: 'enterprise-remote-collaboration-nodes', title: '跨国远程办公与视频会议专线节点选型准则' },
     { sec: 'learn', prefix: 'dns-over-https-threat-model', title: 'DoH 加密 DNS 威胁模型：防 DNS 污染与端点隐私权衡' },
   ];
-  
-  const timestampOffset = (existing.size % dynamicTopics.length);
+
+  const timestampOffset = existing.size % dynamicTopics.length;
   const dyn = dynamicTopics[timestampOffset];
   const dynamicSlug = `${dyn.prefix}-vol${Math.floor(existing.size / dynamicTopics.length) + 1}`;
-  
+
   return {
     section: dyn.sec,
     slug: dynamicSlug,
     title: dyn.title,
     primaryKeyword: dyn.title.slice(0, 15),
     secondaryKeywords: ['网络协议解析', '代理规则配置', '网络工程实践'],
-    contentType: dyn.sec === 'fix' ? 'troubleshooting' : dyn.sec === 'apps' ? 'tutorial' : 'wiki',
-    searchIntent: dyn.sec === 'fix' ? 'problem' : 'informational',
-    funnelStage: 'awareness',
-    brandCta: 'guangsu-yun',
-    related: ['guides/how-to-choose', 'learn/protocols-explained', 'fix/nodes-all-timeout'],
+    contentType: dyn.sec === 'fix' ? 'troubleshooting' : dyn.sec === 'apps' ? 'tutorial' : dyn.sec === 'best' ? 'recommendation' : 'wiki',
+    searchIntent: dyn.sec === 'fix' ? 'problem' : dyn.sec === 'best' ? 'commercial' : 'informational',
+    funnelStage: dyn.sec === 'best' ? 'decision' : 'awareness',
+    related: ['guides/how-to-choose', 'best/stable', 'learn/protocols-explained'],
     promptOutline: `围绕主题进行深度计算机网络层解析，结合实操与机制，包含拓扑架构、常见踩坑点与工程验证方案。`
   };
 }
@@ -266,17 +301,19 @@ function buildSystemPrompt() {
 3. 【最高红线：严禁虚构实测】：
    - 本站定位为资料核验与技术研究平台，不做统一环境下的独立测速。
    - 严禁出现“本站实测”、“本站测速”、“我们实测”、“晚高峰实测”、“连续七天测试”、“待实测”、“复测完毕”等表述！
-   - 需要引用数据时，请使用中立的行业技术口径（如“根据 RFC 规范”、“根据网络工程基准”、“抓包分析表明”、“第三方测速面板公开数据”）。
-4. 【内容体量与结构】：
-   - 产出极其详尽的长文（正文需充实硬核，展开各技术原理细节、对比表格、配置块、排障流程，力求万字级技术专栏深度）。
-   - 正文严禁使用一级标题（# 标题），因为前端模板会自动根据 frontmatter 的 title 渲染唯一的 <h1>。正文各章节一律从 ## 二级标题开始，子标题用 ###。
-   - 配置与命令行一律放入标准 markdown 代码块（带有对应语言标记 如 yaml / bash / json）。
+   - 需要引用数据时，请使用中立的行业技术口径（如“根据 RFC 规范”、“根据网络工程基准”、“抓包分析表明”、“渠道资料口径”）。
+4. 【外链与语法硬约束（极重要）】：
+   - 正文及表格中出现的所有示例域名、测试工具域名、API 域名（例如 \`www.example.com\`、\`api2.cursor.sh\`、\`ipleak.net\`、\`whoer.net\`）或完整 URL，必须统一用行内反引号 \`...\` 包裹，严禁裸写触发 remark-gfm 自动外链。
+5. 【内容体量与结构】：
+   - 产出详尽扎实的长文，展开技术原理细节、对比表格、配置块与排障流程。
+   - 正文严禁使用一级标题（# 标题），前端模板会自动根据 frontmatter 的 title 渲染唯一的 <h1>。正文各章节一律从 ## 二级标题开始，子标题用 ###。
+   - 配置与命令行一律放入标准 markdown 代码块（带有对应语言标记如 yaml / bash / json）。
    - 包含详实的参数对比表格。
-5. 【输出格式要求】：
+6. 【输出格式要求】：
    - 必须先输出合规的 YAML Frontmatter（用 --- 包裹），接着输出正文 Markdown。
    - Frontmatter 字段必须包含：
      title: (string，最大 60 字符)
-     description: (string，50 到 170 字符)
+     description: (string，严格控制在 54 到 72 字符以内，直接概括核心结论与卖点，防止在搜索结果页被截断)
      pubDate: (YYYY-MM-DD)
      primaryKeyword: (string)
      secondaryKeywords: (array)
@@ -286,12 +323,13 @@ function buildSystemPrompt() {
      verdict: (string，快速结论摘要，严禁包含“实测”字眼)
      faq: (array of { q: string, a: string }，3-5 组高价值技术问答)
      related: (array of string，站内关联文章路径)
-     brandCta: (可选 string，【极度重要】若填写必须且只能填纯英文标识如 "guangsu-yun"，绝对不能写中文句子或说明！若无则不写该字段)`;
+     brandCta: (可选 string，仅限 contentType 为 review/comparison/recommendation 时填写且必须为品牌库英文 slug，如 "yinxingren"；wiki/tutorial/troubleshooting/risk 一律不填)`;
 }
 
 function buildUserPrompt(topic) {
   const today = new Date().toISOString().slice(0, 10);
-  return `请根据以下规格要求，为《机场决策室》编写一篇万字级深度技术专栏文章：
+  const allowCommercial = ['review', 'comparison', 'recommendation'].includes(topic.contentType);
+  return `请根据以下规格要求，为《机场决策室》编写一篇深度专栏文章：
 
 【选题信息】：
 - 栏目路径：${topic.section}/${topic.slug}
@@ -301,7 +339,7 @@ function buildUserPrompt(topic) {
 - 内容类型：${topic.contentType}
 - 搜索意图：${topic.searchIntent}
 - 漏斗阶段：${topic.funnelStage}
-- 商业关联品牌英文代号（brandCta）：${topic.brandCta || '无'}（【极其重要】：若要承接，Frontmatter 中的 brandCta 必须且仅能填纯英文代号如 "${topic.brandCta || 'guangsu-yun'}"，严禁填写任何中文句子！）
+- 商业关联品牌英文代号（brandCta）：${allowCommercial && topic.brandCta ? topic.brandCta : '无（信息/排障/教程类文章严禁挂载商业 brandCta）'}
 - 推荐站内内链：${topic.related.join(', ')}
 - 当前发布日期：${today}
 
@@ -309,9 +347,9 @@ function buildUserPrompt(topic) {
 ${topic.promptOutline}
 
 【要求细节】：
-1. 深入网络协议底层机制（TLS 1.3 / BGP / TCP BBR / TUN 驱动 / DNS 解析链路 / IP 属性识别机制等）。
-2. 提供真实详尽的排查步骤或配置代码块。
-3. 严格遵守：无“不是……而是……”，无破折号“——”，无冒号提问，无“本站实测”，正文从 ## 开始，Frontmatter 中的 title 不超过 60 字，description 介于 50-170 字。
+1. 深入网络协议底层机制或可核对的公开档位参数，给出客观判断依据。
+2. 所有示例域名或接口域名（如 \`www.example.com\`、\`ipleak.net\`）必须使用反引号 \`...\` 包裹，严禁裸写 URL。
+3. 严格遵守：无“不是……而是……”，无破折号“——”，无冒号提问，无“本站实测”，正文从 ## 开始，Frontmatter 中的 title 不超过 60 字，description 严格控制在 54-72 字符以内（保证 Google/Bing 摘要完整展示）。
 4. 请直接输出带有完整 frontmatter 的完整 markdown 内容。`;
 }
 
@@ -394,31 +432,50 @@ function sanitizeAndEnforceRules(rawContent, topic) {
       frontmatter = frontmatter.replace(titleMatch[0], `title: "${truncated}"`);
     }
 
-    // 校验 description 长度 (50 - 170 字符)
+    // 校验 description 长度 (SEO-STRATEGY 目标 50 - 75 字符，Schema 允许 50 - 170)
     const descMatch = frontmatter.match(/description:\s*["']?([^"'\r\n]+)["']?/);
     if (descMatch) {
-      let desc = descMatch[1];
-      if (desc.length < 55) {
-        desc = `${desc}。机场决策室深度技术专栏，为网络工程与跨境节点决策提供严谨参考。`;
-      } else if (desc.length > 165) {
-        desc = desc.slice(0, 160) + '...';
+      let desc = descMatch[1].trim();
+      if (desc.length < 50) {
+        desc = `${desc.replace(/[。！]+$/, '')}。机场决策室客观参数核验与选型指南解析。`;
+      } else if (desc.length > 74) {
+        desc = desc.slice(0, 72) + '…';
       }
       frontmatter = frontmatter.replace(descMatch[0], `description: "${desc}"`);
     }
 
-    // 校验 brandCta（核心防错保护：严禁 AI 输出中文长句到 brandCta）
-    const validBrandSlugs = new Set([
-      'guangsu-yun', 'feimao-yun', 'weifeng-wangluo', 'xingdao-meng',
-      'wuyou-lianjie', 'ermao-yun', 'jilian-yun', 'kexin-yun', 'kuaili',
-      'lingmao-net', 'quanqiu-yun', 'sogo-yun', 'sujie', 'u1s1',
-      'weitu-yun', 'wgetcloud', 'yifan-yun', 'yuzhou-yun', 'guangnian-ti',
-      'nexitally', 'dalaoyun', 'firefly', 'huanqiuti', 'liulianyun',
-      'muguang-jiasu', 'shandianshu', 'shanyue', 'shenxing-jiasu',
-      'tiziyun', 'yinxingren', 'yunjiexian'
-    ]);
+    // 正文剥离非链接/非代码块内的裸域名，避免 remark-gfm 自动生成缺 rel 属性的外链
+    const wrapBareDomains = (text) => {
+      const codeBlocks = [];
+      let safe = text.replace(/```[\s\S]*?```|`[^`\n]+`/g, (m) => {
+        codeBlocks.push(m);
+        return `\u0000CB${codeBlocks.length - 1}\u0000`;
+      });
+      const mdLinks = [];
+      safe = safe.replace(/\[[^\]]+\]\([^)]+\)/g, (m) => {
+        mdLinks.push(m);
+        return `\u0000ML${mdLinks.length - 1}\u0000`;
+      });
+      safe = safe.replace(/(?<![A-Za-z0-9_/`])((?:https?:\/\/|www\.)[A-Za-z0-9.-]+\.[A-Za-z]{2,}(?:\/[^\s),。；：！？」】]*)?)/g, '`$1`');
+      safe = safe.replace(/\u0000ML(\d+)\u0000/g, (_, i) => mdLinks[Number(i)]);
+      safe = safe.replace(/\u0000CB(\d+)\u0000/g, (_, i) => codeBlocks[Number(i)]);
+      return safe;
+    };
+    body = wrapBareDomains(body);
 
+    // 校验 brandCta（仅限评测/对比/推荐页允许商业 CTA；且必须匹配品牌库英文 slug）
+    const brandsDir = resolve(ROOT, 'src/content/brands');
+    const validBrandSlugs = new Set(
+      existsSync(brandsDir)
+        ? readdirSync(brandsDir).filter((f) => f.endsWith('.json')).map((f) => f.replace(/\.json$/, ''))
+        : [],
+    );
+
+    const allowCommercial = ['review', 'comparison', 'recommendation'].includes(topic?.contentType || '');
     const brandMatch = frontmatter.match(/brandCta:\s*["']?([^"'\r\n]+)["']?/);
-    if (brandMatch) {
+    if (!allowCommercial) {
+      frontmatter = frontmatter.replace(/\n?\s*brandCta:\s*["']?[^"'\r\n]+["']?/g, '');
+    } else if (brandMatch) {
       const rawVal = brandMatch[1].trim();
       let safeBrand = null;
       if (validBrandSlugs.has(rawVal)) {
@@ -432,6 +489,8 @@ function sanitizeAndEnforceRules(rawContent, topic) {
         else if (rawVal.includes('星岛梦')) safeBrand = 'xingdao-meng';
         else if (rawVal.includes('无忧链接')) safeBrand = 'wuyou-lianjie';
         else if (rawVal.includes('二猫云')) safeBrand = 'ermao-yun';
+        else if (rawVal.includes('隐形人')) safeBrand = 'yinxingren';
+        else if (rawVal.includes('闪跃')) safeBrand = 'shanyue';
       }
 
       if (safeBrand) {
@@ -452,16 +511,17 @@ function sanitizeAndEnforceRules(rawContent, topic) {
 // ── 6. 本地 Mock 模式（离线或测试验证用） ──
 function generateMockArticle(topic) {
   const today = new Date().toISOString().slice(0, 10);
+  const allowCommercial = ['review', 'comparison', 'recommendation'].includes(topic.contentType);
   return `---
 title: "${topic.title}"
-description: "深入解析${topic.primaryKeyword}的底层网络机制与工程实践方案，剖析传输拓扑、常见协议陷阱与高可用配置要点。"
+description: "${topic.primaryKeyword}客观分析与实操配置指南，梳理判断标准、避坑检查项与网络链路排障要点。"
 pubDate: ${today}
 primaryKeyword: "${topic.primaryKeyword}"
 secondaryKeywords: ${JSON.stringify(topic.secondaryKeywords)}
 searchIntent: ${topic.searchIntent}
 contentType: ${topic.contentType}
 funnelStage: ${topic.funnelStage}
-${topic.brandCta ? `brandCta: "${topic.brandCta}"` : ''}
+${allowCommercial && topic.brandCta ? `brandCta: "${topic.brandCta}"` : ''}
 verdict: "${topic.primaryKeyword}的核心在于理解网络传输层的真实瓶颈，合理规划入站分流与网卡驱动栈，避免无效的重复试错。"
 faq:
   - q: "为什么配置完成后仍然提示连接超时？"

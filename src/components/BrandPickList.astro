@@ -31,9 +31,7 @@ picked = picked.slice(0, limit);
 
 <div class="mt-6 grid gap-5 max-w-[54rem]">
   {
-    picked.map((b, idx) => {
-      const extUrl = b.data.affiliateUrl ?? b.data.officialUrl;
-      return (
+    picked.map((b, idx) => (
         <div class="pro-card p-5">
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-line pb-3.5">
             <div class="flex items-center gap-2.5">
@@ -85,31 +83,26 @@ picked = picked.slice(0, limit);
                   券码：<strong>{b.data.couponCode}</strong>
                 </span>
               )}
-              <a href={`/brands/${b.id}/`} class="text-muted hover:text-accent underline">
-                技术档案 →
-              </a>
+              {b.data.lineTypes[0] && (
+                <span class="text-muted">{b.data.lineTypes[0]}</span>
+              )}
             </div>
 
             <div class="flex items-center gap-2">
               {b.data.reviewSlug && (
                 <a href={`/${b.data.reviewSlug}/`} class="btn-outline text-xs py-1.5 px-3 min-h-[36px]">
-                  评测
+                  深度评测
                 </a>
               )}
-              {extUrl && (
-                <a
-                  href={extUrl}
-                  class="btn-solid text-xs py-1.5 px-3 min-h-[36px]"
-                  rel="nofollow sponsored noopener"
-                  target="_blank"
-                >
-                  直达选购 ➔
-                </a>
-              )}
+              <a
+                href={`/brands/${b.id}/`}
+                class="btn-solid text-xs py-1.5 px-3 min-h-[36px]"
+              >
+                官网入口与优惠 →
+              </a>
             </div>
           </div>
         </div>
-      );
-    })
+    ))
   }
 </div>

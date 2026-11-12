@@ -7,8 +7,8 @@
   "tier": "budget",
   "positioning": "2023 年开业的轻度用量方案，约 7 元/月 50GB，主打 IEPL 专线小包与低门槛试水。",
   "background": "微风网络（BreezeNet）在渠道资料中标注 2023 年开业，主打 IEPL 专线小包与低入门门槛，适合日常轻度浏览、查阅资料与做备用订阅。",
-  "priceFrom": "约 7 元 / 月 · 50GB",
-  "pricePerGb": 0.14,
+  "priceFrom": "137 元 / 年（100GB/月） · 27 元 / 月（200GB）",
+  "pricePerGb": 0.114,
   "billingCycle": "yearly",
   "couponCode": "flat888",
   "couponNote": "渠道专属优惠码，结算时输入享受折扣。",
@@ -33,9 +33,9 @@
     "subscriptionImport": true
   },
   "images": {
-    "speedtest": null,
-    "unlock": null,
-    "topology": null
+    "speedtest": "/images/brands/weifeng-wangluo-speedtest.png",
+    "unlock": "/images/brands/weifeng-wangluo-unlock.png",
+    "topology": "/images/brands/weifeng-wangluo-topology.png"
   },
   "scenarios": [
     "budget",
@@ -68,7 +68,7 @@
   "riskLevel": "unknown",
   "dataStatus": "partial",
   "lastVerified": "2026-08-11",
-  "pricingNote": "起步套餐 约 7 元 / 月 · 50GB，优惠码 flat888。价格与优惠为渠道资料口径（核对于 2026-08-11），下单前请以官网结算页为准。",
+  "pricingNote": "「清风」年付 137 元/年（100GB/月），「乘风」月付 27 元/月（200GB），另含 270GB/570GB 一次性不限时套餐；优惠码 flat888。",
   "facts": [
     {
       "label": "档位",
@@ -127,16 +127,164 @@
       "value": "暂无统一测试数据",
       "status": "pending",
       "note": "本站不做统一环境测速，该项暂不参与性能评分"
+    },
+    {
+      "label": "节点数量",
+      "value": "50 个（面板导出计数）",
+      "status": "measured",
+      "note": "工具 MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-07-19 18:38:20 CST"
+    },
+    {
+      "label": "节点地区覆盖",
+      "value": "香港 15 · 台湾 5 · 新加坡 10 · 日本 10 · 美国 10",
+      "status": "measured",
+      "note": "按面板导出的节点命名归类"
+    },
+    {
+      "label": "香港节点延迟",
+      "value": "97–211 ms",
+      "status": "measured",
+      "note": "15 个节点的区间 · 工具 MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3） · 32 线程 · 后端 珠海联通 9Gbps · 测试于 2026-07-19 18:38:20 CST"
+    },
+    {
+      "label": "香港节点平均速度",
+      "value": "468.91–546.2 MB/s",
+      "status": "measured",
+      "note": "15 个节点的区间 · 非晚高峰专门测试，测试于 2026-07-19 18:38:20 CST"
+    },
+    {
+      "label": "面板显示协议",
+      "value": "VLESS",
+      "status": "measured",
+      "note": "测速面板中节点的类型列；可能与官网宣传的协议口径不同，以实际订阅为准"
     }
   ],
   "officialUrl": null,
   "affiliateUrl": "https://edp01.breezenetaff.com/#/?code=t3huofyI",
-  "reviewSlug": null,
-  "panel": null,
+  "reviewSlug": "reviews/weifeng-wangluo",
+  "panel": {
+    "tool": "MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3）",
+    "threads": 32,
+    "backend": "珠海联通 9Gbps",
+    "durationSec": null,
+    "pingCount": null,
+    "protocolShown": "VLESS",
+    "totalNodes": 50,
+    "testedAt": "2026-07-19 18:38:20 CST",
+    "inPeakWindow": false,
+    "testedBefore": null,
+    "regions": [
+      {
+        "name": "香港",
+        "nodes": 15,
+        "latencyMinMs": 97,
+        "latencyMaxMs": 211,
+        "avgSpeedMinMB": 468.91,
+        "avgSpeedMaxMB": 546.2,
+        "maxSpeedMaxMB": 619.64
+      },
+      {
+        "name": "台湾",
+        "nodes": 5,
+        "latencyMinMs": 151,
+        "latencyMaxMs": 213,
+        "avgSpeedMinMB": 73.28,
+        "avgSpeedMaxMB": 103,
+        "maxSpeedMaxMB": 113.86
+      },
+      {
+        "name": "新加坡",
+        "nodes": 10,
+        "latencyMinMs": 78,
+        "latencyMaxMs": 96,
+        "avgSpeedMinMB": 135.34,
+        "avgSpeedMaxMB": 401.25,
+        "maxSpeedMaxMB": 534.96
+      },
+      {
+        "name": "日本",
+        "nodes": 10,
+        "latencyMinMs": 135,
+        "latencyMaxMs": 143,
+        "avgSpeedMinMB": 79.73,
+        "avgSpeedMaxMB": 257.97,
+        "maxSpeedMaxMB": 382.99
+      },
+      {
+        "name": "美国",
+        "nodes": 10,
+        "latencyMinMs": 243,
+        "latencyMaxMs": 250,
+        "avgSpeedMinMB": 9.9,
+        "avgSpeedMaxMB": 21.03,
+        "maxSpeedMaxMB": 90.6
+      }
+    ],
+    "anomalies": [
+      "台湾 02 平均与最高速度均为 0.00B（TLS RTT 213ms、HTTPS 延迟 1453ms），已排除出台湾区速度下限统计",
+      "日本 05 平均速度 8.00KB、最高 80.00KB（TLS RTT 137ms），实质未测通，已排除出日本区速度下限统计",
+      "香港09 TLS RTT 达 211ms，同区其余节点集中在 97–115ms；台湾5节点 HTTPS 延迟整体偏高（936–1453ms）",
+      "美国 10 个节点平均速度集中在 9.90–21.03 MB/s，远低于香港/新加坡；单节点 03 突发最高达 90.60 MB/s",
+      "本次测试时间为 18:38 CST（晚高峰 20:30–22:30 之前），32 线程并发聚合结果不代表晚高峰或单连接体感"
+    ]
+  },
   "panelDisputed": null,
   "editorialPick": {
     "rank": 3,
     "reason": "2023 年开业的轻量级专线方案，约 7 元/月 50GB，主打 IEPL 专线与低试水门槛，适合作为主备双机场架构中的低成本容灾节点。",
     "caveat": "运营年限较老牌相比偏短，晚高峰表现建议结合自身宽带实地观察。"
-  }
+  },
+  "priceBasis": "完整套餐表最入门为「清风 (Breeze)」年付 ¥137/年 每月 100GB（折约 11.4 元/月）；常规月付「乘风」¥27/月 200GB；早期渠道摘要曾标注约 7 元/月 50GB。",
+  "clientNotes": "支持 IEPL + VLESS，覆盖港/新/日/美原生 IP 节点，7×24 客服与夜间 AI 客服值守。",
+  "plans": [
+    {
+      "name": "清风 (Breeze)",
+      "cycle": "年付",
+      "price": "¥137",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.114 元/GB",
+      "note": "折约 11.4 元/月"
+    },
+    {
+      "name": "乘风 (Riding)",
+      "cycle": "月付",
+      "price": "¥27",
+      "traffic": "200GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.135 元/GB"
+    },
+    {
+      "name": "破风 (Breaking)",
+      "cycle": "月付",
+      "price": "¥57",
+      "traffic": "500GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.114 元/GB"
+    },
+    {
+      "name": "御风 (Mastery)",
+      "cycle": "月付",
+      "price": "¥127",
+      "traffic": "1200GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.106 元/GB"
+    },
+    {
+      "name": "信风·不限时",
+      "cycle": "一次性付费",
+      "price": "¥200",
+      "traffic": "270GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.741 元/GB"
+    },
+    {
+      "name": "长风·不限时",
+      "cycle": "一次性付费",
+      "price": "¥370",
+      "traffic": "570GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.649 元/GB"
+    }
+  ]
 }

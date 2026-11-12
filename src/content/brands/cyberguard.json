@@ -1,0 +1,203 @@
+{
+  "name": "CyberGuard",
+  "aliases": [
+    "CyberGuard 机场",
+    "赛博守卫"
+  ],
+  "tier": "mid",
+  "positioning": "Trojan / VLESS 双协议大流量品牌（月付 32 元给 350GB），提供半年付轻量档与 220G/840G 不限时流量包。",
+  "background": "CyberGuard 主打单档高流量性价比——常规月付 32 元即包含 350GB，折合每 GB 仅约 0.091 元；半年付轻量档 95 元（每月 150GB）适合中轻量长期用户。站点留存了 2025-06-21 涵盖 12 个地区、29 个节点的历史测试摘要作为背景参考。",
+  "priceFrom": "¥32 / 月（350GB） · 半年 ¥95（150GB/月）",
+  "pricePerGb": 0.091,
+  "billingCycle": "monthly",
+  "priceBasis": "最低月付 ¥32 给足 350GB/月（约 0.091 元/GB）；另有半年付轻量 ¥95（150GB/月，折约 15.83 元/月）及 220G/840G 一次性不限时流量包。",
+  "couponCode": null,
+  "couponNote": "当前未记录公开优惠码。",
+  "launchYear": null,
+  "highlights": [
+    "¥32/月 含 350GB 流量，单位 GB 成本较低",
+    "兼具半年付轻量（¥95/150GB）与不限时包（220G/840G）",
+    "Trojan / VLESS 协议，覆盖欧亚澳美中东等 12 个地区",
+    "2025-06-21 历史测试显示多地区 AI 与主流流媒体可用"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "历史测试（2025-06-21）显示 Netflix / Disney+ / Max / TikTok 可用",
+    "ai": "历史测试（2025-06-21）显示 ChatGPT / Claude / Gemini 可用",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/cyberguard-unlock.png",
+    "topology": "/images/brands/cyberguard-topology.png"
+  },
+  "scenarios": [
+    "streaming",
+    "ai",
+    "mid"
+  ],
+  "protocols": [
+    "Trojan",
+    "VLESS"
+  ],
+  "lineTypes": [
+    "12 地区国际节点（历史资料）"
+  ],
+  "strengths": [
+    "350GB 档起步单价低，欧亚澳阿联酋等非热门地区也有节点分布",
+    "不限时包（¥79/220G、¥188/840G）适合当大额冷备流量池"
+  ],
+  "limitations": [
+    "历史测速年份偏早（2025-06-21），且韩国/美国等方向当年统计延迟偏高（仅作背景参考）",
+    "一次性包具体有效期规则需在下单时向官网确认"
+  ],
+  "suitableFor": [
+    "每月 250GB–600GB 用量、需要欧洲/澳洲/阿联酋等小众地区的个人或跨境业务用户",
+    "希望用低成本一次性大包作日常备线的用户"
+  ],
+  "notSuitableFor": [
+    "月消费仅 10–15 元的极轻度入门用户",
+    "完全依赖近期实测报告决定购买的保守型用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "suppressIndex": false,
+  "lastVerified": "2026-08-23",
+  "pricingNote": "150G 半年付 ¥95，350G 月付 ¥32，650G 月付 ¥55，企业 2050G 月付 ¥200，另含 ¥79/220G 与 ¥188/840G 不限时包。",
+  "plans": [
+    {
+      "name": "150G｜轻量套餐",
+      "cycle": "半年付",
+      "price": "¥95",
+      "traffic": "150GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.106 元/GB",
+      "note": "折约 15.83 元/月"
+    },
+    {
+      "name": "350G｜标准套餐",
+      "cycle": "月付",
+      "price": "¥32",
+      "traffic": "350GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.091 元/GB"
+    },
+    {
+      "name": "650G｜高速套餐",
+      "cycle": "月付",
+      "price": "¥55",
+      "traffic": "650GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.085 元/GB"
+    },
+    {
+      "name": "220G流量包｜不限时",
+      "cycle": "一次性付费",
+      "price": "¥79",
+      "traffic": "220GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.359 元/GB",
+      "note": "具体有效期待官网确认"
+    },
+    {
+      "name": "840G流量包｜不限时",
+      "cycle": "一次性付费",
+      "price": "¥188",
+      "traffic": "840GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.224 元/GB",
+      "note": "具体有效期待官网确认"
+    },
+    {
+      "name": "2050G｜企业套餐",
+      "cycle": "月付",
+      "price": "¥200",
+      "traffic": "2050GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.098 元/GB"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "中端大流量 / 不限时包型",
+      "status": "sourced"
+    },
+    {
+      "label": "起步套餐",
+      "value": "¥32 / 月 · 350GB（半年付 ¥95）",
+      "status": "sourced"
+    },
+    {
+      "label": "协议",
+      "value": "Trojan / VLESS",
+      "status": "sourced"
+    },
+    {
+      "label": "历史测试概览",
+      "value": "29 节点 / 12 地区（2025-06-21）",
+      "status": "sourced",
+      "note": "日本 488.83Mbps、阿联酋 342.76Mbps、澳洲 279.64Mbps"
+    },
+    {
+      "label": "流媒体与 AI",
+      "value": "2025-06-21 测试标注 ChatGPT/Claude/Gemini 与 NF/D+/HBO/TT 可用",
+      "status": "sourced"
+    }
+  ],
+  "thirdPartySummary": {
+    "testedAt": "2025-06-21",
+    "toolNote": "2025-06-21 留存的 12 地区 29 节点汇总统计值，仅供参考背景对比",
+    "regions": [
+      {
+        "region": "日本",
+        "latency": "123.8 ms",
+        "download": "488.83 Mbps"
+      },
+      {
+        "region": "韩国",
+        "latency": "6000 ms（异常值）",
+        "download": "552.80 Mbps"
+      },
+      {
+        "region": "阿联酋",
+        "latency": "345 ms",
+        "download": "342.76 Mbps"
+      },
+      {
+        "region": "澳大利亚",
+        "latency": "277 ms",
+        "download": "279.64 Mbps"
+      },
+      {
+        "region": "美国",
+        "latency": "614 ms",
+        "download": "245.60 Mbps"
+      },
+      {
+        "region": "法国",
+        "latency": "384 ms",
+        "download": "204.08 Mbps"
+      },
+      {
+        "region": "德国",
+        "latency": "390.5 ms",
+        "download": "159.96 Mbps"
+      }
+    ],
+    "unlockNotes": [
+      "AI（2025-06-21）：ChatGPT、Claude、Gemini 当次测试可用",
+      "流媒体（2025-06-21）：Netflix、Disney+、Max / HBO、TikTok 当次测试可用"
+    ],
+    "caveat": "该记录测试于 2025-06-21，距今跨度较长，不可直接代表当下延迟或节点状态。"
+  },
+  "officialUrl": null,
+  "affiliateUrl": "https://cyberguard.best/#/register?code=AxXNNYng",
+  "reviewSlug": "reviews/cyberguard"
+}

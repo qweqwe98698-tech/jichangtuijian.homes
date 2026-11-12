@@ -1,0 +1,163 @@
+{
+  "name": "SSLAR",
+  "aliases": [
+    "SSLAR 机场"
+  ],
+  "tier": "mid",
+  "positioning": "企业级 IEPL + 多线 BGP（Eons/Akari/DO），自研桌面/安卓客户端并支持远程桌面协助，Basic ¥17/月起。",
+  "background": "SSLAR 主打企业级 IEPL 与多线 BGP 组合，官方档案标明采用 Eons / Akari / DigitalOcean 机房落地、支持 SS/VLESS 协议自适应，面向办公与商务群体提供 Windows / macOS / Android 自研客户端以及少见的「远程桌面协助」配置支持。",
+  "priceFrom": "¥17 / 月（100GB）",
+  "pricePerGb": 0.17,
+  "billingCycle": "monthly",
+  "priceBasis": "Basic ¥17/月（100GB）、Standard ¥28（200GB）、Premium ¥36（300GB），配合季 9/半 85/年 8 折及 8 折码 ko3eTt0w（最高折算约 64 折）。",
+  "couponCode": "ko3eTt0w",
+  "couponNote": "8 折优惠码 ko3eTt0w，可配合季/半年/年长周期折扣。",
+  "paymentMethods": [
+    "支付宝",
+    "微信（现有资料未列 USDT）"
+  ],
+  "clientNotes": "提供 Windows / macOS / Android 自研客户端，兼容 SS/VLESS 多协议自适应，并额外支持商务向远程桌面协助安装。",
+  "launchYear": null,
+  "highlights": [
+    "企业级 IEPL + 多线 BGP（标注 Eons/Akari/DO 机房）",
+    "SS / VLESS 协议自适应 + 多平台自研端（Win/mac/Android）",
+    "少见的商务用户远程桌面协助服务与 8 折码 ko3eTt0w"
+  ],
+  "clients": [
+    "自研客户端（Win/mac/Android）",
+    "Clash / Shadowrocket / v2rayN（SS/VLESS 自适应）"
+  ],
+  "claims": {
+    "streaming": "缺少独立逐项测试结果（需自行核实）",
+    "ai": "缺少独立逐项测试结果（需自行核实）",
+    "selfClient": true,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/sslar-unlock.png",
+    "topology": "/images/brands/sslar-topology.png"
+  },
+  "scenarios": [
+    "iepl",
+    "newbie",
+    "mid"
+  ],
+  "protocols": [
+    "Shadowsocks",
+    "VLESS（自适应）"
+  ],
+  "lineTypes": [
+    "企业级 IEPL + 多线 BGP（品牌口径）"
+  ],
+  "strengths": [
+    "17 元/月起含 100GB，阶梯档位简单清晰（100G / 200G / 300G）",
+    "提供远程桌面配置协助，降低非技术商务人员上手成本"
+  ],
+  "limitations": [
+    "最高常规月付套餐仅至 300GB（缺重度 1TB+ 选项），且未列 USDT 支付",
+    "未提供独立合作官网链接与独立地区测速截图"
+  ],
+  "suitableFor": [
+    "每月 100–300GB、重视商务远程协助或 Eons/Akari 落地定位的办公用户"
+  ],
+  "notSuitableFor": [
+    "需要 500GB–1TB 以上超大月流量或强制使用匿名 USDT 支付的用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "suppressIndex": false,
+  "lastVerified": "2026-08-09",
+  "pricingNote": "Basic ¥17/月（100G）、Standard ¥28/月（200G）、Premium ¥36/月（300G），年付 ¥163/¥268/¥345；可用 8 折码 ko3eTt0w，支持支付宝/微信。",
+  "plans": [
+    {
+      "name": "Basic",
+      "cycle": "月付",
+      "price": "¥17",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.170 元/GB"
+    },
+    {
+      "name": "Basic",
+      "cycle": "季付",
+      "price": "¥46",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.153 元/GB"
+    },
+    {
+      "name": "Basic",
+      "cycle": "半年付",
+      "price": "¥87",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.145 元/GB"
+    },
+    {
+      "name": "Basic",
+      "cycle": "年付",
+      "price": "¥163",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.136 元/GB"
+    },
+    {
+      "name": "Standard",
+      "cycle": "月付",
+      "price": "¥28",
+      "traffic": "200GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.140 元/GB"
+    },
+    {
+      "name": "Standard",
+      "cycle": "年付",
+      "price": "¥268",
+      "traffic": "200GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.112 元/GB"
+    },
+    {
+      "name": "Premium",
+      "cycle": "月付",
+      "price": "¥36",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "Premium",
+      "cycle": "年付",
+      "price": "¥345",
+      "traffic": "300GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.096 元/GB"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "中端商务辅助型",
+      "status": "sourced"
+    },
+    {
+      "label": "起步套餐",
+      "value": "¥17 / 月 · 100GB（年付 ¥163）",
+      "status": "sourced"
+    },
+    {
+      "label": "协议与机房定位",
+      "value": "SS/VLESS 自适应 · 资料标 Eons/Akari/DigitalOcean 机房",
+      "status": "sourced"
+    },
+    {
+      "label": "支付方式",
+      "value": "支付宝 / 微信",
+      "status": "sourced"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": null,
+  "reviewSlug": null
+}

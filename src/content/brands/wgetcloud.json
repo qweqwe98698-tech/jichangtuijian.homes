@@ -1,82 +1,185 @@
 {
   "name": "WgetCloud",
   "tier": "premium",
-  "positioning": "以专线接入为主要卖点的高端定位机场，长期面向对稳定性要求高的用户群。",
-  "background": "WgetCloud 在中文用户社区中长期被归入高端档位，宣传重点是专线线路与负载能力。本站对其公司主体、运营团队与基础设施细节尚未独立核验，以下档案以可核对的公开资料为主，核验完成前请以官方渠道信息为准。",
+  "positioning": "Trojan 季付专线品牌（¥297/季 · 230GB/月起），保留 2026-05-02 历史 59 节点测试记录。",
+  "background": "WgetCloud 在中文社群属于历史知名度较高的 Trojan 专线品牌，当前渠道档案整理了 3 档季付专线服务，尚未记录可直接按月购买的常规低门槛档位。本档案保留了 2026-05-02 对其 59 个节点的历史第三方测速记录作为背景参考，不代表实时在线率。",
   "protocols": [
-    "Shadowsocks（待核验）",
-    "Trojan（待核验）"
+    "Trojan（历史资料）"
   ],
   "lineTypes": [
-    "IEPL 专线（品牌公开说明，未经独立核验）",
-    "BGP 中转（待核验）"
+    "专线服务（历史资料口径）"
   ],
   "strengths": [
-    "定位明确：预算充足、要稳定的用户是其目标群体",
-    "社区长期讨论度高，公开口碑样本量大，可交叉验证",
-    "宣传口径以线路质量为中心，而非低价促销"
+    "2026-05-02 历史测试中 59 个节点全部取得非零速度，香港/台湾/新加坡/日本/美国均值均高于 50 MB/s",
+    "香港节点平均 TLS RTT 25.9 ms，日本与美国平均下载亦保持稳定区间",
+    "品牌运行周期与历史口碑讨论基础较丰富"
   ],
   "limitations": [
-    "价格显著高于中低端方案，轻度使用者性价比存疑",
-    "本站不做独立测速，实际质量没有统一测试数据佐证",
-    "高端定位不等于零风险，仍需按风险清单核查"
+    "起付门槛为 ¥297 / 季（约 99 元/月），未提供单月试用低门槛套餐",
+    "历史测速距今已隔周期，不能替代当前实时稳定性判断",
+    "暂无公开渠道优惠码，按 GB 单价明显高于中端机场"
   ],
   "suitableFor": [
-    "晚高峰刚需（远程办公/在线会议）",
-    "AI 工具重度用户",
-    "愿意为稳定付溢价的多设备用户"
+    "预算充足、倾向按季度采购老牌 Trojan 专线的用户",
+    "看重美日澳加等远端地区平均吞吐表现的跨区用户"
   ],
   "notSuitableFor": [
-    "月预算 15 元以下的轻度用户",
-    "只想临时用几天的用户",
-    "追求最低价的学生党"
+    "首次体验仅需月付或预算 20–30 元档的个人用户",
+    "希望即买即退或使用无限制免费试用的用户"
   ],
   "riskLevel": "low",
-  "dataStatus": "unverified",
-  "lastVerified": null,
-  "pricingNote": "套餐与价格信息待核验，暂不列出具体数字。该品牌存在仿冒站点风险，请务必通过可信渠道核对官网地址后再付款。",
+  "dataStatus": "partial",
+  "lastVerified": "2026-08-24",
+  "pricingNote": "基础专线服务 ¥297/季（每月230GB），优质专线 ¥327/季（250GB/月），精品专线 ¥357/季（270GB/月），无公开常规月付档与优惠码。",
   "facts": [
     {
       "label": "档位",
-      "value": "高端",
+      "value": "高端季付专线",
       "status": "sourced",
-      "note": "依据公开定价区间与宣传定位归类"
+      "note": "按季付入门 297 元起归类"
     },
     {
-      "label": "主打线路",
-      "value": "IEPL 专线（宣传口径）",
-      "status": "pending",
-      "note": "未经独立核验"
+      "label": "起步套餐",
+      "value": "¥297 / 季 · 230GB/月",
+      "status": "sourced",
+      "note": "折约 99 元/月，无公开常规月付档"
     },
     {
-      "label": "节点数量",
-      "value": "暂无公开数据",
-      "status": "pending"
+      "label": "每 GB 单价",
+      "value": "约 0.430 元 / GB",
+      "status": "sourced",
+      "note": "按 297 ÷ (230×3) 计算"
     },
     {
-      "label": "月付起步价",
-      "value": "暂无公开数据",
-      "status": "pending"
+      "label": "协议",
+      "value": "Trojan（历史资料）",
+      "status": "sourced"
     },
     {
-      "label": "流媒体解锁",
-      "value": "暂无统一测试数据",
-      "status": "pending",
-      "note": "依据品牌公开说明整理；实际表现随节点、地区与时间变化"
+      "label": "节点覆盖",
+      "value": "15 个地区（历史档案 59 节点）",
+      "status": "sourced",
+      "note": "2026-05-02 历史测试全部节点非零下载"
     },
     {
-      "label": "AI 工具可用性",
-      "value": "暂无统一测试数据",
-      "status": "pending"
-    },
-    {
-      "label": "晚高峰表现",
-      "value": "暂无统一测试数据",
-      "status": "pending",
-      "note": "本站不做统一环境测速，该项暂不参与性能评分"
+      "label": "流媒体与 AI 解锁",
+      "value": "历史测试部分节点可用（2026-05-02）",
+      "status": "sourced",
+      "note": "非现时可用性承诺"
     }
   ],
   "officialUrl": null,
-  "affiliateUrl": null,
-  "reviewSlug": "reviews/wgetcloud"
+  "affiliateUrl": "https://invite.wgetcloud.ltd/auth/register?code=VLG2xb",
+  "reviewSlug": "reviews/wgetcloud",
+  "aliases": [
+    "WgetCloud",
+    "WgetCloud 全球专线"
+  ],
+  "priceFrom": "¥297 / 季（230GB/月）",
+  "pricePerGb": 0.43,
+  "billingCycle": "quarterly",
+  "priceBasis": "历史套餐表按季度计费：基础专线 ¥297/季（每月230GB，折约 99 元/月），无公开常规单月低价档。",
+  "couponCode": null,
+  "couponNote": "当前未应用额外优惠码，季度定价以官网结算页为准。",
+  "launchYear": null,
+  "highlights": [
+    "Trojan 协议专线架构（历史资料）",
+    "三档季付梯度（230GB / 250GB / 270GB 每月）",
+    "节点覆盖亚欧美澳等 15 个地区",
+    "保留 2026-05-02 59 节点全部非零测速档案"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "历史测试部分节点可用 Netflix / Disney+ / YouTube（2026-05-02）",
+    "ai": "历史测试部分节点可用 ChatGPT / Gemini（2026-05-02）",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/wgetcloud-unlock.png",
+    "topology": "/images/brands/wgetcloud-topology.png"
+  },
+  "scenarios": [
+    "longterm",
+    "iepl"
+  ],
+  "suppressIndex": false,
+  "plans": [
+    {
+      "name": "基础专线服务",
+      "cycle": "季付",
+      "price": "¥297",
+      "traffic": "230GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.430 元/GB"
+    },
+    {
+      "name": "优质专线服务",
+      "cycle": "季付",
+      "price": "¥327",
+      "traffic": "250GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.436 元/GB"
+    },
+    {
+      "name": "精品专线服务",
+      "cycle": "季付",
+      "price": "¥357",
+      "traffic": "270GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.441 元/GB"
+    }
+  ],
+  "thirdPartySummary": {
+    "testedAt": "2026-05-02",
+    "toolNote": "历史项目留存的 59 节点地区汇总统计值（非 2026-10-19 新测，非单节点明细）",
+    "regions": [
+      {
+        "region": "香港",
+        "latency": "25.9 ms",
+        "download": "431.24 Mbps (53.90 MB/s)"
+      },
+      {
+        "region": "台湾",
+        "latency": "41.3 ms",
+        "download": "407.66 Mbps (50.96 MB/s)"
+      },
+      {
+        "region": "新加坡",
+        "latency": "55.6 ms",
+        "download": "422.97 Mbps (52.87 MB/s)"
+      },
+      {
+        "region": "日本",
+        "latency": "69.4 ms",
+        "download": "462.04 Mbps (57.75 MB/s)"
+      },
+      {
+        "region": "美国",
+        "latency": "170.2 ms",
+        "download": "440.04 Mbps (55.00 MB/s)"
+      },
+      {
+        "region": "印度",
+        "latency": "95 ms",
+        "download": "341.92 Mbps"
+      },
+      {
+        "region": "印尼",
+        "latency": "88 ms",
+        "download": "318.64 Mbps"
+      }
+    ],
+    "unlockNotes": [
+      "AI 工具（2026-05-02）：ChatGPT / OpenAI 部分节点可用；Gemini 部分节点可用",
+      "流媒体（2026-05-02）：Netflix、Disney+、YouTube 部分节点可用；不保证现时状态"
+    ],
+    "caveat": "仅反映 2026-05-02 当次历史测试环境，网络链路与现时解锁状态请购买前向官网确认。"
+  }
 }

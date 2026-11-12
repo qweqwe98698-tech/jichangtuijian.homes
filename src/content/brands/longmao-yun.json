@@ -1,0 +1,181 @@
+{
+  "name": "龙猫云",
+  "aliases": [
+    "龙猫云机场",
+    "TotoroCloud"
+  ],
+  "tier": "mid",
+  "positioning": "SS + IPLC 全专线定位，VIP1 ¥15/月（100GB）起，一云梯/飞鸟同源系下教程完备型号。",
+  "background": "龙猫云已被整理记录为一云梯/飞鸟同源站群成员之一，定位于 Shadowsocks + IPLC 全专线，原资料记载最高可达 2000Mbps，配备较完善的新手客户端教程。支付方式覆盖支付宝、微信与 USDT。",
+  "priceFrom": "¥15 / 月（100GB）",
+  "pricePerGb": 0.15,
+  "billingCycle": "monthly",
+  "priceBasis": "VIP1–VIP4 月付 ¥15–¥120（对应 100GB–1000GB），季 9 / 半 85 / 年 8 折，2 年 7 折与 3 年 6 折长期优惠。",
+  "couponCode": null,
+  "couponNote": "无公开单独优惠码，长周期享系统自动折扣（季 9 / 半 85 / 年 8 / 2 年 7 / 3 年 6 折）。",
+  "paymentMethods": [
+    "支付宝",
+    "微信",
+    "USDT"
+  ],
+  "launchYear": null,
+  "highlights": [
+    "Shadowsocks + 全专线 IPLC 架构（品牌资料标最高 2000Mbps）",
+    "客户教程较完整，支持支付宝 / 微信 / USDT",
+    "月/季/半年/年多周期价格梯度线性透明"
+  ],
+  "clients": [
+    "Clash / Clash Verge",
+    "Shadowrocket",
+    "v2rayN",
+    "sing-box 系"
+  ],
+  "claims": {
+    "streaming": "缺少独立逐项测试结果（需自行核实）",
+    "ai": "缺少独立逐项测试结果（需自行核实）",
+    "selfClient": false,
+    "subscriptionImport": true
+  },
+  "images": {
+    "speedtest": null,
+    "unlock": "/images/brands/longmao-yun-unlock.png",
+    "topology": "/images/brands/longmao-yun-topology.png"
+  },
+  "scenarios": [
+    "iepl",
+    "mid",
+    "newbie"
+  ],
+  "protocols": [
+    "Shadowsocks"
+  ],
+  "lineTypes": [
+    "IPLC 全专线（品牌口径）"
+  ],
+  "strengths": [
+    "同时开放微信与支付宝，长期周期最高可达 48 折（三年期口径）",
+    "入门门槛 ¥15/100GB、VIP4 ¥120/1000GB 比部分同源站更低"
+  ],
+  "limitations": [
+    "未提供独立注册直达链接与可比面板测速图",
+    "未见逐项 AI 与流媒体地区解锁报告"
+  ],
+  "suitableFor": [
+    "需要微信付款、看重系统化使用教程的月付/年付通用订阅用户"
+  ],
+  "notSuitableFor": [
+    "只认实拍测速与逐节点解锁截图的用户"
+  ],
+  "riskLevel": "unknown",
+  "dataStatus": "partial",
+  "suppressIndex": false,
+  "lastVerified": "2026-08-09",
+  "pricingNote": "VIP1 ¥15/月（100GB）、VIP2 ¥30/月（200GB）、VIP3 ¥60/月（400GB）、VIP4 ¥120/月（1000GB），支持季/半年/年周期折扣与支付宝/微信/USDT。",
+  "plans": [
+    {
+      "name": "VIP1",
+      "cycle": "月付",
+      "price": "¥15",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "VIP1",
+      "cycle": "季付",
+      "price": "¥41",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.137 元/GB"
+    },
+    {
+      "name": "VIP1",
+      "cycle": "半年付",
+      "price": "¥77",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.128 元/GB"
+    },
+    {
+      "name": "VIP1",
+      "cycle": "年付",
+      "price": "¥144",
+      "traffic": "100GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "VIP2",
+      "cycle": "月付",
+      "price": "¥30",
+      "traffic": "200GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "VIP2",
+      "cycle": "年付",
+      "price": "¥288",
+      "traffic": "200GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "VIP3",
+      "cycle": "月付",
+      "price": "¥60",
+      "traffic": "400GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.150 元/GB"
+    },
+    {
+      "name": "VIP3",
+      "cycle": "年付",
+      "price": "¥576",
+      "traffic": "400GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "VIP4",
+      "cycle": "月付",
+      "price": "¥120",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.120 元/GB"
+    },
+    {
+      "name": "VIP4",
+      "cycle": "年付",
+      "price": "¥1152",
+      "traffic": "1000GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.096 元/GB"
+    }
+  ],
+  "facts": [
+    {
+      "label": "档位",
+      "value": "中端 SS IPLC 型",
+      "status": "sourced"
+    },
+    {
+      "label": "起步套餐",
+      "value": "¥15 / 月 · 100GB（年付 ¥144）",
+      "status": "sourced"
+    },
+    {
+      "label": "协议与速率定位",
+      "value": "Shadowsocks · IPLC 全专线（资料称最高 2000Mbps）",
+      "status": "sourced"
+    },
+    {
+      "label": "支付方式",
+      "value": "支付宝 / 微信 / USDT",
+      "status": "sourced"
+    }
+  ],
+  "officialUrl": null,
+  "affiliateUrl": null,
+  "reviewSlug": null
+}

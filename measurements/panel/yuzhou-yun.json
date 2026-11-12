@@ -1,93 +1,74 @@
 {
   "brand": "yuzhou-yun",
-  "_note": "转录自项目方 2026-08-11 提供的宇宙云测速面板图（MiaoKo 自定义测试 4.6.4）。与此前误挂的那张（实为飞猫云数据）无关，那份已移入 _mislabeled/。本图带完整时间戳，且落在本站定义的晚高峰窗口内。表格前 3 行为账户信息行（也被测速工具跑了速度），未计入节点数。",
+  "_note": "转录自桌面资料 extracted/宇宙云-节点测速实测.png（MiaoKo 4.7.0 / 主端 4.3.3，测试时间 2026-08-11 21:04:24 CST，落在晚高峰窗口内）。原未附截图的 58 节点 SS 摘要已被这张带原始时间戳与截图标注的 50 节点 VLESS 原图替代。",
   "source": {
-    "tool": "MiaoKo 自定义测试（喵速 4.6.4 / 主端 4.3.3）",
+    "tool": "MiaoKo 自定义测试（喵速 4.7.0 / 主端 4.3.3）",
     "threads": 32,
     "backend": "珠海联通 9Gbps",
     "durationSec": null,
     "pingCount": null,
     "trafficUsedGB": null,
-    "testedAt": "2026-08-05 22:13:21 CST",
+    "testedAt": "2026-08-11 21:04:24 CST",
     "inPeakWindow": true
   },
   "accountRows": {
-    "remainingTrafficGB": 942.02,
-    "planExpiry": "2027-01-31"
+    "remainingTrafficGB": null,
+    "planExpiry": null
   },
-  "protocolShown": "Shadowsocks",
-  "totalNodes": 58,
+  "protocolShown": "VLESS",
+  "totalNodes": 50,
   "regions": [
     {
       "name": "香港",
-      "nodes": 20,
-      "latencyMinMs": 43,
-      "latencyMaxMs": 148,
-      "avgSpeedMinMB": 80.35,
-      "avgSpeedMaxMB": 128.64,
-      "maxSpeedMaxMB": 141.05
-    },
-    {
-      "name": "日本",
-      "nodes": 10,
-      "latencyMinMs": 89,
-      "latencyMaxMs": 327,
-      "avgSpeedMinMB": 92.62,
-      "avgSpeedMaxMB": 133.18,
-      "maxSpeedMaxMB": 146.61
-    },
-    {
-      "name": "新加坡",
-      "nodes": 10,
-      "latencyMinMs": 81,
-      "latencyMaxMs": 445,
-      "avgSpeedMinMB": 52.92,
-      "avgSpeedMaxMB": 115.99,
-      "maxSpeedMaxMB": 133.21
-    },
-    {
-      "name": "美国",
-      "nodes": 10,
-      "latencyMinMs": 193,
-      "latencyMaxMs": 364,
-      "avgSpeedMinMB": 28.52,
-      "avgSpeedMaxMB": 78.6,
-      "maxSpeedMaxMB": 117.94
+      "nodes": 15,
+      "latencyMinMs": 91,
+      "latencyMaxMs": 121,
+      "avgSpeedMinMB": 470.34,
+      "avgSpeedMaxMB": 550.0,
+      "maxSpeedMaxMB": 634.84
     },
     {
       "name": "台湾",
       "nodes": 5,
-      "latencyMinMs": 92,
-      "latencyMaxMs": 181,
-      "avgSpeedMinMB": 26.5,
-      "avgSpeedMaxMB": 62.91,
-      "maxSpeedMaxMB": 97.93
+      "latencyMinMs": 151,
+      "latencyMaxMs": 179,
+      "avgSpeedMinMB": 29.17,
+      "avgSpeedMaxMB": 77.48,
+      "maxSpeedMaxMB": 107.64
     },
     {
-      "name": "马来西亚",
-      "nodes": 2,
-      "latencyMinMs": 233,
-      "latencyMaxMs": 388,
-      "avgSpeedMinMB": 3.2,
-      "avgSpeedMaxMB": 9.16,
-      "maxSpeedMaxMB": 14.14
+      "name": "新加坡",
+      "nodes": 10,
+      "latencyMinMs": 86,
+      "latencyMaxMs": 184,
+      "avgSpeedMinMB": 331.41,
+      "avgSpeedMaxMB": 523.07,
+      "maxSpeedMaxMB": 569.38
     },
     {
-      "name": "俄罗斯",
-      "nodes": 1,
-      "latencyMinMs": 271,
-      "latencyMaxMs": 271,
-      "avgSpeedMinMB": 7.82,
-      "avgSpeedMaxMB": 7.82,
-      "maxSpeedMaxMB": 14.03
+      "name": "日本",
+      "nodes": 10,
+      "latencyMinMs": 137,
+      "latencyMaxMs": 144,
+      "avgSpeedMinMB": 22.38,
+      "avgSpeedMaxMB": 169.86,
+      "maxSpeedMaxMB": 381.34
+    },
+    {
+      "name": "美国",
+      "nodes": 10,
+      "latencyMinMs": 241,
+      "latencyMaxMs": 247,
+      "avgSpeedMinMB": 8.33,
+      "avgSpeedMaxMB": 12.36,
+      "maxSpeedMaxMB": 20.27
     }
   ],
   "anomalies": [
-    "表格前 3 行是账户信息（剩余流量 942.02GB、距离下次重置 1 天、套餐到期 2027-01-31），测速工具把它们也跑了速度，本站未将其计入 58 个节点",
-    "日本-02 的平均速度 133.18MB 高于其最高速度 131.16MB，面板自身数据矛盾，本站照实记录未做修正",
-    "马来西亚 2 个节点（3.20 / 9.16 MB/s）与俄罗斯 1 个节点（7.82 MB/s）速度远低于主力地区，属边缘节点",
-    "新加坡-01 的 TLS RTT 达 445ms、美国-04 达 364ms、日本-01 达 327ms，均明显高于同区其他节点",
-    "面板类型列显示 Shadowsocks，与该品牌宣传的 VLESS 协议口径不一致，实际下发以订阅为准",
-    "本次为 32 线程并发测试、后端带宽 9Gbps，速度数值属多线程聚合结果，不代表单连接速度，也不代表家庭宽带下的体感"
+    "【香港】01 平均与最高速度均为 0.00B（TLS RTT 91ms 正常），属未测通节点，已排除出香港区速度下限",
+    "【新加坡】07 平均速度 9.60KB、最高 96.00KB（TLS RTT 100ms），实质未测通，已排除出新加坡区速度下限",
+    "日本06–09 的 HTTPS 延迟在 1703–2091ms 之间，显著高于日本其它节点（706–939ms）",
+    "美国 10 个节点平均速度仅 8.33–12.36 MB/s，为五个地区中最弱",
+    "本次为 32 线程并发测试、后端带宽 9Gbps（21:04 晚高峰窗口采集），速度为多线程聚合值，不代表单连接或家宽实际体验"
   ]
 }

@@ -1,7 +1,8 @@
 ---
 title: SOGO 云和快狸怎么选：纸面一样时靠什么决定
-description: SOGO 云与快狸同为 25 元 / 月 · 150GB，单价同为 0.167 元，协议、线路、双全解锁、自研客户端逐项重合，公开资料上几乎找不到差异。本文承认纸面无法分胜负，转而给出四条在信息对等时仍然可用的决定依据，以及两家共同的未验证项。
+description: SOGO 云和快狸怎么选？同为 25 元/月 150GB + VLESS + IEPL 双全解锁，纸面重合时的试用避坑策略。
 pubDate: 2026-08-11
+updatedDate: 2026-11-12
 primaryKeyword: SOGO云和快狸哪个好
 secondaryKeywords: [SOGO云vs快狸, SOGO云快狸对比, SOGO云和快狸怎么选, 快狸替代]
 searchIntent: commercial

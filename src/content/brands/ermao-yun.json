@@ -6,8 +6,8 @@
   "tier": "mid",
   "positioning": "20 元档的中间刻度：130GB 起步，介于 120GB 与 150GB 两档之间的折中选择，双解锁齐备。",
   "background": "二猫云的定位在 20 元档内部属于折中：流量比 120GB 档多、比 150GB 档少，单价约 0.154 元/GB。卖点为 VLESS + IEPL + 流媒体与 AI 解锁 + 自研客户端。运营年限未在资料中给出。",
-  "priceFrom": "20 元 / 月 · 130GB",
-  "pricePerGb": 0.154,
+  "priceFrom": "89 元 / 年（60GB/月） · 20 元 / 月（130GB）",
+  "pricePerGb": 0.124,
   "billingCycle": "monthly",
   "couponCode": "ermao5555",
   "couponNote": "通用优惠码，适用套餐以结算页为准。",
@@ -155,7 +155,7 @@
       "label": "香港节点平均速度",
       "value": "66.94–91.19 MB/s",
       "status": "measured",
-      "note": "20 个节点的区间 · 非针对晚高峰的专门测试，面板时间戳已移除，测试时间未知"
+      "note": "20 个节点的区间 · 非晚高峰专门测试，面板时间戳已移除，测试时间未知"
     },
     {
       "label": "面板显示协议",
@@ -304,5 +304,56 @@
     "rank": 6,
     "reason": "2023 年开业主流档位方案，20 元/月即提供 130GB 宽裕流量，宣称 IEPL 专线并支持全协议双解锁，量价比扎实。",
     "caveat": "晚高峰测速为第三方聚合面板数据，实际流媒体解锁建议在高峰期自行核验。"
-  }
+  },
+  "priceBasis": "年付小包 ¥89/年 每月 60GB（折约 7.42 元/月），不限时 ¥99/100GB；经典月付白猫套餐 ¥20/月 130GB（0.154 元/GB）。",
+  "plans": [
+    {
+      "name": "二猫年付小包",
+      "cycle": "年付",
+      "price": "¥89",
+      "traffic": "60GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.124 元/GB"
+    },
+    {
+      "name": "二猫云·不限时套餐",
+      "cycle": "一次性付费",
+      "price": "¥99",
+      "traffic": "100GB",
+      "trafficCycle": "一次性",
+      "pricePerGb": "0.990 元/GB"
+    },
+    {
+      "name": "二猫云·白猫套餐",
+      "cycle": "月付",
+      "price": "¥20",
+      "traffic": "130GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.154 元/GB"
+    },
+    {
+      "name": "二猫云·橘猫畅玩版",
+      "cycle": "月付",
+      "price": "¥40",
+      "traffic": "230GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.174 元/GB"
+    },
+    {
+      "name": "二猫云·牛奶猫尊享版",
+      "cycle": "月付",
+      "price": "¥80",
+      "traffic": "430GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.186 元/GB"
+    },
+    {
+      "name": "二猫云·黑猫重度用户版",
+      "cycle": "月付",
+      "price": "¥160",
+      "traffic": "850GB",
+      "trafficCycle": "每月",
+      "pricePerGb": "0.188 元/GB"
+    }
+  ]
 }

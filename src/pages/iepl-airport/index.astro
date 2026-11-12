@@ -3,13 +3,13 @@
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BrandPickList from '@/components/BrandPickList.astro';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, faqSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const reasons: Record<string, string> = {
   'yifan-yun': '20 元 150GB 且宣称 IEPL，单价 0.133 元/GB——在宣称专线的品牌里价格最友好。',
   'feimao-yun': '7 元起的 IEPL 小包，是「想试专线但不想多花钱」的最低成本入口；代价是开业时间短。',
   'yuzhou-yun': '14.9 元档的 IEPL + 流媒体组合，适合以看剧为主、又希望晚高峰别掉链子的用户。',
-  'guangsu-yun': '17 元 110GB，IEPL 加双解锁与自研客户端，能力覆盖最全的一档。',
+  'guangsu-yun': '99 元/年 · 59GB/月，IEPL 企业内网口径加双解锁与自研客户端，长期摊薄成本较低。',
   'guangnian-ti': '18 元 110GB，同档中起步流量略多，专线口径与能力宣称齐全。',
   'jilian-yun': '按能力定价而非走量，单价偏高但双解锁齐备，适合把稳定看得比单价重的用户。',
   kuaili: '进阶档的全能配置，IEPL 加双全解锁，适合多人多设备共用。',
@@ -47,8 +47,17 @@ const crumbs: Crumb[] = [
 
 <Base
   title="IEPL 专线机场推荐：宣称专线的机场名单与验证方法"
-  description="IEPL / IPLC 专线机场推荐名单：在库机场中宣称使用企业级内网专线的品牌、价格与每 GB 单价对照，并给出三种验证专线真伪的方法，避免为宣传话术付溢价。"
-  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  description="IEPL与IPLC专线机场名单：对比宣称专线品牌的单价与优缺点，附路由追踪、晚高峰丢包等3种真伪验证法。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: 'IEPL 专线机场推荐',
+      description: '宣称使用 IEPL / IPLC 专线的在库机场名单与验证方法',
+      path: '/iepl-airport/',
+    }),
+    faqSchema(faq),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 

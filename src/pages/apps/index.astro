@@ -3,7 +3,7 @@
 import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
-import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const tutorials = (
   await getCollection('articles', ({ id, data }) => id.startsWith('apps/') && !data.draft)
@@ -17,8 +17,16 @@ const crumbs: Crumb[] = [
 
 <Base
   title="客户端教程：Clash、Shadowrocket 从零上手"
-  description="机场订阅买好了，客户端怎么用？Clash、Shadowrocket 等代理客户端的零基础教程：导入订阅、选节点、验证连通、排查常见错误。"
-  schemaItems={[breadcrumbSchema(crumbs)]}
+  description="Clash Verge、Shadowrocket、v2rayN与sing-box从零配置指南：订阅导入、分流规则设定、TUN接管与连通排查。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '客户端教程',
+      description: 'Clash、Shadowrocket、v2rayN 与 sing-box 客户端配置指南',
+      path: '/apps/',
+    }),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 

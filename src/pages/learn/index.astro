@@ -3,7 +3,7 @@
 import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
-import { breadcrumbSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const entries = await getCollection(
   'articles',
@@ -15,27 +15,30 @@ const topics = [
   {
     group: '线路与专线',
     intro: '决定晚高峰体验的最大变量。',
-    items: [{ slug: 'iplc-vs-iepl', fallback: 'IPLC / IEPL / 中转 / 直连' }],
-    planned: ['CN2 与三网优化详解'],
+    items: [
+      { slug: 'iplc-vs-iepl', fallback: 'IPLC / IEPL / 中转 / 直连' },
+      { slug: 'bgp-multi-line-iepl-architecture', fallback: 'BGP 多线接入与 IEPL 内网架构' },
+    ],
   },
   {
     group: '协议与形态',
     intro: '决定连接方式、抗干扰能力，以及机场到底是什么。',
     items: [
       { slug: 'protocols-explained', fallback: 'SS / Trojan / VMess / VLESS / Hysteria2' },
+      { slug: 'vless-reality-deep-dive', fallback: 'VLESS-Reality 握手与 SNI 机制解析' },
+      { slug: 'hysteria2-tuic-udp-protocols', fallback: 'Hysteria 2 与 TUIC 抗弱网对比' },
       { slug: 'airport-vs-vpn', fallback: '机场与 VPN 的区别' },
     ],
-    planned: ['各协议单篇详解'],
   },
   {
     group: 'IP、流量与解锁',
     intro: '决定流媒体与 AI 能不能用，以及你的流量够不够。',
     items: [
       { slug: 'native-ip', fallback: '原生 IP / 住宅 IP / 数据中心 IP' },
+      { slug: 'residential-ip-fraud-score', fallback: '住宅原生 IP 与风控欺诈分机制' },
       { slug: 'traffic-multiplier', fallback: '流量倍率与 100GB 够不够' },
       { slug: 'streaming-unlock-explained', fallback: '流媒体解锁原理' },
     ],
-    planned: [],
   },
   {
     group: '平台与服务',
@@ -44,7 +47,6 @@ const topics = [
       { slug: 'netflix-region-library', fallback: 'Netflix 各区片库与地区选择' },
       { slug: 'google-services-guide', fallback: 'Google 全家桶的网络要求差异' },
     ],
-    planned: ['AI 服务的 IP 风控'],
   },
 ];
 
@@ -61,8 +63,16 @@ const crumbs: Crumb[] = [
 
 <Base
   title="代理知识库：线路、协议与 IP 一次讲清"
-  description="IPLC 是什么？VLESS 和 VMess 有什么区别？知识库把机场宣传里的技术名词逐个拆解，让你看懂宣传话术背后的真实含义。"
-  schemaItems={[breadcrumbSchema(crumbs)]}
+  description="IPLC专线、VLESS-Reality协议、流量倍率x2怎么算、原生IP与流媒体解锁机制一文讲清，帮你看穿机场宣传话术。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '代理知识库',
+      description: '线路、协议、原生 IP 与流量计费原理的知识图谱',
+      path: '/learn/',
+    }),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
@@ -90,9 +100,6 @@ const crumbs: Crumb[] = [
                 </li>
               ) : null;
             })}
-            {t.planned.map((p) => (
-              <li class="mb-1.5 text-muted">{p}（整理中）</li>
-            ))}
           </ul>
         </div>
       ))

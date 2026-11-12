@@ -3,13 +3,20 @@
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BrandPickList from '@/components/BrandPickList.astro';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, faqSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const reasons: Record<string, string> = {
+  'guangsu-yun':
+    '提供「致敬斯诺克147」永久套餐（¥147 / 247GB 不过期，折合约 0.595 元/GB），原生稳定节点且不限设备。',
+  cyberguard:
+    '提供 220GB（¥79）与 840GB（¥188，折合 0.224 元/GB）两档一次性流量包，购买前需向官网核实具体有效期细则。',
+  'ermao-yun': '提供 ¥99 / 100GB 不限时套餐，适合已有主力机场、只想低成本留一条 IEPL 专线冷备的用户。',
+  'weitu-yun': '提供 100GB（¥100）、200GB（¥160）、500GB（¥340）三档永久不限时包，全线 1 倍流量不限设备。',
   'xingdao-meng':
-    '渠道资料中明确列出不限时套餐，且套餐颗粒度细。对「一年只用几次」的低频用户，这是本库里最对口的结构。',
-  'lingmao-net':
-    '同样标注支持不限时套餐，且月付单价是全库最低，按量与按月两条路都留着，用量变化时不必换品牌。',
+    '提供 100GB（¥100）、300GB（¥300）、1TB（¥600）三档永久不限时套餐，颗粒度齐备且覆盖老牌 IEPL。',
+  'wuyou-lianjie': '提供 100GB（¥108）与 300GB（¥298）永久不限时包，无倍率不限设备，适合低频出海与应急备线。',
+  'yifan-yun': '提供 100GB（¥100）、250GB（¥200）、500GB（¥400）不限时包，三协议兼容便于路由分流备用。',
+  firefly: '提供 ¥100 / 100GB 不限时档，适合已安装其专属端、需要低频应急流量的用户。',
 };
 
 const faq = [
@@ -43,8 +50,17 @@ const crumbs: Crumb[] = [
 
 <Base
   title="按量计费与不限时机场：适合谁，风险在哪"
-  description="按量计费机场与不限时流量包适合哪些人？本页说明按量与月付的换算方法、不限时套餐的真实风险结构，并列出在库品牌中明确提供不限时套餐的机场。"
-  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  description="按量计费与不限时机场适合谁？对比不限时套餐的年化换算与资金敞口风险，列出在库支持按量不限时的可选品牌。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: '按量计费与不限时机场',
+      description: '按量计费与不限时流量包机场候选及风险说明',
+      path: '/pay-as-you-go-airport/',
+    }),
+    faqSchema(faq),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
@@ -115,15 +131,89 @@ const crumbs: Crumb[] = [
   <section class="rule-top mt-14 pt-10" aria-labelledby="list-heading">
     <h2 id="list-heading" class="m-0 text-[1.5rem]">在库品牌中明确提供不限时套餐的机场</h2>
     <p class="m-0 mt-2 max-w-[46rem] text-[0.95rem] text-muted">
-      入选条件：渠道资料中<strong>明确写明支持不限时套餐</strong>。其余品牌不代表没有此类套餐，
-      只代表资料中未作说明——本站不替品牌方补充没写的内容，需要请直接问客服。
+      入选条件：最新渠道完整套餐表中<strong>明确列出一次性不限时流量包价格与额度</strong>。购买前务必在结算页核对是否限制节点、限速或存在隐性有效期。
     </p>
+    <div class="table-scroll mt-5">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">机场</th>
+            <th scope="col">代表不限时档</th>
+            <th scope="col">一次性价格</th>
+            <th scope="col">流量额度</th>
+            <th scope="col">折合单价</th>
+            <th scope="col">档案</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">CyberGuard</th>
+            <td>840G 流量包</td>
+            <td class="whitespace-nowrap">¥188（小包 ¥79/220G）</td>
+            <td>840GB</td>
+            <td class="whitespace-nowrap">0.224 元/GB</td>
+            <td><a href="/brands/cyberguard/">详情 →</a></td>
+          </tr>
+          <tr>
+            <th scope="row">光速云</th>
+            <td>致敬斯诺克147永久套餐</td>
+            <td class="whitespace-nowrap">¥147</td>
+            <td>247GB</td>
+            <td class="whitespace-nowrap">0.595 元/GB</td>
+            <td><a href="/brands/guangsu-yun/">详情 →</a></td>
+          </tr>
+          <tr>
+            <th scope="row">星岛梦</th>
+            <td>永久不限时（100G / 300G / 1TB）</td>
+            <td class="whitespace-nowrap">¥100 / ¥300 / ¥600</td>
+            <td>100GB–1TB</td>
+            <td class="whitespace-nowrap">0.600–1.000 元/GB</td>
+            <td><a href="/brands/xingdao-meng/">详情 →</a></td>
+          </tr>
+          <tr>
+            <th scope="row">微风网络</th>
+            <td>信风 / 长风不限时</td>
+            <td class="whitespace-nowrap">¥200 / ¥370</td>
+            <td>270GB / 570GB</td>
+            <td class="whitespace-nowrap">0.649–0.741 元/GB</td>
+            <td><a href="/brands/weifeng-wangluo/">详情 →</a></td>
+          </tr>
+          <tr>
+            <th scope="row">唯兔云</th>
+            <td>永久不限时（100G / 200G / 500G）</td>
+            <td class="whitespace-nowrap">¥100 / ¥160 / ¥340</td>
+            <td>100GB–500GB</td>
+            <td class="whitespace-nowrap">0.680–1.000 元/GB</td>
+            <td><a href="/brands/weitu-yun/">详情 →</a></td>
+          </tr>
+          <tr>
+            <th scope="row">一翻云</th>
+            <td>不限时包（100G / 250G / 500G）</td>
+            <td class="whitespace-nowrap">¥100 / ¥200 / ¥400</td>
+            <td>100GB–500GB</td>
+            <td class="whitespace-nowrap">0.800–1.000 元/GB</td>
+            <td><a href="/brands/yifan-yun/">详情 →</a></td>
+          </tr>
+          <tr>
+            <th scope="row">二猫云 / Firefly</th>
+            <td>不限时 100GB 备线包</td>
+            <td class="whitespace-nowrap">¥99 / ¥100</td>
+            <td>100GB</td>
+            <td class="whitespace-nowrap">0.990–1.000 元/GB</td>
+            <td><a href="/brands/ermao-yun/">二猫 →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="mt-6">
-      <BrandPickList slugs={['xingdao-meng', 'lingmao-net']} reasons={reasons} limit={2} />
+      <BrandPickList
+        slugs={['guangsu-yun', 'cyberguard', 'weitu-yun', 'xingdao-meng', 'ermao-yun', 'yifan-yun']}
+        reasons={reasons}
+        limit={6}
+      />
     </div>
     <p class="meta-text mt-4">
-      具体的不限时套餐价格与规则未包含在渠道资料中，本页因此不列具体数字。
-      购买前请在官网确认限速、限设备与节点范围三项。
+      具体限速条款、多设备规则与可用节点范围以品牌用户中心最新公示为准；长期高用量仍建议选月付方案。
     </p>
   </section>
 

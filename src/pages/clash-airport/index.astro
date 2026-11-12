@@ -3,16 +3,16 @@
 import Base from '@/layouts/Base.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BrandPickList from '@/components/BrandPickList.astro';
-import { breadcrumbSchema, faqSchema, type Crumb } from '@/lib/schema';
+import { breadcrumbSchema, faqSchema, webPageSchema, type Crumb } from '@/lib/schema';
 
 const reasons: Record<string, string> = {
-  'lingmao-net':
-    '月付 19 元 150GB，单价全库最低且不用年付锁定，适合刚配好 Clash、想先跑一个月看看的人。',
-  'yifan-yun': '20 元 150GB，流量宽裕，规则模式下国内直连不占额度，实际可用时间更长。',
-  'guangsu-yun': '17 元 110GB，自研客户端与订阅导入双通道，桌面用 Clash、手机用自研端的组合很顺。',
-  'feimao-yun': '7 元小包，适合作为 Clash 里的备用订阅——主力挂了随时切换，成本极低。',
+  tiziyun:
+    '自研全平台客户端与通用订阅双支持，年付约 7.4 元/月起，适合同时追求新手零配置和 Clash 规则分流的用户。',
+  'yifan-yun': '20 元 150GB，支持 Hysteria2 / VLESS / SS 三协议导入，规则模式下国内直连不占额度。',
+  'guangsu-yun': '99 元/年（69GB/月）与 25 元极速版，自研客户端与 Clash/Shadowrocket 订阅双通道，桌面跑规则很顺。',
+  'weifeng-wangluo': '清风年付 137 元（100GB/月），IEPL + VLESS 且可导第三方订阅，附 50 节点实拍面板图。',
   'guangnian-ti': '18 元 110GB，VLESS 协议对 mihomo 内核客户端友好，配置省心。',
-  'weitu-yun': '三网优化入口，对 Clash 用户常遇到的「入口线路差导致全局慢」有针对性。',
+  'weitu-yun': '三网优化入口与 14.9 元限时档，对 Clash 用户常遇到的「入口线路差导致全局慢」有针对性。',
 };
 
 const faq = [
@@ -46,8 +46,17 @@ const crumbs: Crumb[] = [
 
 <Base
   title="Clash 机场推荐：支持 Clash 订阅的机场与选法"
-  description="Clash 机场推荐：支持 Clash / mihomo 订阅导入的在库机场名单、价格与优惠码对照，说明订阅格式怎么要、协议兼容性怎么看，以及节点全红时该查什么。"
-  schemaItems={[breadcrumbSchema(crumbs), faqSchema(faq)]}
+  description="Clash/mihomo可用机场名单：价格与优惠码对比，教你索取Clash订阅格式、核验协议兼容并排查全红超时。"
+  schemaItems={[
+    breadcrumbSchema(crumbs),
+    webPageSchema({
+      type: 'CollectionPage',
+      name: 'Clash 机场推荐',
+      description: '支持 Clash 与 mihomo 订阅导入的在库机场名单与配置说明',
+      path: '/clash-airport/',
+    }),
+    faqSchema(faq),
+  ]}
 >
   <div class="pt-6"><Breadcrumbs crumbs={crumbs} /></div>
 
@@ -98,9 +107,10 @@ const crumbs: Crumb[] = [
       </table>
     </div>
     <p class="m-0 mt-4 max-w-[46rem] text-[0.95rem] text-muted">
-      在库品牌均按其口径支持订阅导入，其中多数同时提供自研客户端——两条路都开着， 桌面端用
-      Clash、移动端用自研客户端是常见组合。协议差异见
-      <a href="/learn/protocols-explained/">协议知识</a>。
+      注意区分使用方式：飞猫云、灵猫网络、SOGO 云、闪跃、全球云、隐形人等品牌当前仅提供专属自研端、不提供第三方订阅链接；若你要在
+      Clash Verge / FlClash 中自定义分流规则，下面精选确认支持订阅导入的在库品牌。全平台客户端区别见<a
+        href="/apps/client-matrix/">全平台代理客户端选型指南</a
+      >，协议差异见<a href="/learn/protocols-explained/">协议知识</a>。
     </p>
   </section>
 
@@ -113,12 +123,12 @@ const crumbs: Crumb[] = [
     <div class="mt-6">
       <BrandPickList
         slugs={[
-          'lingmao-net',
+          'tiziyun',
           'yifan-yun',
           'guangsu-yun',
+          'weifeng-wangluo',
           'guangnian-ti',
           'weitu-yun',
-          'feimao-yun',
         ]}
         reasons={reasons}
         limit={6}
